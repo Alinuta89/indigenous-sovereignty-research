@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Canada-Wide Funding Map &mdash; Per-Capita Federal Indigenous Funding</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Lato',sans-serif;background:#0e1a26;color:#fff;overflow:hidden;height:100vh}
+.layout{display:grid;grid-template-columns:380px 1fr;height:100vh}
+.story-panel{background:#103656;display:flex;flex-direction:column;overflow:hidden;border-right:1px solid rgba(255,255,255,0.1)}
+.story-header{padding:20px 24px;background:rgba(0,0,0,0.2);border-bottom:1px solid rgba(255,255,255,0.08)}
+.story-header a{color:#4bc2c3;text-decoration:none;font-size:0.82rem}
+.story-header h2{font-size:1.1rem;font-weight:700;margin-top:8px}
+.steps{flex:1;overflow-y:auto;padding:0}
+.step{padding:24px 24px;cursor:pointer;border-bottom:1px solid rgba(255,255,255,0.06);transition:background 0.3s}
+.step:hover{background:rgba(40,188,184,0.08)}
+.step.active{background:rgba(40,188,184,0.15);border-left:4px solid #28bcb8}
+.step .step-num{font-size:0.68rem;text-transform:uppercase;letter-spacing:0.12em;color:#28bcb8;font-weight:700;margin-bottom:6px}
+.step h3{font-size:1rem;font-weight:700;margin-bottom:8px;line-height:1.3}
+.step p{font-size:0.84rem;color:rgba(255,255,255,0.6);line-height:1.6}
+.step .stat{font-size:1.8rem;font-weight:700;color:#28bcb8;margin:8px 0 2px}
+.step .stat-label{font-size:0.75rem;color:rgba(255,255,255,0.45)}
+.step .stat-red{color:#e74c3c}
+.nav-buttons{padding:14px 24px;background:rgba(0,0,0,0.2);display:flex;gap:12px;border-top:1px solid rgba(255,255,255,0.08)}
+.nav-buttons button{flex:1;padding:10px;border:none;border-radius:8px;font-family:'Lato',sans-serif;font-size:0.85rem;font-weight:700;cursor:pointer;transition:background 0.2s}
+.btn-prev{background:rgba(255,255,255,0.1);color:#fff}
+.btn-next{background:#28bcb8;color:#103656}
+#map{height:100%;width:100%}
+.prov-label{background:none;border:none;font-family:'Lato',sans-serif;font-weight:700;font-size:12px;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,0.8)}
+@media(max-width:800px){.layout{grid-template-columns:1fr;grid-template-rows:40vh 60vh}}
+</style>
+</head>
+<body>
+<div class="layout">
+<div class="story-panel">
+  <div class="story-header">
+    <a href="index.html">&larr; Funding Research</a>
+    <h2>Canada-Wide Funding Map</h2>
+  </div>
+  <div class="steps" id="steps">
+    <div class="step active" data-step="0">
+      <div class="step-num">Step 1 of 7</div>
+      <h3>Federal Indigenous funding across Canada</h3>
+      <div class="stat">$21.8B</div>
+      <div class="stat-label">total federal funding to Indigenous communities (2023-24)</div>
+      <p>Each bubble represents a province or territory. Size = Indigenous population. Colour = per-capita funding level. Hover for details.</p>
+    </div>
+    <div class="step" data-step="1">
+      <div class="step-num">Step 2 of 7</div>
+      <h3>Alberta: $6,206 per capita</h3>
+      <div class="stat stat-red">$6,206</div>
+      <div class="stat-label">per Indigenous person (2023-24)</div>
+      <p>284,470 Indigenous Albertans. $1.77B in federal funding. That is among the lowest per-capita rates in the country for a province with this population.</p>
+    </div>
+    <div class="step" data-step="2">
+      <div class="step-num">Step 3 of 7</div>
+      <h3>BC: $35,237 per capita</h3>
+      <div class="stat">$35,237</div>
+      <div class="stat-label">per Indigenous person &mdash; 5.7x Alberta&rsquo;s rate</div>
+      <p>BC&rsquo;s First Nations Health Authority receives $8.2B over 10 years. Alberta has no equivalent. Similar populations (290K vs 284K) &mdash; radically different funding.</p>
+    </div>
+    <div class="step" data-step="3">
+      <div class="step-num">Step 4 of 7</div>
+      <h3>Manitoba: $11,219 per capita</h3>
+      <div class="stat">$11,219</div>
+      <div class="stat-label">per Indigenous person &mdash; 1.8x Alberta</div>
+      <p>237,185 Indigenous people. Nearly double Alberta&rsquo;s per-capita funding. Manitoba has significant on-reserve population and longer history of federal program delivery.</p>
+    </div>
+    <div class="step" data-step="4">
+      <div class="step-num">Step 5 of 7</div>
+      <h3>The territories</h3>
+      <p>Nunavut: $23,243/capita. Yukon: $12,506. NWT: $11,893. Territorial funding is higher because federal responsibility is more direct &mdash; less jurisdictional fragmentation. This is what happens when the federal government doesn&rsquo;t have a province in between.</p>
+    </div>
+    <div class="step" data-step="5">
+      <div class="step-num">Step 6 of 7</div>
+      <h3>The gap Alberta faces</h3>
+      <p>If Alberta&rsquo;s 284,470 Indigenous people received the national average per-capita funding, the province would receive <strong>$3.4B more per year</strong>. The $1.02B service desert gap is a downstream consequence of this structural underfunding.</p>
+    </div>
+    <div class="step" data-step="6">
+      <div class="step-num">Step 7 of 7</div>
+      <h3>This is the shared grievance</h3>
+      <p>Alberta and Treaty Nations are both shortchanged by the same federal architecture. The premier and Treaty Nations have the same complaint: Ottawa fragments funding, underfunds Alberta, and controls service design from 3,000 km away. The coalition argument starts here.</p>
+    </div>
+  </div>
+  <div class="nav-buttons">
+    <button class="btn-prev" id="prev-btn">&larr; Previous</button>
+    <button class="btn-next" id="next-btn">Next &rarr;</button>
+  </div>
+</div>
+<div id="map"></div>
+</div>
+<script>
+var PROVS = [{"code": "BC", "name": "British Columbia", "lat": 53.7, "lng": -127.6, "pop": 290210, "funding": 10226106968, "per_cap": 35237, "charities": 79}, {"code": "AB", "name": "Alberta", "lat": 53.9, "lng": -116.6, "pop": 284470, "funding": 1765426104, "per_cap": 6206, "charities": 52}, {"code": "SK", "name": "Saskatchewan", "lat": 52.9, "lng": -106.5, "pop": 187885, "funding": 1673977993, "per_cap": 8910, "charities": 24}, {"code": "MB", "name": "Manitoba", "lat": 53.8, "lng": -98.8, "pop": 237185, "funding": 2661028769, "per_cap": 11219, "charities": 45}, {"code": "ON", "name": "Ontario", "lat": 51.3, "lng": -85.3, "pop": 406585, "funding": 2447299719, "per_cap": 6019, "charities": 130}, {"code": "QC", "name": "Quebec", "lat": 52.9, "lng": -73.5, "pop": 205010, "funding": 1190670224, "per_cap": 5808, "charities": 18}, {"code": "NB", "name": "New Brunswick", "lat": 46.5, "lng": -66.2, "pop": 33295, "funding": 319555911, "per_cap": 9598, "charities": 1}, {"code": "NS", "name": "Nova Scotia", "lat": 44.7, "lng": -63.7, "pop": 52430, "funding": 284583251, "per_cap": 5428, "charities": 6}, {"code": "PE", "name": "Prince Edward Island", "lat": 46.5, "lng": -63.4, "pop": 3385, "funding": 77976552, "per_cap": 23036, "charities": 2}, {"code": "NL", "name": "Newfoundland & Labrador", "lat": 53.1, "lng": -57.7, "pop": 46545, "funding": 46030174, "per_cap": 989, "charities": 2}, {"code": "YT", "name": "Yukon", "lat": 64.3, "lng": -135.0, "pop": 8810, "funding": 110180268, "per_cap": 12506, "charities": 1}, {"code": "NT", "name": "Northwest Territories", "lat": 64.3, "lng": -124.0, "pop": 20035, "funding": 238274859, "per_cap": 11893, "charities": 5}, {"code": "NU", "name": "Nunavut", "lat": 70.3, "lng": -86.6, "pop": 31390, "funding": 729603191, "per_cap": 23243, "charities": 0}];
+var NATL_AVG = 12046;
+
+var map = L.map('map', {zoomControl:true}).setView([58, -96], 4);
+L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+  attribution:'OpenStreetMap CARTO', maxZoom:18
+}).addTo(map);
+
+function getColor(pc) {
+  if (pc > 20000) return '#28bcb8';
+  if (pc > 10000) return '#1a7ebe';
+  if (pc > 7000) return '#0c4f8a';
+  return '#e74c3c';
+}
+
+function getRadius(pop) {
+  return Math.max(12, Math.min(45, Math.sqrt(pop / 200)));
+}
+
+var circles = {};
+var labels = {};
+
+PROVS.forEach(function(p) {
+  var c = L.circleMarker([p.lat, p.lng], {
+    radius: getRadius(p.pop),
+    fillColor: getColor(p.per_cap),
+    color: '#fff',
+    weight: 1.5,
+    fillOpacity: 0.8
+  }).bindPopup(
+    '<strong style="color:#103656;font-size:1rem">' + p.name + '</strong><br>' +
+    '<span style="color:#103656">Population: ' + p.pop.toLocaleString() + '</span><br>' +
+    '<span style="color:#103656">Federal funding: $' + (p.funding/1e9).toFixed(1) + 'B</span><br>' +
+    '<span style="color:#103656;font-weight:700;font-size:1.1rem">$' + p.per_cap.toLocaleString() + '/person</span><br>' +
+    '<span style="color:#7a8d9c">' + p.charities + ' Indigenous charities</span>'
+  ).addTo(map);
+  circles[p.code] = c;
+  
+  var label = L.marker([p.lat, p.lng], {
+    icon: L.divIcon({
+      className: 'prov-label',
+      html: '<div style="text-align:center"><div>' + p.code + '</div><div style="font-size:10px;font-weight:400;opacity:0.7">$' + (p.per_cap/1000).toFixed(1) + 'k</div></div>',
+      iconSize: [50, 30],
+      iconAnchor: [25, 15]
+    })
+  }).addTo(map);
+  labels[p.code] = label;
+});
+
+// Steps
+var currentStep = 0;
+var steps = document.querySelectorAll('.step');
+
+function resetAll() {
+  PROVS.forEach(function(p) {
+    circles[p.code].setStyle({fillOpacity: 0.8, fillColor: getColor(p.per_cap), weight: 1.5, color: '#fff'});
+    circles[p.code].setRadius(getRadius(p.pop));
+  });
+}
+
+function dimAll() {
+  PROVS.forEach(function(p) {
+    circles[p.code].setStyle({fillOpacity: 0.15, weight: 0.5});
+  });
+}
+
+function highlight(code) {
+  var p = PROVS.find(function(x){return x.code===code});
+  circles[code].setStyle({fillOpacity: 1, weight: 3, color: '#fff'});
+  circles[code].setRadius(getRadius(p.pop) * 1.3);
+}
+
+function applyStep(step) {
+  steps.forEach(function(s,i) { s.classList.toggle('active', i === step); });
+  resetAll();
+  
+  switch(step) {
+    case 0: // All Canada
+      map.flyTo([58, -96], 4, {duration: 1});
+      break;
+    case 1: // Alberta highlighted
+      dimAll();
+      highlight('AB');
+      map.flyTo([53.9, -116.6], 5, {duration: 1.2});
+      break;
+    case 2: // BC highlighted
+      dimAll();
+      highlight('BC');
+      highlight('AB');
+      circles['AB'].setStyle({fillColor:'#e74c3c'});
+      map.flyTo([53, -122], 5, {duration: 1.2});
+      break;
+    case 3: // Manitoba
+      dimAll();
+      highlight('MB');
+      highlight('AB');
+      circles['AB'].setStyle({fillColor:'#e74c3c'});
+      map.flyTo([53, -107], 5, {duration: 1.2});
+      break;
+    case 4: // Territories
+      dimAll();
+      highlight('NU'); highlight('YT'); highlight('NT');
+      map.flyTo([66, -110], 4, {duration: 1.2});
+      break;
+    case 5: // Gap
+      resetAll();
+      circles['AB'].setStyle({fillColor:'#e74c3c', fillOpacity:1, weight:3});
+      circles['AB'].setRadius(getRadius(284470) * 1.5);
+      map.flyTo([53.9, -116.6], 5, {duration: 1.2});
+      break;
+    case 6: // Shared grievance - full view
+      resetAll();
+      circles['AB'].setStyle({weight:3, color:'#e74c3c'});
+      map.flyTo([58, -96], 4, {duration: 1.5});
+      break;
+  }
+  steps[step].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+document.getElementById('next-btn').addEventListener('click', function() {
+  if (currentStep < steps.length - 1) { currentStep++; applyStep(currentStep); }
+});
+document.getElementById('prev-btn').addEventListener('click', function() {
+  if (currentStep > 0) { currentStep--; applyStep(currentStep); }
+});
+steps.forEach(function(s, i) {
+  s.addEventListener('click', function() { currentStep = i; applyStep(i); });
+});
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'ArrowRight' || e.key === 'ArrowDown') { e.preventDefault(); if (currentStep < steps.length-1) { currentStep++; applyStep(currentStep); } }
+  if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); if (currentStep > 0) { currentStep--; applyStep(currentStep); } }
+});
+</script>
+</body>
+</html>
