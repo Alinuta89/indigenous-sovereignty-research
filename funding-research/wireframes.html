@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Indigenous Population Explorer — Wireframes & Data Model</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet">
+<style>
+:root{--deep-navy:#103656;--midnight:#103656;--slate-blue:#0c4f8a;--ocean:#1a7ebe;--deep-teal:#006468;--teal:#28bcb8;--aqua:#4bc2c3;--pale-aqua:#E0F0EE;--mist:#EDF5F4;--near-black:#0A0A0A;--text-secondary:#4A5568;--border-light:#E5E7EB;--bg-subtle:#F9FAFB;--bg-secondary:#F3F4F6}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Lato',sans-serif;font-weight:400;color:var(--near-black);background:#fff;line-height:1.65}
+.container{max-width:1100px;margin:0 auto;padding:0 28px}
+.hero{background:linear-gradient(135deg,var(--deep-navy),var(--midnight),var(--slate-blue));padding:52px 0 44px;color:#fff}
+.hero-eyebrow{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--aqua);margin-bottom:10px}
+.hero h1{font-size:1.8rem;font-weight:700;line-height:1.15;margin-bottom:8px}
+.hero .sub{font-size:.9rem;font-weight:300;color:rgba(255,255,255,.6)}
+.section{padding:40px 0}
+.sh{margin-bottom:20px}
+.sh-kicker{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--deep-teal);margin-bottom:4px}
+.sh-title{font-size:1.25rem;font-weight:700;color:var(--deep-navy);line-height:1.2}
+.sh-sub{font-size:.8rem;font-weight:300;color:var(--text-secondary);margin-top:4px}
+pre.wireframe{background:var(--bg-subtle);border:1px solid var(--border-light);border-radius:8px;padding:20px;font-family:'Courier New',monospace;font-size:11.5px;line-height:1.5;overflow-x:auto;color:var(--near-black);white-space:pre;margin:16px 0}
+.table-wrap{overflow-x:auto;margin:16px 0}
+.data-table{width:100%;border-collapse:separate;border-spacing:0;font-size:.78rem}
+.data-table thead th{background:var(--slate-blue);color:#fff;font-weight:700;padding:8px 12px;text-align:left;font-size:.68rem;text-transform:uppercase;letter-spacing:.06em}
+.data-table thead th:first-child{border-radius:8px 0 0 0}
+.data-table thead th:last-child{border-radius:0 8px 0 0}
+.data-table tbody td{padding:8px 12px;background:#fff;font-size:.76rem}
+.data-table tbody tr:nth-child(even) td{background:var(--bg-subtle)}
+.data-table code{background:var(--pale-aqua);padding:1px 5px;border-radius:3px;font-size:.72rem;color:var(--deep-teal)}
+details.drawer{background:#fff;border:1px solid var(--border-light);border-radius:8px;box-shadow:0 2px 8px rgba(11,31,51,.04);margin:16px 0}
+details.drawer summary{padding:14px 20px;cursor:pointer;display:flex;align-items:center;gap:12px;list-style:none;user-select:none}
+details.drawer summary::-webkit-details-marker{display:none}
+details.drawer summary::marker{content:''}
+.d-kicker{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--deep-teal)}
+.d-label{font-size:.78rem;font-weight:300;color:var(--text-secondary)}
+.d-toggle{margin-left:auto;font-size:.75rem;color:var(--text-secondary);transition:transform .2s}
+.d-toggle::after{content:'▸'}
+details.drawer[open] .d-toggle{transform:rotate(90deg)}
+.d-body{padding:0 20px 20px}
+.prose{font-size:.85rem;font-weight:300;color:var(--text-secondary);line-height:1.75}
+.prose strong{font-weight:700;color:var(--deep-navy)}
+.prose .teal{font-weight:700;color:var(--deep-teal)}
+.card-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:16px 0}
+.mini-card{background:#fff;border:1px solid var(--border-light);border-radius:8px;padding:16px;text-align:center;box-shadow:0 2px 8px rgba(11,31,51,.04)}
+.mini-card .val{font-size:1.2rem;font-weight:700;color:var(--deep-navy)}
+.mini-card .lbl{font-size:.68rem;font-weight:400;color:var(--text-secondary);margin-top:2px}
+.callout{border-left:4px solid var(--teal);border-radius:0 8px 8px 0;background:linear-gradient(135deg,rgba(15,185,177,.04),rgba(11,31,51,.02));padding:16px 20px;margin:16px 0}
+.callout-title{font-size:.8rem;font-weight:700;color:var(--deep-navy);margin-bottom:4px}
+.callout-body{font-size:.78rem;font-weight:300;color:var(--text-secondary);line-height:1.6}
+.nav-pills{display:flex;gap:6px;margin:20px 0;flex-wrap:wrap}
+.nav-pill{padding:6px 14px;border-radius:6px;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;cursor:pointer;background:var(--bg-secondary);color:var(--text-secondary);border:none;transition:all .15s}
+.nav-pill.active,.nav-pill:hover{background:var(--teal);color:#fff}
+.screen{display:none}
+.screen.active{display:block}
+.footer{padding:28px 0;text-align:center;font-size:.68rem;font-weight:300;color:var(--text-secondary)}
+.footer strong{font-weight:700;color:var(--deep-teal)}
+@media(max-width:768px){.card-row{grid-template-columns:repeat(2,1fr)}pre.wireframe{font-size:9px}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+<div class="container">
+ <div class="hero-eyebrow">Wireframes &amp; Data Model</div>
+ <h1>Indigenous Population Explorer</h1>
+ <div class="sub">National CSD/DA atlas with Census identity, socioeconomics, language, funding, and predictive gap analysis</div>
+</div>
+</header>
+
+<div class="container">
+
+<!-- NAV -->
+<div class="nav-pills">
+ <button class="nav-pill active" onclick="showScreen('overview')">Overview</button>
+ <button class="nav-pill" onclick="showScreen('datamodel')">Data Model</button>
+ <button class="nav-pill" onclick="showScreen('screen1')">Main Map</button>
+ <button class="nav-pill" onclick="showScreen('screen2')">CSD Drill-Down</button>
+ <button class="nav-pill" onclick="showScreen('screen3')">Provincial Compare</button>
+ <button class="nav-pill" onclick="showScreen('screen4')">City DA Zoom</button>
+</div>
+
+<!-- ═══ OVERVIEW ═══ -->
+<div class="screen active" id="overview">
+<section class="section">
+ <div class="sh"><div class="sh-kicker">What We're Building</div><div class="sh-title">A national Indigenous socioeconomic atlas</div></div>
+ <div class="prose">
+  <p>Interactive GIS dashboard mapping <strong>~5,000 Census Subdivisions</strong> across all of Canada with <strong>~56,000 Dissemination Areas</strong> for city-level zoom. Same architecture as the Classroom Complexity dashboard (Leaflet + TRACE CSS + config-driven). Alberta default view with province switcher.</p>
+ </div>
+
+ <div class="card-row">
+  <div class="mini-card"><div class="val">~5,000</div><div class="lbl">CSDs nationally</div></div>
+  <div class="mini-card"><div class="val">~56,000</div><div class="lbl">DAs for city zoom</div></div>
+  <div class="mini-card"><div class="val">18</div><div class="lbl">Map layers</div></div>
+  <div class="mini-card"><div class="val">5</div><div class="lbl">Screens</div></div>
+ </div>
+
+ <div class="sh" style="margin-top:32px"><div class="sh-kicker">Layer Groups</div><div class="sh-title">18 toggleable layers across 6 categories</div></div>
+ <div class="table-wrap">
+  <table class="data-table">
+   <thead><tr><th>Group</th><th>Layers</th><th>Source</th></tr></thead>
+   <tbody>
+    <tr><td><strong>Identity</strong></td><td>Indigenous %, FN %, Metis %, Inuit %, Treaty Status, Off-Reserve %</td><td><a href="https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=9810026601" style="color:var(--deep-teal);font-weight:700">Census 2021</a></td></tr>
+    <tr><td><strong>Socioeconomic</strong></td><td>Poverty Rate, Govt Transfer Reliance, Income Gap, No Certificate %, Post-Secondary %, Core Housing Need</td><td><a href="https://www12.statcan.gc.ca/census-recensement/2021/dp-pd/prof/index.cfm?Lang=E" style="color:var(--deep-teal);font-weight:700">Census Profile</a></td></tr>
+    <tr><td><strong>Language</strong></td><td>Indigenous Language %</td><td><a href="https://www12.statcan.gc.ca/census-recensement/2021/dp-pd/dv-vd/language-langue/index-en.cfm" style="color:var(--deep-teal);font-weight:700">Census language data</a></td></tr>
+    <tr><td><strong>Funding</strong></td><td>$/Capita, Org Density, Federal vs Provincial, Settlement Recipients</td><td><a href="https://open.canada.ca/data/en/dataset/432527ab-7aac-45b5-81d6-7597107a7013" style="color:var(--deep-teal);font-weight:700">Federal grants</a> + <a href="https://open.alberta.ca/dataset/grant-disclosure" style="color:var(--deep-teal);font-weight:700">GOA grants</a></td></tr>
+    <tr><td><strong>Governance</strong></td><td>Governance Type, Funding Recipient Type</td><td><a href="https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/SearchFN.aspx?lang=eng" style="color:var(--deep-teal);font-weight:700">ISC First Nation profiles</a></td></tr>
+    <tr><td><strong>Predictive</strong></td><td>Need Score, Funding Gap (actual vs predicted)</td><td>Regression model</td></tr>
+   </tbody>
+  </table>
+ </div>
+
+ <div class="callout">
+  <div class="callout-title">The "How many Blackfoot in Toronto" question</div>
+  <div class="callout-body">Census Question 27 asks "Which First Nation or Indian band?" — the data EXISTS. But StatCan publishes band membership only at provincial level (Table 98-10-0267), not per-CSD. The CSD-level cross-tab requires a <strong>custom tabulation request</strong> (~$500-2,000, 4-8 weeks). The drill-down panel shows provincial band membership data now, with a note about the custom tab for exact city-level numbers.</div>
+ </div>
+</section>
+</div>
+
+<!-- ═══ DATA MODEL ═══ -->
+<div class="screen" id="datamodel">
+<section class="section">
+ <div class="sh"><div class="sh-kicker">Data Model</div><div class="sh-title">Entity-Relationship Diagram</div></div>
+ <pre class="wireframe">                              +-----------------+
+                              |    PROVINCE     |
+                              |-----------------|
+                              | province_code   |&lt;-------+-------+
+                              | province_name   |        |       |
+                              | indigenous_pop  |        |       |
+                              | total_pop       |        |       |
+                              +-----------------+        |       |
+                                     |                   |       |
+                                     | 1:N               |       |
+                                     v                   |       |
++------------------+          +-----------------+        |       |
+|   TREATY AREA    |          |      CSD        |        |       |
+|------------------|   N:1    |-----------------|        |       |
+| treaty_id        |&lt;---------| geo_id (PK)     |        |       |
+| treaty_name      |          | csd_name        |        |       |
+| treaty_number    |          | province_code   |--------+       |
++------------------+          | csd_type        |                |
+        |                     | treaty_area     |                |
+        | N:M                 | centroid_lat/lng|                |
+        v                     +-----------------+                |
++------------------+                  |                          |
+|   FIRST NATION   |                  | 1:N                     |
+|   / BAND         |                  v                          |
+|------------------|          +-----------------+                |
+| band_id (PK)     |          |       DA        |                |
+| band_name        |          |-----------------|                |
+| province         |          | da_id (PK)      |                |
+| treaty_area      |          | csd_id (FK)     |                |
+| reserve_csd_id   |--&gt;(CSD)  | centroid_lat/lng|                |
+| governance_type  |          +-----------------+                |
++------------------+                                             |
+        ^                                                        |
+        | N:M (members live in CSDs)                             |
++-------+----------+         +------------------+               |
+| FACT_BAND_       |         |    ORGANIZATION  |               |
+| MEMBERSHIP       |         |  (922 AB orgs)   |               |
+|------------------|         |------------------|               |
+| band_id (FK)     |         | org_id (PK)      |               |
+| province (FK)    |---------| province         |---------------+
+| members_total    |         | org_type         |
+| members_on_res   |         | treaty_area      |
+| members_off_res  |         | service_domains  |
++------------------+         +------------------+
+
+STAR SCHEMA (center):
+
+  +------------------+    +------------------+    +------------------+
+  | FACT_CSD_CENSUS  |    | FACT_DA_CENSUS   |    | FACT_CSD_FUNDING |
+  |  ~5,000 rows     |    |  ~56,000 rows    |    |  ~5,000 rows     |
+  |  25 Census vars  |    |  10 Census vars  |    |  funding vars    |
+  +------------------+    +------------------+    +------------------+</pre>
+
+ <div class="sh" style="margin-top:32px"><div class="sh-kicker">Fact Tables</div><div class="sh-title">4 fact tables + 1 predictive</div></div>
+
+ <details class="drawer" open>
+  <summary><span class="d-kicker">fact_csd_census</span><span class="d-label">~5,000 rows &middot; 25+ columns &middot; one row per CSD</span><span class="d-toggle"></span></summary>
+  <div class="d-body">
+   <div class="table-wrap">
+    <table class="data-table">
+     <thead><tr><th>Column</th><th>Type</th><th>Description</th></tr></thead>
+     <tbody>
+      <tr><td><code>csd_id</code></td><td>VARCHAR(7)</td><td>StatCan CSD code (FK to dim_csd)</td></tr>
+      <tr><td><code>total_pop</code></td><td>INTEGER</td><td>Total population</td></tr>
+      <tr><td><code>indigenous_pop</code></td><td>INTEGER</td><td>Aboriginal identity population</td></tr>
+      <tr><td><code>first_nations_pop</code></td><td>INTEGER</td><td>First Nations identity</td></tr>
+      <tr><td><code>fn_on_reserve</code></td><td>INTEGER</td><td>FN on-reserve</td></tr>
+      <tr><td><code>fn_off_reserve</code></td><td>INTEGER</td><td>FN off-reserve</td></tr>
+      <tr><td><code>metis_pop</code></td><td>INTEGER</td><td>Metis identity</td></tr>
+      <tr><td><code>inuit_pop</code></td><td>INTEGER</td><td>Inuit identity</td></tr>
+      <tr><td><code>registered_indian</code></td><td>INTEGER</td><td>Registered/Treaty Indian status</td></tr>
+      <tr><td><code>indigenous_share</code></td><td>DECIMAL(6,4)</td><td>indigenous_pop / total_pop</td></tr>
+      <tr><td><code>poverty_rate_indig</code></td><td>DECIMAL(5,2)</td><td>MBM poverty rate, Indigenous</td></tr>
+      <tr><td><code>poverty_rate_total</code></td><td>DECIMAL(5,2)</td><td>MBM poverty rate, total</td></tr>
+      <tr><td><code>median_income_indig</code></td><td>INTEGER</td><td>Median total income, Indigenous</td></tr>
+      <tr><td><code>median_income_total</code></td><td>INTEGER</td><td>Median total income, total</td></tr>
+      <tr><td><code>govt_transfer_share</code></td><td>DECIMAL(5,2)</td><td>Govt transfers as % of income (Indigenous)</td></tr>
+      <tr><td><code>no_certificate_share</code></td><td>DECIMAL(5,2)</td><td>% Indigenous without high school</td></tr>
+      <tr><td><code>postsec_share</code></td><td>DECIMAL(5,2)</td><td>% Indigenous with post-secondary</td></tr>
+      <tr><td><code>core_housing_need</code></td><td>DECIMAL(5,2)</td><td>Core housing need rate, Indigenous</td></tr>
+      <tr><td><code>employment_rate_indig</code></td><td>DECIMAL(5,2)</td><td>Employment rate, Indigenous</td></tr>
+      <tr><td><code>indigenous_lang_share</code></td><td>DECIMAL(5,2)</td><td>% with Indigenous mother tongue</td></tr>
+     </tbody>
+    </table>
+   </div>
+  </div>
+ </details>
+
+ <details class="drawer">
+  <summary><span class="d-kicker">fact_da_census</span><span class="d-label">~56,000 rows &middot; 10 columns &middot; one row per DA</span><span class="d-toggle"></span></summary>
+  <div class="d-body">
+   <div class="table-wrap">
+    <table class="data-table">
+     <thead><tr><th>Column</th><th>Type</th><th>Description</th></tr></thead>
+     <tbody>
+      <tr><td><code>da_id</code></td><td>VARCHAR(8)</td><td>StatCan DA code</td></tr>
+      <tr><td><code>csd_id</code></td><td>VARCHAR(7)</td><td>Parent CSD (FK)</td></tr>
+      <tr><td><code>total_pop</code></td><td>INTEGER</td><td>DA total population</td></tr>
+      <tr><td><code>indigenous_pop</code></td><td>INTEGER</td><td>Indigenous identity</td></tr>
+      <tr><td><code>indigenous_share</code></td><td>DECIMAL(6,4)</td><td>Share</td></tr>
+      <tr><td><code>first_nations_pop</code></td><td>INTEGER</td><td>FN identity</td></tr>
+      <tr><td><code>metis_pop</code></td><td>INTEGER</td><td>Metis identity</td></tr>
+      <tr><td><code>inuit_pop</code></td><td>INTEGER</td><td>Inuit identity</td></tr>
+     </tbody>
+    </table>
+   </div>
+  </div>
+ </details>
+
+ <details class="drawer">
+  <summary><span class="d-kicker">fact_band_membership</span><span class="d-label">~2,000 rows &middot; band × province &middot; on/off reserve</span><span class="d-toggle"></span></summary>
+  <div class="d-body">
+   <div class="table-wrap">
+    <table class="data-table">
+     <thead><tr><th>Column</th><th>Type</th><th>Description</th></tr></thead>
+     <tbody>
+      <tr><td><code>band_id</code></td><td>INTEGER</td><td>Band number (FK to dim_band)</td></tr>
+      <tr><td><code>province</code></td><td>VARCHAR(2)</td><td>Province where members live</td></tr>
+      <tr><td><code>members_total</code></td><td>INTEGER</td><td>Total members in this province</td></tr>
+      <tr><td><code>members_on_reserve</code></td><td>INTEGER</td><td>Living on-reserve</td></tr>
+      <tr><td><code>members_off_reserve</code></td><td>INTEGER</td><td>Living off-reserve</td></tr>
+     </tbody>
+    </table>
+   </div>
+   <p style="margin-top:12px;font-size:.75rem;color:var(--text-secondary)">Note: This is at PROVINCIAL level (Table 98-10-0267). CSD-level band membership requires a StatCan custom tabulation (~$500-2K).</p>
+  </div>
+ </details>
+
+ <details class="drawer">
+  <summary><span class="d-kicker">fact_csd_predicted</span><span class="d-label">~5,000 rows &middot; funding gap model output</span><span class="d-toggle"></span></summary>
+  <div class="d-body">
+   <div class="table-wrap">
+    <table class="data-table">
+     <thead><tr><th>Column</th><th>Type</th><th>Description</th></tr></thead>
+     <tbody>
+      <tr><td><code>csd_id</code></td><td>VARCHAR(7)</td><td>FK to dim_csd</td></tr>
+      <tr><td><code>need_score</code></td><td>DECIMAL(5,2)</td><td>Composite 0-100 (poverty + housing + education + income + remoteness)</td></tr>
+      <tr><td><code>predicted_funding_pc</code></td><td>DECIMAL(10,2)</td><td>Model prediction: expected $/capita given Census indicators</td></tr>
+      <tr><td><code>actual_funding_pc</code></td><td>DECIMAL(10,2)</td><td>Actual funding per capita (from fact_csd_funding)</td></tr>
+      <tr><td><code>funding_gap</code></td><td>DECIMAL(10,2)</td><td>actual - predicted (negative = underfunded)</td></tr>
+     </tbody>
+    </table>
+   </div>
+   <p style="margin-top:12px;font-size:.75rem;color:var(--text-secondary)">OCAP framing: "given the pattern of allocation, which communities are anomalously under-served" — not "how much Nations deserve."</p>
+  </div>
+ </details>
+</section>
+</div>
+
+<!-- ═══ SCREEN 1: MAIN MAP ═══ -->
+<div class="screen" id="screen1">
+<section class="section">
+ <div class="sh"><div class="sh-kicker">Screen 1</div><div class="sh-title">Main Map View — Province Level</div><div class="sh-sub">Alberta default, province dropdown to switch. Circle markers per CSD, colored by active layer.</div></div>
+ <pre class="wireframe">+============================================================================+
+|  KOMPAS    Indigenous Population Explorer    [Alberta v]    [Census 2021]  O |
++============================================================================+
+|            |                                                                |
+|  AT A      |                                                                |
+|  GLANCE    |              L E A F L E T    M A P                             |
+|            |                                                                |
+|  +------+  |         (Circle markers, one per CSD)                          |
+|  |1.81M |  |                                                                |
+|  |Indig.|  |         Size = total Indigenous pop (sqrt scale)               |
+|  |Pop.  |  |         Color = active layer value (gradient)                  |
+|  +------+  |                                                                |
+|  +------+  |     +-- Large circles: Edmonton, Calgary, Winnipeg             |
+|  |284K  |  |     |                                                          |
+|  |In AB |  |     |   +-- Medium: Lethbridge, Red Deer, Saskatoon            |
+|  +------+  |     |   |                                                      |
+|  +------+  |     v   v       o  o                                           |
+|  | 5.0% |  |            O           o                                       |
+|  |Natl. |  |       O         o         o    o                               |
+|  |Share |  |                    o                                            |
+|  +------+  |    O       o               o                                   |
+|  +------+  |                                                                |
+|  |4,987 |  |                  [Gradient Bar]                                |
+|  |CSDs  |  |               Low ========== High                             |
+|  +------+  |                                                                |
+|            |                                                                |
+|  LAYERS    |                                                                |
+|            |                                                                |
+|  Identity  [v]                                                              |
+|  [*Indig %*] [FN %] [Metis %] [Inuit %] [Treaty] [Off-Res]               |
+|                                                                             |
+|  Socioeconomic  [>]                                                        |
+|  Language       [>]                                                        |
+|  Funding        [>]                                                        |
+|  Governance     [>]                                                        |
+|  Predictive     [>]                                                        |
+|            |                                                                |
+|  SEARCH    |                                                                |
+|  [________]|                                                                |
+|  Marker sz |                                                                |
+|  [---O---] |                                                                |
+|            |                                                                |
+|  DISTRIB.  |                                                                |
+|  [histogram]                                                                |
+|  |## ##  | |                                                                |
+|  |#####  | |                                                                |
+|  |###### | |                                                                |
+|  0%   100% |                                                                |
+|            |                                                                |
+|  TOP CSDs  |                                                                |
+|  Winnpg  92,810  12.4%                                                     |
+|  Edmtn   76,205   5.9%                                                     |
+|  Vanc    61,460   4.1%                                                     |
+|  Calgy   41,640   3.2%                                                     |
+|  Toront  35,670   1.3%                                                     |
+|            |                                                                |
+|  [Compare Provinces]                                                       |
+|            |                                                                |
++============+================================================================+</pre>
+</section>
+</div>
+
+<!-- ═══ SCREEN 2: CSD DRILL-DOWN ═══ -->
+<div class="screen" id="screen2">
+<section class="section">
+ <div class="sh"><div class="sh-kicker">Screen 2</div><div class="sh-title">CSD Drill-Down Panel</div><div class="sh-sub">Slide-in panel from right when user clicks a CSD. Full Census profile + funding + DA map.</div></div>
+ <pre class="wireframe">+====================+
+|  CSD DRILL-DOWN [X]|
+|                    |
+|  CALGARY (CY)      |
+|  Alberta . Treaty 7|
+|  Pop: 1,306,784    |
+|                    |
+|  +------+  +------+|
+|  |41,640|  | 3.2% ||
+|  |people|  |share ||
+|  +------+  +------+|
+|                    |
+|  SELF-ID           |
+|  FN   [======= 54%]|
+|  Metis[=====   40%]|
+|  Inuit[=        2%]|
+|  Mult.[=        4%]|
+|                    |
+|  FN On/Off Reserve |
+|  On: 3,810 (17%)   |
+|  Off: 18,530 (83%) |
+|  [===|=============]|
+|                    |
+|  v Band Members    |
+|  +------------------+
+|  |Band      |Tot|On|
+|  |Blood     |13K|3K|
+|  |Siksika   |7.8K|3K|
+|  |Piikani   |3.8K|2K|
+|  |Stoney    |3.5K|2K|
+|  |(663 bands)|   |  |
+|  +------------------+
+|  Note: Provincial   |
+|  level only. Custom  |
+|  tab needed for CSD. |
+|                    |
+|  SOCIOECONOMIC     |
+|  +----+  +----+  +----+
+|  |18.4|  |$34K|  |0.71|
+|  |Pvty|  |Inc |  |Gap |
+|  +----+  +----+  +----+
+|  +----+  +----+  +----+
+|  |12.9|  |48.1|  |16.4|
+|  |NoCt|  |PSec|  |Hous|
+|  +----+  +----+  +----+
+|                    |
+|  vs Non-Indigenous:|
+|  Poverty  9.2%(2x) |
+|  Income $47.9K     |
+|  Housing  9.8%     |
+|                    |
+|  v Language        |
+|  Cree       310    |
+|  Blackfoot  112    |
+|  Stoney      48    |
+|                    |
+|  v Treaty/Gov      |
+|  Treaty 7          |
+|  Nearby: Tsuut'ina |
+|  145 (adj), Siksika|
+|  146 (80km SE)     |
+|                    |
+|  v Funding         |
+|  Fed: $28.5M       |
+|  Prov: $4.1M       |
+|  $/Cap: $683       |
+|  Orgs: 142         |
+|  Gap: -$27 (model) |
+|                    |
+|  v DA Map          |
+|  [Mini choropleth] |
+|  847 DAs shown     |
+|  Highest: Forest   |
+|  Lawn 14.2%        |
+|                    |
++====================+</pre>
+</section>
+</div>
+
+<!-- ═══ SCREEN 3: PROVINCIAL COMPARE ═══ -->
+<div class="screen" id="screen3">
+<section class="section">
+ <div class="sh"><div class="sh-kicker">Screen 3</div><div class="sh-title">Cross-Provincial Comparison</div><div class="sh-sub">Modal table comparing all metrics across provinces. Teal = better, amber = worse than national median.</div></div>
+ <pre class="wireframe">+============================================================================+
+|                                                               [X Close]    |
+|  Cross-Provincial Comparison — Census 2021                                 |
+|                                                                            |
+|              | AB     | BC     | SK     | MB     | ON     | QC    | CA     |
+|  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  |
+|  IDENTITY                                                                  |
+|  Total Pop   | 4.26M  | 5.00M  | 1.13M  | 1.34M  | 14.2M  | 8.50M |36.3M |
+|  Indig. Pop  | 284K   | 290K   | 188K   | 237K   | 407K   | 205K  |1.81M |
+|  Indig. %    | 6.7%   | 5.8%   | 17.0%  | 18.1%  | 2.9%   | 2.4%  |5.0%  |
+|  FN Share    | 48%    | 56%    | 58%    | 65%    | 60%    | 54%   | 58%  |
+|  Metis Share | 46%    | 35%    | 40%    | 32%    | 30%    | 19%   | 34%  |
+|  Inuit Share | 0.5%   | 0.3%   | 0.3%   | 0.5%   | 1.2%   | 20%   | 4%   |
+|  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  |
+|  SOCIOECONOMIC                                                             |
+|  Poverty     | 18.4%  | 16.2%  | 26.8%  | 28.1%  | 19.4%  | 14.6% |20.1% |
+|  Income Gap  | 0.71   | 0.74   | 0.62   | 0.58   | 0.68   | 0.77  |0.69  |
+|  No Cert. %  | 12.9%  | 10.4%  | 21.3%  | 23.7%  | 14.2%  | 11.8% |14.6% |
+|  Post-Sec %  | 48.1%  | 51.2%  | 38.4%  | 36.9%  | 46.3%  | 52.1% |45.8% |
+|  Housing Nd  | 16.4%  | 15.8%  | 21.6%  | 24.3%  | 18.2%  | 12.1% |17.8% |
+|  Employ Rate | 57.3%  | 55.8%  | 49.2%  | 45.8%  | 54.6%  | 58.2% |53.1% |
+|  Govt Tx %   | 15.2%  | 14.8%  | 24.1%  | 26.8%  | 17.3%  | 13.2% |18.4% |
+|  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  |
+|  FUNDING                                                                   |
+|  Fed $/Cap   | $9,389 |$35,237*| $8,910 |$11,219 | $6,019 |$6,814 |~$13K |
+|  Prov $/Cap  | $424   | $1,151 | $1,358 | $177   | $337   |$1,979 | --   |
+|  Org Count   | 922    | 79     | 24     | 45     | 130    | 18    |1,235 |
+|  Bands       | 48     | 203    | 74     | 63     | 133    | 40    | 663  |
+|  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  |
+|                                                                            |
+|  *BC inflated by FNHA ($8.3B single transfer)                             |
+|  Teal = better than median  |  Amber = worse by >25%                      |
++============================================================================+</pre>
+</section>
+</div>
+
+<!-- ═══ SCREEN 4: CITY DA ZOOM ═══ -->
+<div class="screen" id="screen4">
+<section class="section">
+ <div class="sh"><div class="sh-kicker">Screen 4</div><div class="sh-title">City Zoom — DA Polygons</div><div class="sh-sub">At zoom ≥ 10, CSD circles replaced by DA choropleth polygons. Shows neighbourhood-level Indigenous concentration.</div></div>
+ <pre class="wireframe">+============================================================================+
+|  KOMPAS    Indigenous Population Explorer    [Alberta v]    [Census 2021]  O |
++============+===============================================================+
+|            |                                                                |
+|  AT A      |     CALGARY — DA-Level Choropleth                             |
+|  GLANCE    |                                                                |
+|  (updates  |     +--------+--------+                                        |
+|  to CMA    |     | 2.1%   | 3.4%   |--------+                              |
+|  stats)    |     |        |  ░░░   | 1.8%   |                              |
+|            |     +--------+--------+--------+                              |
+|  +------+  |     | 4.7%   | 14.2%  | 2.3%   |                              |
+|  |41,640|  |     |  ░░    | ▓▓▓▓▓  |  ░     |                              |
+|  |Indig.|  |     +--------+--------+--------+                              |
+|  |in CMA|  |     | 8.1%   | 6.5%   | 1.2%   |                              |
+|  +------+  |     |  ░░░   |  ░░    |        |                              |
+|            |     +--------+--------+--------+                              |
+|  +------+  |                                                                |
+|  | 847  |  |     Color: Indigenous share per DA                             |
+|  | DAs  |  |     ░ = 2-5%   ▒ = 5-10%   ▓ = 10%+                          |
+|  +------+  |                                                                |
+|            |     +-- Forest Lawn: 14.2% (highest)                           |
+|  Layers    |     +-- Signal Hill: 0.3% (lowest)                             |
+|  [same     |                                                                |
+|   as main] |     Click DA for popup:                                        |
+|            |     +------------------------+                                 |
+|  Rankings  |     | Forest Lawn DA         |                                 |
+|  (updates  |     | Pop: 4,200             |                                 |
+|  to show   |     | Indigenous: 596 (14.2%)|                                 |
+|  DAs)      |     | FN: 340  Metis: 218    |                                 |
+|            |     | Inuit: 8  Other: 30    |                                 |
+|            |     +------------------------+                                 |
+|            |                                                                |
+|  [Zoom out |     Transition: at zoom < 10, reverts to CSD circles          |
+|   to CSDs] |     DA TopoJSON lazy-loaded per province on first zoom-in      |
+|            |                                                                |
++============+================================================================+</pre>
+</section>
+</div>
+
+</div><!-- /container -->
+
+<footer class="footer">
+ <strong></strong> &middot; Indigenous Population Explorer Wireframes &middot; April 2026
+</footer>
+
+<script>
+function showScreen(id) {
+ document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+ document.querySelectorAll('.nav-pill').forEach(p => p.classList.remove('active'));
+ document.getElementById(id).classList.add('active');
+ event.target.classList.add('active');
+ window.scrollTo(0, document.querySelector('.nav-pills').offsetTop - 20);
+}
+</script>
+</body>
+</html>

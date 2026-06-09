@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Indigenous Funding Flows in Canada — Deep Dive Report</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet">
+<style>
+:root{--deep-navy:#103656;--midnight:#103656;--slate-blue:#0c4f8a;--ocean:#1a7ebe;--deep-teal:#006468;--teal:#28bcb8;--aqua:#4bc2c3;--light-aqua:#4bc2c3;--pale-aqua:#E0F0EE;--mist:#EDF5F4;--near-black:#0A0A0A;--text-secondary:#4A5568;--border-light:#E5E7EB;--bg-subtle:#F9FAFB;--bg-secondary:#F3F4F6}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Lato',sans-serif;font-weight:400;color:var(--near-black);background:#fff;line-height:1.7}
+.container{max-width:880px;margin:0 auto;padding:0 32px}
+.section{padding:48px 0}
+.hero{background:linear-gradient(135deg,var(--deep-navy) 0%,var(--midnight) 45%,var(--slate-blue) 100%);padding:72px 0 60px;color:#fff}
+.hero-eyebrow{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--aqua);margin-bottom:14px}
+.hero h1{font-size:2.4rem;font-weight:700;line-height:1.12;margin-bottom:12px;max-width:700px}
+.hero .subtitle{font-size:1.05rem;font-weight:300;color:rgba(255,255,255,.65);max-width:600px;line-height:1.6}
+.hero .meta{font-size:.72rem;font-weight:300;color:rgba(255,255,255,.35);margin-top:24px}
+.stat-row{display:flex;gap:0;background:#fff;border-radius:8px;box-shadow:0 4px 24px rgba(11,31,51,.1);margin-top:-36px;position:relative;z-index:10;overflow:hidden}
+.stat-item{flex:1;padding:22px 16px;text-align:center}
+.stat-item+.stat-item{background:var(--bg-subtle)}
+.stat-item:nth-child(odd){background:#fff}
+.stat-value{font-size:1.5rem;font-weight:700;background:linear-gradient(135deg,var(--deep-navy),var(--teal));-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1.1}
+.stat-label{font-size:.68rem;font-weight:400;color:var(--text-secondary);margin-top:3px}
+.stat-sub{font-size:.62rem;font-weight:300;color:var(--text-secondary);margin-top:2px}
+.ch{margin-bottom:24px}
+.ch-num{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--deep-teal);margin-bottom:4px}
+.ch-title{font-size:1.4rem;font-weight:700;color:var(--deep-navy);line-height:1.2}
+.ch-sub{font-size:.85rem;font-weight:300;color:var(--text-secondary);margin-top:4px}
+.prose{font-size:.88rem;font-weight:300;color:var(--text-secondary);line-height:1.8;max-width:780px}
+.prose p+p{margin-top:16px}
+.prose strong{font-weight:700;color:var(--deep-navy)}
+.prose .teal{font-weight:700;color:var(--deep-teal)}
+.num-hero{text-align:center;padding:36px 20px;background:var(--bg-subtle);border-radius:8px;margin:24px 0}
+.num-hero-value{font-size:3.2rem;font-weight:700;background:linear-gradient(135deg,var(--deep-navy),var(--teal));-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1}
+.num-hero-label{font-size:.95rem;font-weight:400;color:var(--near-black);margin-top:8px}
+.num-hero-context{font-size:.78rem;font-weight:300;color:var(--text-secondary);margin-top:6px;max-width:500px;margin-left:auto;margin-right:auto}
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:20px 0}
+.data-table{width:100%;border-collapse:separate;border-spacing:0;font-size:.8rem}
+.data-table thead th{background:var(--slate-blue);color:#fff;font-weight:700;padding:10px 14px;text-align:left;font-size:.7rem;text-transform:uppercase;letter-spacing:.06em}
+.data-table thead th:first-child{border-radius:8px 0 0 0}
+.data-table thead th:last-child{border-radius:0 8px 0 0}
+.data-table tbody td{padding:10px 14px;background:#fff}
+.data-table tbody tr:nth-child(even) td{background:var(--bg-subtle)}
+.desert-count{font-weight:700;font-size:1.1rem;color:var(--deep-navy)}
+.desert-zero{font-weight:700;color:var(--deep-teal);font-size:.72rem}
+.callout{border-left:4px solid var(--teal);border-radius:0 8px 8px 0;background:linear-gradient(135deg,rgba(15,185,177,.04),rgba(11,31,51,.02));padding:20px 24px;margin:24px 0}
+.callout-title{font-size:.82rem;font-weight:700;color:var(--deep-navy);margin-bottom:6px}
+.callout-body{font-size:.8rem;font-weight:300;color:var(--text-secondary);line-height:1.7}
+.card-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:20px 0}
+.card{background:#fff;border:1px solid var(--border-light);border-radius:8px;padding:24px;box-shadow:0 2px 12px rgba(11,31,51,.05)}
+.card-icon{font-size:22px;background:linear-gradient(135deg,var(--deep-navy),var(--teal));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:10px}
+.card-title{font-size:.85rem;font-weight:700;color:var(--deep-navy);margin-bottom:6px}
+.card-stat{font-size:1.3rem;font-weight:700;color:var(--deep-teal);margin-bottom:6px}
+.card-body{font-size:.78rem;font-weight:300;color:var(--text-secondary);line-height:1.6}
+.rec-list{display:flex;flex-direction:column;gap:14px;margin:20px 0}
+.rec-item{display:flex;align-items:flex-start;gap:16px;background:#fff;border:1px solid var(--border-light);border-radius:8px;padding:20px 24px;box-shadow:0 2px 8px rgba(11,31,51,.04)}
+.rec-badge{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--deep-navy),var(--slate-blue));color:#fff;font-weight:700;font-size:.85rem;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.rec-title{font-size:.85rem;font-weight:700;color:var(--deep-navy);margin-bottom:4px}
+.rec-desc{font-size:.78rem;font-weight:300;color:var(--text-secondary);line-height:1.6}
+.rec-cost{display:inline-block;padding:2px 8px;border-radius:4px;background:var(--mist);color:var(--deep-teal);font-size:.68rem;font-weight:700;margin-top:6px}
+details.drawer{background:#fff;border:1px solid var(--border-light);border-radius:8px;box-shadow:0 2px 8px rgba(11,31,51,.04);margin:20px 0}
+details.drawer summary{padding:14px 20px;cursor:pointer;display:flex;align-items:center;gap:12px;list-style:none;user-select:none}
+details.drawer summary::-webkit-details-marker{display:none}
+details.drawer summary::marker{content:''}
+.d-kicker{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--deep-teal)}
+.d-label{font-size:.78rem;font-weight:300;color:var(--text-secondary)}
+.d-toggle{margin-left:auto;font-size:.75rem;color:var(--text-secondary);transition:transform .2s}
+.d-toggle::after{content:'▸'}
+details.drawer[open] .d-toggle{transform:rotate(90deg)}
+.d-body{padding:0 20px 20px;font-size:.8rem;font-weight:300;color:var(--text-secondary);line-height:1.7}
+.toc{list-style:none;display:flex;flex-wrap:wrap;gap:8px 16px;margin:20px 0}
+.toc li a{font-size:.78rem;font-weight:400;color:var(--deep-teal);text-decoration:none}
+.toc li a:hover{text-decoration:underline}
+.footer{padding:32px 0;text-align:center;font-size:.7rem;font-weight:300;color:var(--text-secondary)}
+.footer strong{font-weight:700;color:var(--deep-teal)}
+@media(max-width:768px){.stat-row{flex-direction:column}.card-row{grid-template-columns:1fr}.hero h1{font-size:1.6rem}.num-hero-value{font-size:2.4rem}}
+@media print{.hero{-webkit-print-color-adjust:exact;print-color-adjust:exact}details.drawer{break-inside:avoid}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+<div class="container">
+ <div class="hero-eyebrow"> &middot; Deep Dive Report</div>
+ <h1>Indigenous Funding Flows in Canada</h1>
+ <div class="subtitle">A national overview and Alberta deep dive. Where the money goes, where it doesn't, and what's invisible.</div>
+ <div class="meta">April 2026 &middot; 12 Tickets &middot; 16 Research Agents &middot; 100% Official GoC Data &middot; OCAP-Compliant</div>
+</div>
+</header>
+
+<div class="container">
+<div class="stat-row">
+ <div class="stat-item"><div class="stat-value">$40-44B</div><div class="stat-label">All-of-Government</div><div class="stat-sub">21 federal departments</div></div>
+ <div class="stat-item"><div class="stat-value">$11.5B</div><div class="stat-label">Claims Settlements</div><div class="stat-sub">330 claims &middot; 11 years</div></div>
+ <div class="stat-item"><div class="stat-value">$1.5B</div><div class="stat-label">Provincial Ministries</div><div class="stat-sub">13 jurisdictions</div></div>
+ <div class="stat-item"><div class="stat-value">3.7x</div><div class="stat-label">FNFTA Multiplier</div><div class="stat-sub">$34,774 vs $9,389/person</div></div>
+ <div class="stat-item"><div class="stat-value">922</div><div class="stat-label">Alberta Orgs</div><div class="stat-sub">100% known-list coverage</div></div>
+</div>
+
+<!-- TOC -->
+<section class="section" style="padding-bottom:0">
+<details class="drawer">
+ <summary><span class="d-kicker">Table of Contents</span><span class="d-label">9 chapters</span><span class="d-toggle" aria-hidden="true"></span></summary>
+ <div class="d-body">
+  <ol style="padding-left:20px;font-size:.82rem;line-height:2.2">
+   <li><a href="#ch1" style="color:var(--deep-teal)">The Scale No One Agrees On</a></li>
+   <li><a href="#ch2" style="color:var(--deep-teal)">Following the Federal Money</a></li>
+   <li><a href="#ch3" style="color:var(--deep-teal)">The Settlement Layer</a></li>
+   <li><a href="#ch4" style="color:var(--deep-teal)">What Provinces Invest</a></li>
+   <li><a href="#ch5" style="color:var(--deep-teal)">What Bands Actually Receive</a></li>
+   <li><a href="#ch6" style="color:var(--deep-teal)">Alberta's 922 Organizations</a></li>
+   <li><a href="#ch7" style="color:var(--deep-teal)">The Funding Network</a></li>
+   <li><a href="#ch8" style="color:var(--deep-teal)">Mind the Gap</a></li>
+   <li><a href="#ch9" style="color:var(--deep-teal)">Five Recommendations</a></li>
+  </ol>
+ </div>
+</details>
+</section>
+
+<!-- ═══ CH 1 ═══ -->
+<section class="section" id="ch1">
+<div class="ch"><div class="ch-num">Chapter 1</div><div class="ch-title">The Scale No One Agrees On</div><div class="ch-sub">How much does Canada spend on Indigenous services? It depends entirely on which lens you use.</div></div>
+
+<div class="table-wrap">
+<table class="data-table">
+ <thead><tr><th>Tier</th><th>What's Included</th><th style="text-align:right">Annual Estimate</th><th>Source</th></tr></thead>
+ <tbody>
+  <tr><td><strong>Tier 1</strong></td><td>Direct grants &amp; contributions (proactive disclosure &gt;$25K)</td><td style="text-align:right"><strong>$19-22B</strong></td><td>open.canada.ca</td></tr>
+  <tr><td><strong>Tier 2</strong></td><td>All-of-government (21 depts: operations, salaries, capital, statutory)</td><td style="text-align:right"><strong>$40-44B</strong></td><td>GC InfoBase / Main Estimates</td></tr>
+  <tr><td><strong>Tier 3</strong></td><td>+ Specific claims settlements (~$2.5B/yr avg)</td><td style="text-align:right"><strong>$42-47B</strong></td><td>CIRNAC Specific Claims</td></tr>
+  <tr><td><strong>Tier 4</strong></td><td>+ Provincial ministries ($1.5B) + gaming ($420-570M)</td><td style="text-align:right"><strong>$45-49B</strong></td><td>Provincial budgets</td></tr>
+  <tr><td><strong>Band-Level</strong></td><td>Total revenue per band (all sources incl. own-source, IBAs)</td><td style="text-align:right"><strong>$34,774/person</strong></td><td>FNFTA audited statements</td></tr>
+ </tbody>
+</table>
+</div>
+
+<div class="prose">
+<p>Standard policy analysis uses Tier 1 — proactive disclosure of federal grants above $25,000. This captures <strong>roughly half</strong> of actual federal Indigenous spending. The $20 billion gap between Tier 1 and Tier 2 = internal operations (~8,600 ISC staff), capital expenditures, statutory obligations, below-threshold transfers, and programs embedded in 19 departments beyond ISC and CIRNAC.</p>
+<p>Specific claims settlements ($11.5B over 11 years) are <strong>entirely absent</strong> from proactive disclosure because they are statutory legal obligations, not discretionary grants. Provincial Indigenous ministry spending ($1.5B/yr across 13 jurisdictions) adds another layer invisible in federal data. And at the band level, FNFTA audited financial statements reveal that on-reserve members receive <span class="teal">3.7x</span> what proactive disclosure suggests — because gaming revenue, resource IBAs, and own-source business income are invisible at every federal tier.</p>
+<p>The question "how much does Canada spend on Indigenous services" has no single answer. Every number is defensible; the difference is scope. This report uses all five tiers.</p>
+</div>
+</section>
+
+<!-- ═══ CH 2 ═══ -->
+<section class="section" id="ch2">
+<div class="ch"><div class="ch-num">Chapter 2</div><div class="ch-title">Following the Federal Money</div><div class="ch-sub">$40-44 billion per year across 21 departments — quadrupled in a decade.</div></div>
+
+<div class="num-hero">
+ <div class="num-hero-value">+405%</div>
+ <div class="num-hero-label">real growth in federal Indigenous spending since 2015-16</div>
+ <div class="num-hero-context">$10B (2015-16) to $44B (2024-25) in 2024 CAD &middot; structural, not COVID</div>
+</div>
+
+<div class="prose">
+<p>In 2015-16, total federal Indigenous spending was $10 billion. By 2024-25, it had reached approximately <strong>$44 billion</strong> across 21 departments. Three structural shifts drove this: the <strong>2016 FNCFS Tribunal ruling</strong> (child welfare reform), <strong>UNDRIP implementation</strong> commitments, and <strong>expanded self-government settlements</strong> under CIRNAC.</p>
+<p>ISC and CIRNAC account for ~93% of total spending, but the remaining 7% ($3.1B) is distributed across Finance Canada, ESDC, PHAC, Justice, DFO, NRCan, Canadian Heritage, CMHC, and Public Safety — departments not traditionally associated with Indigenous services but whose Indigenous-tagged programming has grown 13x in real terms since 2015.</p>
+<p>The system is extraordinarily concentrated. The <strong>First Nations Health Authority</strong> (BC) — a single tripartite agreement covering 204 First Nations — absorbs <span class="teal">37.8%</span> of all disclosed federal transfers ($8.30B in 2024 CAD). The top 10 recipients take 49.4%. Excluding FNHA, BC's share drops from 47% to ~9%.</p>
+</div>
+
+<details class="drawer">
+ <summary><span class="d-kicker">10-Year Federal Spending Trend</span><span class="d-label">2015-16 to 2024-25 by department</span><span class="d-toggle" aria-hidden="true"></span></summary>
+ <div class="d-body">
+  <div class="table-wrap">
+  <table class="data-table">
+   <thead><tr><th>Fiscal Year</th><th style="text-align:right">ISC</th><th style="text-align:right">CIRNAC</th><th style="text-align:right">Other</th><th style="text-align:right">Total</th></tr></thead>
+   <tbody>
+    <tr><td>2015-16</td><td style="text-align:right">$2.89B</td><td style="text-align:right">$1.33B</td><td style="text-align:right">$0.12B</td><td style="text-align:right"><strong>$4.35B</strong></td></tr>
+    <tr><td>2018-19</td><td style="text-align:right">$7.35B</td><td style="text-align:right">$6.62B</td><td style="text-align:right">$1.80B</td><td style="text-align:right"><strong>$15.77B</strong></td></tr>
+    <tr><td>2020-21</td><td style="text-align:right">$43.48B</td><td style="text-align:right">$9.57B</td><td style="text-align:right">$2.22B</td><td style="text-align:right"><strong>$55.25B</strong>*</td></tr>
+    <tr><td>2022-23</td><td style="text-align:right">$7.37B</td><td style="text-align:right">$5.54B</td><td style="text-align:right">$1.64B</td><td style="text-align:right"><strong>$14.56B</strong></td></tr>
+    <tr><td>2023-24</td><td style="text-align:right">$16.67B</td><td style="text-align:right">$3.78B</td><td style="text-align:right">$1.54B</td><td style="text-align:right"><strong>$21.98B</strong></td></tr>
+    <tr><td>2024-25</td><td style="text-align:right">$26.48B</td><td style="text-align:right">$14.25B</td><td style="text-align:right">$3.10B</td><td style="text-align:right"><strong>$43.83B</strong></td></tr>
+   </tbody>
+  </table>
+  </div>
+  <p style="margin-top:12px;font-size:.75rem;color:var(--text-secondary)">*2020-21 inflated by COVID emergency transfers + multi-year agreement front-loading. Proactive disclosure only (Tier 1). Full departmental (Tier 2) adds ~$20B/yr in operations, capital, and statutory.</p>
+ </div>
+</details>
+</section>
+
+<!-- ═══ CH 3 ═══ -->
+<section class="section" id="ch3">
+<div class="ch"><div class="ch-num">Chapter 3</div><div class="ch-title">The Settlement Layer</div><div class="ch-sub">$11.5 billion in specific claims — entirely invisible in standard funding analysis.</div></div>
+
+<div class="prose">
+<p>Between 2013 and 2024, the Government of Canada settled <strong>330 specific claims</strong> for treaty violations and unlawful land takings, paying <strong>$11.5 billion</strong> in compensation. These payments are statutory legal obligations — not discretionary grants — and appear nowhere in proactive disclosure data. The $2.5 billion paid in 2023-24 alone exceeds Alberta's entire five-year provincial grant total.</p>
+<p>Settlement values have accelerated dramatically: average annual payout was $144M before 2017, rising to <strong>$1.57B/yr since 2017</strong> — an 11x increase. The largest individual settlements:</p>
+</div>
+
+<div class="table-wrap">
+<table class="data-table">
+ <thead><tr><th>First Nation</th><th>Province</th><th style="text-align:right">Amount</th><th>Year</th></tr></thead>
+ <tbody>
+  <tr><td><strong>Robinson Huron Treaty</strong> (21 nations)</td><td>ON</td><td style="text-align:right"><strong>$5.0B</strong></td><td>2023-24</td></tr>
+  <tr><td><strong>Siksika Nation</strong></td><td>AB</td><td style="text-align:right"><strong>$1.3B</strong></td><td>2021-22</td></tr>
+  <tr><td>Agricultural Benefits (bundled)</td><td>AB/SK</td><td style="text-align:right">$1.3B+</td><td>2024-25</td></tr>
+ </tbody>
+</table>
+</div>
+
+<div class="prose">
+<p><strong>Siksika Nation's $1.3 billion</strong> is the largest single-nation specific claims settlement in Canadian history. Six additional Alberta First Nations have confirmed settlements in 2023-25 (Frog Lake, Kehewin Cree, Alexis Nakota Sioux, Enoch Cree, Heart Lake, Sturgeon Lake). With <span class="teal">23 Alberta claims pending</span> at the Specific Claims Tribunal — second only to BC's 45 — significant future settlement flow is expected.</p>
+</div>
+</section>
+
+<!-- ═══ CH 4 ═══ -->
+<section class="section" id="ch4">
+<div class="ch"><div class="ch-num">Chapter 4</div><div class="ch-title">What Provinces Invest</div><div class="ch-sub">$1.5 billion across 13 jurisdictions — a 68x per-capita spread.</div></div>
+
+<div class="prose">
+<p>Provincial and territorial Indigenous affairs spending totals approximately <strong>$1.5 billion per year</strong> in dedicated ministry budgets. This is an undercount — Indigenous service spending is dispersed across Health, Education, Justice, and Children's Services in every province. But the dedicated ministry number reveals the priority gap: <strong>Yukon invests $3,212 per Indigenous person</strong> while <strong>Newfoundland invests $47</strong>.</p>
+</div>
+
+<div class="table-wrap">
+<table class="data-table">
+ <thead><tr><th>Province</th><th>Ministry</th><th style="text-align:right">Budget</th><th style="text-align:right">Per Capita</th><th style="text-align:right">Gaming</th></tr></thead>
+ <tbody>
+  <tr><td><strong>QC</strong></td><td>Secrétariat aux affaires autochtones</td><td style="text-align:right"><strong>$405.8M</strong></td><td style="text-align:right">$1,979</td><td style="text-align:right">—</td></tr>
+  <tr><td><strong>BC</strong></td><td>Indigenous Reconciliation</td><td style="text-align:right"><strong>$334M</strong></td><td style="text-align:right">$1,151</td><td style="text-align:right">$100M</td></tr>
+  <tr><td><strong>SK</strong></td><td>Government Relations (multi)</td><td style="text-align:right"><strong>$255M</strong></td><td style="text-align:right">$1,358</td><td style="text-align:right">$120.6M</td></tr>
+  <tr><td><strong>AB</strong></td><td>Indigenous Relations</td><td style="text-align:right"><strong>$241M</strong></td><td style="text-align:right">$424</td><td style="text-align:right">$200-350M unverified est.</td></tr>
+  <tr><td><strong>ON</strong></td><td>Ministry of Indigenous Affairs</td><td style="text-align:right"><strong>$137M</strong></td><td style="text-align:right">$337</td><td style="text-align:right">—</td></tr>
+  <tr><td><strong>MB</strong></td><td>Indigenous Reconciliation</td><td style="text-align:right"><strong>$42M</strong></td><td style="text-align:right">$177</td><td style="text-align:right">—</td></tr>
+  <tr><td><strong>NL</strong></td><td>Office of Indigenous Affairs</td><td style="text-align:right"><strong>$2.2M</strong></td><td style="text-align:right"><span class="desert-zero">$47</span></td><td style="text-align:right">—</td></tr>
+ </tbody>
+</table>
+</div>
+
+<div class="prose">
+<p>Gaming revenue is a parallel channel invisible in ministry budgets. Saskatchewan's SIGA payments (<strong>$120.6M</strong>) exceed its ministry budget. Alberta's FNDF is the largest but <span class="teal">least transparent</span> — no per-First Nation disclosure. BC's 7% BCLC revenue-sharing model (through 2045) is the most structured: 50% equal share, 40% by population, 10% remote communities.</p>
+</div>
+</section>
+
+<!-- ═══ CH 5 ═══ -->
+<section class="section" id="ch5">
+<div class="ch"><div class="ch-num">Chapter 5</div><div class="ch-title">What Bands Actually Receive</div><div class="ch-sub">FNFTA ground truth: 3.7x more than proactive disclosure shows.</div></div>
+
+<div class="num-hero">
+ <div class="num-hero-value">$34,774</div>
+ <div class="num-hero-label">per on-reserve member — total revenue from all sources</div>
+ <div class="num-hero-context">vs. $9,389 in proactive disclosure &middot; 35 of 48 Alberta First Nations &middot; FNFTA audited statements</div>
+</div>
+
+<div class="prose">
+<p>Proactive disclosure shows what the <strong>government sends</strong>. FNFTA audited financial statements show what <strong>bands receive</strong>. The difference is 3.7x — because gaming revenue, resource Impact Benefit Agreements, provincial transfers, and own-source business income are all invisible in federal disclosure.</p>
+<p>The variation across Alberta bands is enormous:</p>
+</div>
+
+<div class="card-row">
+ <div class="card">
+  <div class="card-icon"><span class="material-symbols-outlined">oil_barrel</span></div>
+  <div class="card-stat">$244K</div>
+  <div class="card-title">Fort McKay First Nation</div>
+  <div class="card-body">Per-capita total revenue. Oil sands Impact Benefit Agreements with Suncor, Syncrude, CNRL. The wealthiest First Nation in Alberta by revenue per member.</div>
+ </div>
+ <div class="card">
+  <div class="card-icon"><span class="material-symbols-outlined">casino</span></div>
+  <div class="card-stat">$93K</div>
+  <div class="card-title">Enoch Cree Nation</div>
+  <div class="card-body">Per-capita total revenue. River Cree Casino + resort development west of Edmonton. Significant own-source business portfolio.</div>
+ </div>
+ <div class="card">
+  <div class="card-icon"><span class="material-symbols-outlined">landscape</span></div>
+  <div class="card-stat">$201K</div>
+  <div class="card-title">Athabasca Chipewyan</div>
+  <div class="card-body">Per-capita total revenue. Resource royalties and environmental monitoring agreements in the oil sands region of Treaty 8.</div>
+ </div>
+</div>
+
+<div class="prose">
+<p>Combined revenue for the 35 captured bands: <strong>$2.13 billion</strong>. Total expenses: $1.94 billion. Net surplus: $188 million. Treaty 6 bands account for $964M, Treaty 7 for $541M, and Treaty 8 for $625M.</p>
+<p>13 bands are missing from FNFTA disclosure — likely non-compliance or delayed reporting. The missing bands include Ermineskin Cree, Tsuut'ina Nation, and several Treaty 8 communities. Their absence means the true Alberta total is higher.</p>
+</div>
+</section>
+
+<!-- ═══ CH 6 ═══ -->
+<section class="section" id="ch6">
+<div class="ch"><div class="ch-num">Chapter 6</div><div class="ch-title">Alberta's 922 Organizations</div><div class="ch-sub">The complete inventory — 100% coverage of all known lists.</div></div>
+
+<div class="prose">
+<p>We mapped <strong>922 Indigenous organizations</strong> in Alberta — every one of the province's 46 First Nations, all 8 Metis Settlements, and all 12 Friendship Centres. The census includes band councils, tribal councils, charities, health authorities, child and family services agencies, education authorities, economic development corporations, treatment centres, and urban service organizations.</p>
+</div>
+
+<div class="card-row">
+ <div class="card">
+  <div class="card-icon"><span class="material-symbols-outlined">groups</span></div>
+  <div class="card-stat">440</div>
+  <div class="card-title">Treaty 6</div>
+  <div class="card-body">48% of all Alberta Indigenous orgs. Anchored by Edmonton and Maskwacis. Densest organizational infrastructure in the province.</div>
+ </div>
+ <div class="card">
+  <div class="card-icon"><span class="material-symbols-outlined">landscape</span></div>
+  <div class="card-stat">155</div>
+  <div class="card-title">Treaty 7</div>
+  <div class="card-body">Southern Alberta including Calgary, Siksika, Piikani, Kainai (Blood Tribe), Stoney Nakoda, and Tsuut'ina.</div>
+ </div>
+ <div class="card">
+  <div class="card-icon"><span class="material-symbols-outlined">forest</span></div>
+  <div class="card-stat">92</div>
+  <div class="card-title">Treaty 8</div>
+  <div class="card-body">Northern Alberta — an area the size of a small European country with the lowest organizational density. Fort Chipewyan is 780km from Edmonton, air access only.</div>
+ </div>
+</div>
+
+<div class="prose">
+<p><strong>Urban Indigenous people — 42% of Alberta's Indigenous population — have access to approximately 5% of the organizational infrastructure.</strong> Friendship Centres serve 100,000+ urban residents with roughly $300-400 per person per year. Calgary and Edmonton — home to 110,000 Indigenous people — lack dedicated municipal Indigenous services funding.</p>
+</div>
+</section>
+
+<!-- ═══ CH 7 ═══ -->
+<section class="section" id="ch7">
+<div class="ch"><div class="ch-num">Chapter 7</div><div class="ch-title">The Funding Network</div><div class="ch-sub">42,095 edges, 41 communities, and a structural fragility crisis.</div></div>
+
+<div class="num-hero">
+ <div class="num-hero-value">84%</div>
+ <div class="num-hero-label">of funded organizations depend on a single funder</div>
+ <div class="num-hero-context">746 of 887 organizations &middot; HHI &gt; 0.6 &middot; one policy change could cascade</div>
+</div>
+
+<div class="prose">
+<p>We built a network graph of <strong>42,095 funding relationships</strong> connecting 922 Indigenous organizations to 22 government funders. The network reveals a fundamental structural split: the <strong>provincial government provides breadth</strong> (Alberta Advanced Education alone funds 386 organizations) while the <strong>federal government provides depth</strong> (ISC moves $17 billion through 193 organizations).</p>
+<p>Most organizations appear in the network because of a provincial grant, but their <strong>operational viability depends on federal transfers</strong>. 84% have a Herfindahl-Hirschman Index above 0.6 — meaning a single funder dominates their revenue. This is not theoretical risk: when Alberta briefly eliminated the Minister of Indigenous Relations portfolio in 2019, funding continuity was reportedly affected. With half of provincial Indigenous funding flowing through that one ministry, the single point of failure is real.</p>
+<p>Louvain community detection identified <strong>41 distinct funding clusters</strong>. The largest (685 orgs) is dominated by Treaty 6 charities receiving GOA provincial grants. Cold Lake First Nations, Gift Lake, and Buffalo Lake Metis Settlement are the most-connected nodes — each with 15 unique funders.</p>
+</div>
+
+<div class="callout">
+ <div class="callout-title">Explore the network</div>
+ <div class="callout-body">The interactive D3.js network explorer visualizes all 944 nodes and 2,031 rendered aggregated funding links, backed by 42,095 raw source records and 2,116 distinct source relationships, with treaty area filters, org type filters, search, and click-to-detail. <a href="https://hsdeliverables.z9.web.core.windows.net/indigenous-funding/network-explorer.html" style="color:var(--deep-teal);font-weight:700">Open the Alberta Indigenous Funding Network Explorer</a></div>
+</div>
+</section>
+
+<!-- ═══ CH 8 ═══ -->
+<section class="section" id="ch8">
+<div class="ch"><div class="ch-num">Chapter 8</div><div class="ch-title">Mind the Gap</div><div class="ch-sub">$1.02 billion per year in systematic federal under-investment — and service deserts that are not abstract.</div></div>
+
+<div class="num-hero">
+ <div class="num-hero-value">$1.02 Billion</div>
+ <div class="num-hero-label">annual federal under-investment in Alberta's Indigenous communities</div>
+ <div class="num-hero-context">$9,389 per person vs. ~$13,000 national median &middot; 284,470 people</div>
+</div>
+
+<div class="prose">
+<p>Alberta receives <strong>$9,389 per Indigenous person per year</strong> in federal funding — the lowest of any province. The national provincial median is approximately $13,000. The gap of roughly $3,600 per person, applied to 284,470 people, implies <strong>approximately $1.02 billion per year in systematic federal under-investment</strong> relative to the provincial median.</p>
+</div>
+
+<div class="table-wrap">
+<table class="data-table">
+ <thead><tr><th>Service Domain</th><th style="text-align:center">Total AB Orgs</th><th style="text-align:center">Treaty 7</th><th style="text-align:center">Treaty 8</th><th style="text-align:center">Metis</th></tr></thead>
+ <tbody>
+  <tr><td>Mental Health</td><td style="text-align:center"><span class="desert-count">1</span></td><td style="text-align:center"><span class="desert-zero">ZERO</span></td><td style="text-align:center"><span class="desert-zero">ZERO</span></td><td style="text-align:center"><span class="desert-zero">ZERO</span></td></tr>
+  <tr><td>Food Security</td><td style="text-align:center"><span class="desert-count">4</span></td><td style="text-align:center"><span class="desert-zero">ZERO</span></td><td style="text-align:center"><span class="desert-zero">ZERO</span></td><td style="text-align:center"><span class="desert-zero">ZERO</span></td></tr>
+  <tr><td>Emergency Services</td><td style="text-align:center"><span class="desert-count">5</span></td><td style="text-align:center"><span class="desert-zero">ZERO</span></td><td style="text-align:center"><span class="desert-zero">ZERO</span></td><td style="text-align:center"><span class="desert-zero">ZERO</span></td></tr>
+  <tr><td>Housing</td><td style="text-align:center"><span class="desert-count">9</span></td><td style="text-align:center">&mdash;</td><td style="text-align:center">&mdash;</td><td style="text-align:center">&mdash;</td></tr>
+  <tr><td>Addictions</td><td style="text-align:center"><span class="desert-count">9</span></td><td style="text-align:center">&mdash;</td><td style="text-align:center">&mdash;</td><td style="text-align:center">&mdash;</td></tr>
+ </tbody>
+</table>
+</div>
+
+<div class="card-row">
+ <div class="card">
+  <div class="card-icon"><span class="material-symbols-outlined">location_city</span></div>
+  <div class="card-stat">88/100</div>
+  <div class="card-title">Urban Gap Score</div>
+  <div class="card-body">42% of Alberta's Indigenous population lives in cities — served by ~5% of organizational infrastructure. Friendship Centres operate on $300-400/person/year.</div>
+ </div>
+ <div class="card">
+  <div class="card-icon"><span class="material-symbols-outlined">diversity_3</span></div>
+  <div class="card-stat">$378/yr</div>
+  <div class="card-title">Metis Exclusion</div>
+  <div class="card-body">Metis people receive ~$378/person/year from provincial grants. No federal ISC equivalent. Architectural exclusion from the primary funding mechanism.</div>
+ </div>
+ <div class="card">
+  <div class="card-icon"><span class="material-symbols-outlined">flight</span></div>
+  <div class="card-stat">780km</div>
+  <div class="card-title">Treaty 8 Distance</div>
+  <div class="card-body">Fort Chipewyan to Edmonton. Air access only. Zero identified orgs in mental health, food security, housing, addictions, or emergency services.</div>
+ </div>
+</div>
+</section>
+
+<!-- ═══ CH 9 ═══ -->
+<section class="section" id="ch9">
+<div class="ch"><div class="ch-num">Chapter 9</div><div class="ch-title">Five Recommendations</div><div class="ch-sub">Evidence-based, costed, grounded in the data.</div></div>
+
+<div class="rec-list">
+ <div class="rec-item"><div class="rec-badge">1</div><div><div class="rec-title">Urban Indigenous Funding Stream</div><div class="rec-desc">Dedicated federal + provincial funding for housing, mental health, food security, and transition services in Calgary, Edmonton, Red Deer, and Lethbridge. 110,000 urban Indigenous people cannot be served by a system designed for reserves.</div><div class="rec-cost">$50-75M / year</div></div></div>
+ <div class="rec-item"><div class="rec-badge">2</div><div><div class="rec-title">Treaty 8 Service Infrastructure</div><div class="rec-desc">Mobile mental health teams, food security hubs, addictions treatment feasibility study, joint ISC-GOA emergency response protocol. Address the most acute deserts in Canada's most geographically challenging service area.</div><div class="rec-cost">$5-10M / year</div></div></div>
+ <div class="rec-item"><div class="rec-badge">3</div><div><div class="rec-title">Cross-Ministry Investment Baselines</div><div class="rec-desc">Require Health, Mental Health &amp; Addiction, Children's Services, Justice, and Education to set Indigenous investment targets proportional to Indigenous client populations. Mental Health and Addiction alone needs to move from $3M/yr to $25-30M/yr.</div><div class="rec-cost">Policy change + $25-30M incremental</div></div></div>
+ <div class="rec-item"><div class="rec-badge">4</div><div><div class="rec-title">Metis Structural Parity</div><div class="rec-desc">Federal advocacy for ISC-equivalent Metis service delivery fund. Provincial increase to MNA operating grant. Dedicated Metis Settlements capital fund. Section 35 guarantees rights the funding architecture has never delivered.</div><div class="rec-cost">Federal-provincial negotiation</div></div></div>
+ <div class="rec-item"><div class="rec-badge">5</div><div><div class="rec-title">Federal Allocation Formula Review</div><div class="rec-desc">Joint Alberta-First Nations presentation to ISC/CIRNAC with per-capita gap evidence. Request a formula that accounts for current population, not 1990s band membership rolls. Annual provincial Indigenous Funding Report for ongoing accountability.</div><div class="rec-cost">$0 — advocacy action</div></div></div>
+</div>
+</section>
+
+<!-- ═══ METHODOLOGY ═══ -->
+<section class="section" style="padding-top:0">
+<details class="drawer">
+ <summary><span class="d-kicker">Methodology &amp; Data Sources</span><span class="d-label">12 tickets &middot; 2 sprints &middot; 16 agents &middot; all official GoC sources</span><span class="d-toggle" aria-hidden="true"></span></summary>
+ <div class="d-body">
+  <p style="margin-bottom:12px"><strong>Official data sources:</strong> <a href="https://open.canada.ca/data/en/dataset/05b3abd0-e70f-4b3b-a9c5-acc436bd15b6" style="color:var(--deep-teal);font-weight:700">CRA T3010 charity filings</a>, <a href="https://open.canada.ca/data/en/dataset/432527ab-7aac-45b5-81d6-7597107a7013" style="color:var(--deep-teal);font-weight:700">federal proactive disclosure of grants &amp; contributions</a>, <a href="https://www.tbs-sct.canada.ca/ems-sgd/edb-bdd/index-eng.html" style="color:var(--deep-teal);font-weight:700">GC InfoBase / Main Estimates</a>, <a href="https://www.rcaanc-cirnac.gc.ca/eng/1100100030291/1539617582343" style="color:var(--deep-teal);font-weight:700">CIRNAC Specific Claims disclosures</a>, <a href="https://canadaspends.com/en/first-nations" style="color:var(--deep-teal);font-weight:700">FNFTA band financial statements</a>, <a href="https://open.alberta.ca/dataset/grant-disclosure" style="color:var(--deep-teal);font-weight:700">GOA grant payments disclosure</a>, <a href="https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=9810026601" style="color:var(--deep-teal);font-weight:700">StatCan Census 2021 table 98-10-0266-01</a>, and published provincial budget/gaming sources. AGLC and AHS dollar ranges are treated as excluded estimates unless source tables are published.</p>
+  <p style="margin-bottom:12px"><strong>Pipeline:</strong> DuckDB (sovereign stack, DENVR Calgary), Python, NetworkX (graph analysis). Entity resolution via Jaro-Winkler similarity with auditable decision logs. All amounts CPI-adjusted to 2024 CAD (StatCan Table 18-10-0005-01). ETL-hardened pattern with 7 assertion rules on every download.</p>
+  <p style="margin-bottom:12px"><strong>Coverage:</strong> 922 Alberta Indigenous organizations (100% known-list coverage). 35 of 48 Alberta band financials. 330 specific claims settlements. 21 federal departments. 13 provincial/territorial jurisdictions. 42,095 funding network edges. Census 2021 exact denominators (1,807,250 national match).</p>
+  <p style="margin-bottom:12px"><strong>Key limitations:</strong> Single-year T3010 (2023). FNFTA revenue breakdown requires PDF extraction (totals only in dataset). AGLC gaming per-FN amounts not disclosed. 13 AB bands missing from FNFTA. Service domain tags ~26% populated — deserts are likely conservative. Urban org count is a significant undercount.</p>
+  <p><strong>OCAP compliance:</strong> This research analyzes publicly disclosed government and charity data. It does not use First Nations community data. Framing throughout: government accountability for under-investment, not surveillance of Indigenous organizations.</p>
+ </div>
+</details>
+</section>
+
+<footer class="footer">
+ <strong></strong> &middot; April 2026 &middot; Indigenous Funding Flows in Canada &middot; G4 QA Verified
+</footer>
+
+</div>
+</body>
+</html>

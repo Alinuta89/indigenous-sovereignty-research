@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Indigenous Funding Research &mdash; Alberta Network &amp; Gap Analysis</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700&display=swap" rel="stylesheet">
+<style>
+:root{--primary-teal:#28bcb8;--primary-navy:#103656;--deep-blue:#0c4f8a;--dark-teal:#006468;--medium-blue:#1a7ebe;--light-teal:#4bc2c3;--near-white:#f7fafa;--text-primary:#0e1a26;--text-secondary:#4a5d6e;--text-muted:#7a8d9c;--border:#d8e3ea;--shadow-sm:0 1px 4px rgba(16,54,86,0.06);--shadow-md:0 4px 20px rgba(16,54,86,0.10);--shadow-lg:0 8px 40px rgba(16,54,86,0.14);--gradient-hero:linear-gradient(135deg,#103656 0%,#0c4f8a 40%,#006468 75%,#28bcb8 100%);--radius:12px}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Lato',sans-serif;color:var(--text-primary);background:var(--near-white);line-height:1.65;font-size:16px;-webkit-font-smoothing:antialiased}
+.top-bar{background:var(--gradient-hero);padding:16px 28px;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(16,54,86,0.15)}
+.top-bar-inner{max-width:960px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
+.top-bar a{color:var(--light-teal);text-decoration:none;font-size:0.85rem}
+.top-bar .title{color:#fff;font-weight:700;font-size:1rem}
+.container{max-width:960px;margin:0 auto;padding:48px 28px 64px}
+h1{font-size:2rem;color:var(--primary-navy);margin-bottom:8px;font-weight:700;letter-spacing:-0.02em}
+.subtitle{color:var(--text-muted);font-size:0.95rem;margin-bottom:36px;font-weight:300}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:40px}
+.stat{background:#fff;border-radius:var(--radius);padding:24px 16px;text-align:center;box-shadow:var(--shadow-sm);border:1px solid var(--border)}
+.stat .number{font-size:2rem;font-weight:700;color:var(--primary-navy);letter-spacing:-0.02em}
+.stat .label{font-size:0.76rem;color:var(--text-muted);margin-top:4px}
+.section-label{font-size:0.75rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--primary-teal);font-weight:700;margin-bottom:16px}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:40px}
+.card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:28px 24px;box-shadow:var(--shadow-sm);transition:box-shadow 0.25s,transform 0.25s,border-color 0.25s;text-decoration:none;color:inherit;display:flex;flex-direction:column;position:relative;overflow:hidden}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--gradient-hero);opacity:0;transition:opacity 0.25s}
+.card:hover{box-shadow:var(--shadow-lg);transform:translateY(-2px);border-color:var(--primary-teal)}
+.card:hover::before{opacity:1}
+.card h3{font-size:1.05rem;font-weight:700;color:var(--primary-navy);margin-bottom:8px}
+.card p{font-size:0.84rem;color:var(--text-secondary);line-height:1.6;flex-grow:1}
+.card .arrow{margin-top:14px;font-size:0.82rem;color:var(--primary-teal);font-weight:700}
+.highlight{background:#fff;border:1px solid var(--primary-teal);border-radius:var(--radius);padding:28px 24px;box-shadow:var(--shadow-md);text-decoration:none;color:inherit;display:block;margin-bottom:40px;transition:box-shadow 0.25s,transform 0.25s}
+.highlight:hover{box-shadow:var(--shadow-lg);transform:translateY(-2px)}
+.highlight h3{font-size:1.15rem;font-weight:700;color:var(--primary-navy);margin-bottom:8px}
+.highlight p{font-size:0.9rem;color:var(--text-secondary);line-height:1.6;margin-bottom:8px}
+.highlight .arrow{font-size:0.85rem;color:var(--primary-teal);font-weight:700}
+.footer{text-align:center;padding:32px;font-size:0.78rem;color:var(--text-muted);border-top:1px solid var(--border);background:#fff}
+@media(max-width:640px){.cards{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<div class="top-bar"><div class="top-bar-inner"><span class="title">Indigenous Funding Research</span><a href="../index.html">&larr; All research</a></div></div>
+<div class="container">
+<h1>Indigenous Funding Flows</h1>
+<div class="subtitle">Alberta Network Analysis &amp; Gap Assessment &mdash; 922 Organizations Mapped</div>
+
+<div class="stats">
+  <div class="stat"><div class="number">922</div><div class="label">Organizations mapped</div></div>
+  <div class="stat"><div class="number">84%</div><div class="label">Single-funder dependent</div></div>
+  <div class="stat"><div class="number">$1.02B</div><div class="label">Annual gap (floor)</div></div>
+  <div class="stat"><div class="number">14</div><div class="label">Research tickets</div></div>
+</div>
+
+<div class="section-label">Interactive Explorer</div>
+
+<a href="network-explorer.html" class="highlight">
+  <h3>Funding Network Explorer</h3>
+  <p>Interactive network visualization of all 922 Indigenous-serving organizations across Alberta. Explore funder-organization relationships, single-funder dependency, treaty territory distribution, and service domain clustering.</p>
+  <div class="arrow">Open explorer &rarr;</div>
+</a>
+
+<div class="section-label">Research Reports</div>
+
+<div class="cards">
+  <a href="indigenous-funding.html" class="card">
+    <h3>Funding Flows Overview</h3>
+    <p>Federal and provincial funding flows to Indigenous organizations in Alberta. Departmental breakdown, per-capita analysis, program categories.</p>
+    <div class="arrow">Read &rarr;</div>
+  </a>
+  <a href="deep-dive-report.html" class="card">
+    <h3>Deep Dive Analysis</h3>
+    <p>Detailed analysis of the 922-organization landscape. Service domains, geographic distribution, funder concentration, organizational capacity.</p>
+    <div class="arrow">Read &rarr;</div>
+  </a>
+  <a href="equity-comparison.html" class="card">
+    <h3>Equity Comparison</h3>
+    <p>Per-capita funding comparison across provinces and territories. How Alberta&rsquo;s Indigenous funding compares to national benchmarks.</p>
+    <div class="arrow">Read &rarr;</div>
+  </a>
+  <a href="ceo-report.html" class="card">
+    <h3>Executive Report</h3>
+    <p>Leadership-level summary of the research findings. Scale of gaps, structural fragility, and the $1.02B annual shortfall.</p>
+    <div class="arrow">Read &rarr;</div>
+  </a>
+  <a href="wave1-progress.html" class="card">
+    <h3>Wave 1 Progress</h3>
+    <p>Methodology and progress of the initial research wave. Data sources, entity resolution, validation approach.</p>
+    <div class="arrow">Read &rarr;</div>
+  </a>
+  <a href="wireframes.html" class="card">
+    <h3>Wireframes</h3>
+    <p>Design wireframes for the research platform and data visualization tools.</p>
+    <div class="arrow">Read &rarr;</div>
+  </a>
+</div>
+</div>
+<div class="footer">Indigenous Funding Research &bull; Open Data &bull; June 2026</div>
+</body>
+</html>

@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Indigenous Funding Research — Wave 3 Complete</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet">
+<style>
+:root {
+  --deep-navy: #103656;
+  --midnight: #103656;
+  --slate-blue: #0c4f8a;
+  --ocean: #1a7ebe;
+  --deep-teal: #006468;
+  --teal: #28bcb8;
+  --aqua: #4bc2c3;
+  --light-aqua: #4bc2c3;
+  --pale-aqua: #E0F0EE;
+  --mist: #EDF5F4;
+  --near-black: #0A0A0A;
+  --text-secondary: #4A5568;
+  --border-light: #E5E7EB;
+  --bg-subtle: #F9FAFB;
+  --bg-secondary: #F3F4F6;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  color: var(--near-black);
+  background: #fff;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+/* ── HEADER ── */
+.report-header {
+  background: linear-gradient(135deg, var(--deep-navy) 0%, var(--midnight) 40%, var(--slate-blue) 100%);
+  padding: 48px 0 40px;
+  color: #fff;
+}
+.report-header h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.report-header .subtitle {
+  font-size: 0.95rem;
+  font-weight: 300;
+  color: var(--aqua);
+  margin-bottom: 6px;
+}
+.report-header .date {
+  font-size: 0.8rem;
+  font-weight: 300;
+  color: rgba(255,255,255,0.5);
+}
+
+/* ── WAVE PROGRESS BAR ── */
+.wave-progress {
+  padding: 32px 0 8px;
+}
+.progress-track {
+  position: relative;
+  height: 6px;
+  background: var(--bg-secondary);
+  border-radius: 3px;
+  margin: 24px 0 16px;
+}
+.progress-fill {
+  height: 100%;
+  width: 25%;
+  background: linear-gradient(90deg, var(--deep-teal), var(--teal));
+  border-radius: 3px;
+  transition: width 0.6s ease;
+}
+.wave-markers {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  margin-top: -24px;
+}
+.wave-marker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 25%;
+}
+.wave-dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 3px solid var(--border-light);
+  background: #fff;
+  margin-bottom: 8px;
+  position: relative;
+  z-index: 2;
+}
+.wave-dot.active {
+  border-color: var(--teal);
+  background: var(--teal);
+  box-shadow: 0 0 0 4px rgba(15,185,177,0.15);
+}
+.wave-dot.done {
+  border-color: var(--deep-teal);
+  background: var(--deep-teal);
+}
+.wave-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-secondary);
+  text-align: center;
+}
+.wave-label.active { color: var(--deep-teal); }
+.wave-sublabel {
+  font-size: 0.65rem;
+  font-weight: 300;
+  color: var(--text-secondary);
+  text-align: center;
+  margin-top: 2px;
+}
+
+/* ── SECTION SPACING ── */
+.section { padding: 36px 0; }
+.section-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+}
+
+/* ── KPI GRID ── */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+.kpi-card {
+  background: #fff;
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(11,31,51,0.04);
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.kpi-card:hover {
+  box-shadow: 0 4px 16px rgba(11,31,51,0.1);
+  transform: translateY(-2px);
+  border-top: 2px solid var(--teal);
+}
+.kpi-icon {
+  font-size: 22px;
+  background: linear-gradient(135deg, var(--deep-navy), var(--teal));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 8px;
+}
+.kpi-value {
+  font-size: 1.65rem;
+  font-weight: 700;
+  color: var(--deep-navy);
+  line-height: 1.1;
+}
+.kpi-label {
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: var(--text-secondary);
+  margin-top: 4px;
+}
+.kpi-sub {
+  font-size: 0.68rem;
+  font-weight: 300;
+  color: var(--text-secondary);
+  margin-top: 2px;
+}
+
+/* ── NUM HERO ── */
+.num-hero {
+  text-align: center;
+  padding: 28px 16px;
+}
+.num-hero-value {
+  font-size: 2.8rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--deep-navy), var(--teal));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1;
+}
+.num-hero-label {
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: var(--text-secondary);
+  margin-top: 6px;
+}
+.num-hero-context {
+  font-size: 0.78rem;
+  font-weight: 300;
+  color: var(--text-secondary);
+  margin-top: 4px;
+}
+
+/* ── FEATURED BOXES ── */
+.boxes-featured {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 16px;
+}
+.box-card {
+  background: #fff;
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  padding: 24px;
+  box-shadow: 0 2px 12px rgba(11,31,51,0.06);
+}
+.box-card.featured {
+  grid-row: span 2;
+}
+.box-tag {
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--deep-teal);
+  margin-bottom: 8px;
+}
+.box-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--deep-navy);
+  margin-bottom: 8px;
+}
+.box-body {
+  font-size: 0.82rem;
+  font-weight: 300;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+.box-body .hl {
+  font-weight: 700;
+  color: var(--deep-navy);
+}
+.box-body .teal {
+  font-weight: 700;
+  color: var(--deep-teal);
+}
+
+/* ── DATA TABLE ── */
+.table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.data-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 0.8rem;
+}
+.data-table thead th {
+  background: var(--slate-blue);
+  color: #fff;
+  font-weight: 700;
+  padding: 10px 14px;
+  text-align: left;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.data-table thead th:first-child { border-radius: 8px 0 0 0; }
+.data-table thead th:last-child { border-radius: 0 8px 0 0; }
+.data-table tbody td {
+  padding: 10px 14px;
+  background: #fff;
+}
+.data-table tbody tr:nth-child(even) td { background: var(--bg-subtle); }
+.data-table tbody tr:hover td { background: var(--pale-aqua); }
+
+/* ── STATUS PILLS ── */
+.pill {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.pill-done { background: var(--pale-aqua); color: var(--deep-teal); }
+.pill-running {
+  background: rgba(15,185,177,0.12);
+  color: var(--teal);
+  animation: pulse 2s infinite;
+}
+.pill-blocked { background: var(--bg-secondary); color: var(--text-secondary); }
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+/* ── BULLETS ICON ── */
+.bullets-icon {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.bullet-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+.bullet-icon-box {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: var(--mist);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.bullet-icon-box .material-symbols-outlined {
+  font-size: 18px;
+  background: linear-gradient(135deg, var(--deep-navy), var(--teal));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.bullet-text-title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--deep-navy);
+}
+.bullet-text-desc {
+  font-size: 0.78rem;
+  font-weight: 300;
+  color: var(--text-secondary);
+}
+
+/* ── CHEVRON SEQUENCE ── */
+.seq-chevron {
+  display: flex;
+  gap: 0;
+}
+.chevron {
+  flex: 1;
+  padding: 18px 20px 18px 32px;
+  background: var(--bg-secondary);
+  clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 50%, calc(100% - 16px) 100%, 0 100%, 16px 50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 80px;
+}
+.chevron:first-child {
+  clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 50%, calc(100% - 16px) 100%, 0 100%);
+  border-radius: 8px 0 0 8px;
+}
+.chevron:last-child {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 16px 50%);
+  border-radius: 0 8px 8px 0;
+}
+.chevron.done {
+  background: linear-gradient(135deg, var(--deep-navy), var(--slate-blue));
+  color: #fff;
+}
+.chevron.active {
+  background: linear-gradient(135deg, var(--deep-teal), var(--teal));
+  color: #fff;
+}
+.chevron-num {
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  opacity: 0.7;
+}
+.chevron-title {
+  font-size: 0.78rem;
+  font-weight: 700;
+  margin-top: 2px;
+}
+.chevron-sub {
+  font-size: 0.65rem;
+  font-weight: 300;
+  margin-top: 2px;
+  opacity: 0.8;
+}
+
+/* ── DRAWERS ── */
+details.drawer {
+  background: #fff;
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(11,31,51,0.04);
+  overflow: hidden;
+}
+details.drawer summary {
+  padding: 14px 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  list-style: none;
+  user-select: none;
+}
+details.drawer summary::-webkit-details-marker { display: none; }
+details.drawer summary::marker { display: none; content: ''; }
+.d-kicker {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--deep-teal);
+}
+.d-value {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--deep-navy);
+  margin-right: 6px;
+}
+.d-label {
+  font-size: 0.8rem;
+  font-weight: 300;
+  color: var(--text-secondary);
+}
+.d-toggle {
+  margin-left: auto;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  transition: transform 0.2s;
+}
+.d-toggle::after { content: '▸'; }
+details.drawer[open] .d-toggle { transform: rotate(90deg); }
+.d-body {
+  padding: 0 20px 20px;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+  .boxes-featured { grid-template-columns: 1fr; }
+  .box-card.featured { grid-row: span 1; }
+  .seq-chevron { flex-direction: column; }
+  .chevron, .chevron:first-child, .chevron:last-child {
+    clip-path: none;
+    border-radius: 8px;
+  }
+  .num-hero-value { font-size: 2rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ HEADER ═══ -->
+<header class="report-header">
+  <div class="container">
+    <h1>Indigenous Funding Flows Research</h1>
+    <div class="subtitle">Waves 1-3 Complete — Synthesis Underway</div>
+    <div class="date">Generated April 25, 2026 — </div>
+  </div>
+</header>
+
+<!-- ═══ 1. WAVE PROGRESS ═══ -->
+<div class="container">
+<section class="section wave-progress">
+  <div class="progress-track">
+    <div class="progress-fill" style="width: 75%"></div>
+  </div>
+  <div class="wave-markers">
+    <div class="wave-marker">
+      <div class="wave-dot done"></div>
+      <div class="wave-label">Wave 1</div>
+      <div class="wave-sublabel">Data Foundation</div>
+    </div>
+    <div class="wave-marker">
+      <div class="wave-dot done"></div>
+      <div class="wave-label">Wave 2</div>
+      <div class="wave-sublabel">Synthesis + Census</div>
+    </div>
+    <div class="wave-marker">
+      <div class="wave-dot done"></div>
+      <div class="wave-label">Wave 3</div>
+      <div class="wave-sublabel">Network + Gaps</div>
+    </div>
+    <div class="wave-marker">
+      <div class="wave-dot active"></div>
+      <div class="wave-label active">Wave 4</div>
+      <div class="wave-sublabel">Report + Delivery</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 2. KPI DASHBOARD ═══ -->
+<section class="section">
+  <div class="section-title">Data Acquisition at a Glance</div>
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-icon"><span class="material-symbols-outlined">groups</span></div>
+      <div class="kpi-value">922</div>
+      <div class="kpi-label">Alberta Indigenous Orgs Mapped</div>
+      <div class="kpi-sub">365 national charities + 557 AB non-charities</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-icon"><span class="material-symbols-outlined">account_balance</span></div>
+      <div class="kpi-value">$19-22B</div>
+      <div class="kpi-label">Annual Federal Indigenous Funding</div>
+      <div class="kpi-sub">+405% real growth since 2015-16</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-icon"><span class="material-symbols-outlined">location_on</span></div>
+      <div class="kpi-value">$1.02B</div>
+      <div class="kpi-label">Alberta Annual Funding Gap</div>
+      <div class="kpi-sub">$9,389 vs. ~$13K national per-capita median</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-icon"><span class="material-symbols-outlined">database</span></div>
+      <div class="kpi-value">84%</div>
+      <div class="kpi-label">Single-Funder Dependency</div>
+      <div class="kpi-sub">746 of 887 funded AB orgs · HHI &gt; 0.6</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 3. AGENT STATUS (DRAWER) ═══ -->
+<section class="section">
+  <details class="drawer">
+    <summary>
+      <span class="d-kicker">Research Team</span>
+      <span><span class="d-value">7 / 8</span><span class="d-label">tickets complete · synthesis underway</span></span>
+      <span class="d-toggle" aria-hidden="true"></span>
+    </summary>
+    <div class="d-body">
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Agent</th>
+              <th>Role</th>
+              <th>Task</th>
+              <th>Status</th>
+              <th>Key Output</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="font-weight:700">saxon-ii</td>
+              <td>Data Engineer</td>
+              <td>DuckDB schema + pipeline</td>
+              <td><span class="pill pill-done">Done</span></td>
+              <td>18 tables · 3 scripts</td>
+            </tr>
+            <tr>
+              <td style="font-weight:700">reeves-ii</td>
+              <td>Data Acquisition</td>
+              <td>Source discovery + downloads</td>
+              <td><span class="pill pill-done">Done</span></td>
+              <td>9 files · 2.17 GB</td>
+            </tr>
+            <tr>
+              <td style="font-weight:700">dr-baptiste</td>
+              <td>Charity Finance</td>
+              <td>T1: CRA T3010 Universe</td>
+              <td><span class="pill pill-done">Done</span></td>
+              <td>443 orgs · $2.46B revenue</td>
+            </tr>
+            <tr>
+              <td style="font-weight:700">dr-chenoweth</td>
+              <td>Federal Funding</td>
+              <td>T2: Federal Transfers</td>
+              <td><span class="pill pill-done">Done</span></td>
+              <td>195K rows · $204B mapped</td>
+            </tr>
+            <tr>
+              <td style="font-weight:700">dr-redcrow</td>
+              <td>Provincial Funding</td>
+              <td>T3: Alberta Provincial</td>
+              <td><span class="pill pill-done">Done</span></td>
+              <td>18K grants · $1.2B over 5yr</td>
+            </tr>
+            <tr>
+              <td style="font-weight:700">dr-ashworth-ii</td>
+              <td>QA Director</td>
+              <td>Wave 1 QA Audit</td>
+              <td><span class="pill pill-done">Done</span></td>
+              <td>G1 CONDITIONAL PASS · 3 fixes applied</td>
+            </tr>
+            <tr>
+              <td style="font-weight:700">dr-meridian-ii</td>
+              <td>National Synthesis</td>
+              <td>T4: Canada-Wide Overview</td>
+              <td><span class="pill pill-done">Done</span></td>
+              <td>"The Number" = $19-22B/yr</td>
+            </tr>
+            <tr>
+              <td style="font-weight:700">dr-blackwater</td>
+              <td>Alberta Network</td>
+              <td>T5: Alberta Org Census</td>
+              <td><span class="pill pill-done">Done</span></td>
+              <td>922 orgs · 100% known-list coverage</td>
+            </tr>
+            <tr>
+              <td style="font-weight:700">dr-morin</td>
+              <td>Network Analyst</td>
+              <td>T6: Funding Network Graph</td>
+              <td><span class="pill pill-done">Done</span></td>
+              <td>42K edges · 81% match rate</td>
+            </tr>
+            <tr>
+              <td style="font-weight:700">dr-standing</td>
+              <td>Gap Analyst</td>
+              <td>T7: Alberta Gap Analysis</td>
+              <td><span class="pill pill-done">Done</span></td>
+              <td>$1.02B/yr gap · 88/100 urban score</td>
+            </tr>
+            <tr>
+              <td style="font-weight:700">dr-carling</td>
+              <td>PI / Research Director</td>
+              <td>T8: Synthesis Report</td>
+              <td><span class="pill pill-running">Running</span></td>
+              <td>Final report + speaking notes</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </details>
+</section>
+
+<!-- ═══ 4. HEADLINE FINDINGS ═══ -->
+<section class="section">
+  <div class="section-title">Headline Findings</div>
+  <div class="boxes-featured">
+    <div class="box-card featured">
+      <div class="box-tag">The Headline</div>
+      <div class="num-hero">
+        <div class="num-hero-value">$1.02B</div>
+        <div class="num-hero-label">annual federal under-investment in Alberta's indigenous communities</div>
+        <div class="num-hero-context">$9,389 per person vs. ~$13,000 national median · 284,470 people</div>
+      </div>
+      <div class="box-body" style="margin-top: 12px;">
+        Federal indigenous funding has grown <span class="teal">+405% in real terms</span> since 2015-16, reaching <span class="hl">$19-22B/yr nationally</span>. But Alberta ranks <span class="hl">dead last</span> among provinces in per-capita allocation. Urban indigenous people (<span class="hl">42% of AB's indigenous population</span>) are served by only 5% of the organizational infrastructure — gap score 88/100.
+      </div>
+    </div>
+    <div class="box-card">
+      <div class="box-tag">Structural Fragility</div>
+      <div class="box-title">84% of funded orgs depend on a single funder</div>
+      <div class="box-body">
+        <span class="hl">746 of 887</span> funded Alberta indigenous organizations have a Herfindahl-Hirschman Index above 0.6 — meaning one funder dominates their revenue. GOA provides breadth (<span class="hl">386 orgs</span>), ISC provides depth (<span class="hl">$17B</span>). The loss of a single funding program could cascade across the network. <span class="teal">42,095 funding edges</span> mapped across 41 communities.
+      </div>
+    </div>
+    <div class="box-card">
+      <div class="box-tag">Service Deserts</div>
+      <div class="box-title">1 mental health org for 284K people</div>
+      <div class="box-body">
+        Alberta's indigenous service landscape has critical domain gaps: <span class="hl">1 mental health org</span>, <span class="hl">4 food security orgs</span> (zero in Treaty 7/8), <span class="hl">9 housing orgs</span>, <span class="hl">5 emergency services orgs</span> (zero outside Treaty 6). Metis communities receive an estimated <span class="teal">$378/person/yr</span> — structurally excluded from ISC.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 5. DATA GAPS (DRAWER) ═══ -->
+<section class="section">
+  <details class="drawer">
+    <summary>
+      <span class="d-kicker">Data Gaps &amp; Issues</span>
+      <span><span class="d-value">6</span><span class="d-label">items requiring attention</span></span>
+      <span class="d-toggle" aria-hidden="true"></span>
+    </summary>
+    <div class="d-body">
+      <div class="bullets-icon">
+        <div class="bullet-item">
+          <div class="bullet-icon-box"><span class="material-symbols-outlined">download</span></div>
+          <div>
+            <div class="bullet-text-title">StatCan Census 2021 — Manual Download Needed</div>
+            <div class="bullet-text-desc">StatCan blocks programmatic download. Two CSVs needed for Wave 2 per-capita denominators (indigenous population by province and by First Nation).</div>
+          </div>
+        </div>
+        <div class="bullet-item">
+          <div class="bullet-icon-box"><span class="material-symbols-outlined">date_range</span></div>
+          <div>
+            <div class="bullet-text-title">T3010 Multi-Year Gap</div>
+            <div class="bullet-text-desc">Only 2023 data acquired. Need 2019–2022 for 5-year trend analysis. SEAL McMaster may have consolidated multi-year dataset.</div>
+          </div>
+        </div>
+        <div class="bullet-item">
+          <div class="bullet-icon-box"><span class="material-symbols-outlined">casino</span></div>
+          <div>
+            <div class="bullet-text-title">AGLC Gaming Revenue — No Open Data</div>
+            <div class="bullet-text-desc">Alberta's 28 on-reserve casinos generate $200–350M/yr via FNDF. No bulk export available — web interface only. Likely the largest single invisible funding channel.</div>
+          </div>
+        </div>
+        <div class="bullet-item">
+          <div class="bullet-icon-box"><span class="material-symbols-outlined">warning</span></div>
+          <div>
+            <div class="bullet-text-title">2 False Positives in Top 10</div>
+            <div class="bullet-text-desc">Mohawk College ($478M) and Assiniboine Park Conservancy ($250M) matched on indigenous place-names but are mainstream institutions. Flagged for removal before Wave 2.</div>
+          </div>
+        </div>
+        <div class="bullet-item">
+          <div class="bullet-icon-box"><span class="material-symbols-outlined">person_search</span></div>
+          <div>
+            <div class="bullet-text-title">1,603 Orgs Awaiting Human Review</div>
+            <div class="bullet-text-desc">Medium-confidence matches (single weak signal). Likely contains 100–200 additional true positives. Batch review session needed before Wave 2 synthesis.</div>
+          </div>
+        </div>
+        <div class="bullet-item">
+          <div class="bullet-icon-box"><span class="material-symbols-outlined">apartment</span></div>
+          <div>
+            <div class="bullet-text-title">Calgary/Edmonton Municipal Grants</div>
+            <div class="bullet-text-desc">Not available in open data portals. Would need HTML scraping or direct contact with municipal open data offices. Low priority — federal/provincial data is more impactful.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </details>
+</section>
+
+<!-- ═══ 6. WAVE ROADMAP ═══ -->
+<section class="section" style="padding-bottom: 48px;">
+  <div class="section-title">Research Roadmap</div>
+  <div class="seq-chevron">
+    <div class="chevron done">
+      <div class="chevron-num">Wave 1</div>
+      <div class="chevron-title">Data Foundation</div>
+      <div class="chevron-sub">T1 + T2 + T3 complete</div>
+    </div>
+    <div class="chevron done">
+      <div class="chevron-num">Wave 2</div>
+      <div class="chevron-title">Synthesis + Census</div>
+      <div class="chevron-sub">T4 + T5 complete</div>
+    </div>
+    <div class="chevron done">
+      <div class="chevron-num">Wave 3</div>
+      <div class="chevron-title">Network + Gaps</div>
+      <div class="chevron-sub">T6 + T7 complete</div>
+    </div>
+    <div class="chevron active">
+      <div class="chevron-num">Wave 4</div>
+      <div class="chevron-title">Report + Delivery</div>
+      <div class="chevron-sub">T8 synthesis running</div>
+    </div>
+  </div>
+
+  <details class="drawer" style="margin-top: 20px;">
+    <summary>
+      <span class="d-kicker">Wave 4 — In Progress</span>
+      <span><span class="d-label">synthesis report + D3 network explorer</span></span>
+      <span class="d-toggle" aria-hidden="true"></span>
+    </summary>
+    <div class="d-body">
+      <div class="bullets-icon">
+        <div class="bullet-item">
+          <div class="bullet-icon-box"><span class="material-symbols-outlined">description</span></div>
+          <div>
+            <div class="bullet-text-title">T8: Synthesis Report (dr-carling — running now)</div>
+            <div class="bullet-text-desc">7-chapter branded report synthesizing all findings. Executive summary, speaking notes, policy recommendations. Framed for both internal strategy and external publication.</div>
+          </div>
+        </div>
+        <div class="bullet-item">
+          <div class="bullet-icon-box"><span class="material-symbols-outlined">hub</span></div>
+          <div>
+            <div class="bullet-text-title">Interactive Network Explorer (delacroix-ii — queued)</div>
+            <div class="bullet-text-desc">D3.js force-directed graph of the Alberta funding network. 944 nodes, 2,031 rendered aggregated links, backed by 42,095 raw funding records and 2,116 distinct source relationships. Filterable by treaty area, org type, funder. Click-to-detail.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </details>
+
+  <details class="drawer" style="margin-top: 20px;">
+    <summary>
+      <span class="d-kicker">Source Click-Throughs</span>
+      <span><span class="d-label">public datasets used by the sprint tracker</span></span>
+      <span class="d-toggle" aria-hidden="true"></span>
+    </summary>
+    <div class="d-body">
+      <p style="font-size: 0.78rem; font-weight: 300; color: var(--text-secondary); line-height: 1.7;">
+        Federal transfer claims trace to <a href="https://open.canada.ca/data/en/dataset/432527ab-7aac-45b5-81d6-7597107a7013" style="color: var(--deep-teal); font-weight: 700;">Federal Grants and Contributions proactive disclosure</a> and <a href="https://www.tbs-sct.canada.ca/ems-sgd/edb-bdd/index-eng.html" style="color: var(--deep-teal); font-weight: 700;">GC InfoBase</a>. Alberta grant claims trace to <a href="https://open.alberta.ca/dataset/grant-disclosure" style="color: var(--deep-teal); font-weight: 700;">GOA Grant Payments Disclosure</a>. Census denominators trace to <a href="https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=9810026601" style="color: var(--deep-teal); font-weight: 700;">Statistics Canada table 98-10-0266-01</a>.
+      </p>
+    </div>
+  </details>
+</section>
+
+</div>
+
+</body>
+</html>
