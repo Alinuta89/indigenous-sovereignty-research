@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Working Document: ISC Formula Reconstruction & Co-Funding Model | KT-029</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { font-size: 16px; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #F8F6F0;
+    color: #333333;
+    line-height: 1.7;
+    padding: 0;
+  }
+  .treaty-bar {
+    background: #1B2A4A;
+    color: #F8F6F0;
+    text-align: center;
+    font-size: 0.82rem;
+    padding: 10px 20px;
+    line-height: 1.5;
+  }
+  header {
+    background: #1B2A4A;
+    color: #fff;
+    padding: 48px 40px 40px;
+  }
+  header .tier-label {
+    display: inline-block;
+    background: #E8833A;
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 4px 14px;
+    border-radius: 3px;
+    margin-bottom: 18px;
+  }
+  header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.25;
+    margin-bottom: 8px;
+    max-width: 800px;
+  }
+  header .subtitle {
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.75);
+    max-width: 700px;
+    margin-bottom: 14px;
+  }
+  header .meta {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.55);
+  }
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 40px 80px;
+  }
+  h2 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #1B2A4A;
+    margin: 48px 0 18px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #E8833A;
+  }
+  h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1B2A4A;
+    margin: 32px 0 12px;
+  }
+  h4 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #333;
+    margin: 24px 0 8px;
+  }
+  p { margin: 0 0 14px; }
+  ul, ol { margin: 0 0 16px 24px; }
+  li { margin-bottom: 6px; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0 24px;
+    font-size: 0.88rem;
+  }
+  th {
+    background: #1B2A4A;
+    color: #fff;
+    text-align: left;
+    padding: 10px 14px;
+    font-weight: 600;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  td {
+    padding: 9px 14px;
+    border-bottom: 1px solid #ddd;
+    vertical-align: top;
+  }
+  tr:nth-child(even) td { background: rgba(27,42,74,0.03); }
+  .evidence-tag {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    padding: 2px 8px;
+    border-radius: 3px;
+    vertical-align: middle;
+  }
+  .tag-strong { background: #2D5F2D; color: #fff; }
+  .tag-moderate { background: #E8833A; color: #fff; }
+  .tag-inferred { background: #8B6914; color: #fff; }
+  .callout {
+    background: #fff;
+    border-left: 4px solid #E8833A;
+    padding: 18px 22px;
+    margin: 20px 0 24px;
+    border-radius: 0 4px 4px 0;
+    font-size: 0.92rem;
+  }
+  .callout.caveat {
+    border-left-color: #8B6914;
+    background: #FEFAF0;
+  }
+  .callout.key-finding {
+    border-left-color: #2D5F2D;
+    background: #F5FAF5;
+  }
+  .callout-label {
+    font-weight: 700;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+  .section-num {
+    color: #E8833A;
+    font-weight: 700;
+    margin-right: 6px;
+  }
+  .toc {
+    background: #fff;
+    padding: 24px 30px;
+    border-radius: 6px;
+    margin-bottom: 36px;
+    border: 1px solid #e0ddd6;
+  }
+  .toc h3 { margin-top: 0; font-size: 0.95rem; }
+  .toc ol { margin-left: 20px; }
+  .toc a { color: #1B2A4A; text-decoration: none; border-bottom: 1px solid #E8833A; }
+  .toc a:hover { color: #E8833A; }
+  footer {
+    background: #1B2A4A;
+    color: rgba(255,255,255,0.6);
+    text-align: center;
+    padding: 30px 20px;
+    font-size: 0.8rem;
+  }
+  footer strong { color: #E8833A; }
+  @media print {
+    body { background: #fff; font-size: 11pt; }
+    header { padding: 30px; }
+    .container { padding: 20px 30px; }
+    h2 { page-break-after: avoid; }
+    table { page-break-inside: avoid; }
+    .treaty-bar { background: #1B2A4A; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+  @media (max-width: 700px) {
+    header { padding: 30px 20px; }
+    header h1 { font-size: 1.5rem; }
+    .container { padding: 20px; }
+    table { font-size: 0.8rem; }
+    th, td { padding: 6px 8px; }
+  }
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="treaty-bar">
+  This work concerns Treaty 6, Treaty 7, and Treaty 8 territories and the Metis homeland. We acknowledge the rights-bearing nations whose lands and peoples are the subject of this analysis.
+</div>
+
+<header>
+  <div class="tier-label">Tier 1 &mdash; Working Document</div>
+  <h1>ISC Allocation Formula Reconstruction &amp; Urban Indigenous Co-Funding Model</h1>
+  <p class="subtitle">Policy Analyst Working Document &mdash; Formula Methodology, Denominator Analysis, and Budget Architecture</p>
+  <p class="meta">KT-029 &bull; June 2026 &bull; ~25 min read</p>
+</header>
+
+<div class="container">
+
+<div class="toc">
+  <h3>Contents</h3>
+  <ol>
+    <li><a href="#s1">Formula Reconstruction: Methodology and Findings</a></li>
+    <li><a href="#s2">Five Mechanistic Drivers of Alberta's Position</a></li>
+    <li><a href="#s3">The NIHB Counter-Finding</a></li>
+    <li><a href="#s4">Denominator Analysis: Three-Scenario Model</a></li>
+    <li><a href="#s5">Cross-Provincial Comparison</a></li>
+    <li><a href="#s6">Co-Funding Model: Budget Architecture</a></li>
+    <li><a href="#s7">Net-New Provincial Cost (Corrected)</a></li>
+    <li><a href="#s8">Allocation Formula and City-Level Distribution</a></li>
+    <li><a href="#s9">Evidence Confidence Summary</a></li>
+    <li><a href="#s10">Data Limitations and Methodology Notes</a></li>
+    <li><a href="#s11">Key References</a></li>
+  </ol>
+</div>
+
+<div class="callout caveat">
+  <div class="callout-label">Reconstruction Caveat</div>
+  The ISC allocation formula has never been publicly reconstructed in its entirety. This analysis assembles fragments from departmental reports, PBO analyses, Auditor General audits, the Cost Reference Manual, CCPA/AFN analyses, and academic literature. Every element carries an evidence-basis tag. The gaps between fragments are themselves findings. Do not cite this reconstruction as the complete ISC formula.
+</div>
+
+<!-- SECTION 1 -->
+<h2 id="s1"><span class="section-num">1.</span> Formula Reconstruction: Methodology and Findings</h2>
+
+<p>The ISC allocation formula is not a single formula. It is a patchwork of at least seven program-specific allocation methodologies, each with its own population denominator, cost-adjustment mechanism, escalation logic, and evidence basis. <span class="evidence-tag tag-strong">STRONG</span> &mdash; confirmed by PBO (2021), OFNTSC (2018), Auditor General (2024).</p>
+
+<h3>Reconstructed Program Formulas</h3>
+
+<table>
+  <tr>
+    <th>Program Area</th>
+    <th>Formula Type</th>
+    <th>Denominator</th>
+    <th>Base Year / Escalator</th>
+    <th>Evidence</th>
+  </tr>
+  <tr>
+    <td><strong>Education (K-12)</strong></td>
+    <td>Interim Regional Funding Formula (IRFF, 2019)</td>
+    <td>Nominal roll (enrolled students)</td>
+    <td>Provincial comparability; post-2019 follows provincial model</td>
+    <td><span class="evidence-tag tag-moderate">MODERATE</span></td>
+  </tr>
+  <tr>
+    <td><strong>NIHB</strong></td>
+    <td>Demand-driven (actual claims)</td>
+    <td>NIHB-eligible population</td>
+    <td>No capped formula; demand-responsive</td>
+    <td><span class="evidence-tag tag-strong">STRONG</span></td>
+  </tr>
+  <tr>
+    <td><strong>Community Health (FNIHB)</strong></td>
+    <td>Modified Berger Formula (1982/2006)</td>
+    <td>Population &times; number of communities</td>
+    <td>Last reviewed 2006 using 2001 data</td>
+    <td><span class="evidence-tag tag-strong">STRONG</span></td>
+  </tr>
+  <tr>
+    <td><strong>Infrastructure O&amp;M</strong></td>
+    <td>Cost Reference Manual (CRM) formula</td>
+    <td>On-reserve Registered Indian Pop.</td>
+    <td>CRM 2023 base year; remoteness up to 2.34x</td>
+    <td><span class="evidence-tag tag-strong">STRONG</span></td>
+  </tr>
+  <tr>
+    <td><strong>Housing (on-reserve)</strong></td>
+    <td>CMHC allocation formula</td>
+    <td>On-reserve population</td>
+    <td><strong>2001 Census data still in use</strong> (AG 2024)</td>
+    <td><span class="evidence-tag tag-strong">STRONG</span></td>
+  </tr>
+  <tr>
+    <td><strong>Band Support Funding</strong></td>
+    <td>Per-capita with band-size adjustments</td>
+    <td>Registered Indian Pop.</td>
+    <td>1983 formula; revised 2005; per-capita declined from ~$517 to ~$275 (2022 $)</td>
+    <td><span class="evidence-tag tag-strong">STRONG</span></td>
+  </tr>
+  <tr>
+    <td><strong>Income Assistance</strong></td>
+    <td>Actual caseload &times; provincial rates</td>
+    <td>On-reserve Registered Indians</td>
+    <td>Provincial rate equivalency</td>
+    <td><span class="evidence-tag tag-moderate">MODERATE</span></td>
+  </tr>
+</table>
+
+<h3>The HQ-to-Region Meta-Allocation</h3>
+
+<p>The most critical gap in the reconstruction is the HQ-to-region allocation mechanism: how ISC headquarters distributes the total departmental envelope across its seven regional offices. This meta-formula determines how much Alberta receives before program-specific formulas distribute within the region. It is <strong>not publicly documented</strong>. <span class="evidence-tag tag-strong">STRONG</span> that the gap exists &mdash; ISC evaluations confirm "various funding allocation methodology options" are reviewed by senior management committees, but the methodology is not published.</p>
+
+<div class="callout key-finding">
+  <div class="callout-label">Key Finding</div>
+  An ATIP (Access to Information) request for the HQ-to-region allocation methodology is the single highest-value information request for resolving the per-capita gap question.
+</div>
+
+<!-- SECTION 2 -->
+<h2 id="s2"><span class="section-num">2.</span> Five Mechanistic Drivers of Alberta's Per-Capita Position</h2>
+
+<p>Alberta's position as the province with the lowest per-capita ISC allocation (in total ISC allocation, excluding NIHB where Alberta is at or above the national average) is driven by the compounding interaction of at least five factors. No single driver fully explains the gap. <span class="evidence-tag tag-moderate">MODERATE</span></p>
+
+<table>
+  <tr>
+    <th>#</th>
+    <th>Driver</th>
+    <th>Mechanism</th>
+    <th>Estimated Impact</th>
+    <th>Evidence</th>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td><strong>Remoteness Adjustment</strong></td>
+    <td>CRM multiplies O&amp;M by up to 2.34x for fly-in communities. Alberta has 0 fly-in Zone 4 communities vs. 40+ in MB/SK/ON.</td>
+    <td>-10% to -25% relative to MB/SK</td>
+    <td><span class="evidence-tag tag-strong">STRONG</span></td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td><strong>Historical Base-Year Compounding</strong></td>
+    <td>CMHC housing uses 2001 Census; BSF uses 1983 formula; Berger Formula last reviewed 2006. Outdated baselines compound over decades.</td>
+    <td>Cumulative, multiplicative</td>
+    <td><span class="evidence-tag tag-strong">STRONG</span></td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td><strong>2% Escalator Cap (1996&ndash;2016)</strong></td>
+    <td>ISC applied a 2% cap while population grew 43%. Budget 2016 lifted it. The gap was never rebased at the 2017 INAC-to-ISC transition.</td>
+    <td>20&ndash;40% cumulative erosion</td>
+    <td><span class="evidence-tag tag-strong">STRONG</span></td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td><strong>Community-Size Distribution</strong></td>
+    <td>Alberta has 45&ndash;48 First Nations (fewest per capita of any major province) with an average 3,183 members vs. Saskatchewan's 130+ smaller bands. Small-band supplements boost per-capita in SK/MB.</td>
+    <td>Structural; not quantified</td>
+    <td><span class="evidence-tag tag-inferred">INFERRED</span></td>
+  </tr>
+  <tr>
+    <td>5</td>
+    <td><strong>HQ-to-Region Allocation</strong></td>
+    <td>Undocumented meta-formula distributing departmental budget across 7 regions. May embed historical ratios that disadvantage Alberta.</td>
+    <td>Unknown &mdash; undocumented</td>
+    <td><span class="evidence-tag tag-strong">STRONG</span> (gap exists)</td>
+  </tr>
+</table>
+
+<p>The 2017 INAC-to-ISC transition was structural (department name, accountability), not fiscal (formulas, escalators, base years). Programs continued under the same allocation rules. No evidence of a formula rebase has been found in any ISC departmental plan, Estimates, or transition document. <span class="evidence-tag tag-moderate">MODERATE</span></p>
+
+
+<!-- SECTION 3 -->
+<h2 id="s3"><span class="section-num">3.</span> The NIHB Counter-Finding</h2>
+
+<p>NIHB (Non-Insured Health Benefits) is demand-driven: it pays actual claims rather than distributing a formula-capped allocation. Alberta's NIHB per-capita performance directly contradicts the "lowest per-capita" narrative:</p>
+
+<table>
+  <tr>
+    <th>Region</th>
+    <th>Total NIHB Per Capita</th>
+    <th>Dental Per Capita</th>
+    <th>Pharmacy</th>
+    <th>MS&amp;E</th>
+  </tr>
+  <tr>
+    <td><strong>Alberta</strong></td>
+    <td><strong>$2,131</strong></td>
+    <td><strong>$551 (highest nationally)</strong></td>
+    <td>$759</td>
+    <td>$101</td>
+  </tr>
+  <tr>
+    <td>Manitoba</td>
+    <td>$2,953</td>
+    <td>$405</td>
+    <td>$753</td>
+    <td>$92</td>
+  </tr>
+  <tr>
+    <td>Saskatchewan</td>
+    <td>$2,316</td>
+    <td>$460</td>
+    <td>$809</td>
+    <td>$104</td>
+  </tr>
+  <tr>
+    <td>Ontario</td>
+    <td>$1,779</td>
+    <td>$339</td>
+    <td>$515</td>
+    <td>$52</td>
+  </tr>
+  <tr>
+    <td><strong>National</strong></td>
+    <td><strong>$2,157</strong></td>
+    <td><strong>$396</strong></td>
+    <td><strong>$676</strong></td>
+    <td><strong>$78</strong></td>
+  </tr>
+</table>
+<p style="font-size:0.82rem;color:#666;">Source: NIHB Annual Report 2023-24 (ISC). NIHB-eligible population: Alberta = 135,168. National = 959,207.</p>
+
+<div class="callout key-finding">
+  <div class="callout-label">Analytical Significance</div>
+  When the allocation mechanism responds to actual demand rather than formula-driven allocation, Alberta's utilization is at or above the national average. The per-capita gap is a feature of formula design, not a reflection of lower Indigenous need in Alberta. This is the analysis's single strongest control for the "genuinely lower need" counter-argument.
+</div>
+
+
+<!-- SECTION 4 -->
+<h2 id="s4"><span class="section-num">4.</span> Denominator Analysis: Three-Scenario Model</h2>
+
+<p>The choice of population denominator is the single most consequential methodological decision in assessing Alberta's per-capita position.</p>
+
+<h3>The Three Denominators</h3>
+
+<table>
+  <tr>
+    <th>Denominator</th>
+    <th>Alberta Count</th>
+    <th>Who Is Included</th>
+    <th>Who Is Excluded</th>
+    <th>Evidence</th>
+  </tr>
+  <tr>
+    <td><strong>ISC Registered Indian Pop.</strong></td>
+    <td>~143,241</td>
+    <td>Registered/Status Indians</td>
+    <td>Metis (127,470), Inuit (2,950), non-status FN (~30,615), Bill S-3 backlog</td>
+    <td><span class="evidence-tag tag-strong">STRONG</span></td>
+  </tr>
+  <tr>
+    <td><strong>Census 2021 Self-ID</strong></td>
+    <td>284,470</td>
+    <td>All Indigenous identity (FN 145,640; Metis 127,470; Inuit 2,950; other 8,410)</td>
+    <td>Non-disclosure, homeless, IER (8 reserves, ~9,481 people)</td>
+    <td><span class="evidence-tag tag-strong">STRONG</span></td>
+  </tr>
+  <tr>
+    <td><strong>Census + Undercount</strong></td>
+    <td>370,000&ndash;440,000</td>
+    <td>Census + IER + undercoverage (3.00%/5.85%) + non-disclosure + homeless</td>
+    <td>Methodological uncertainty</td>
+    <td><span class="evidence-tag tag-inferred">INFERRED</span></td>
+  </tr>
+</table>
+
+<h3>Per-Capita Impact Model (Six Scenarios)</h3>
+
+<p>Two numerator scenarios crossed with three denominators:</p>
+
+<table>
+  <tr>
+    <th></th>
+    <th>Numerator A: ISC Direct (~$1.35B)</th>
+    <th>Numerator B: Total Federal Indigenous (~$2.7B)</th>
+  </tr>
+  <tr>
+    <td><strong>Scenario 1:</strong> ISC Register (~143K)</td>
+    <td>$9,643/person</td>
+    <td>$19,286/person</td>
+  </tr>
+  <tr>
+    <td><strong>Scenario 2:</strong> Census Self-ID (284K)</td>
+    <td>$4,746/person</td>
+    <td>$9,492/person</td>
+  </tr>
+  <tr>
+    <td><strong>Scenario 3:</strong> Census + Undercount (~400K)</td>
+    <td>$3,375/person</td>
+    <td>$6,750/person</td>
+  </tr>
+</table>
+
+<div class="callout caveat">
+  <div class="callout-label">T4 Denominator Ambiguity</div>
+  The $9,389 per-capita figure (T4) is arithmetically consistent with either Numerator A / Scenario 1 ($9,643) or Numerator B / Scenario 2 ($9,492). Without T4 methodology access, the denominator cannot be confirmed. This figure must be labeled <span class="evidence-tag tag-inferred">INFERRED</span> with denominator stated in all uses. In this document, we present the Stream A reconstruction range of ~$9,100&ndash;$9,600 as the defensible range.
+</div>
+
+<h3>The 2&ndash;4x Urban Undercount</h3>
+
+<p>Peer-reviewed evidence supports a 2&ndash;4x urban undercount relative to Census estimates. <span class="evidence-tag tag-strong">STRONG</span></p>
+
+<ul>
+  <li><strong>Our Health Counts Toronto</strong> (Smylie et al., 2018, <em>BMJ Open</em>): Respondent-driven sampling estimated Toronto's Indigenous population at ~55,000 vs. Census estimate of ~19,270. Ratio: 2.3&ndash;3.8x.</li>
+  <li><strong>OHC multi-city Ontario</strong> (2024, <em>Canadian Journal of Public Health</em>): Replicated across six cities. Finding: "Indigenous population at each study site is 2&ndash;4 times greater than estimated by the Canadian census."</li>
+  <li><strong>Edmonton cross-check:</strong> Census 2021 Indigenous in Edmonton CSD = 58,165. Registered/Treaty Indian = 23,320. Ratio: 2.49:1 (Census-to-Register only; true population likely higher).</li>
+</ul>
+
+<p>The undercount is not random. It systematically excludes the most marginalized: those experiencing homelessness, without documentation, who distrust government data collection, or in unstable housing. <span class="evidence-tag tag-strong">STRONG</span> &mdash; structural finding.</p>
+
+<div class="callout caveat">
+  <div class="callout-label">Denominator Correction &mdash; Directional Caution</div>
+  <strong>Do not assume the denominator correction automatically helps Alberta.</strong> Alberta's Census-to-Register ratio (2.03) is higher than Saskatchewan's (1.50). As a calculation exercise on existing spending, a Census denominator makes Alberta look worse. As a policy change that reallocates federal spending, it would likely help Alberta. These are different questions and must not be conflated.
+</div>
+
+
+<!-- SECTION 5 -->
+<h2 id="s5"><span class="section-num">5.</span> Cross-Provincial Comparison</h2>
+
+<h3>Census-to-Register Ratios by Province</h3>
+
+<table>
+  <tr>
+    <th>Province</th>
+    <th>Census 2021 Indigenous Identity</th>
+    <th>Registered Indian Pop. (est.)</th>
+    <th>Ratio</th>
+    <th>Metis Share</th>
+  </tr>
+  <tr>
+    <td><strong>Alberta</strong></td>
+    <td>284,470</td>
+    <td>~140,000</td>
+    <td><strong>2.03</strong></td>
+    <td>44.8%</td>
+  </tr>
+  <tr>
+    <td>British Columbia</td>
+    <td>290,210</td>
+    <td>~145,000</td>
+    <td>2.00</td>
+    <td>33.0%</td>
+  </tr>
+  <tr>
+    <td>Saskatchewan</td>
+    <td>187,890</td>
+    <td>~125,000</td>
+    <td>1.50</td>
+    <td>41.7%</td>
+  </tr>
+  <tr>
+    <td>Manitoba</td>
+    <td>224,420</td>
+    <td>~130,000</td>
+    <td>1.73</td>
+    <td>39.6%</td>
+  </tr>
+  <tr>
+    <td>Ontario</td>
+    <td>406,585</td>
+    <td>~175,000</td>
+    <td>2.32</td>
+    <td>31.5%</td>
+  </tr>
+</table>
+<p style="font-size:0.82rem;color:#666;">Sources: Census 2021 (Catalogue 98-510-X2021001); ISC Registered Indian Population publications 2023/2024.</p>
+
+<p>Alberta has the highest Metis share (44.8%) of any Prairie province. Metis people are entirely excluded from the Indian Register. This structural feature means Alberta is disproportionately affected by formulas using the Register as denominator. When the denominator switches from Register to Census, Alberta's Indigenous population approximately doubles; Saskatchewan's increases by only 50%.</p>
+
+<h3>City-Level Denominator Analysis</h3>
+
+<table>
+  <tr>
+    <th>City</th>
+    <th>Census 2021 Indigenous (CSD)</th>
+    <th>Registered/Treaty Indian</th>
+    <th>Ratio</th>
+  </tr>
+  <tr>
+    <td>Edmonton</td>
+    <td>58,165</td>
+    <td>23,320</td>
+    <td>2.49</td>
+  </tr>
+  <tr>
+    <td>Calgary</td>
+    <td>41,355</td>
+    <td>~14,600</td>
+    <td>~2.83</td>
+  </tr>
+  <tr>
+    <td>Red Deer</td>
+    <td>6,470</td>
+    <td>~1,800</td>
+    <td>~3.59</td>
+  </tr>
+  <tr>
+    <td>Lethbridge</td>
+    <td>6,390</td>
+    <td>~3,400</td>
+    <td>~1.88</td>
+  </tr>
+  <tr>
+    <td><strong>Four-city total</strong></td>
+    <td><strong>112,380</strong></td>
+    <td>&mdash;</td>
+    <td>&mdash;</td>
+  </tr>
+</table>
+
+
+<!-- SECTION 6 -->
+<h2 id="s6"><span class="section-num">6.</span> Co-Funding Model: Budget Architecture</h2>
+
+<div class="callout caveat">
+  <div class="callout-label">Discussion Draft</div>
+  This co-funding model is a discussion draft requiring Indigenous community deliberation. It was designed in a policy research context, not in community. The allocation formula, governance seats, and accountability mechanisms are starting proposals with alternatives noted. Implementation requires an Indigenous governance process to validate, modify, or replace this design.
+</div>
+
+<h3>Alberta Urban Indigenous Wellness Fund (AUIWF) &mdash; Design Parameters</h3>
+
+<table>
+  <tr>
+    <th>Parameter</th>
+    <th>Design</th>
+    <th>Notes</th>
+  </tr>
+  <tr>
+    <td>Total annual envelope</td>
+    <td>$53&ndash;73M (mid-range: $63M)</td>
+    <td>Discussion draft</td>
+  </tr>
+  <tr>
+    <td>Federal share</td>
+    <td>$28&ndash;40M (53&ndash;55%)</td>
+    <td>Conditional on federal agreement</td>
+  </tr>
+  <tr>
+    <td>Provincial share (gross)</td>
+    <td>$20&ndash;28M (38&ndash;40%)</td>
+    <td>Funding source to be determined by Treasury Board</td>
+  </tr>
+  <tr>
+    <td>Municipal contribution</td>
+    <td>$5&ndash;7M (7&ndash;10%)</td>
+    <td>Largely institutional + in-kind; existing spending relabelled</td>
+  </tr>
+  <tr>
+    <td>Allocation denominator</td>
+    <td>Census self-ID &times; 1.3x adjustment</td>
+    <td>Reviewed every 5 years with Census cycle</td>
+  </tr>
+  <tr>
+    <td>Allocation formula</td>
+    <td>60% population / 25% needs / 15% base per city</td>
+    <td>Alternative: 50/35/15 (provider recommendation)</td>
+  </tr>
+  <tr>
+    <td>Governance</td>
+    <td>Indigenous-led AUIWC board</td>
+    <td>Discussion draft; seats subject to community determination</td>
+  </tr>
+  <tr>
+    <td>Duration</td>
+    <td>10-year agreement; 5-year review</td>
+    <td>Escalator: 2% floor, 6% cap</td>
+  </tr>
+  <tr>
+    <td>Net-new provincial cost</td>
+    <td><strong>~$17&ndash;22M</strong> (corrected)</td>
+    <td>Using only documented deductions</td>
+  </tr>
+</table>
+
+<h3>Precedents</h3>
+
+<ul>
+  <li><strong>BC First Nations Health Authority (FNHA):</strong> Operational since 2013. $8.2B ten-year renewal (April 2023). Full transfer of federal health authority to Indigenous governance. Most ambitious precedent but BC-specific and health-only. <span class="evidence-tag tag-strong">STRONG</span></li>
+  <li><strong>Ontario Aboriginal Healing and Wellness Strategy (AHWS):</strong> Operating 25+ years. ~$35&ndash;50M annually at peak across multiple program streams. Provincial-Indigenous partnership. Survived government changes. <span class="evidence-tag tag-moderate">MODERATE</span></li>
+  <li><strong>ISC New Fiscal Relationship Grant:</strong> 191 First Nations signed. 10-year agreements with 2% minimum escalator (5.1% average in 2024&ndash;25). On-reserve and band-level only. <span class="evidence-tag tag-strong">STRONG</span></li>
+</ul>
+
+
+<!-- SECTION 7 -->
+<h2 id="s7"><span class="section-num">7.</span> Net-New Provincial Cost (Corrected)</h2>
+
+<p>The original net-new cost estimate of $10&ndash;18M included two unsourced deductions for GOA Indigenous Relations (-$2&ndash;4M) and GOA Health Indigenous (-$3&ndash;5M) that no research stream verified. These have been removed per red team Treasury Board findings.</p>
+
+<table>
+  <tr>
+    <th>Line</th>
+    <th>Amount</th>
+    <th>Evidence</th>
+  </tr>
+  <tr>
+    <td>Gross provincial share</td>
+    <td>$24&ndash;25M</td>
+    <td>Model design</td>
+  </tr>
+  <tr>
+    <td>Less: FCSS provincial share (80% of $4&ndash;8M identified Indigenous-serving)</td>
+    <td>-$3&ndash;6M</td>
+    <td><span class="evidence-tag tag-moderate">MODERATE</span> &mdash; Stream D</td>
+  </tr>
+  <tr>
+    <td style="color:#999;"><del>Less: GOA Indigenous Relations urban</del></td>
+    <td style="color:#999;"><del>-$2&ndash;4M</del></td>
+    <td style="color:#c00;">REMOVED &mdash; unsourced</td>
+  </tr>
+  <tr>
+    <td style="color:#999;"><del>Less: GOA Health Indigenous urban</del></td>
+    <td style="color:#999;"><del>-$3&ndash;5M</del></td>
+    <td style="color:#c00;">REMOVED &mdash; unsourced</td>
+  </tr>
+  <tr>
+    <td><strong>Corrected net-new provincial cost</strong></td>
+    <td><strong>~$17&ndash;22M</strong></td>
+    <td><span class="evidence-tag tag-inferred">INFERRED</span> &mdash; FCSS baseline LOW-MODERATE confidence</td>
+  </tr>
+</table>
+
+<div class="callout">
+  <div class="callout-label">Treasury Board Note</div>
+  The funding source for the provincial share has not been identified. This is labeled as a budget design question to be resolved in a Treasury Board submission. Three options have been scoped: (1) new appropriation through Indigenous Relations, (2) top-up to FCSS with a dedicated Indigenous stream, (3) cross-ministry allocation from Health, Children's Services, and Indigenous Relations.
+</div>
+
+<h3>Ten-Year Fiscal Projection (Three Escalator Scenarios)</h3>
+
+<table>
+  <tr>
+    <th>Year</th>
+    <th>2% Floor</th>
+    <th>4% Mid-Range</th>
+    <th>6% Cap</th>
+  </tr>
+  <tr><td>1</td><td>$24.0M</td><td>$24.0M</td><td>$24.0M</td></tr>
+  <tr><td>2</td><td>$24.5M</td><td>$25.0M</td><td>$25.4M</td></tr>
+  <tr><td>3</td><td>$25.0M</td><td>$26.0M</td><td>$26.9M</td></tr>
+  <tr><td>5</td><td>$26.0M</td><td>$28.2M</td><td>$30.3M</td></tr>
+  <tr><td>10</td><td>$28.7M</td><td>$34.4M</td><td>$40.5M</td></tr>
+  <tr>
+    <td><strong>Cumulative 10yr</strong></td>
+    <td><strong>$260M</strong></td>
+    <td><strong>$287M</strong></td>
+    <td><strong>$316M</strong></td>
+  </tr>
+</table>
+<p style="font-size:0.82rem;color:#666;">Escalator: final domestic demand implicit price index (3-year moving average) + Census Indigenous population growth rate.</p>
+
+
+<!-- SECTION 8 -->
+<h2 id="s8"><span class="section-num">8.</span> Allocation Formula and City-Level Distribution</h2>
+
+<p>At $63M mid-range total envelope, using Census 2021 CSD populations with 1.3x adjustment:</p>
+
+<table>
+  <tr>
+    <th>City</th>
+    <th>Pop. Component (60%)</th>
+    <th>Needs Component (25%)</th>
+    <th>Base (15%)</th>
+    <th>Total</th>
+    <th>Per Capita</th>
+  </tr>
+  <tr>
+    <td>Edmonton</td>
+    <td>$19.6M</td>
+    <td>$5.5M</td>
+    <td>$2.4M</td>
+    <td>$27.5M</td>
+    <td>$364</td>
+  </tr>
+  <tr>
+    <td>Calgary</td>
+    <td>$13.9M</td>
+    <td>$4.4M</td>
+    <td>$2.4M</td>
+    <td>$20.7M</td>
+    <td>$385</td>
+  </tr>
+  <tr>
+    <td>Red Deer</td>
+    <td>$2.2M</td>
+    <td>$2.7M</td>
+    <td>$2.4M</td>
+    <td>$7.3M</td>
+    <td>$868</td>
+  </tr>
+  <tr>
+    <td>Lethbridge</td>
+    <td>$2.1M</td>
+    <td>$3.1M</td>
+    <td>$2.4M</td>
+    <td>$7.6M</td>
+    <td>$915</td>
+  </tr>
+  <tr>
+    <td><strong>Total</strong></td>
+    <td><strong>$37.8M</strong></td>
+    <td><strong>$15.7M</strong></td>
+    <td><strong>$9.6M</strong></td>
+    <td><strong>$63.1M</strong></td>
+    <td><strong>$431 avg</strong></td>
+  </tr>
+</table>
+
+<p>The formula deliberately over-allocates to Red Deer and Lethbridge on a per-capita basis. Red Deer ($868/person) and Lethbridge ($915/person) receive more than double Edmonton's ($364) and Calgary's ($385) per-capita, reflecting the base component designed to build service infrastructure in cities with thinner Indigenous organizational capacity.</p>
+
+<h3>Needs Index Components (Illustrative)</h3>
+<ul>
+  <li>Homelessness rate (Indigenous proportion of PiT count)</li>
+  <li>Child welfare overrepresentation (Indigenous children in care relative to population)</li>
+  <li>Core housing need (Census Indigenous housing adequacy)</li>
+  <li>Emergency health utilization (Indigenous-identified ED visits, subject to OCAP consent)</li>
+  <li>Income disparity (Census Indigenous median income vs. city median)</li>
+</ul>
+
+
+<!-- SECTION 9 -->
+<h2 id="s9"><span class="section-num">9.</span> Evidence Confidence Summary</h2>
+
+<table>
+  <tr>
+    <th>Finding</th>
+    <th>Strength</th>
+    <th>Source Basis</th>
+  </tr>
+  <tr>
+    <td>CMHC housing allocation uses 2001 Census data</td>
+    <td><span class="evidence-tag tag-strong">STRONG</span></td>
+    <td>Auditor General of Canada (2024)</td>
+  </tr>
+  <tr>
+    <td>Band Support Funding formula from 1983; per-capita decline ~$517 to ~$275 (2022 $)</td>
+    <td><span class="evidence-tag tag-strong">STRONG</span></td>
+    <td>CCPA/AFN analysis of ISC data</td>
+  </tr>
+  <tr>
+    <td>2% escalator cap 1996&ndash;2016; 43% population growth; never rebased</td>
+    <td><span class="evidence-tag tag-strong">STRONG</span></td>
+    <td>CBC, AFN, ISC transition documents</td>
+  </tr>
+  <tr>
+    <td>Formula opacity &mdash; never publicly reconstructed</td>
+    <td><span class="evidence-tag tag-strong">STRONG</span></td>
+    <td>PBO (2021), Auditor General (2024), OFNTSC (2018), IFSD (2023)</td>
+  </tr>
+  <tr>
+    <td>NIHB Alberta dental $551/person (highest nationally)</td>
+    <td><span class="evidence-tag tag-strong">STRONG</span></td>
+    <td>NIHB Annual Report 2023-24 (ISC)</td>
+  </tr>
+  <tr>
+    <td>2&ndash;4x urban undercount</td>
+    <td><span class="evidence-tag tag-strong">STRONG</span></td>
+    <td>Smylie et al. 2018 (<em>BMJ Open</em>); OHC 2024 (<em>CJPH</em>)</td>
+  </tr>
+  <tr>
+    <td>CRM remoteness adjustment up to 2.34x</td>
+    <td><span class="evidence-tag tag-strong">STRONG</span></td>
+    <td>ISC Cost Reference Manual</td>
+  </tr>
+  <tr>
+    <td>Alberta per-capita ~$9,100&ndash;$9,600 (reconstruction range)</td>
+    <td><span class="evidence-tag tag-inferred">INFERRED</span></td>
+    <td>Calculated; T4 denominator ambiguous</td>
+  </tr>
+  <tr>
+    <td>Approximately 50&ndash;60 cents per dollar spending ratio</td>
+    <td><span class="evidence-tag tag-inferred">INFERRED</span></td>
+    <td>T14; fails Hard Rule 14 (needs 2+ independent sources); parameters required for every use</td>
+  </tr>
+  <tr>
+    <td>Co-funding model net-new ~$17&ndash;22M</td>
+    <td><span class="evidence-tag tag-inferred">INFERRED</span></td>
+    <td>Corrected; FCSS baseline LOW-MODERATE confidence</td>
+  </tr>
+  <tr>
+    <td>Four-city municipal Indigenous spend $6&ndash;11M</td>
+    <td><span class="evidence-tag tag-inferred">INFERRED</span></td>
+    <td>Stream D; fragments assembled</td>
+  </tr>
+  <tr>
+    <td>Child welfare: 69&ndash;74% Indigenous children in care</td>
+    <td><span class="evidence-tag tag-strong">STRONG</span></td>
+    <td>StatCan 2024, Alberta CFS data</td>
+  </tr>
+  <tr>
+    <td>Edmonton homelessness: ~60% Indigenous</td>
+    <td><span class="evidence-tag tag-strong">STRONG</span></td>
+    <td>Homeward Trust Edmonton, 2024 Homeless Count</td>
+  </tr>
+</table>
+
+
+<!-- SECTION 10 -->
+<h2 id="s10"><span class="section-num">10.</span> Data Limitations and Methodology Notes</h2>
+
+<h3>Known Limitations</h3>
+<ol>
+  <li><strong>ISC does not publish Alberta-specific spending totals.</strong> The per-capita numerator (~$1.3&ndash;$1.5B) is estimated from proportional allocation of national spending by Alberta's share of Registered Indian Population. Actual allocation may differ due to program-specific formula factors.</li>
+  <li><strong>The Indian Register provincial aggregate is an estimate.</strong> ISC publishes band-level and national figures but not always a clean provincial total.</li>
+  <li><strong>Urban undercount adjustment is extrapolated from Ontario studies.</strong> No Alberta-specific respondent-driven sampling study has been conducted. The 2&ndash;4x factor is applied as an extrapolation.</li>
+  <li><strong>Municipal spending data is fragmentary.</strong> No Alberta municipality publishes a consolidated Indigenous spending figure. The $6&ndash;11M four-city total captures only named Indigenous-serving organizations; mainstream organizations serving significant Indigenous client bases are excluded.</li>
+  <li><strong>Cross-provincial comparison has not fully controlled for needs differences.</strong> Remoteness is identified as -10% to -25% of the gap but this is estimated, not demonstrated through controlled comparison.</li>
+  <li><strong>The co-funding model is a design proposal</strong> developed without Indigenous community input. It requires community deliberation before it can function as a program architecture.</li>
+  <li><strong>Census 2021 data is the latest available.</strong> Census 2026 data will not be available until 2027&ndash;28 at earliest.</li>
+  <li><strong>The "approximately 50&ndash;60 cents per dollar" spending ratio</strong> is INFERRED from T14 analysis and lacks two independent sources. Parameters: numerator = federal Indigenous-specific + estimated provincial/municipal spending; denominator = per-capita public spending on general Alberta population; comparison group = all Albertans; data year as specified by T14 sources.</li>
+</ol>
+
+<h3>Methodology Notes</h3>
+<ul>
+  <li><strong>Denominator convention:</strong> All per-capita figures in this document state the denominator used. Default: Census 2021 self-identification unless otherwise specified.</li>
+  <li><strong>Evidence tags:</strong> STRONG = primary source verified; MODERATE = assembled from multiple partial sources; INFERRED = calculated or extrapolated from available evidence.</li>
+  <li><strong>OCAP compliance:</strong> This analysis uses publicly available data. No Nation-level data is used without verification of public availability. The co-funding model's data infrastructure recommendations carry OCAP constraints on health data sharing.</li>
+  <li><strong>Cross-provincial methodology:</strong> Same denominator (Census 2021 self-ID), same spending categories (total ISC budgetary authorities), same data year (FY 2023-24 or 2024-25 estimated) used across provinces. Register estimates are approximate because ISC does not publish clean provincial aggregates.</li>
+</ul>
+
+
+<!-- SECTION 11 -->
+<h2 id="s11"><span class="section-num">11.</span> Key References</h2>
+
+<ul>
+  <li>Auditor General of Canada (2024). Report on Indigenous Housing.</li>
+  <li>Indigenous Services Canada. Cost Reference Manual (CRM), 2023 base year.</li>
+  <li>Indigenous Services Canada. NIHB Annual Report 2023-24.</li>
+  <li>Indigenous Services Canada. Registered Indian Population by Sex and Residence, 2024.</li>
+  <li>Indigenous Services Canada. Departmental Plans 2025-26 and 2026-27.</li>
+  <li>Indigenous Services Canada. NFR Grant documentation.</li>
+  <li>ISC UPIP Evaluation (2024); Minister Gull-Masty announcement (March 2026).</li>
+  <li>OFNTSC. O&amp;M Position Paper (2018).</li>
+  <li>Parliamentary Budget Officer. "Federal Spending on First Nations and Inuit Health Care" (2021), RP-2122-005-S.</li>
+  <li>Smylie, J. et al. (2018). "Our Health Counts Toronto." <em>BMJ Open</em>, DOI: 10.1136/bmjopen-2017-018936.</li>
+  <li>Our Health Counts (2024). Multi-city Ontario. <em>Canadian Journal of Public Health</em>.</li>
+  <li>Statistics Canada. Census 2021, Indigenous Population Profile, Catalogue 98-510-X2021001.</li>
+  <li>Statistics Canada. Census 2021 Coverage Study, Catalogue 98-303-X.</li>
+  <li>Statistics Canada. Census 2021 Technical Report on Indigenous Peoples, Catalogue 98-306-X2021001.</li>
+  <li>CCPA/AFN. Analysis of Band Support Funding real per-capita decline.</li>
+  <li>IFSD (2023). Indigenous Fiscal Policy Analysis.</li>
+</ul>
+
+</div>
+
+<footer>
+  <strong></strong> &bull; KT-029: Urban Indigenous Services &amp; Federal Formula Audit<br>
+  Tier 1 Working Document &bull; June 2026<br>
+  This analysis uses publicly available data. No Nation-level data was used without verification of public availability.
+</footer>
+
+</body>
+</html>

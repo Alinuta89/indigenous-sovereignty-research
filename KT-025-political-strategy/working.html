@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Strategy Analyst Working Document — Alberta Sovereignty Referendum | KT-025</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --hs-primary: #1B3A5C;
+  --hs-secondary: #E87722;
+  --hs-bg: #FAFAFA;
+  --hs-surface: #FFFFFF;
+  --hs-text: #1A1A2E;
+  --hs-text-secondary: #555770;
+  --hs-border: #E0E0E0;
+  --hs-accent: #2D8CFF;
+  --hs-success: #28A745;
+  --hs-warning: #FFC107;
+  --hs-danger: #DC3545;
+  --hs-font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --hs-font-heading: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --hs-font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  --hs-radius: 8px;
+  --hs-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  --hs-max-width: 900px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: var(--hs-font-body);
+  background: var(--hs-bg);
+  color: var(--hs-text);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+.header-bar {
+  background: var(--hs-primary);
+  color: #fff;
+  padding: 2rem 2rem 1.5rem;
+}
+.header-bar .tier-badge {
+  display: inline-block;
+  background: var(--hs-accent);
+  color: #fff;
+  font-family: var(--hs-font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.25rem 0.75rem;
+  border-radius: 3px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+.header-bar h1 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+  margin-bottom: 0.5rem;
+}
+.header-bar .meta {
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+.container {
+  max-width: var(--hs-max-width);
+  margin: 0 auto;
+  padding: 2rem 1.5rem 3rem;
+}
+.back-link {
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  font-size: 0.85rem;
+  color: var(--hs-accent);
+  text-decoration: none;
+}
+.back-link:hover { text-decoration: underline; }
+.toc {
+  background: var(--hs-surface);
+  border: 1px solid var(--hs-border);
+  border-radius: var(--hs-radius);
+  padding: 1.5rem 2rem;
+  margin-bottom: 2rem;
+}
+.toc h2 {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--hs-text-secondary);
+  margin: 0 0 0.75rem;
+  padding: 0;
+  border: none;
+}
+.toc ol {
+  margin: 0;
+  padding-left: 1.5rem;
+  font-size: 0.9rem;
+}
+.toc li { margin-bottom: 0.3rem; }
+.toc a { color: var(--hs-accent); text-decoration: none; }
+.toc a:hover { text-decoration: underline; }
+h2 {
+  font-family: var(--hs-font-heading);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--hs-primary);
+  margin: 2.5rem 0 0.75rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 2px solid var(--hs-secondary);
+}
+h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--hs-text);
+  margin: 1.75rem 0 0.5rem;
+}
+h4 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--hs-text-secondary);
+  margin: 1.25rem 0 0.4rem;
+}
+p { margin-bottom: 1rem; font-size: 0.93rem; }
+.evidence-badge {
+  display: inline-block;
+  font-family: var(--hs-font-mono);
+  font-size: 0.62rem;
+  font-weight: 600;
+  padding: 0.12rem 0.45rem;
+  border-radius: 3px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  vertical-align: middle;
+}
+.evidence-badge.strong { background: #d4edda; color: #155724; }
+.evidence-badge.moderate { background: #fff3cd; color: #856404; }
+.evidence-badge.inferred { background: #f0f0f0; color: #666; }
+.callout {
+  background: #f0f4f8;
+  border-left: 4px solid var(--hs-primary);
+  padding: 1.25rem 1.5rem;
+  margin: 1.5rem 0;
+  border-radius: 0 var(--hs-radius) var(--hs-radius) 0;
+}
+.callout p { margin-bottom: 0.5rem; }
+.callout p:last-child { margin-bottom: 0; }
+.warning-box {
+  background: #fff8e6;
+  border-left: 4px solid var(--hs-warning);
+  padding: 1rem 1.25rem;
+  margin: 1.5rem 0;
+  border-radius: 0 var(--hs-radius) var(--hs-radius) 0;
+}
+.danger-box {
+  background: #fff5f5;
+  border-left: 4px solid var(--hs-danger);
+  padding: 1rem 1.25rem;
+  margin: 1.5rem 0;
+  border-radius: 0 var(--hs-radius) var(--hs-radius) 0;
+}
+.question-box {
+  background: var(--hs-surface);
+  border: 2px solid var(--hs-primary);
+  border-radius: var(--hs-radius);
+  padding: 1.25rem 1.5rem;
+  margin: 1.5rem 0;
+  font-style: italic;
+  font-size: 0.93rem;
+  line-height: 1.6;
+}
+.question-box .label {
+  font-style: normal;
+  font-family: var(--hs-font-mono);
+  font-size: 0.72rem;
+  color: var(--hs-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  font-size: 0.85rem;
+}
+th {
+  background: var(--hs-primary);
+  color: #fff;
+  text-align: left;
+  padding: 0.55rem 0.7rem;
+  font-weight: 600;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+td {
+  padding: 0.55rem 0.7rem;
+  border-bottom: 1px solid var(--hs-border);
+  vertical-align: top;
+}
+tr:nth-child(even) td { background: #f8f9fa; }
+ul, ol { margin: 0.5rem 0 1rem 1.5rem; font-size: 0.93rem; }
+li { margin-bottom: 0.3rem; }
+.scenario-section {
+  background: var(--hs-surface);
+  border: 1px solid var(--hs-border);
+  border-radius: var(--hs-radius);
+  padding: 1.5rem;
+  margin: 1.25rem 0;
+}
+.scenario-section.sc-green { border-left: 4px solid var(--hs-success); }
+.scenario-section.sc-amber { border-left: 4px solid var(--hs-warning); }
+.scenario-section.sc-red { border-left: 4px solid var(--hs-danger); }
+.scenario-section .sc-label {
+  font-family: var(--hs-font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.35rem;
+}
+.scenario-section.sc-green .sc-label { color: var(--hs-success); }
+.scenario-section.sc-amber .sc-label { color: #c29200; }
+.scenario-section.sc-red .sc-label { color: var(--hs-danger); }
+.scenario-section h3 { margin-top: 0; }
+.red-team-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+.rt-card {
+  background: var(--hs-surface);
+  border: 1px solid var(--hs-border);
+  border-radius: var(--hs-radius);
+  padding: 1.25rem;
+}
+.rt-card h4 {
+  margin: 0 0 0.5rem;
+  color: var(--hs-primary);
+}
+.rt-card p { font-size: 0.88rem; margin-bottom: 0.5rem; }
+.rt-card p:last-child { margin-bottom: 0; }
+.footer {
+  text-align: center;
+  padding: 2rem;
+  font-size: 0.8rem;
+  color: var(--hs-text-secondary);
+  border-top: 1px solid var(--hs-border);
+}
+@media (max-width: 640px) {
+  .header-bar h1 { font-size: 1.2rem; }
+  .container { padding: 1.5rem 1rem; }
+  table { font-size: 0.78rem; }
+  th, td { padding: 0.4rem 0.5rem; }
+}
+@media print {
+  body { background: #fff; font-size: 9.5pt; }
+  .header-bar { background: none; color: var(--hs-text); border-bottom: 2px solid var(--hs-primary); padding: 1rem 0; }
+  .back-link { display: none; }
+  .scenario-section, .rt-card { break-inside: avoid; }
+  h2 { page-break-after: avoid; }
+  table { page-break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+
+<div class="header-bar">
+  <span class="tier-badge">Tier 1 &mdash; Working Document</span>
+  <h1>Political Strategy &amp; Referendum Mechanics: Strategy Analyst Working Document</h1>
+  <div class="meta">KT-025 |   Research | June 8, 2026</div>
+</div>
+
+<div class="container">
+
+<a href="index.html" class="back-link">&larr; Back to all tiers</a>
+
+<nav class="toc">
+  <h2>Contents</h2>
+  <ol>
+    <li><a href="#hypotheses">Three Hypotheses About Smith</a></li>
+    <li><a href="#polling">Polling Synthesis &amp; Trajectory</a></li>
+    <li><a href="#question">The Question as Political Technology</a></li>
+    <li><a href="#coalition">Coalition Math &amp; Denominator Discipline</a></li>
+    <li><a href="#demographics">Demographic Walls &mdash; What Holds and What Doesn&rsquo;t</a></li>
+    <li><a href="#protest">The Protest-Vote Wildcard</a></li>
+    <li><a href="#identity">Identity Core &amp; the Movement</a></li>
+    <li><a href="#federal">Federal Counter-Strategy &amp; the MOU</a></li>
+    <li><a href="#scenarios">Scenario Decision Trees</a></li>
+    <li><a href="#redteam">Red-Team Synthesis</a></li>
+    <li><a href="#stresstest">Stress-Test Summary</a></li>
+    <li><a href="#watch">Strategic Watch List</a></li>
+  </ol>
+</nav>
+
+<h2 id="hypotheses">1. Three Hypotheses About Smith</h2>
+
+<p>The central analytical question is what Premier Danielle Smith is actually doing with the sovereignty referendum. Three competing hypotheses explain her behaviour. <span class="evidence-badge strong">STRONG</span></p>
+
+<h3>Hypothesis 1: Credible-Threat Federalism</h3>
+<p>Smith uses the separation threat as a bargaining instrument to extract concessions from Ottawa &mdash; pipeline approvals, emissions cap removal, energy framework reform &mdash; without intending to follow through on independence. The referendum is the threat; the concession is the payoff; the No vote is the planned outcome. The $400B cost estimate is both a deterrent for Alberta voters (ensuring a No result) and a negotiating weapon aimed at Ottawa.</p>
+
+<h3>Hypothesis 2: Genuine Separatism</h3>
+<p>Smith actually wants Alberta independence and is building toward it methodically. The Remain positioning is strategic patience, not the end state. Evidence against this hypothesis is strong: the $400B number, the Remain positioning, the August costing document, and the &ldquo;referendum on a referendum&rdquo; design all work against a Yes outcome. If she wanted independence, she would not be building the case against it.</p>
+
+<h3>Hypothesis 3: Right-Flank Management</h3>
+<p>Smith is managing the UCP&rsquo;s right flank against the Wildrose Independence Party (WIP) and the Take Back Alberta (TBA) network. The referendum is a valve: by co-opting the separatist issue, she prevents the WIP from splitting the conservative vote in 2027. This is the Cameron/UKIP parallel &mdash; with the critical difference that Smith designed a process question Cameron lacked.</p>
+
+<div class="callout">
+  <p><strong>Assessment:</strong> The evidence most strongly supports a compound of Hypotheses 1 and 3. The November 2025 MOU is the proof that the credible-threat strategy already produced material concessions. The referendum design is the proof that Smith intends to control the outcome. Hypothesis 2 is a low-probability tail risk &mdash; but the analysis must model what happens if Smith loses control, regardless of her intent.</p>
+</div>
+
+<p>The UCP red team argues this assessment underestimates Smith&rsquo;s sophistication: &ldquo;The MOU is not the means to an end. The MOU is the end.&rdquo; The referendum was always the cost of maintaining the threat long enough for it to work. The APP red team argues the framing inverts reality: the movement forced a referendum Smith did not want, and she is scrambling to control the outcome. Both critiques have merit; they reflect different vantage points on the same set of facts.</p>
+
+<h3>The Cameron/Brexit Parallel</h3>
+
+<p>The Cameron comparison is the most contested element of the analysis. The structural parallels are real: both leaders called referendums to manage right-flank pressure. Both expected to win. Both used the referendum as a valve for populist energy within their party. <span class="evidence-badge strong">STRONG</span></p>
+
+<p>The structural differences are equally real and potentially more significant:</p>
+
+<table>
+  <thead>
+    <tr><th>Dimension</th><th>Cameron</th><th>Smith</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Question design</td><td>Binary Remain/Leave (Electoral Commission)</td><td>37-word process question (Smith designed)</td></tr>
+    <tr><td>Remain positioning</td><td>Announced after Feb 2016 renegotiation (4 months pre-vote)</td><td>Announced May 2026 televised address (5 months pre-vote)</td></tr>
+    <tr><td>Fallback for Yes</td><td>None &mdash; Cameron resigned the morning after</td><td>Process mandate only &mdash; years of negotiation she controls</td></tr>
+    <tr><td>Polling lead</td><td>8-10 points pre-campaign</td><td>25 points on ballot question (60/35)</td></tr>
+    <tr><td>Concessions secured</td><td>Minimal EU renegotiation</td><td>Pipeline, scrapped emissions cap, suspended electricity regs</td></tr>
+  </tbody>
+</table>
+
+<p>The UCP red team argues these differences make Cameron a false analogy: &ldquo;Cameron was playing Russian roulette with one empty chamber. Smith designed a gun that fires blanks.&rdquo; The federal red team argues the parallel is more apt than it appears because the process framing amplifies the protest-vote mechanism that produced the Brexit shock. The analysis holds both positions: the structural differences are real and significant, but they do not eliminate the protest-vote risk.</p>
+
+<h3>The Escalate-Then-Moderate Cadence</h3>
+
+<p>Smith&rsquo;s trajectory follows the game-theoretic prediction: escalate to build credibility, then moderate to collect the concession. Sovereignty Act (2022) to referendum questions (February 2026) to Q10 announcement (May 2026) to Remain positioning (same day) to $400B cost estimate (June 2026) to August costing document (forthcoming) to summer Remain campaign tour. The cadence produced the payoff before the vote: the November 2025 MOU.</p>
+
+<h2 id="polling">2. Polling Synthesis &amp; Trajectory</h2>
+
+<p>Six independent polling firms have measured Alberta separation support since late 2025. The trajectory is declining, but the rate of decline and the absolute level depend on question wording. <span class="evidence-badge strong">STRONG</span></p>
+
+<table>
+  <thead>
+    <tr><th>Firm</th><th>Date</th><th>n (AB)</th><th>Method</th><th>MOE</th><th>Support</th><th>Notes</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Ipsos</td><td>Nov 2019</td><td>&mdash;</td><td>Online</td><td>&mdash;</td><td>33%</td><td>Historic high post-Trudeau re-election</td></tr>
+    <tr><td>Pollara</td><td>Dec 2025</td><td>3,800 WC</td><td>Online</td><td>&mdash;</td><td>19%</td><td>Western Canada poll</td></tr>
+    <tr><td>Ipsos</td><td>Jan 9&ndash;14, 2026</td><td>500</td><td>Online</td><td>+/-5.4pp</td><td>28&ndash;29%</td><td>Confederation Stress Test</td></tr>
+    <tr><td>Angus Reid</td><td>Feb 2&ndash;6, 2026</td><td>979</td><td>Online panel</td><td>+/-3pp</td><td>29% (8% definitely)</td><td>Simple leave/stay</td></tr>
+    <tr><td>Pollara</td><td>Mar 16&ndash;25, 2026</td><td>3,200</td><td>Online</td><td>+/-1.7pp</td><td>27%</td><td>5-year high; protest vote finding</td></tr>
+    <tr><td>Janet Brown</td><td>Apr 7&ndash;22, 2026</td><td>1,200</td><td>Hybrid phone</td><td>+/-2.8pp</td><td>27%</td><td>Only phone-based poll</td></tr>
+    <tr><td>Angus Reid</td><td>May 22&ndash;24, 2026</td><td>800</td><td>Online panel</td><td>+/-3.5pp</td><td><strong>35% (ballot Q)</strong> / 30% (simple)</td><td>Question design +5pp</td></tr>
+    <tr><td>Ipsos</td><td>May 28&ndash;Jun 1, 2026</td><td>600</td><td>Online</td><td>+/-4.9pp</td><td><strong>18%</strong></td><td>10-point drop from January</td></tr>
+  </tbody>
+</table>
+
+<h3>Key Trajectory Findings</h3>
+
+<p><strong>On direct questions:</strong> support declined from 28-29% (Jan 2026) to 18% (June 2026). This 10-point drop on Ipsos&rsquo;s consistent methodology is statistically significant and represents the most important empirical finding in the dataset. <span class="evidence-badge strong">STRONG</span></p>
+
+<p><strong>On the ballot question:</strong> 35% (Angus Reid, May 2026). This is the operationally relevant figure because it measures response to the actual question voters will face. The 5-point gap between the simple question (30%) and the ballot question (35%) is the measured question design effect. <span class="evidence-badge strong">STRONG</span></p>
+
+<p><strong>The Ipsos/Angus Reid divergence:</strong> The 17-point gap between 18% and 35% in late May 2026 likely reflects different question instruments rather than contradictory realities. The Ipsos question is direct; the Angus Reid question is the actual ballot text. Both are methodologically sound. The Angus Reid figure is the planning baseline for the October 19 vote. <span class="evidence-badge moderate">MODERATE</span></p>
+
+<h3>Cost-Exposure Effect</h3>
+
+<p>The Ipsos Confederation Stress Test (January 2026) provided the foundational finding: among initial Yes voters, 56% remained committed after exposure to five challenging conditions (standard of living decline, pension losses, trade renegotiations). 25% were conditional. 19% were symbolic. This produces a cost-resilient floor of 15-16% of all Albertans (56% of 29%). <span class="evidence-badge strong">STRONG</span></p>
+
+<div class="warning-box">
+  <p><strong>Methodological caution:</strong> The separatist sub-sample in the Ipsos stress test was only n=153 (unweighted). The credibility interval on the 56/25/19 split is +/-8-10pp. The 15-16% floor is an estimate, not a precise figure.</p>
+</div>
+
+<h2 id="question">3. The Question as Political Technology</h2>
+
+<div class="question-box">
+  <span class="label">Question 10 &mdash; Smith&rsquo;s Government Question (37 words)</span>
+  &ldquo;Should Alberta remain a province of Canada or should the Government of Alberta commence the legal process required under the Canadian Constitution to hold a binding provincial referendum on whether or not Alberta should separate from Canada?&rdquo;
+</div>
+
+<p>The question is <strong>not a separation question</strong>. It asks whether to begin a constitutional process toward a future binding vote. Both Smith and Carney acknowledge the Clarity Act does not apply. Smith called it &ldquo;not a Clarity Act question, it&rsquo;s not binding.&rdquo; Carney said his council of experts confirmed the Act does not apply. <span class="evidence-badge strong">STRONG</span></p>
+
+<h3>Comparative Question Design</h3>
+
+<table>
+  <thead>
+    <tr><th>Referendum</th><th>Question Type</th><th>Result</th><th>Lesson</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Quebec 1980</td><td>Sovereignty-association mandate (indirect)</td><td>40% Yes</td><td>Indirect framing did not reach majority</td></tr>
+    <tr><td>Quebec 1995</td><td>Partnership offer (conditional)</td><td>49.4% Yes</td><td>Conditional framing came within 1% of victory</td></tr>
+    <tr><td>Scotland 2014</td><td>Direct (&ldquo;Should Scotland be independent?&rdquo;)</td><td>44.7% Yes</td><td>Simple question produced clear result</td></tr>
+    <tr><td>Brexit 2016</td><td>Direct (Remain/Leave)</td><td>51.9% Leave</td><td>Binary question produced irreversible mandate</td></tr>
+    <tr><td>Alberta 2026</td><td>Process question (&ldquo;commence legal process&rdquo;)</td><td>TBD (35% on AR)</td><td>Process framing immunizes from Clarity Act</td></tr>
+  </tbody>
+</table>
+
+<p>The APP&rsquo;s original question &mdash; &ldquo;Do you agree that the Province of Alberta should cease to be a part of Canada to become an independent state?&rdquo; &mdash; was direct, clear, and modelled on international best practice. It was quashed by court (Sylvestre, December 2025). The government then passed Bill 14 (December 11, 2025) and designed the 37-word replacement. 51% of Albertans find the replacement confusing (Angus Reid, May 2026). 58% believe Smith&rsquo;s only reason for calling the referendum is to appease separatists within the UCP. <span class="evidence-badge strong">STRONG</span></p>
+
+<h3>The Dual Function</h3>
+
+<p>The question serves Smith&rsquo;s strategic objectives under every outcome:</p>
+
+<ul>
+  <li><strong>Strong No:</strong> &ldquo;Albertans rejected separation democratically. I campaigned for Remain. I delivered.&rdquo;</li>
+  <li><strong>Narrow No:</strong> &ldquo;Albertans sent a message. I heard them. I already have the MOU. I will continue fighting for Alberta within Canada.&rdquo;</li>
+  <li><strong>Surprise Yes:</strong> &ldquo;The people have spoken. I will manage the constitutional process responsibly&rdquo; &mdash; which means years of negotiation she controls, a second referendum she designs, and a Clarity Act engagement she shapes.</li>
+</ul>
+
+<p>There is no outcome that produces a Cameron-style resignation. The question was designed to eliminate that possibility.</p>
+
+<h3>The 10-Question Ballot Context</h3>
+
+<p>Q10 is one of ten questions on the October 19 ballot. Questions 1-5 cover immigration policy. Questions 6-9 address constitutional amendments (court appointments, Senate abolition, provincial opt-out, provincial paramountcy). Smith told a UCP dinner audience to &ldquo;vote to remain, and then vote yes to the other nine questions.&rdquo; The separation question is the one question designed to fail. A 70-30 Yes result on Q1-5 (immigration) gives Smith a democratic mandate for further federal devolution regardless of Q10&rsquo;s outcome. The referendum is a package; the separation question is the least important piece from Smith&rsquo;s perspective.</p>
+
+<p>The federal red team identifies a risk the UCP strategist calls a benefit: the nine grievance-coded questions prime the electorate for an anti-Ottawa response before they reach Q10. Whether the 10-question format dilutes or amplifies the separation question depends on which effect dominates: ballot fatigue (reduces engagement with Q10) or ballot priming (channels anti-Ottawa sentiment toward Q10). This interaction has no precedent in the sovereignty referendum literature.</p>
+
+<h3>Legal Context</h3>
+
+<p>Two court decisions shape the referendum environment. <em>Sylvestre</em> (December 2025) found the proposed independence question contravenes Treaty 7 and Treaty 8. <em>Athabasca</em> (May 2026) quashed the APP&rsquo;s petition and found the Crown &ldquo;acted dishonourably&rdquo; in failing to consult First Nations. Both are lower-court decisions subject to appeal. Bill 14, passed six days after Sylvestre, attempted to remove constitutional compliance requirements from the Citizens Initiative Act. The Athabasca court found Bill 14&rsquo;s transitional provisions insufficient but did not rule on its overall constitutionality. The appeal, if heard before October 19, could reshape the legal landscape.</p>
+
+<h2 id="coalition">4. Coalition Math &amp; Denominator Discipline</h2>
+
+<p>Every number in this analysis requires a denominator. The failure to specify denominators produces the most common distortion in referendum commentary. <span class="evidence-badge strong">STRONG</span></p>
+
+<table>
+  <thead>
+    <tr><th>Claim</th><th>Numerator</th><th>Denominator</th><th>Translated to All AB</th><th>Source</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>&ldquo;57% of UCP supporters back independence&rdquo;</td><td>UCP Leave supporters</td><td>UCP supporters (~49% decided voters)</td><td>~28% of decided Albertans</td><td>Angus Reid Feb / Janet Brown Apr / Pollara Mar 2026</td></tr>
+    <tr><td>&ldquo;UCP supporters now 41% Leave&rdquo;</td><td>UCP Leave supporters (June)</td><td>UCP supporters</td><td>~20% of decided Albertans</td><td>Ipsos Jun 2026</td></tr>
+    <tr><td>&ldquo;8% definitely leave&rdquo;</td><td>Definite Leave voters</td><td>All Albertan adults</td><td>8%</td><td>Angus Reid Feb 2026</td></tr>
+    <tr><td>&ldquo;35% Commence on ballot Q&rdquo;</td><td>Commence voters</td><td>All AB adults (incl undecided)</td><td>35%</td><td>Angus Reid May 2026</td></tr>
+    <tr><td>&ldquo;69% say separatists won&rsquo;t accept No&rdquo;</td><td>Agree with statement</td><td>All AB adults</td><td>69% (83% among Stay voters)</td><td>Angus Reid May 2026</td></tr>
+  </tbody>
+</table>
+
+<p><strong>Critical finding:</strong> 57% of UCP supporters translates to approximately 28% of all Albertans &mdash; close to the polling baseline. The UCP base figure inflates the appearance of support because UCP supporters are only about half the electorate. And the figure is declining: June 2026 Ipsos shows the UCP base split at 50% stay / 41% separate.</p>
+
+<h2 id="demographics">5. Demographic Walls &mdash; What Holds and What Doesn&rsquo;t</h2>
+
+<p>The following demographic breakdowns are from Angus Reid (May 22-24, 2026, n=800, +/-3.5pp) on the actual ballot question, supplemented by 338Canada analysis. <span class="evidence-badge strong">STRONG</span></p>
+
+<table>
+  <thead>
+    <tr><th>Segment</th><th>Remain</th><th>Leave / Commence</th><th>Undecided</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>All Alberta</td><td>60%</td><td>35%</td><td>5%</td></tr>
+    <tr><td>Calgary</td><td>58%</td><td>35%</td><td>7%</td></tr>
+    <tr><td>Edmonton</td><td>73%</td><td>22%</td><td>8%</td></tr>
+    <tr><td>Rest of Alberta</td><td><strong>48%</strong></td><td><strong>48%</strong></td><td>4%</td></tr>
+    <tr><td>Female</td><td>64%</td><td>31%</td><td>5%</td></tr>
+    <tr><td>Male</td><td>56%</td><td>39%</td><td>5%</td></tr>
+    <tr><td>Age 18&ndash;34</td><td>64%</td><td>27%</td><td>9%</td></tr>
+    <tr><td>Age 35&ndash;54</td><td>65%</td><td>34%</td><td>1%</td></tr>
+    <tr><td><strong>Age 55+</strong></td><td><strong>51%</strong></td><td><strong>43%</strong></td><td><strong>6%</strong></td></tr>
+    <tr><td>UCP voters</td><td>30%</td><td>64%</td><td>&mdash;</td></tr>
+    <tr><td>NDP voters</td><td>90%</td><td>&mdash;</td><td>&mdash;</td></tr>
+  </tbody>
+</table>
+
+<h3>The Gender Wall (HOLDS)</h3>
+<p>Women support Commence at 31% versus men at 39% &mdash; an 8-point gap. No current condition suggests breach. The Leave campaign lacks a charismatic figure who speaks to women&rsquo;s economic concerns, and federal program dependency (health transfers, child benefits) disproportionately affects women.</p>
+
+<h3>The &ldquo;Senior Wall&rdquo; (REVERSED)</h3>
+<p>The concept brief assumed 55+ would oppose separation due to CPP/OAS vulnerability. The data shows the opposite: 55+ are the <em>most</em> pro-Commence cohort at 43%, while 18-34 are the <em>least</em> at 27%. What exists is a <strong>youth wall</strong>, not a senior wall. Possible explanations: generational memory of the NEP, accumulated grievance over a longer lifetime of perceived federal overreach, and greater financial security that reduces economic vulnerability to separation costs.</p>
+
+<h3>The Urban/Rural Divide (CRITICAL)</h3>
+<p>Edmonton is a fortress at 73% Remain. Calgary is solidly Remain at 58%. Rest of Alberta is <strong>tied at 48/48</strong> &mdash; and this is the campaign battleground. Rural Alberta represents approximately 34% of the electorate. If the Leave campaign concentrates resources there, a 5-10 point rural swing combined with any Calgary erosion moves the province-wide number toward the danger zone. <span class="evidence-badge moderate">MODERATE</span></p>
+
+<h3>Turnout Modeling</h3>
+
+<p>There is no Alberta stand-alone referendum precedent. Turnout estimates draw on comparators: Quebec 1980 (85.6%), Quebec 1995 (93.5%), Scotland 2014 (84.6%), Brexit 2016 (72.2%), Alberta 2023 provincial election (61%). Three scenarios: <span class="evidence-badge inferred">INFERRED</span></p>
+
+<ul>
+  <li><strong>High turnout (80%+):</strong> Benefits Remain. Brings in infrequent voters who are disproportionately younger and urban. This scenario requires existential-stakes salience.</li>
+  <li><strong>Moderate turnout (65-75%):</strong> Uncertain. Similar to Brexit. Effects depend on what drives turnout: grievance issues (immigration, sovereignty) mobilize Leave-sympathetic voters; governance issues mobilize the Remain base.</li>
+  <li><strong>Low turnout (55-65%):</strong> Benefits Commence. The motivated 8% hardcore turns out at near-100%. Complacent Remain voters stay home. The effective electorate shifts older, more rural, and more male &mdash; all pro-Commence demographics.</li>
+</ul>
+
+<p>The 10-question ballot introduces a novel variable. Questions 1-9 (immigration, constitutional reform) may increase overall turnout by activating grievance-motivated voters. But this selectively mobilizes the demographic most sympathetic to Commence on Q10: older, conservative, rural voters angry about federal policy. The ballot-composition mobilization effect is a &ldquo;sleeper risk&rdquo; identified by the federal red team. No research stream formally models it.</p>
+
+<h3>The Motivation Shift</h3>
+
+<p>Among remaining separation supporters (18%, Ipsos June 2026), the stated motivation has shifted: 61% now cite &ldquo;a better future outside Canada&rdquo; (up from 39% in January); 39% cite &ldquo;historic mistreatment&rdquo; (down from 55%). The MOU is draining grievance-based supporters. The remaining supporters are increasingly forward-looking visionaries and identity-driven hardcores &mdash; populations that are smaller but more resistant to any campaign or concession. <span class="evidence-badge strong">STRONG</span></p>
+
+<h2 id="protest">6. The Protest-Vote Wildcard</h2>
+
+<div class="danger-box">
+  <p><strong>The single most dangerous variable in the dataset.</strong> Pollara (March 2026, n=3,200, +/-1.7pp) found that 21% of Remain voters would consider voting Leave &ldquo;to send a message to Ottawa.&rdquo; Men under 50 were most likely (33%). This replicates the exact dynamic that produced the Brexit shock. <span class="evidence-badge strong">STRONG</span></p>
+</div>
+
+<h3>Protest-Vote Arithmetic on the Ballot-Question Baseline</h3>
+
+<p>The federal red team correctly identified that the original protest-vote arithmetic was run on the wrong baseline. Using the operationally relevant Angus Reid ballot-question baseline (60% Remain, 35% Commence):</p>
+
+<table>
+  <thead>
+    <tr><th>Conversion Rate</th><th>Protest Voters Switching</th><th>New Commence %</th><th>Assessment</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Full (21% of Remain)</td><td>12.6pp</td><td><strong>47.6%</strong></td><td>Within error bars of 50%</td></tr>
+    <tr><td>Three-quarters (15.75%)</td><td>9.5pp</td><td><strong>44.5%</strong></td><td>Narrow No territory</td></tr>
+    <tr><td>Half (10.5%)</td><td>6.3pp</td><td><strong>41.3%</strong></td><td>Neverendum activation</td></tr>
+    <tr><td>One-third (7%)</td><td>4.2pp</td><td><strong>39.2%</strong></td><td>Moral victory for Leave</td></tr>
+    <tr><td>One-quarter (5.25%)</td><td>3.2pp</td><td><strong>38.2%</strong></td><td>Strong No maintained</td></tr>
+  </tbody>
+</table>
+
+<p>The &ldquo;referendum on a referendum&rdquo; framing is the mechanism that converts protest-vote intention into action. Voters can tell themselves a Commence vote merely starts a conversation. The perceived cost drops to near zero. This is precisely the logic that produced the Brexit shock: voters treated Leave as a cost-free protest because they expected Remain to win.</p>
+
+<p>Smith&rsquo;s counter-measures: the $400B figure, the August costing document, the summer Remain tour, the BMO Centre speech, and the cross-partisan Remain coalition (Poilievre, Harper, Kenney, Toews, Solberg) are all designed to suppress protest-vote conversion. The UCP red team concedes this is the one number that concerns them: &ldquo;protest voting is psychologically driven and not fully susceptible to rational counter-argument.&rdquo;</p>
+
+<h3>Risk Factor Summary</h3>
+
+<table>
+  <thead>
+    <tr><th>Factor</th><th>Probability</th><th>Magnitude</th><th>Direction</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Protest-vote activation (half conversion)</td><td>MODERATE</td><td>+6.3pp</td><td>Commence</td></tr>
+    <tr><td>August costing document (credible)</td><td>HIGH</td><td>-3 to -5pp</td><td>Remain</td></tr>
+    <tr><td>Turnout asymmetry (differential abstention)</td><td>MODERATE</td><td>+2 to +3pp</td><td>Commence</td></tr>
+    <tr><td>Rural Alberta swing (5-10pp)</td><td>MODERATE</td><td>+1.5 to +3pp province-wide</td><td>Commence</td></tr>
+    <tr><td>External shock (oil, tariffs, pipeline)</td><td>LOW</td><td>+5 to +10pp</td><td>Commence</td></tr>
+    <tr><td>Charismatic Leave leader emergence</td><td>LOW</td><td>+5 to +10pp</td><td>Commence</td></tr>
+    <tr><td>Cross-party Remain campaign</td><td>HIGH</td><td>-2 to -4pp</td><td>Remain</td></tr>
+    <tr><td>Centurion scandal (Leave GOTV suppressed)</td><td>HIGH</td><td>-1 to -2pp</td><td>Remain</td></tr>
+    <tr><td>10-question ballot priming</td><td>UNCERTAIN</td><td>+1 to +3pp</td><td>Commence</td></tr>
+  </tbody>
+</table>
+
+<h3>The Combined Tail-Risk Scenario</h3>
+
+<p>The most important unmodeled risk is simultaneous activation of multiple factors. Using the ballot-question baseline (60/35): <span class="evidence-badge inferred">INFERRED</span></p>
+
+<div class="callout">
+  <p>35% baseline + 6.3pp (protest vote at half) + 2pp (turnout asymmetry) + 1.5pp (rural swing) + 1pp (condescension backfire) - 3pp (Smith counter-measures) = <strong>42.8%</strong></p>
+  <p>A Narrow No that activates the neverendum. Not a majority, but close enough to generate political momentum. Each individual assumption is documented and plausible. The combined probability is lower than any component, but it is not negligible.</p>
+</div>
+
+<p>For Commence to reach 50%+1, an additional 7-8pp beyond this combined scenario would be required. That would need an external shock, a charismatic Leave leader, or protest-vote activation at three-quarters rather than half conversion. The probability is low. The consequence is a constitutional crisis for which no institutional actor is prepared.</p>
+
+<h2 id="identity">7. Identity Core &amp; the Movement</h2>
+
+<h3>The Two-Layer Model</h3>
+<p>Separation support consists of two analytically distinct populations:</p>
+<ul>
+  <li><strong>Identity core (8-16%):</strong> Driven by producer identity, accumulated grievance (NEP, carbon tax, equalization), and cultural alienation from federal institutions. Impervious to economic argument. Rath&rsquo;s &ldquo;who cares&rdquo; rhetoric is the authentic voice of this cohort.</li>
+  <li><strong>Economic persuadables (12-20%):</strong> Support separation when framed as a grievance issue but abandon it when costs are surfaced. The 28% to 15-16% drop in the Ipsos stress test captures this population&rsquo;s departure.</li>
+</ul>
+
+<h3>The 8% in Comparative Perspective</h3>
+<p>Alberta&rsquo;s 8% irreducible core (Angus Reid, &ldquo;definitely leave&rdquo;) is the smallest in the comparator set: Quebec ~10-12%, Scotland ~25-30%, Catalonia ~35%. The smaller core is consistent with the absence of a linguistic/cultural dimension. But 8% of Alberta&rsquo;s adult population represents approximately 250,000 people &mdash; a politically significant constituency. <span class="evidence-badge strong">STRONG</span></p>
+
+<h3>The Fiscal Case</h3>
+<p>The strongest factual basis for the separatist argument is the fiscal transfer imbalance: $14-20B annually flows from Alberta to Ottawa and does not return proportionally. Federal per-capita spending: $1,250 in Alberta versus $5,548 in Nova Scotia. The APP red team argues this is arithmetic, not grievance: &ldquo;a family of four in Red Deer is sending $14,000-20,000 per year to Ottawa that does not come back. That is not symbolic. That is a second mortgage.&rdquo; <span class="evidence-badge strong">STRONG</span></p>
+
+<h3>The Grievance Taxonomy</h3>
+
+<p>Western alienation is not a single grievance. It is a portfolio of policy disputes, each with different substantive legitimacy, that has been accumulated and transmuted into a unified identity narrative over four decades:</p>
+
+<ul>
+  <li><strong>NEP (1980):</strong> Founding trauma. Real economic harm from federal pricing intervention. Substantive legitimacy: HIGH.</li>
+  <li><strong>Carbon tax (2019-):</strong> National policy with disproportionate impact on Alberta&rsquo;s primary industry. Substantive legitimacy: MODERATE.</li>
+  <li><strong>Tanker ban / C-48 (2019):</strong> Blocked Pacific pipeline access. Substantive legitimacy: HIGH.</li>
+  <li><strong>Equalization:</strong> Formula applies neutrally to fiscal capacity, but the effect is a $3B/year direct transfer. Substantive legitimacy: MODERATE.</li>
+  <li><strong>Federal spending gap:</strong> $1,250 per capita in Alberta versus $5,548 in Nova Scotia. Substantive legitimacy: HIGH.</li>
+  <li><strong>Total fiscal transfer:</strong> $14-20B annually. The strongest factual basis for the separatist argument.</li>
+</ul>
+
+<p>The $400B cost estimate and the $6B APP counter-estimate bracket the costing war. Neither is an analytical estimate; both are political instruments. The $400B assumes the negotiating position most unfavorable to Alberta ($170B debt share, maximum trade disruption). The $6B assumes the most favorable (minimal transition, immediate fiscal benefit from retained transfers). The true figure depends on negotiating outcomes that cannot be predicted.</p>
+
+<h3>APP Organizational Capacity</h3>
+<p>The Alberta Prosperity Project, founded February 2022, is the movement&rsquo;s formal vehicle. CEO Mitch Sylvestre (Bonnyville sporting goods owner, UCP constituency president). Legal counsel Jeffrey Rath (Law Society reprimand November 2025, $235K cost order, &ldquo;who cares&rdquo; rhetoric). Former CEO Dennis Modry resigned February 2024 amid $1.3M court judgment for misappropriated funds. Claims ~2,000 canvassers and 66,000+ volunteers. Collected 301,620 petition signatures (threshold: ~178,000). Campaign arm Stay Free Alberta is now the active public-facing entity. <span class="evidence-badge strong">STRONG</span></p>
+
+<p>The APP red team argues the analysis leads with the movement&rsquo;s weaknesses rather than its achievements. The 301,620 petition signatures represent a mobilization achievement that exceeded expectations. The 66,000 volunteer claim, even if inflated, indicates organizational reach across the province. The counter-petition (Forever Canadian, 404,293 verified signatures) demonstrates mobilization on the Remain side as well, but the APP&rsquo;s achievement should be acknowledged as evidence of genuine grassroots capacity.</p>
+
+<h3>The &ldquo;Proud Canadian&rdquo; Paradox</h3>
+
+<p>Pollara found 84% of Albertans identify as &ldquo;proud to be Canadian&rdquo; &mdash; including 58% of those who would vote to separate. Alberta separatism is not anti-Canadian nationalism. It is frustrated patriotism: &ldquo;we want Canada to treat us fairly, and if it won&rsquo;t, we will leave.&rdquo; This distinguishes Alberta from Quebec (where sovereignty is grounded in a distinct national identity) and aligns more closely with Scotland (where independence sentiment coexists with British identity).</p>
+
+<h3>US Foreign Interference Dimension</h3>
+<p>APP met US State Department officials at least 3 times (April 2025 &ndash; January 2026). US Treasury Secretary Bessent expressed support. Steve Bannon publicly endorsed Alberta independence. Planned Treasury/State meeting regarding a &ldquo;half trillion credit mechanism upon achieving independence.&rdquo; Canada called this &ldquo;a violation of sovereignty and foreign interference.&rdquo; Separate from Russian covert influence operations (Storm-1516, Pravda News Network content surge) documented by DisinfoWatch (May 6, 2026). <span class="evidence-badge strong">STRONG</span></p>
+
+<p>The APP red team argues the US meetings should be analyzed separately from Russian covert operations. The APP&rsquo;s engagement with US officials is overt, on-record, and consistent with how sub-national movements interact with foreign governments (SNP met EU officials; PQ maintained quasi-diplomatic offices). Placing it under a &ldquo;foreign interference&rdquo; umbrella adopts the federal government&rsquo;s framing. The analysis notes both dimensions while distinguishing their character: US engagement is overt political support; Russian operations are covert influence aimed at amplifying existing divisions.</p>
+
+<h3>The Movement&rsquo;s Theory of Change</h3>
+
+<p>The APP red team argues the analysis should treat the movement as a strategic actor with its own theory of change, not merely as a variable in Smith&rsquo;s decision calculus. From the movement&rsquo;s perspective: the 301,620 petition signatures represent five years of organizing under hostile conditions. The courts blocked the question, the CEO rejected it, the government changed the law. Smith added Q10 because the movement forced her hand. The fiscal transfer gap ($14-20B annually) is the strongest factual basis for independence and grows every year. Quebec went from 40% to 49.4% in 15 years. Alberta&rsquo;s base (27-35%) has room to grow. The movement needs a credible leadership cadre, a peer-reviewed economic case, and a women&rsquo;s economic message. None of these exist today. All could emerge. <span class="evidence-badge moderate">MODERATE</span></p>
+
+<h2 id="federal">8. Federal Counter-Strategy &amp; the MOU</h2>
+
+<h3>The November 2025 MOU</h3>
+<p>The centrepiece of the federal counter-strategy is the Memorandum of Understanding signed November 27, 2025 &mdash; the single largest federal energy concession in a generation. <span class="evidence-badge strong">STRONG</span></p>
+
+<p><strong>What Ottawa gave up:</strong></p>
+<ul>
+  <li>New bitumen pipeline to BC coast (1M+ barrels/day), designated &ldquo;national interest&rdquo;</li>
+  <li>Federal Oil and Gas Emissions Cap scrapped entirely</li>
+  <li>Clean Electricity Regulations suspended in Alberta</li>
+  <li>Implementation Agreement signed May 15, 2026 with construction timeline (as early as September 1, 2027)</li>
+  <li>Environment Minister Guilbeault resigned over the deal</li>
+</ul>
+
+<p><strong>What Ottawa got:</strong></p>
+<ul>
+  <li>Alberta increases industrial carbon levy to $130/tonne by 2035, $140/tonne by 2040</li>
+  <li>Major carbon-capture project commitment</li>
+  <li>Implicit agreement that Smith campaigns for Remain</li>
+</ul>
+
+<h3>The Moral Hazard Problem</h3>
+<p>The MOU creates a precedent: threaten separation, get a pipeline. Saskatchewan&rsquo;s Prosperity Project is already active. The PQ met APP leaders in September 2025. If every province threatens to leave and gets special treatment, the federation becomes a hostage negotiation. This is Ottawa&rsquo;s problem, not Smith&rsquo;s. <span class="evidence-badge moderate">MODERATE</span></p>
+
+<h3>Clarity Act Non-Application</h3>
+<p>Carney (May 26, 2026): &ldquo;I just heard from the council of experts on the applicability of the Clarity Act and it does not apply on the question.&rdquo; The rationale: Q10 is a process question, not a separation question. This pre-emptive surrender leaves no federal mechanism if Commence reaches 40%+. The federal red team argues this is a gamble: the &ldquo;fight the second referendum when it arrives&rdquo; bet assumes the second question will be subject to the Act, but Smith has already demonstrated that process-framing can circumvent it. <span class="evidence-badge moderate">MODERATE</span></p>
+
+<h3>Historical Federal Responses</h3>
+
+<p>Carney&rsquo;s approach is historically distinctive. Trudeau Sr. (1980) fought hard and won with 60%. Chretien (1995) nearly lost and scrambled with last-minute Unity Rallies. Mulroney&rsquo;s accommodation (Meech Lake, Charlottetown) failed. Carney combines accommodation (the MOU&rsquo;s energy concessions) with confrontation (the &ldquo;dangerous bluff&rdquo; framing). The accommodation has worked: separation support declined from 28% to 18% on Ipsos&rsquo;s consistent methodology. Whether the confrontation backfires depends on whether Alberta voters perceive &ldquo;dangerous bluff&rdquo; as legitimate concern or as federal condescension.</p>
+
+<h3>The Condescension Risk</h3>
+
+<p>The &ldquo;dangerous bluff&rdquo; characterization risks confirming the separatist narrative that Ottawa does not take Alberta&rsquo;s grievances seriously. Monte Solberg (Vote to Stay): &ldquo;Albertans don&rsquo;t feel respected... and when you don&rsquo;t feel respected, you look for alternatives.&rdquo; The stress test flags this as a CONDITIONAL scenario: the analysis identifies the vulnerability but does not model its magnitude. How many voters could the condescension dynamic push from soft-Remain to protest-Commence? The 21% protest-vote figure may itself be partly driven by the &ldquo;not taken seriously&rdquo; dynamic.</p>
+
+<h3>Other Provinces</h3>
+
+<table>
+  <thead>
+    <tr><th>Premier</th><th>Position</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Doug Ford (ON)</td><td>Against: &ldquo;I&rsquo;d never do it... a disaster for Alberta&rdquo;</td></tr>
+    <tr><td>David Eby (BC)</td><td>Against: &ldquo;A reckless decision&rdquo;</td></tr>
+    <tr><td>Scott Moe (SK)</td><td>Supports Smith&rsquo;s right; against separation</td></tr>
+    <tr><td>PQ leader Plamondon (QC)</td><td>Supports Alberta independence; pledged recognition</td></tr>
+  </tbody>
+</table>
+
+<p>National polling (Angus Reid): 80% of Canadians outside Alberta want Alberta to remain. The cross-party Remain coalition (Carney, Poilievre, Harper campaigning together) eliminates the partisan dimension and denies the Leave campaign the ability to frame the referendum as a left-right fight.</p>
+
+<h3>The Campaign Landscape</h3>
+
+<p>The organizational asymmetry heavily favours Remain. The pro-Remain side has Premier Smith (unlimited government advertising, summer tour, BMO Centre speech), Forever Canadian (Lukaszuk, 404,293 verified signatures), Vote to Stay (Solberg, $607K spending limit, includes Kenney and Toews), Lead Not Leave (Boessenkool, Tombe, Dinning, Leach), the Alberta NDP (Nenshi, &ldquo;For Alberta, For Canada&rdquo;), and both federal parties (Carney and Poilievre pledging to campaign for Remain). <span class="evidence-badge strong">STRONG</span></p>
+
+<p>The pro-separation side faces headwinds: APP petition quashed, leadership credibility problems (Rath disciplinary record, Modry $1.3M judgment), Centurion voter data scandal (three investigations, Parker non-cooperative), WIP leaderless with no seats, and no funded campaign infrastructure. The Leave side&rsquo;s strength is grassroots: 66,000+ claimed volunteers, 301,620 petition signatures demonstrating mobilization capacity, and the emotional resonance of western alienation. Its weakness is institutional: no credible spokesperson who can match Smith, no funded advertising campaign, no plan for governing if Commence wins.</p>
+
+<h3>The Legal Environment</h3>
+
+<p>Two court decisions shape the legal landscape. <em>Sylvestre</em> (December 2025): separation contravenes Treaty 7 and Treaty 8. <em>Athabasca</em> (May 2026): petition quashed, Crown &ldquo;acted dishonourably&rdquo; in failing to consult First Nations. Bill 14, passed six days after Sylvestre, attempted to remove constitutional compliance requirements but the Athabasca court found its transitional provisions insufficient. Both are lower-court decisions. The appeal of Athabasca, if heard before October 19, could reshape the legal landscape. The SCC Secession Reference (1998) establishes that no province has a unilateral right to secede but the federal government has an obligation to negotiate after a &ldquo;clear majority on a clear question.&rdquo; Whether the 37-word conditional question satisfies &ldquo;clear question&rdquo; is untested.</p>
+
+<h3>The Planning Gap</h3>
+
+<p>The federal red team identifies the absence of institutional contingency planning as a force multiplier for the tail risk. No major actor has a detailed plan for a Commence majority: <span class="evidence-badge moderate">MODERATE</span></p>
+
+<ul>
+  <li><strong>Smith:</strong> Has no plan for Yes &mdash; she produced the $400B to ensure No. If Commence wins, she faces a mandate she positioned against.</li>
+  <li><strong>Ottawa:</strong> Has no engaged mechanism. The Clarity Act has been declared non-applicable. No inter-ministerial planning team or pre-positioned response.</li>
+  <li><strong>APP:</strong> Has a campaign document ($6B transition cost estimate), not an implementation plan. Its CEO is a sporting goods store owner. Its legal counsel has multiple disciplinary findings.</li>
+  <li><strong>Treaty nations:</strong> Have a blocking position (Sylvestre, Athabasca) but not an affirmative plan for co-existence with a Commence mandate.</li>
+</ul>
+
+<p>The 1995 Quebec experience demonstrates what improvised responses look like: frantic last-minute Unity Rallies, buses of supporters shipped across the country, promises made under duress. Canada narrowly survived that improvisation. There is no guarantee it would survive a second one.</p>
+
+<h2 id="scenarios">9. Scenario Decision Trees</h2>
+
+<div class="scenario-section sc-green">
+  <div class="sc-label">Scenario A &mdash; Most probable (polling-supported)</div>
+  <h3>Strong No: 65%+ Remain</h3>
+  <p><strong>Conditions:</strong> Current trends continue. Smith&rsquo;s Remain campaign and August costing suppress soft-Leave and protest votes. Turnout is moderate to high. No external shock.</p>
+  <p><strong>Immediate effects:</strong> Smith claims credit. APP discredited (petition quashed, leadership problems, foreign interference associations). WIP marginalized (no leader, no seats, no organizational capacity).</p>
+  <p><strong>2027 election:</strong> Smith enters as prohibitive favourite. UCP at 49-53% versus NDP at 36% in current polling. Nenshi&rsquo;s approval below Notley&rsquo;s. The separation question enters dormancy.</p>
+  <p><strong>Long-term:</strong> The 8% irreducible core persists. The fiscal transfer grievance ($14-20B annually) remains the structural fuel. Quebec&rsquo;s arc (1980 to 1995: 40% to 49.4%) shows dormancy is not death. The neverendum is structural.</p>
+  <p><strong>Comparator:</strong> Quebec 1980. PQ won the 1981 election after losing the referendum.</p>
+</div>
+
+<div class="scenario-section sc-amber">
+  <div class="sc-label">Scenario B &mdash; Plausible under protest-vote activation</div>
+  <h3>Narrow No: 55&ndash;60% Remain</h3>
+  <p><strong>Conditions:</strong> Protest-vote activation at one-third to one-half conversion. Rural Alberta swings 5-10 points. Turnout differential favours Leave-sympathetic demographics (older, rural, male). Federal &ldquo;dangerous bluff&rdquo; framing backfires in rural Alberta. August costing document dismissed as government propaganda.</p>
+  <p><strong>Immediate effects:</strong> Separatists claim moral victory. APP demands second referendum. The neverendum dynamic activates immediately. 69% already expect separatists won&rsquo;t accept No. The &ldquo;referendum on a referendum&rdquo; framing means the separation question has been formally staged as a two-stage process &mdash; and the electorate has just voted for a strong minority to proceed to stage two.</p>
+  <p><strong>2027 election:</strong> The most volatile scenario. Three dynamics converge: (1) WIP absorbs hardcore separatists who feel UCP betrayed the cause, creating right-side split conditions. (2) Nenshi runs as stability candidate: &ldquo;Smith gambled and nearly lost.&rdquo; (3) Smith must balance federalist disappointment (too risky) against separatist demands (not risky enough). The 2015-replay scenario &mdash; a right-side split handing government to NDP &mdash; becomes plausible but not certain.</p>
+  <p><strong>Long-term:</strong> Sovereignty becomes the permanent frame for Alberta politics, as it was in Quebec from 1980 to 2014. The annual fiscal transfer grievance ($14-20B) provides the structural argument for &ldquo;next time.&rdquo; The movement has a demonstrated base of 35-40% that exceeded expectations and a mobilization infrastructure tested in a real campaign.</p>
+  <p><strong>Comparator:</strong> Scotland 2014 aftermath. 55% No, but SNP won 56 of 59 Scottish seats in 2015. The referendum loss did not weaken the independence movement; it strengthened it by demonstrating the scale of support.</p>
+</div>
+
+<div class="scenario-section sc-red">
+  <div class="sc-label">Scenario C &mdash; Low probability, highest consequence</div>
+  <h3>Surprise Yes: 50%+ Commence</h3>
+  <p><strong>Conditions:</strong> Maximum protest-vote activation. Turnout asymmetry (motivated minority + complacent majority). External shock (oil crash, federal reversal on pipeline, US tariff devastation). Charismatic Yes-side leader emergence. All conditions simultaneously.</p>
+  <p><strong>Immediate effects:</strong> Market reaction and capital flight. Constitutional crisis. The Commence mandate is for a process, not separation &mdash; but the political and psychological shock would be equivalent. No institutional actor has a plan.</p>
+  <p><strong>Post-vote process:</strong> Years of constitutional negotiation. Treaty wall (Sylvestre, Athabasca) blocks the legal path. Federal engagement or refusal. A second, binding referendum designed by Smith &mdash; who campaigned for Remain and now holds a mandate she positioned against.</p>
+  <p><strong>The planning gap:</strong> Smith has no plan for Yes. Ottawa has no engaged mechanism. APP has a campaign document, not an implementation plan. Treaty nations have a blocking position, not an affirmative plan. The absence of institutional contingency planning is itself a force multiplier for the tail risk.</p>
+  <p><strong>Comparator:</strong> Brexit night, June 23, 2016. Cameron resigned the next morning.</p>
+</div>
+
+<h2 id="redteam">10. Red-Team Synthesis</h2>
+
+<div class="red-team-grid">
+  <div class="rt-card">
+    <h4>UCP Political Strategist</h4>
+    <p><strong>Core position:</strong> Smith is the most strategically gifted premier since Lougheed. The analysis underestimates her sophistication. The Cameron comparison is structurally unsound because Smith designed a process question, positioned on Remain before the campaign, and has a fallback for every outcome.</p>
+    <p><strong>Strongest challenge:</strong> The MOU is the proof the strategy already worked. The 28% to 18% Ipsos decline is the scoreboard. The &ldquo;credibility paradox&rdquo; is theoretically elegant but practically irrelevant &mdash; Smith does not need the threat to remain credible after October 19.</p>
+    <p><strong>Honest concession:</strong> The protest vote (21%) is &ldquo;the single most dangerous number in the entire dataset.&rdquo; The neverendum dynamic is structural and correct.</p>
+    <p><strong>Verdict on analysis:</strong> Mostly useful, with reservations about emphasis. Too much weight on tail risks, too little on the central scenario.</p>
+  </div>
+  <div class="rt-card">
+    <h4>APP Grassroots Organizer</h4>
+    <p><strong>Core position:</strong> The analysis treats Smith as the protagonist and the movement as a supporting character. The 301,620 petition signatures represent five years of organizing under hostile conditions. Smith did not create the referendum demand. The movement did.</p>
+    <p><strong>Strongest challenge:</strong> The $400B is a political weapon built on worst-case assumptions, not an analytical estimate. The fiscal transfer gap ($14-20B annually) is arithmetic, not grievance. The question design is democratic suppression, not political technology &mdash; the government replaced a citizen-initiated question with a confusing 37-word conditional designed to produce No.</p>
+    <p><strong>Honest concession:</strong> The leadership deficit is real. The $6B APP estimate is not credible. The gender gap (19% women) is a structural problem. The treaty issue is genuine.</p>
+    <p><strong>Verdict on analysis:</strong> CONDITIONAL. Methodologically rigorous but structurally biased toward an institutional perspective.</p>
+  </div>
+  <div class="rt-card">
+    <h4>Federal Liberal Strategist</h4>
+    <p><strong>Core position:</strong> The risk of a Commence majority is systematically underestimated. Every referendum shock in democratic history was preceded by analysis exactly like this one. The structural case against Brexit was at least as strong as the case against Alberta separation.</p>
+    <p><strong>Strongest challenge:</strong> The &ldquo;referendum on a referendum&rdquo; increases risk rather than reducing it, by making protest voting feel consequence-free. The protest-vote arithmetic should be run on the ballot-question baseline (60/35), producing 41-48% at moderate conversion. Nobody has a plan for Yes. The Clarity Act has been surrendered.</p>
+    <p><strong>Honest concession:</strong> The gender wall is real. The cost-exposure effect is powerful. Edmonton is a fortress. The cross-party Remain coalition is intact. APP organizational capacity is genuinely damaged.</p>
+    <p><strong>Verdict on analysis:</strong> Mostly useful but does not give adequate weight to the tail risk. &ldquo;I have seen this before. I watched it happen in London.&rdquo;</p>
+  </div>
+</div>
+
+<h2 id="stresstest">11. Stress-Test Summary</h2>
+
+<table>
+  <thead>
+    <tr><th>Scenario</th><th>Verdict</th><th>Key Gap</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>1. Smith loses control of campaign</td><td><span class="evidence-badge moderate">CONDITIONAL</span></td><td>Protest-vote arithmetic on wrong baseline; interaction effects unmodeled</td></tr>
+    <tr><td>2. Turnout asymmetry delivers Yes</td><td><span class="evidence-badge moderate">CONDITIONAL</span></td><td>No turnout-adjusted model; 10-question ballot mobilization unmodeled</td></tr>
+    <tr><td>3. Federal framing backfires</td><td><span class="evidence-badge moderate">CONDITIONAL</span></td><td>Condescension risk magnitude not estimated</td></tr>
+    <tr><td>4. Ballot Q polls at 40%+</td><td><span class="evidence-badge moderate">CONDITIONAL</span></td><td>No combined scenario modeling path from 35% to 40%+</td></tr>
+    <tr><td>5. TBA runs independent campaign</td><td><span class="evidence-badge moderate">CONDITIONAL</span></td><td>TBA not modeled as independent actor during campaign</td></tr>
+    <tr><td>6. WIP absorbs hardcore post-No</td><td><span class="evidence-badge strong">PASS</span></td><td>&mdash;</td></tr>
+    <tr><td>7. Nenshi wins 2027</td><td><span class="evidence-badge strong">PASS</span></td><td>&mdash;</td></tr>
+    <tr><td>8. Neverendum dynamic activates</td><td><span class="evidence-badge strong">PASS</span></td><td>&mdash;</td></tr>
+  </tbody>
+</table>
+
+<div class="callout">
+  <p><strong>Overall verdict: CONDITIONAL.</strong> The analysis models the central case (No wins comfortably) with significantly more precision than it models the tail risk (Commence wins or comes close). The pattern across five conditional scenarios points to a single structural weakness: the interaction effects (process framing + protest vote + turnout asymmetry + ballot priming + rural concentration) are identified separately but not modeled together. These are not independent variables &mdash; they amplify each other.</p>
+</div>
+
+<h3>Required Corrections for PASS</h3>
+
+<p>The stress test identifies 11 corrections, of which the four highest priority are: (1) re-run protest-vote arithmetic on the ballot-question baseline (60/35); (2) add a turnout-adjusted model with 60% and 70% overall turnout and differential abstention; (3) model the interaction between process-framing and protest-vote activation as amplifying variables; (4) add a combined scenario modeling the path from 35% to 40%+ using all available mechanisms.</p>
+
+<h3>Robust Findings That Survive All Eight Scenarios</h3>
+
+<ul>
+  <li>The &ldquo;referendum on a referendum&rdquo; is a structural innovation without precedent</li>
+  <li>The 8% irreducible core is durable and historically consistent</li>
+  <li>The neverendum is structural, not contingent (69% expect separatists will not accept No)</li>
+  <li>The 28% to 18% Ipsos decline is the most significant empirical finding in the dataset</li>
+  <li>Denominator discipline prevents the most common distortion: 57% of UCP supporters is ~28% of Albertans</li>
+  <li>The non-advocacy standard is substantially met across all three red-team perspectives</li>
+</ul>
+
+<h3>Cross-Ticket Integration</h3>
+
+<table>
+  <thead>
+    <tr><th>Ticket</th><th>Finding</th><th>Political Implication</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>KT-023</strong> (Legal)</td><td>Treaties block separation; chain-of-title is derivative</td><td>Treaty wall constrains any Commence outcome; provides Smith reason to advocate No; untested at higher courts</td></tr>
+    <tr><td><strong>KT-024</strong> (Economic)</td><td>$30&ndash;39B GDP loss; APP plan has 10 failures</td><td>Cost-exposure effect drops support 28% to 15-16%; $400B is the campaign weapon</td></tr>
+    <tr><td><strong>KT-025</strong> (Political)</td><td>8% identity core; referendum on a referendum; neverendum</td><td>The law says blocked, economics say costly, 8% do not care &mdash; enough to sustain a movement</td></tr>
+  </tbody>
+</table>
+
+<h2 id="watch">12. Strategic Watch List</h2>
+
+<table>
+  <thead>
+    <tr><th>Indicator</th><th>What to Watch</th><th>Trigger Level</th><th>Implication</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Ballot-question polling</td><td>Next Angus Reid or equivalent test of actual Q10 text</td><td>Commence &gt;38%</td><td>Protest-vote conversion accelerating</td></tr>
+    <tr><td>August costing document</td><td>Nixon&rsquo;s separation costing &mdash; content, reception, and dissemination</td><td>Public dismissal as propaganda</td><td>Cost-exposure effect weakened</td></tr>
+    <tr><td>Rural Alberta movement</td><td>Regional polling breakdowns for Rest of Alberta</td><td>Leave &gt;52% in Rest of AB</td><td>Leave campaign gaining ground in battleground</td></tr>
+    <tr><td>Court of Appeal</td><td>Athabasca appeal ruling</td><td>Reversal on procedural grounds</td><td>Treaty wall narrowed before vote</td></tr>
+    <tr><td>External shocks</td><td>Oil prices, US tariffs, federal policy reversals</td><td>WTI &lt;$50 or pipeline deal reversal</td><td>Grievance narrative reactivation</td></tr>
+    <tr><td>UCP base polling</td><td>UCP supporter separation sentiment trajectory</td><td>Reversal above 50% Leave</td><td>Smith&rsquo;s Remain campaign failing with her base</td></tr>
+    <tr><td>Protest-vote sentiment</td><td>Any poll asking about &ldquo;sending a message&rdquo; intent</td><td>&gt;25% of Remain voters</td><td>Cameron dynamic intensifying</td></tr>
+    <tr><td>Leave campaign leadership</td><td>Emergence of a charismatic Yes-side figure</td><td>Named leader with media presence</td><td>The Bouchard factor &mdash; Quebec 1995 shifted 10+ points</td></tr>
+  </tbody>
+</table>
+
+</div>
+
+<div class="footer">
+  KT-025 |   Research | June 8, 2026
+</div>
+
+</body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Indigenous Fiscal Sovereignty & Partnership Models — KT-026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+<style>
+:root {
+  --deep-navy: #103656;
+  --midnight: #103656;
+  --slate-blue: #0c4f8a;
+  --ocean: #1a7ebe;
+  --deep-teal: #006468;
+  --teal: #28bcb8;
+  --aqua: #4bc2c3;
+  --light-aqua: #4bc2c3;
+  --pale-aqua: #E0F0EE;
+  --mist: #EDF5F4;
+  --near-black: #0A0A0A;
+  --text-secondary: #4A5568;
+  --border-light: #E5E7EB;
+  --bg-subtle: #F9FAFB;
+  --bg-secondary: #F3F4F6;
+  --shadow-sm: 0 1px 3px rgba(11,31,51,0.06);
+  --shadow-md: 0 2px 12px rgba(11,31,51,0.08);
+  --shadow-lg: 0 4px 24px rgba(11,31,51,0.12);
+  --r-sm: 6px;
+  --r-md: 8px;
+  --grad-primary: linear-gradient(135deg, #103656 0%, #142F4A 30%, #0c4f8a 65%, #006468 100%);
+  --grad-navy-teal: linear-gradient(135deg, #103656 0%, #28bcb8 100%);
+  --grad-divider: linear-gradient(90deg, #103656, #28bcb8);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Lato',-apple-system,BlinkMacSystemFont,sans-serif;font-weight:400;color:var(--near-black);line-height:1.6;background:#FFFFFF;-webkit-font-smoothing:antialiased}
+.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24}
+.gradient-text{background:var(--grad-navy-teal);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero{background:var(--grad-primary);color:#fff;padding:80px 32px 96px;position:relative;overflow:hidden}
+.hero-inner{max-width:1080px;margin:0 auto}
+.hero .eyebrow{font-size:12px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--aqua);margin-bottom:18px}
+.hero h1{font-size:clamp(36px,5vw,56px);font-weight:700;line-height:1.1;margin-bottom:18px;letter-spacing:-0.01em}
+.hero .lede{font-size:clamp(17px,2vw,21px);font-weight:300;max-width:760px;color:rgba(255,255,255,0.86)}
+.hero .meta{margin-top:32px;display:flex;flex-wrap:wrap;gap:32px;font-size:13px;font-weight:400;color:rgba(255,255,255,0.7)}
+.hero .meta strong{color:#fff;font-weight:700;display:block;font-size:14px;margin-bottom:2px}
+main{max-width:1080px;margin:0 auto;padding:64px 32px 96px}
+.intro{margin-bottom:56px}
+.intro-eyebrow{font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--teal);margin-bottom:14px}
+.intro h2{font-size:28px;font-weight:700;color:var(--deep-navy);margin-bottom:14px;letter-spacing:-0.005em}
+.intro p{font-size:16px;color:var(--text-secondary);font-weight:300;max-width:760px}
+.tiers{display:grid;grid-template-columns:1fr;gap:20px}
+.tier{display:grid;grid-template-columns:160px 1fr auto;gap:32px;align-items:center;background:#fff;border:1px solid var(--border-light);border-radius:var(--r-md);padding:28px 32px;box-shadow:var(--shadow-sm);transition:box-shadow 200ms ease,transform 200ms ease;text-decoration:none;color:inherit}
+.tier:hover{box-shadow:var(--shadow-md);transform:translateY(-2px)}
+.tier-badge{font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--teal)}
+.tier-badge .tier-icon{display:block;margin-top:8px;font-size:28px;background:var(--grad-navy-teal);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.tier-body h3{font-size:20px;font-weight:700;color:var(--deep-navy);margin-bottom:6px}
+.tier-body .audience{font-size:13px;font-weight:700;color:var(--slate-blue);margin-bottom:8px}
+.tier-body p{font-size:14px;color:var(--text-secondary);font-weight:400;line-height:1.55}
+.tier-arrow{width:40px;height:40px;border-radius:50%;background:var(--mist);display:flex;align-items:center;justify-content:center;color:var(--teal);font-size:20px;flex-shrink:0}
+.tier:hover .tier-arrow{background:var(--grad-navy-teal);color:#fff}
+.note{margin-top:64px;padding:28px 32px;background:var(--bg-subtle);border-radius:var(--r-md)}
+.note h4{font-size:14px;font-weight:700;color:var(--deep-navy);margin-bottom:10px}
+.note p{font-size:13.5px;color:var(--text-secondary);font-weight:300;line-height:1.65;max-width:780px}
+.note p+p{margin-top:10px}
+footer{background:var(--deep-navy);color:rgba(255,255,255,0.7);padding:40px 32px;font-size:13px;font-weight:300}
+footer .footer-inner{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:end}
+footer strong{color:#fff;font-weight:700}
+@media(max-width:768px){
+  .hero{padding:56px 24px 72px}
+  main{padding:48px 24px 72px}
+  .tier{grid-template-columns:1fr;gap:16px;padding:24px}
+  .tier-arrow{display:none}
+  footer .footer-inner{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow"> Research KT-026</div>
+    <h1>Indigenous Fiscal Sovereignty &amp; Partnership Models</h1>
+    <p class="lede">Crown-to-Nation fiscal architecture, equity ownership models, Treaty Confederacy positioning, and the partnership coalition argument in the Alberta sovereignty context.</p>
+    <div class="meta">
+      <div><strong>Lead</strong></div>
+      <div><strong>Date</strong>June 2026</div>
+      <div><strong>Type</strong>Research Swarm</div>
+      <div><strong>Scrutiny</strong>Academic Publication</div>
+    </div>
+  </div>
+</section>
+
+<main>
+  <div class="intro">
+    <div class="intro-eyebrow">Select Your View</div>
+    <h2>Four tiers, one evidence base</h2>
+    <p>Every statistic in every tier traces back to the Technical Paper (Tier 0). Select the view that matches your role and the depth you need. Treaty Nations are prior-authority parties with sovereign claims, not stakeholders. This analysis examines the fiscal dimensions of that relationship.</p>
+  </div>
+
+  <div class="tiers">
+    <a href="technical.html" class="tier">
+      <div class="tier-badge">
+        Tier 0
+        <span class="tier-icon material-symbols-outlined">science</span>
+      </div>
+      <div class="tier-body">
+        <h3>Technical Paper</h3>
+        <div class="audience">Researchers &amp; Fiscal Sovereignty Scholars</div>
+        <p>Full research record. Six integrated streams covering Crown-to-Nation flows ($2.5-3B), AIOC equity ($1.12B Enbridge), Treaty Confederacy positioning, FNMPC ($45B pipeline), OCAP data sovereignty, and the partnership coalition analysis. APA 7 citations, evidence strength tags, OCAP compliance documentation.</p>
+      </div>
+      <div class="tier-arrow"><span class="material-symbols-outlined">arrow_forward</span></div>
+    </a>
+
+    <a href="working.html" class="tier">
+      <div class="tier-badge">
+        Tier 1
+        <span class="tier-icon material-symbols-outlined">analytics</span>
+      </div>
+      <div class="tier-body">
+        <h3>Working Document</h3>
+        <div class="audience">Policy Analysts &amp; Indigenous Governance Researchers</div>
+        <p>Methodology, data sources, ISC system mapping, AIOC replicability assessment, fiscal flow breakdowns, and evidence quality tables. Includes the fiscal arithmetic of Treaty 8's 2% royalty demand and CILGC's $10B program architecture.</p>
+      </div>
+      <div class="tier-arrow"><span class="material-symbols-outlined">arrow_forward</span></div>
+    </a>
+
+    <a href="briefing.html" class="tier">
+      <div class="tier-badge">
+        Tier 2
+        <span class="tier-icon material-symbols-outlined">summarize</span>
+      </div>
+      <div class="tier-body">
+        <h3>Executive Briefing</h3>
+        <div class="audience">Leadership &amp; Policy Clients</div>
+        <p>Key findings on fiscal architecture, equity ownership trends, partnership coalition viability. What the evidence shows about Indigenous fiscal sovereignty, why it matters for the Alberta sovereignty debate, and what the strongest negotiating positions are.</p>
+      </div>
+      <div class="tier-arrow"><span class="material-symbols-outlined">arrow_forward</span></div>
+    </a>
+
+    <a href="council.html" class="tier">
+      <div class="tier-badge">
+        Tier 3
+        <span class="tier-icon material-symbols-outlined">dashboard</span>
+      </div>
+      <div class="tier-body">
+        <h3>Decision Sheet</h3>
+        <div class="audience">Decision-Makers</div>
+        <p>One page. What the fiscal sovereignty landscape looks like, what partnership models exist, what the evidence says about which path works. Key numbers, key findings, key decisions.</p>
+      </div>
+      <div class="tier-arrow"><span class="material-symbols-outlined">arrow_forward</span></div>
+    </a>
+  </div>
+
+  <div class="note">
+    <h4>Treaty Acknowledgment</h4>
+    <p>This research concerns Treaties 6, 7, and 8 — agreements between the Crown and Blackfoot Confederacy (Siksika, Piikani, Kainai), Tsuut'ina Nation, Stoney Nakoda (Bearspaw, Chiniki, Goodstoney), Cree Nations (including Ermineskin, Samson, Louis Bull, Montana), Dene, and Chipewyan Nations. Treaty Nations are prior-authority parties with sovereign claims. The fiscal flows analyzed here move through treaty territory under authority that derives from these treaty relationships.</p>
+    <p>This analysis uses publicly available data and published sources. OCAP (Ownership, Control, Access, Possession) principles are observed throughout. No Nation-level data is used without verifying public availability. Indigenous positions are cited from Indigenous sources.</p>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div><strong></strong> —  Research Division<br>KT-026 Indigenous Fiscal Sovereignty &amp; Partnership Models &middot; June 2026</div>
+    <div>Builds on KT-023 (Treaty Rights) &middot; KT-024 (Sovereignty Economics)</div>
+  </div>
+</footer>
+
+</body>
+</html>

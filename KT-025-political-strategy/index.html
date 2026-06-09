@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Political Strategy &amp; Referendum Mechanics: Alberta Sovereignty — The Third Leg</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --hs-primary: #1B3A5C;
+  --hs-secondary: #E87722;
+  --hs-bg: #FAFAFA;
+  --hs-surface: #FFFFFF;
+  --hs-text: #1A1A2E;
+  --hs-text-secondary: #555770;
+  --hs-border: #E0E0E0;
+  --hs-accent: #2D8CFF;
+  --hs-success: #28A745;
+  --hs-warning: #FFC107;
+  --hs-danger: #DC3545;
+  --hs-font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --hs-font-heading: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --hs-font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  --hs-radius: 8px;
+  --hs-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  --hs-max-width: 900px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: var(--hs-font-body);
+  background: var(--hs-bg);
+  color: var(--hs-text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+.hero {
+  background: linear-gradient(135deg, var(--hs-primary) 0%, #0d2240 100%);
+  color: #fff;
+  padding: 4rem 2rem 3rem;
+  text-align: center;
+}
+.hero h1 {
+  font-family: var(--hs-font-heading);
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin-bottom: 0.75rem;
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.hero .subtitle {
+  font-size: 0.95rem;
+  font-weight: 400;
+  opacity: 0.8;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+.hero .verdict-badge {
+  display: inline-block;
+  background: var(--hs-warning);
+  color: var(--hs-text);
+  font-weight: 700;
+  font-size: 0.8rem;
+  padding: 0.35rem 1rem;
+  border-radius: 4px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.meta-bar {
+  background: var(--hs-surface);
+  border-bottom: 1px solid var(--hs-border);
+  padding: 1rem 2rem;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--hs-text-secondary);
+}
+.meta-bar span { margin: 0 1rem; }
+.meta-bar strong { color: var(--hs-text); font-weight: 600; }
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem;
+}
+.intro {
+  max-width: 720px;
+  margin: 0 auto 2.5rem;
+  text-align: center;
+  font-size: 1.05rem;
+  color: var(--hs-text-secondary);
+  line-height: 1.7;
+}
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+.card {
+  background: var(--hs-surface);
+  border: 1px solid var(--hs-border);
+  border-radius: var(--hs-radius);
+  padding: 2rem;
+  text-decoration: none;
+  color: var(--hs-text);
+  transition: box-shadow 0.2s, transform 0.15s;
+  display: flex;
+  flex-direction: column;
+}
+.card:hover {
+  box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+  transform: translateY(-2px);
+}
+.card .tier-label {
+  font-family: var(--hs-font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+.card.tier-0 .tier-label { color: var(--hs-primary); }
+.card.tier-1 .tier-label { color: var(--hs-accent); }
+.card.tier-2 .tier-label { color: var(--hs-secondary); }
+.card.tier-3 .tier-label { color: var(--hs-success); }
+.card.tier-0 { border-top: 3px solid var(--hs-primary); }
+.card.tier-1 { border-top: 3px solid var(--hs-accent); }
+.card.tier-2 { border-top: 3px solid var(--hs-secondary); }
+.card.tier-3 { border-top: 3px solid var(--hs-success); }
+.card h2 {
+  font-family: var(--hs-font-heading);
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+}
+.card .audience {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--hs-text-secondary);
+  margin-bottom: 0.75rem;
+}
+.card p {
+  font-size: 0.9rem;
+  color: var(--hs-text-secondary);
+  line-height: 1.6;
+  flex-grow: 1;
+}
+.card .word-count {
+  font-family: var(--hs-font-mono);
+  font-size: 0.75rem;
+  color: var(--hs-text-secondary);
+  margin-top: 1rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--hs-border);
+}
+.key-findings {
+  margin-top: 3rem;
+  padding: 2rem;
+  background: var(--hs-surface);
+  border: 1px solid var(--hs-border);
+  border-radius: var(--hs-radius);
+}
+.key-findings h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--hs-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.key-findings ul { list-style: none; padding: 0; }
+.key-findings li {
+  padding: 0.6rem 0;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  border-bottom: 1px solid #f0f0f0;
+  padding-left: 1.2rem;
+  position: relative;
+}
+.key-findings li:last-child { border-bottom: none; }
+.key-findings li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--hs-secondary);
+}
+.footer {
+  text-align: center;
+  padding: 2rem;
+  font-size: 0.8rem;
+  color: var(--hs-text-secondary);
+  border-top: 1px solid var(--hs-border);
+  margin-top: 2rem;
+}
+@media (max-width: 640px) {
+  .hero h1 { font-size: 1.5rem; }
+  .cards { grid-template-columns: 1fr; }
+  .meta-bar span { display: block; margin: 0.3rem 0; }
+}
+@media print {
+  .hero { background: none; color: var(--hs-text); padding: 1rem 0; }
+  .card { break-inside: avoid; box-shadow: none; border: 1px solid #ccc; }
+}
+</style>
+</head>
+<body>
+<div class="hero">
+  <h1>Political Strategy &amp; Referendum Mechanics: Alberta Sovereignty</h1>
+  <div class="subtitle">KT-025 |   Research</div>
+  <div class="verdict-badge">Stress Test Verdict: CONDITIONAL</div>
+</div>
+<div class="meta-bar">
+  <span><strong>Date:</strong> June 8, 2026</span>
+  <span><strong>Referendum:</strong> October 19, 2026</span>
+  <span><strong>Streams:</strong> 6 research + landscape + 3 red teams</span>
+  <span><strong>Evidence standard:</strong> Academic publication</span>
+</div>
+<div class="container">
+  <div class="intro">
+    The third leg of the sovereignty analysis. KT-023 established the legal wall (treaties block separation). KT-024 established the economic wall ($30&ndash;39B GDP loss). This ticket analyzes the political dynamics that determine whether anyone cares. The uncomfortable finding: 8% do not care, and that is enough to sustain a movement.
+  </div>
+  <div class="cards">
+    <a href="technical.html" class="card tier-0">
+      <div class="tier-label">Tier 0 &mdash; Source of Truth</div>
+      <h2>Technical Paper</h2>
+      <div class="audience">Audience: Researchers, policy analysts, legal teams</div>
+      <p>Full integration of all 6 research streams. Game theory analysis, referendum question deconstruction, coalition math with denominator discipline, identity and movement analysis, federal counter-strategy, post-referendum scenarios. All polling data with firm, date, sample, methodology, and margin of error. Red-team findings and stress-test results. APA 7 style citations.</p>
+      <div class="word-count">~15,000 words</div>
+    </a>
+    <a href="working.html" class="card tier-1">
+      <div class="tier-label">Tier 1 &mdash; Working Document</div>
+      <h2>Strategy Analyst Working Document</h2>
+      <div class="audience">Audience: Political analysts, strategy advisors</div>
+      <p>Polling synthesis with trajectory tables, coalition modeling, scenario decision trees, and strategic options. Integrates key findings from all streams with actionable intelligence on the three hypotheses about Smith, the protest-vote wildcard, turnout modeling, and the 2027 election implications.</p>
+      <div class="word-count">~8,000 words</div>
+    </a>
+    <a href="briefing.html" class="card tier-2">
+      <div class="tier-label">Tier 2 &mdash; Executive Briefing</div>
+      <h2>Executive Briefing</h2>
+      <div class="audience">Audience:  leadership, policy clients</div>
+      <p>Key political dynamics, referendum mechanics, the &ldquo;referendum on a referendum&rdquo; framing, three scenarios with implications, and five things to watch between now and October 19. Designed for decision-makers who need the essential findings without the full analytical apparatus.</p>
+      <div class="word-count">~3,000 words</div>
+    </a>
+    <a href="council.html" class="card tier-3">
+      <div class="tier-label">Tier 3 &mdash; Decision Sheet</div>
+      <h2>Decision-Maker Summary</h2>
+      <div class="audience">Audience: Board members, elected officials</div>
+      <p>One-page equivalent. What is Smith&rsquo;s strategy? What does the referendum actually ask? What are the three scenarios? What are the five indicators to watch? Designed to be read in under ten minutes.</p>
+      <div class="word-count">~1,500 words</div>
+    </a>
+  </div>
+  <div class="key-findings">
+    <h3>Headline Findings Across All Tiers</h3>
+    <ul>
+      <li>Q10 is a &ldquo;referendum on a referendum&rdquo; &mdash; it asks whether to begin a legal process toward a future binding vote, not whether to separate</li>
+      <li>Support ranges from 18% (Ipsos, June 2026, direct question) to 35% (Angus Reid, May 2026, actual ballot question) &mdash; the gap is the question design effect</li>
+      <li>The 8% irreducible core (Angus Reid, &ldquo;definitely leave&rdquo;) is driven by identity, not economics, and is impervious to cost-exposure arguments</li>
+      <li>55+ are the most pro-separation age cohort (43% Leave) &mdash; the &ldquo;senior wall&rdquo; claimed in early analysis is reversed</li>
+      <li>21% of Remain voters would consider voting Commence &ldquo;to send a message&rdquo; &mdash; the protest-vote wildcard</li>
+      <li>The November 2025 MOU (pipeline, scrapped emissions cap) demonstrates the credible-threat strategy already produced material concessions</li>
+      <li>The neverendum is structural: 69% of Albertans expect separatists will not accept a No result</li>
+      <li>Stress test overall verdict: CONDITIONAL &mdash; central case well-modeled, tail risk undermodeled</li>
+    </ul>
+  </div>
+</div>
+<div class="footer">
+  KT-025 |   Research | June 8, 2026
+</div>
+</body>
+</html>

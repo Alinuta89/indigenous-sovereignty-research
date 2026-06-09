@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KT-026 — Indigenous Fiscal Sovereignty — Decision Sheet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230B2E4A'/%3E%3Cpath d='M18 42V22h8v8h12v-8h8v20h-8v-8H26v8z' fill='%2300A6A6'/%3E%3C/svg%3E">
+<style>
+:root {
+  --deep-navy: #103656;
+  --midnight: #103656;
+  --slate-blue: #0c4f8a;
+  --ocean: #1a7ebe;
+  --deep-teal: #006468;
+  --teal: #28bcb8;
+  --aqua: #4bc2c3;
+  --light-aqua: #4bc2c3;
+  --pale-aqua: #E0F0EE;
+  --mist: #EDF5F4;
+  --near-black: #0A0A0A;
+  --text-secondary: #4A5568;
+  --border-light: #E5E7EB;
+  --bg-subtle: #F9FAFB;
+  --bg-secondary: #F3F4F6;
+  --shadow-sm: 0 1px 3px rgba(11,31,51,0.06);
+  --shadow-md: 0 2px 12px rgba(11,31,51,0.08);
+  --shadow-lg: 0 4px 24px rgba(11,31,51,0.12);
+  --r-sm: 6px;
+  --r-md: 8px;
+  --grad-primary: linear-gradient(135deg, #103656 0%, #142F4A 30%, #0c4f8a 65%, #006468 100%);
+  --grad-navy-teal: linear-gradient(135deg, #103656 0%, #28bcb8 100%);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Lato',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:var(--near-black);background:#fff;line-height:1.65;font-size:15px;-webkit-font-smoothing:antialiased}
+.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24}
+
+/* Top bar */
+.top-bar{position:sticky;top:0;z-index:100;background:linear-gradient(135deg,var(--deep-navy),var(--slate-blue));box-shadow:var(--shadow-lg)}
+.top-bar-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:12px 28px;flex-wrap:wrap;gap:12px}
+.top-bar .brand{display:flex;align-items:center;gap:10px;color:#fff}
+.top-bar .brand h1{font-size:15px;font-weight:700;color:#fff;letter-spacing:0.02em}
+.top-bar .brand .subtitle{font-size:11px;font-weight:300;color:var(--light-aqua);letter-spacing:0.03em}
+.view-tabs{display:flex;flex-wrap:wrap;gap:4px;padding:4px;background:rgba(255,255,255,0.08);border-radius:8px}
+.view-tab{display:inline-flex;align-items:center;min-height:36px;padding:0 13px;border-radius:6px;color:rgba(255,255,255,0.68);text-decoration:none;text-transform:uppercase;letter-spacing:0.08em;font-size:11px;font-weight:700;transition:all 0.18s}
+.view-tab:hover{color:#fff;background:rgba(255,255,255,0.12)}
+.view-tab.active{color:var(--deep-navy);background:#fff;box-shadow:0 1px 3px rgba(11,31,51,0.18)}
+
+/* Layout */
+.wrap{max-width:1040px;margin:0 auto;padding:40px 28px 56px}
+
+/* Hero */
+.hero{text-align:center;margin-bottom:8px}
+.hero .tier-badge{display:inline-block;padding:4px 14px;border-radius:4px;background:var(--mist);font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--deep-teal);margin-bottom:12px}
+.hero .title{font-size:clamp(24px,3.5vw,32px);font-weight:700;color:var(--deep-navy);margin-bottom:6px;line-height:1.2;letter-spacing:-0.01em}
+.hero .sub{font-size:14px;color:var(--text-secondary);font-weight:300}
+
+/* Treaty */
+.treaty{font-size:12px;font-style:italic;color:var(--text-secondary);margin-bottom:28px;line-height:1.6;text-align:center;max-width:780px;margin-left:auto;margin-right:auto}
+
+/* Section heading */
+h2{font-size:18px;font-weight:700;color:var(--deep-navy);margin:32px 0 14px;padding-bottom:5px;border-bottom:2px solid var(--pale-aqua)}
+p{margin-bottom:12px}
+
+/* Landscape cards */
+.landscape-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;margin:18px 0 32px}
+.landscape-card{background:#fff;border:1px solid var(--border-light);border-radius:var(--r-md);padding:22px;box-shadow:var(--shadow-sm)}
+.landscape-card .card-icon{font-size:28px;color:var(--deep-teal);margin-bottom:10px}
+.landscape-card h3{font-size:15px;font-weight:700;color:var(--deep-navy);margin-bottom:10px;line-height:1.3}
+.landscape-card p{font-size:13.5px;color:var(--text-secondary);line-height:1.6;margin-bottom:0}
+
+/* Stat cards */
+.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:18px 0 32px}
+.stat-card{background:var(--mist);border-radius:10px;padding:20px;text-align:center}
+.stat-card .num{font-size:clamp(22px,3vw,30px);font-weight:700;color:var(--deep-teal);line-height:1.1;margin-bottom:6px}
+.stat-card .label{font-size:11px;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.06em;line-height:1.4}
+
+/* Finding box */
+.finding{background:var(--mist);border-left:4px solid var(--deep-teal);padding:18px 22px;border-radius:0 var(--r-md) var(--r-md) 0;margin:18px 0;font-size:15px;line-height:1.65}
+.finding strong{color:var(--deep-teal)}
+
+/* Risk box */
+.risk{background:#fffdf5;border-left:4px solid #e2a300;padding:18px 22px;border-radius:0 var(--r-md) var(--r-md) 0;margin:18px 0;font-size:15px;line-height:1.65}
+.risk strong{color:#92400e}
+
+/* Blockquote */
+blockquote{border-left:3px solid var(--aqua);padding:10px 16px;margin:18px 0;font-style:italic;color:var(--text-secondary);font-size:14px;line-height:1.6;background:var(--bg-subtle);border-radius:0 var(--r-sm) var(--r-sm) 0}
+blockquote cite{display:block;margin-top:6px;font-size:12px;font-style:normal;font-weight:700;color:var(--slate-blue)}
+
+/* Watch list */
+.watch-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0 24px}
+.watch-item{display:flex;gap:10px;align-items:flex-start;padding:14px 16px;background:var(--bg-subtle);border-radius:var(--r-md);border:1px solid var(--border-light)}
+.watch-item .material-symbols-outlined{color:var(--deep-teal);font-size:20px;flex-shrink:0;margin-top:1px}
+.watch-item div{font-size:13.5px;color:var(--text-secondary);line-height:1.55}
+.watch-item div strong{color:var(--deep-navy);font-size:13.5px}
+
+/* Footer */
+.footer{text-align:center;padding:28px;font-size:11px;color:var(--text-secondary);border-top:1px solid var(--border-light);margin-top:32px}
+.footer a{color:var(--deep-teal);text-decoration:none}
+.footer a:hover{color:var(--teal)}
+
+/* Responsive */
+@media(max-width:768px){
+  .top-bar-inner{flex-direction:column;align-items:flex-start}
+  .wrap{padding:28px 20px 48px}
+  .landscape-row{grid-template-columns:1fr}
+  .stat-grid{grid-template-columns:1fr 1fr}
+  .watch-row{grid-template-columns:1fr}
+}
+@media(max-width:480px){
+  .stat-grid{grid-template-columns:1fr}
+}
+@media print{
+  .top-bar{position:static;box-shadow:none}
+  body{font-size:11pt}
+  .stat-card,.landscape-card{break-inside:avoid}
+}
+</style>
+</head>
+<body>
+
+<div class="top-bar"><div class="top-bar-inner">
+  <div class="brand"><div><h1></h1><div class="subtitle"> Research &mdash; KT-026</div></div></div>
+  <nav class="view-tabs">
+    <a href="technical.html" class="view-tab">Technical</a>
+    <a href="working.html" class="view-tab">Working</a>
+    <a href="briefing.html" class="view-tab">Briefing</a>
+    <a href="council.html" class="view-tab active">Council</a>
+  </nav>
+</div></div>
+
+<div class="wrap">
+
+<div class="hero">
+  <div class="tier-badge">Tier 3 &mdash; Decision Sheet</div>
+  <div class="title">Indigenous Fiscal Sovereignty &amp; Partnership Models</div>
+  <div class="sub">Decision-Maker Summary &mdash; June 2026</div>
+</div>
+
+<p class="treaty">This research concerns Treaties 6 (1876), 7 (1877), and 8 (1899) &mdash; agreements between the Crown and sovereign Nations that predate the Province of Alberta (1905). Treaty Nations are prior-authority parties with sovereign claims, not stakeholders. Fiscal flows through treaty territory are treaty expressions, not program delivery.</p>
+
+
+<!-- ============================================================ -->
+<h2>The Landscape</h2>
+
+<div class="landscape-row">
+
+  <div class="landscape-card">
+    <span class="material-symbols-outlined card-icon">account_balance_wallet</span>
+    <h3>The Fiscal Architecture</h3>
+    <p>$2.5&ndash;3B in Crown-to-Nation flows through Alberta annually, channeled through ISC systems (JPCMS, SAP, GCIMS) that are not interconnected. Nations cannot independently audit their fiscal relationship with the Crown. Jordan&rsquo;s Principle eligibility was narrowed in May 2025, shifting costs to Nations without corresponding fiscal authority. Governance funding is 3% of ISC spending &mdash; a sovereignty constraint, not an efficiency problem.</p>
+  </div>
+
+  <div class="landscape-card">
+    <span class="material-symbols-outlined card-icon">trending_up</span>
+    <h3>The Equity Shift</h3>
+    <p>AIOC: $1.12B Enbridge equity deal (23 communities, 11.57%), $720M deployed across 9 projects. FNMPC: $45B project pipeline, 180+ Nations. CILGC: $10B federal loan guarantee program. Cedar LNG: 50.1% Haisla Nation ($5.5B). Wataynikaneyap Power: 51% Indigenous ownership ($1.8B). The model is replicating &mdash; but equity participation is not fiscal self-determination.</p>
+  </div>
+
+  <div class="landscape-card">
+    <span class="material-symbols-outlined card-icon">shield</span>
+    <h3>The Constitutional Position</h3>
+    <p>Treaties 6, 7, and 8 predate Alberta (1905). Two Court of King&rsquo;s Bench rulings &mdash; <em>Sylvestre</em> (Dec 2025) and <em>Athabasca</em> (May 2026) &mdash; found separation contravenes treaties and the duty to consult applies before any referendum. All 48 First Nations in Alberta oppose separation. Treaty 8 chiefs have reserved the option of civil disobedience as a &ldquo;last resort.&rdquo;</p>
+  </div>
+
+</div>
+
+
+<!-- ============================================================ -->
+<h2>Key Numbers</h2>
+
+<div class="stat-grid">
+  <div class="stat-card">
+    <div class="num">$2.5&ndash;3B</div>
+    <div class="label">Crown-to-Nation Flows Through Alberta (Annual)</div>
+  </div>
+  <div class="stat-card">
+    <div class="num">$1.12B</div>
+    <div class="label">AIOC Enbridge Equity Deal (23 Communities, 11.57%)</div>
+  </div>
+  <div class="stat-card">
+    <div class="num">$45B</div>
+    <div class="label">FNMPC Project Pipeline (180+ Nations)</div>
+  </div>
+  <div class="stat-card">
+    <div class="num">$10B</div>
+    <div class="label">Federal Indigenous Loan Guarantee (CILGC)</div>
+  </div>
+  <div class="stat-card">
+    <div class="num">$320&ndash;400M</div>
+    <div class="label">Treaty 8&rsquo;s 2% Royalty Demand on Alberta Resource Revenue</div>
+  </div>
+  <div class="stat-card">
+    <div class="num">0</div>
+    <div class="label">Alberta&rsquo;s Current Resource Revenue Sharing with Treaty Nations</div>
+  </div>
+</div>
+
+<p style="font-size:13px;color:var(--text-secondary);text-align:center;margin-top:-16px;margin-bottom:28px;">For comparison: Ontario shares 40&ndash;45% of forestry/mining royalties &middot; BC shares 12.5&ndash;37.5% of mineral tax &middot; Manitoba shares up to 25% of mine tax revenue</p>
+
+
+<!-- ============================================================ -->
+<h2>The Finding</h2>
+
+<div class="finding">
+  <strong>The provincial-Indigenous coalition is analytically the strongest negotiating position available.</strong> It combines the one thing Alberta lacks &mdash; unique constitutional standing &mdash; with the one thing Treaty Nations&rsquo; leverage currently lacks &mdash; institutional and economic scale. Neither party alone can compel federal fiscal reform; together, the combination of political weight and constitutional authority creates a position Ottawa cannot easily dismiss. It is also the position the separatist movement has refused to build.
+</div>
+
+<blockquote>
+  &ldquo;Alberta came after Treaty 8, that matters. The province is a tenant on this land, not the landlord.&rdquo;
+  <cite>&mdash; Grand Chief Trevor Mercredi, Treaty 8 First Nations of Alberta</cite>
+</blockquote>
+
+
+<!-- ============================================================ -->
+<h2>The Risk</h2>
+
+<div class="risk">
+  <strong>Partnership requires mutual benefit, shared authority, and veto power for both parties. Anything less is consultation with better marketing.</strong> The track record of provincial and federal governments honouring fiscal commitments to Indigenous Nations is poor &mdash; the Kelowna Accord ($5.1B, abandoned after one election), Jordan&rsquo;s Principle cost-shifting (May 2025), the NRTA (1930, transferred resources without Indigenous consultation). All 48 First Nations in Alberta oppose the current separatist agenda. Premier Smith has questioned whether Section 35 &ldquo;requires a second look.&rdquo; The coalition argument may be analytically strong and politically dead. Whether it is politically achievable is a separate question the evidence cannot resolve.
+</div>
+
+<p>AIOC represents a significant provincial achievement &mdash; $720M deployed, 43 groups, 60,000+ people affected. It also illustrates the structural gap: AIOC facilitates equity participation through a provincial Crown instrument under ministerial directive authority. It avoids the revenue-sharing question. The Minister can issue binding directives to the board. Six of seven publicly detailed projects are fossil fuel infrastructure. AIOC creates access to wealth within the existing system. It does not address the treaty-based claim that resource revenue from treaty territory is owed to Nations as a matter of right, not opportunity.</p>
+
+
+<!-- ============================================================ -->
+<h2>What to Watch</h2>
+
+<div class="watch-row">
+  <div class="watch-item">
+    <span class="material-symbols-outlined">event</span>
+    <div><strong>October 19 referendum</strong> &mdash; ten questions including separation (Q10). Support has declined from 28% to 18%. Committed base: 8%. All 48 First Nations oppose.</div>
+  </div>
+  <div class="watch-item">
+    <span class="material-symbols-outlined">gavel</span>
+    <div><strong>Athabasca appeal</strong> &mdash; tests whether the duty to consult applies to the separation process. King&rsquo;s Bench ruled yes; the appeal will determine if this holds.</div>
+  </div>
+  <div class="watch-item">
+    <span class="material-symbols-outlined">warning</span>
+    <div><strong>Treaty 8 civil disobedience</strong> &mdash; Grand Chief Mercredi: &ldquo;stopping industry and maybe going out on a highway.&rdquo; Characterized as a last resort. Treaty 8 territory covers most of northern Alberta&rsquo;s resource extraction.</div>
+  </div>
+  <div class="watch-item">
+    <span class="material-symbols-outlined">account_balance</span>
+    <div><strong>CILGC deployment pace</strong> &mdash; two transactions completed ($400M BC pipeline, Chatham-Lakeshore transmission). Rate of deployment will signal whether equity ownership scales structurally.</div>
+  </div>
+</div>
+
+</div>
+
+<div class="footer">
+  <p>KT-026 &mdash; Indigenous Fiscal Sovereignty &amp; Partnership Models &mdash;  &mdash; June 2026</p>
+  <p style="margin-top:6px"><a href="technical.html">Full evidence base (Tier 0)</a> &nbsp;&middot;&nbsp; <a href="briefing.html">Executive Briefing (Tier 2)</a> &nbsp;&middot;&nbsp; <a href="index.html">All views</a></p>
+</div>
+
+</body>
+</html>

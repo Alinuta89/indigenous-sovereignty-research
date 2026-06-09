@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Council &mdash; Sovereignty Comparator Analysis | KT-023</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230B2E4A'/%3E%3Cpath d='M18 42V22h8v8h12v-8h8v20h-8v-8H26v8z' fill='%2300A6A6'/%3E%3C/svg%3E">
+<style>
+:root{--deep-navy:#103656;--midnight:#103656;--slate-blue:#0c4f8a;--ocean:#1a7ebe;--deep-teal:#006468;--teal:#28bcb8;--aqua:#4bc2c3;--light-aqua:#4bc2c3;--pale-aqua:#E0F0EE;--mist:#EDF5F4;--near-black:#0A0A0A;--text-secondary:#4A5568;--border-light:#E5E7EB;--bg-subtle:#F9FAFB;--shadow-sm:0 1px 3px rgba(11,31,51,0.06);--shadow-md:0 2px 12px rgba(11,31,51,0.08);--shadow-lg:0 4px 24px rgba(11,31,51,0.12)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Lato',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:var(--near-black);background:#fff;line-height:1.65;font-size:15px}
+.top-bar{position:sticky;top:0;z-index:100;background:linear-gradient(135deg,var(--deep-navy),var(--slate-blue));box-shadow:var(--shadow-lg)}
+.top-bar-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:12px 28px;flex-wrap:wrap;gap:12px}
+.top-bar .brand{display:flex;align-items:center;gap:10px;color:#fff}
+.top-bar .brand h1{font-size:15px;font-weight:700;color:#fff;letter-spacing:0.02em}
+.top-bar .brand .subtitle{font-size:11px;font-weight:300;color:var(--light-aqua);letter-spacing:0.03em}
+.view-tabs{display:flex;flex-wrap:wrap;gap:4px;padding:4px;background:rgba(255,255,255,0.08);border-radius:8px}
+.view-tab{display:inline-flex;align-items:center;min-height:36px;padding:0 13px;border-radius:6px;color:rgba(255,255,255,0.68);text-decoration:none;text-transform:uppercase;letter-spacing:0.08em;font-size:11px;font-weight:700;transition:all 0.18s}
+.view-tab:hover{color:#fff;background:rgba(255,255,255,0.12)}
+.view-tab.active{color:var(--deep-navy);background:#fff;box-shadow:0 1px 3px rgba(11,31,51,0.18)}
+.wrap{max-width:960px;margin:0 auto;padding:40px 28px 60px}
+h2{font-size:18px;font-weight:700;color:var(--deep-navy);margin:28px 0 10px;padding-bottom:5px;border-bottom:2px solid var(--pale-aqua)}
+h2:first-of-type{margin-top:0}
+p{margin-bottom:12px}
+.treaty{font-size:12px;font-style:italic;color:var(--text-secondary);margin-bottom:24px;line-height:1.6}
+.hero{text-align:center;margin-bottom:32px}
+.hero .title{font-size:26px;font-weight:700;color:var(--deep-navy);margin-bottom:6px;line-height:1.2}
+.hero .sub{font-size:14px;color:var(--text-secondary);font-weight:300}
+.finding{background:var(--mist);border-left:4px solid var(--deep-teal);padding:16px 20px;border-radius:0 8px 8px 0;margin:20px 0;font-size:15px;line-height:1.6}
+.finding strong{color:var(--deep-teal)}
+.stat-row{display:flex;justify-content:center;gap:24px;flex-wrap:wrap;margin:28px auto 32px}
+.stat-box{background:var(--mist);border-radius:10px;padding:18px 22px;min-width:160px;text-align:center;flex:1;max-width:220px}
+.stat-box .num{font-size:28px;font-weight:700;color:var(--deep-teal)}
+.stat-box .label{font-size:11px;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.06em;margin-top:4px}
+blockquote{border-left:3px solid var(--aqua);padding:10px 16px;margin:14px 0;font-style:italic;color:var(--text-secondary);font-size:14px;line-height:1.6}
+blockquote cite{display:block;margin-top:6px;font-size:12px;font-style:normal;font-weight:700;color:var(--slate-blue)}
+.dual-track{background:#fff;border:1px solid var(--border-light);border-radius:10px;padding:18px 22px;margin:18px 0;box-shadow:var(--shadow-sm)}
+.dual-track .track-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--deep-teal);margin-bottom:6px}
+.dual-track p{font-size:14px;margin-bottom:0}
+.context{background:var(--bg-subtle);border:1px solid var(--border-light);border-radius:8px;padding:16px 20px;margin:18px 0}
+.context p{font-size:14px;margin-bottom:0}
+.footer{text-align:center;padding:24px;font-size:11px;color:var(--text-secondary);border-top:1px solid var(--border-light)}
+.footer a{color:var(--deep-teal);text-decoration:none}
+@media print{.top-bar{position:static;box-shadow:none}.wrap{padding:20px}.stat-box{break-inside:avoid}}
+@media(max-width:600px){.stat-row{flex-direction:column;align-items:center}.stat-box{min-width:auto;width:100%;max-width:none}}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="top-bar"><div class="top-bar-inner">
+  <div class="brand"><div><h1></h1><div class="subtitle"> Research &mdash; KT-023</div></div></div>
+  <nav class="view-tabs">
+    <a href="technical.html" class="view-tab">Technical</a>
+    <a href="working.html" class="view-tab">Working</a>
+    <a href="briefing.html" class="view-tab">Briefing</a>
+    <a href="council.html" class="view-tab active">Council</a>
+  </nav>
+</div></div>
+
+<div class="wrap">
+<div class="hero">
+  <div class="title">Sovereignty Comparator Analysis</div>
+  <div class="sub">Decision-Maker Summary &mdash; June 2026</div>
+</div>
+<p class="treaty">This research concerns Treaties 6 (1876), 7 (1877), and 8 (1899) &mdash; agreements between the Crown and sovereign First Nations that predate the Province of Alberta (1905). Treaty Nations are prior-authority parties with sovereign claims, not stakeholders in a constitutional debate.</p>
+
+<h2>The Finding</h2>
+<div class="finding">
+  <strong>Alberta&rsquo;s separation bid is constitutionally blocked by treaty rights that predate the province, economically destructive at $20&ndash;39B/year, and historically unprecedented &mdash; no established democracy has fractured through secession.</strong>
+</div>
+
+<div class="stat-row">
+  <div class="stat-box">
+    <div class="num">$20&ndash;30B</div>
+    <div class="label">Annual GDP Impact (Tombe)</div>
+  </div>
+  <div class="stat-box">
+    <div class="num">0</div>
+    <div class="label">Democracies Fractured by Secession</div>
+  </div>
+  <div class="stat-box">
+    <div class="num">5&ndash;7</div>
+    <div class="label">Comparable Cases Globally (Cat. 6)</div>
+  </div>
+</div>
+
+<h2>What the Courts Say</h2>
+<p>In <em>CEO of Alberta v Sylvestre</em> (2025 ABKB 712), Justice Feasby found that separation contravenes Treaty rights protected under s.35 of the <em>Constitution Act, 1982</em>, because it would unilaterally substitute Alberta for the Crown as treaty counterparty and draw an international border through Treaty 8 territory spanning four jurisdictions. In <em>ACFN v Alberta</em> (2026 ABKB 375), Justice Leonard ruled that the Crown&rsquo;s duty to consult First Nations is triggered before any referendum process can advance &mdash; Alberta cannot hold the vote first and consult later. These are Alberta Court of King&rsquo;s Bench (trial court) decisions under appeal, not Supreme Court of Canada rulings; they are grounded in well-established constitutional principles but are not settled constitutional law.</p>
+
+<h2>What Treaty Nations Say</h2>
+<blockquote>
+  &ldquo;The province is a tenant on this land, not the landlord. Any talk of separation or so-called provincial sovereignty is not just political theatre; let me be clear: it&rsquo;s also a proposal to break Treaty.&rdquo;
+  <cite>&mdash; Grand Chief Trevor Mercredi, Treaty 8 First Nations of Alberta (January 29, 2026)</cite>
+</blockquote>
+<blockquote>
+  &ldquo;Treaties are not historical documents &mdash; they are living constitutional agreements between First Nations and the Crown.&rdquo;
+  <cite>&mdash; Chief Samuel Crowfoot, Siksika Nation (Treaty 7)</cite>
+</blockquote>
+
+<h2>What the Evidence Says About What Works</h2>
+<p>The comparator record shows that constitutional evolution through partnership &mdash; not rupture &mdash; produces durable outcomes. The Basque Country&rsquo;s fiscal autonomy arrangements reduced separatist support from 37% to 23% over two decades by addressing the economic grievance directly. Scottish devolution established a functioning alternative to independence. Nunavut and the Nisga&rsquo;a Final Agreement demonstrate that Indigenous-led constitutional evolution is achievable within Canadian federalism. All successful models share one feature: they proceeded through negotiation with prior-authority parties, not around them.</p>
+
+<h2>The Dual-Track Note</h2>
+<div class="dual-track">
+  <div class="track-label">If Sylvestre/ACFN are affirmed on appeal</div>
+  <p>Treaty rights constitute a structural prohibition on unilateral separation. Alberta cannot proceed without Treaty nation consent, and Treaty nations have stated they will not consent. The legal path is blocked.</p>
+</div>
+<div class="dual-track">
+  <div class="track-label">If the SCC reframes to a process requirement</div>
+  <p>Treaty rights must be substantively addressed during any negotiation process, but do not constitute an absolute bar. The obstacles shift from &ldquo;constitutionally blocked&rdquo; to &ldquo;constitutionally constrained by a process that Treaty nations hold significant power to shape.&rdquo; The economic costs, the geographic impossibility of Treaty 8, and the base-rate finding all still apply.</p>
+</div>
+
+<h2>What This Means</h2>
+<div class="context">
+  <p> operates in treaty territory &mdash; Treaty 6 (Edmonton) and Treaty 7 (Calgary). The organizations we serve, the communities we map, and the funding flows we track all exist within a constitutional framework where Treaty nations hold prior-authority standing. The separation debate is not abstract for this work: it concerns the legal and institutional infrastructure on which Indigenous service delivery depends. The evidence shows that the durable path forward runs through partnership with Treaty nations and constitutional evolution within Confederation &mdash; the same partnership model that underpins &rsquo;s approach to community-level systems change.</p>
+</div>
+
+</div>
+
+<div class="footer">
+  <p>KT-023 &mdash; Sovereignty Comparator Analysis &mdash;  &mdash; June 2026 &mdash; <a href="index.html">All views</a></p>
+</div>
+</body>
+</html>

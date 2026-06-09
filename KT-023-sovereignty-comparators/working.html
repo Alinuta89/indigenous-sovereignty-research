@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KT-023 — Sovereignty Comparator Analysis — Working Document</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230B2E4A'/%3E%3Cpath d='M18 42V22h8v8h12v-8h8v20h-8v-8H26v8z' fill='%2300A6A6'/%3E%3C/svg%3E">
+<style>
+:root{--deep-navy:#103656;--midnight:#103656;--slate-blue:#0c4f8a;--deep-teal:#006468;--teal:#28bcb8;--aqua:#4bc2c3;--light-aqua:#4bc2c3;--pale-aqua:#E0F0EE;--mist:#EDF5F4;--near-black:#0A0A0A;--text-secondary:#4A5568;--border-light:#E5E7EB;--bg-subtle:#F9FAFB;--shadow-md:0 2px 12px rgba(11,31,51,0.08)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Lato',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:var(--near-black);background:#fff;line-height:1.65;font-size:15px}
+.topbar{position:sticky;top:0;z-index:100;background:linear-gradient(135deg,var(--deep-navy),var(--slate-blue));padding:14px 0;box-shadow:var(--shadow-md)}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.topbar h1{color:#fff;font-size:17px;font-weight:700;letter-spacing:.3px}
+.topbar .subtitle{color:var(--light-aqua);font-size:13px;font-weight:400}
+.tier-tabs{display:flex;gap:4px}
+.tier-tabs a{color:rgba(255,255,255,.6);font-size:12px;padding:5px 12px;border-radius:4px;text-decoration:none;transition:background .2s,color .2s}
+.tier-tabs a:hover{background:rgba(255,255,255,.1);color:#fff}
+.tier-tabs a.active{background:rgba(255,255,255,.15);color:#fff;font-weight:700}
+.wrap{max-width:960px;margin:0 auto;padding:0 24px}
+.treaty{background:var(--mist);border-left:4px solid var(--deep-teal);padding:16px 20px;margin:32px 0;font-style:italic;font-size:14px;color:var(--text-secondary);line-height:1.6}
+h2{font-size:22px;color:var(--deep-navy);margin:40px 0 16px;padding-bottom:8px;border-bottom:2px solid var(--pale-aqua)}
+h3{font-size:17px;color:var(--slate-blue);margin:28px 0 12px}
+h4{font-size:15px;color:var(--deep-teal);margin:20px 0 8px}
+p{margin:0 0 14px}
+table{width:100%;border-collapse:collapse;margin:16px 0 24px;font-size:13.5px}
+thead th{background:var(--deep-navy);color:#fff;text-align:left;padding:10px 12px;font-weight:600;font-size:12.5px;letter-spacing:.3px;text-transform:uppercase}
+tbody td{padding:9px 12px;border-bottom:1px solid var(--border-light);vertical-align:top}
+tbody tr:nth-child(even){background:var(--bg-subtle)}
+.evidence{display:inline-block;padding:2px 8px;border-radius:3px;font-size:11px;font-weight:700;letter-spacing:.3px;text-transform:uppercase;vertical-align:middle}
+.evidence.strong{background:#d4edda;color:#155724}
+.evidence.moderate{background:#fff3cd;color:#856404}
+.evidence.inferred{background:#f8d7da;color:#721c24}
+.alert{border-left:4px solid var(--teal);background:var(--mist);padding:14px 18px;margin:18px 0;font-size:14px;border-radius:0 4px 4px 0}
+.alert strong{color:var(--deep-navy)}
+.assumption-tag{display:inline-block;padding:1px 6px;border-radius:3px;font-size:10.5px;font-weight:700;letter-spacing:.3px;margin-left:4px}
+.assumption-tag.confirmed{background:#d4edda;color:#155724}
+.assumption-tag.proxy{background:#fff3cd;color:#856404}
+.assumption-tag.assumption{background:#f8d7da;color:#721c24}
+blockquote{border-left:3px solid var(--aqua);padding:10px 16px;margin:14px 0;color:var(--text-secondary);font-style:italic;background:var(--bg-subtle)}
+ul,ol{margin:0 0 14px 24px}
+li{margin-bottom:6px}
+.scenario-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:16px 0 24px}
+.scenario-card{border:1px solid var(--border-light);border-radius:6px;padding:14px;background:#fff}
+.scenario-card h4{margin:0 0 6px;font-size:13px}
+.scenario-card .verdict{font-weight:700;font-size:12px;margin-top:8px}
+.verdict-holds{color:#155724}
+.verdict-qual{color:#856404}
+.toc{background:var(--bg-subtle);border:1px solid var(--border-light);border-radius:6px;padding:20px 28px;margin:24px 0}
+.toc h3{margin:0 0 12px;color:var(--deep-navy);font-size:15px}
+.toc ol{margin:0;padding-left:20px}
+.toc li{margin-bottom:4px;font-size:14px}
+.toc a{color:var(--slate-blue);text-decoration:none}
+.toc a:hover{color:var(--deep-teal);text-decoration:underline}
+.dual-track{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0 24px}
+.track{border:1px solid var(--border-light);border-radius:6px;padding:16px;background:#fff}
+.track h4{margin:0 0 8px;font-size:14px}
+.track-a{border-top:3px solid #155724}
+.track-b{border-top:3px solid #856404}
+footer{text-align:center;padding:32px 0;font-size:11px;color:var(--text-secondary);border-top:1px solid var(--border-light);margin-top:48px}
+@media(max-width:700px){.scenario-grid,.dual-track{grid-template-columns:1fr}.topbar .wrap{flex-direction:column;align-items:flex-start}}
+@media print{.topbar{position:relative}body{font-size:11pt}}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<nav class="topbar">
+<div class="wrap">
+  <div>
+    <h1></h1>
+    <span class="subtitle"> Research &mdash; KT-023</span>
+  </div>
+  <div class="tier-tabs">
+    <a href="technical.html">Technical</a>
+    <a href="working.html" class="active">Working</a>
+    <a href="briefing.html">Briefing</a>
+    <a href="council.html">Council</a>
+  </div>
+</div>
+</nav>
+
+<main class="wrap">
+
+<h2 style="border-bottom:none;margin-top:32px;font-size:26px;">Sovereignty Comparator Analysis</h2>
+<p style="color:var(--text-secondary);margin-bottom:4px;">Alberta, Prior Authority &amp; Constitutional Evolution</p>
+<p style="font-size:13px;color:var(--text-secondary);">Tier 1 &mdash; Analyst Working Document &nbsp;|&nbsp; KT-023 &nbsp;|&nbsp; June 2026</p>
+
+<div class="treaty">
+This analysis covers territory subject to Treaties 6 (1876), 7 (1877), and 8 (1899) &mdash; agreements between the Crown and Treaty Nations that predate the Province of Alberta (1905) by decades. Treaty Nations are prior-authority parties to these agreements, not stakeholders in a provincial policy debate. The treaties are living constitutional instruments whose terms condition the existence of provincial authority itself.
+</div>
+
+<div class="toc">
+<h3>Contents</h3>
+<ol>
+  <li><a href="#methodology">Methodology Overview</a></li>
+  <li><a href="#data-sources">Data Sources &amp; Assumptions Register</a></li>
+  <li><a href="#economic-model">Economic Model Inputs &amp; Sensitivity Ranges</a></li>
+  <li><a href="#legal-framework">Legal Framework Summary</a></li>
+  <li><a href="#comparator-findings">Comparator Matrix &mdash; 10 Cross-Case Findings</a></li>
+  <li><a href="#dual-track">Dual-Track Analysis: Sylvestre Affirmed vs. SCC Reframe</a></li>
+  <li><a href="#stress-test">Stress Test &mdash; 9 Scenario Results</a></li>
+  <li><a href="#gaps">Evidence Gaps &amp; Limitations</a></li>
+  <li><a href="#references">References</a></li>
+</ol>
+</div>
+
+<!-- ============================================================ -->
+<h2 id="methodology">1. Methodology Overview</h2>
+
+<h3>1.1 Four-Layer Economic Framework</h3>
+<p>The economic analysis uses a four-layer deterministic framework, with each layer adding complexity. This structure ensures that findings can be disaggregated and tested independently.</p>
+
+<table>
+<thead><tr><th>Layer</th><th>What It Measures</th><th>Primary Method</th><th>Key Output</th></tr></thead>
+<tbody>
+<tr><td><strong>Layer 1: Static Fiscal Flows</strong></td><td>Alberta's net fiscal position within Confederation</td><td>Federal revenue/expenditure accounting (Tombe methodology)</td><td>Net contribution: ~$14.5B/yr (range $12&ndash;21B)</td></tr>
+<tr><td><strong>Layer 2: Replacement Costs</strong></td><td>One-time and recurring costs of institutional replacement</td><td>Bottom-up costing: defence, benefits, currency, diplomacy, regulatory bodies</td><td>Cumulative: ~$400B (Smith); includes ~$170B debt share</td></tr>
+<tr><td><strong>Layer 3: Dynamic Effects</strong></td><td>GDP impacts from trade barriers, capital flight, population loss, credit premium</td><td>Gravity-model trade analysis (Tombe/Kaplan) + Brexit synthetic controls (Bloom et al., 2025)</td><td>$20&ndash;39B/yr GDP reduction (convergence range)</td></tr>
+<tr><td><strong>Layer 4: Negotiation Scenarios</strong></td><td>How outcomes vary under cooperative vs. adversarial transitions</td><td>Three-scenario modeling: Cooperative, Adversarial, Contested/Failed</td><td>Costs vary 2&ndash;5x depending on negotiation path</td></tr>
+</tbody>
+</table>
+
+<h3>1.2 Synthetic Control Methodology</h3>
+<p>The Brexit-extrapolation applies the synthetic control method (Abadie &amp; Gardeazabal, 2003; Bloom, Chen &amp; Mizen, 2025) to estimate Alberta's counterfactual GDP trajectory post-separation. The UK has underperformed its synthetic control by 4&ndash;5% of GDP since 2016. Applied to Alberta's GDP base (~$340&ndash;400B, depending on year), this yields a $22&ndash;27B annual impact &mdash; an independent estimate that converges with Tombe ($20&ndash;30B steady-state) and Kaplan ($39.1B first-year).</p>
+
+<div class="alert">
+<strong>Convergence finding:</strong> Two related analyses (Tombe, Kaplan &mdash; shared gravity-model ancestry) and one independent extrapolation (Brexit synthetic control) converge on a $20&ndash;39B first-year impact range. The direction of the finding (separation reduces GDP) is robust. The magnitude varies with trade-barrier assumptions. Tombe and Kaplan are not fully independent; the convergence is meaningful but should not be overstated.
+</div>
+
+<h3>1.3 Comparator Matrix Approach</h3>
+<p>The global comparator analysis examines 120+ sovereignty and secession cases since the Peace of Westphalia (1648), organized into six analytical categories with a 24-feature comparison framework:</p>
+
+<table>
+<thead><tr><th>Category</th><th>Description</th><th>Cases</th><th>Relevance to Alberta</th></tr></thead>
+<tbody>
+<tr><td>1. Achieved independence</td><td>States that successfully separated</td><td>US, Ireland, Bangladesh, Singapore, South Sudan, Norway, Iceland</td><td>None from established democracies; all involved colonial, authoritarian, or imposed-union contexts</td></tr>
+<tr><td>2. Parent-state collapse</td><td>Independence through state dissolution</td><td>Soviet republics, Yugoslav states, Czechoslovakia</td><td>Consensual dissolution (Czechoslovakia) is the only democratic-adjacent case; not unilateral secession</td></tr>
+<tr><td>3. Failed/blocked attempts</td><td>Secession attempted but defeated</td><td>US Civil War, Katanga, Biafra, Chechnya</td><td>All involved military suppression; no democratic parallel</td></tr>
+<tr><td>4. Active democratic movements</td><td>Ongoing sovereignty movements in democracies</td><td>Scotland, Catalonia, Quebec, Flanders, Basque Country, Western Australia</td><td>Closest comparators; all have stronger identity bases than Alberta</td></tr>
+<tr><td>5. Treaty-based evolution</td><td>Constitutional evolution through agreement</td><td>Nunavut, Nisga'a, Greenland, South Tyrol, Basque Concierto</td><td>These resolve more grievances than independence &mdash; the constructive pathway</td></tr>
+<tr><td>6. Prior-authority blocking</td><td>Prior-authority claims blocking or constraining secession</td><td>Alberta, Quebec (Cree/Inuit), New Caledonia, Bougainville, Northern Ireland</td><td>Alberta is making new precedent in the thinnest category (5&ndash;7 cases)</td></tr>
+</tbody>
+</table>
+
+<h3>1.4 Legal Analysis Framework</h3>
+<p>The legal analysis traces the chain of authority for Alberta from the Royal Proclamation of 1763 through Rupert's Land Transfer (1870), Treaties 6/7/8 (1876&ndash;1899), the Alberta Act (1905), and the Constitution Act, 1982 (s.35 entrenchment). Two ABKB (trial court) decisions &mdash; <em>Sylvestre</em> (2025 ABKB 712) and <em>ACFN</em> (2026 ABKB 375) &mdash; are analysed alongside the SCC <em>Secession Reference</em> (1998), the <em>Clarity Act</em> (2000), and duty-to-consult jurisprudence (<em>Haida Nation</em>, 2004; <em>Tsilhqot'in</em>, 2014).</p>
+
+<div class="alert">
+<strong>Qualification:</strong> <em>Sylvestre</em> and <em>ACFN</em> are ABKB trial-court decisions under appeal, not SCC rulings. They establish a strong analytical position grounded in well-established constitutional principles, but they are not settled constitutional law. Section 6 of this document presents dual-track findings: one if affirmed, one if the SCC reframes.
+</div>
+
+<!-- ============================================================ -->
+<h2 id="data-sources">2. Data Sources &amp; Assumptions Register</h2>
+
+<h3>2.1 Economic Inputs</h3>
+
+<table>
+<thead><tr><th>Input</th><th>Value</th><th>Source</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td>Alberta GDP</td><td>~$340&ndash;400B (varies by year and measure)</td><td>Statistics Canada</td><td><span class="assumption-tag confirmed">CONFIRMED</span></td></tr>
+<tr><td>Net fiscal contribution</td><td>~$14.5B/yr (range $12&ndash;21B)</td><td>Tombe (2025), The Hub / MLI</td><td><span class="assumption-tag confirmed">CONFIRMED</span></td></tr>
+<tr><td>Tombe GDP impact (steady-state)</td><td>$20&ndash;30B/yr (4&ndash;6%)</td><td>Tombe (2025), peer-reviewed methodology</td><td><span class="assumption-tag confirmed">CONFIRMED</span></td></tr>
+<tr><td>Kaplan GDP impact (first year)</td><td>$39.1B (7.2%)</td><td>Kaplan (former Alberta Treasury Board); FOIP data</td><td><span class="assumption-tag confirmed">CONFIRMED</span></td></tr>
+<tr><td>Trade barrier assumption (Tombe)</td><td>5&ndash;8%</td><td>Gravity model calibration</td><td><span class="assumption-tag proxy">LITERATURE PROXY</span></td></tr>
+<tr><td>Trade barrier assumption (Kaplan)</td><td>~12%</td><td>Higher trade-cost assumptions</td><td><span class="assumption-tag proxy">LITERATURE PROXY</span></td></tr>
+<tr><td>Brexit synthetic control gap</td><td>4&ndash;5% below trajectory (UK)</td><td>Bloom, Chen &amp; Mizen (2025), NBER WP 34459</td><td><span class="assumption-tag confirmed">CONFIRMED</span></td></tr>
+<tr><td>Smith total cost estimate</td><td>~$400B</td><td>Premier Smith costing directive (Aug 2026 target)</td><td><span class="assumption-tag proxy">POLITICAL CLAIM</span> &mdash; not peer-reviewed</td></tr>
+<tr><td>Smith debt share</td><td>~$170B</td><td>Population-share of federal debt</td><td><span class="assumption-tag confirmed">CONFIRMED</span> (arithmetic)</td></tr>
+<tr><td>Smith defence costs</td><td>~$25B/yr</td><td>Per-capita estimate</td><td><span class="assumption-tag proxy">LITERATURE PROXY</span></td></tr>
+<tr><td>Smith benefit replacement</td><td>$10&ndash;15B</td><td>Not confirmed as specific Smith figure</td><td><span class="assumption-tag assumption">INFERRED</span></td></tr>
+<tr><td>Population loss estimate</td><td>~400K (8%)</td><td>Tombe (2025)</td><td><span class="assumption-tag proxy">LITERATURE PROXY</span></td></tr>
+<tr><td>Quebec capital flight</td><td>~700 companies left Quebec (1976&ndash;1985)</td><td>Institut economique de Montreal; multiple sources</td><td><span class="assumption-tag confirmed">CONFIRMED</span></td></tr>
+<tr><td>Catalonia company relocations</td><td>3,000+ (post-Oct 2017 referendum)</td><td>College of Registrars of Spain</td><td><span class="assumption-tag confirmed">CONFIRMED</span></td></tr>
+</tbody>
+</table>
+
+<h3>2.2 Polling &amp; Public Opinion</h3>
+
+<table>
+<thead><tr><th>Metric</th><th>Value</th><th>Source</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td>Ipsos raw support (Jan 2026)</td><td>28%</td><td>Ipsos (2026)</td><td><span class="assumption-tag confirmed">CONFIRMED</span></td></tr>
+<tr><td>Ipsos after costs surfaced</td><td>15&ndash;16%</td><td>Ipsos (2026)</td><td><span class="assumption-tag confirmed">CONFIRMED</span></td></tr>
+<tr><td>Ipsos wave 2 (June 2026)</td><td>18%</td><td>Ipsos (2026)</td><td><span class="assumption-tag confirmed">CONFIRMED</span></td></tr>
+<tr><td>Angus Reid &ldquo;regardless of consequences&rdquo;</td><td>8%</td><td>Angus Reid Institute (2024)</td><td><span class="assumption-tag confirmed">CONFIRMED</span></td></tr>
+<tr><td>Three-tier support structure</td><td>8% hardcore / 10&ndash;12% conditional / 8&ndash;10% protest</td><td>Cross-referenced Ipsos + Angus Reid</td><td><span class="assumption-tag proxy">LITERATURE PROXY</span></td></tr>
+</tbody>
+</table>
+
+<h3>2.3 Legal &amp; Constitutional Inputs</h3>
+
+<table>
+<thead><tr><th>Input</th><th>Status</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td>Treaty 6 (1876), Treaty 7 (1877), Treaty 8 (1899) predate Alberta (1905)</td><td><span class="assumption-tag confirmed">CONFIRMED</span></td><td>Historical fact; documented in primary sources</td></tr>
+<tr><td>s.35 Constitution Act, 1982 protects treaty rights</td><td><span class="assumption-tag confirmed">CONFIRMED</span></td><td>Constitutional text</td></tr>
+<tr><td><em>Sylvestre</em> (2025 ABKB 712) &mdash; separation contravenes treaty rights</td><td><span class="assumption-tag confirmed">CONFIRMED</span></td><td>Trial court decision; under appeal</td></tr>
+<tr><td><em>ACFN</em> (2026 ABKB 375) &mdash; duty to consult triggered</td><td><span class="assumption-tag confirmed">CONFIRMED</span></td><td>Trial court decision; under appeal</td></tr>
+<tr><td>SCC <em>Secession Reference</em> (1998) &mdash; four constitutional principles</td><td><span class="assumption-tag confirmed">CONFIRMED</span></td><td>SCC authority; binding</td></tr>
+<tr><td><em>Clarity Act</em> (2000) &mdash; clear question, clear majority, Aboriginal rights addressed</td><td><span class="assumption-tag confirmed">CONFIRMED</span></td><td>Federal statute</td></tr>
+<tr><td>Treaty nations will not consent to separation</td><td><span class="assumption-tag confirmed">CONFIRMED</span></td><td>Based on Grand Chief Mercredi and Chief Crowfoot statements; current political reality. But Treaty nation unity is a political fact subject to change, not a structural constant (see Section 6).</td></tr>
+<tr><td>October 19, 2026 referendum (Q10)</td><td><span class="assumption-tag confirmed">CONFIRMED</span></td><td>Government of Alberta referendum; Smith added Q10 on May 21, 2026</td></tr>
+</tbody>
+</table>
+
+<h3>2.4 Comparator Inputs</h3>
+
+<table>
+<thead><tr><th>Input</th><th>Value</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td>Total comparator universe</td><td>~120&ndash;150 cases since Westphalia (1648)</td><td><span class="assumption-tag confirmed">CONFIRMED</span></td></tr>
+<tr><td>Category 6 evidence base</td><td>5&ndash;7 cases globally</td><td><span class="assumption-tag confirmed">CONFIRMED</span> &mdash; acknowledged as thin</td></tr>
+<tr><td>Base rate: democratic fracture through unilateral secession</td><td>Zero</td><td><span class="assumption-tag confirmed">CONFIRMED</span> with Czechoslovakia caveat</td></tr>
+<tr><td>Alberta is derivative entity (Act of Parliament, 1905)</td><td>Historical fact</td><td><span class="assumption-tag confirmed">CONFIRMED</span></td></tr>
+</tbody>
+</table>
+
+
+<!-- ============================================================ -->
+<h2 id="economic-model">3. Economic Model Inputs &amp; Sensitivity Ranges</h2>
+
+<h3>3.1 Trade-Barrier Sensitivity</h3>
+<p>The GDP impact of separation is highly sensitive to the assumed level of trade barriers between an independent Alberta and Canada. The following table shows estimated annual GDP impact at different barrier levels:</p>
+
+<table>
+<thead><tr><th>Trade Barrier Level</th><th>Estimated GDP Impact (annual)</th><th>Context</th><th>Likelihood</th></tr></thead>
+<tbody>
+<tr><td>2% (near-zero &mdash; highly cooperative)</td><td>$8&ndash;12B</td><td>More favourable than any comparable case; requires Canada-EU-style agreement immediately</td><td>Low &mdash; no precedent for seceding entity achieving this</td></tr>
+<tr><td>5% (Tombe lower bound)</td><td>$20B</td><td>Consistent with Tombe steady-state lower bound; assumes cooperative negotiation</td><td>Moderate &mdash; requires good-faith negotiation</td></tr>
+<tr><td>8% (Tombe upper bound)</td><td>$30B</td><td>Consistent with Tombe steady-state upper bound</td><td>Moderate to High &mdash; likely under strained relations</td></tr>
+<tr><td>12% (Kaplan assumption)</td><td>$39.1B (first year)</td><td>Kaplan's calibration; includes transition disruption</td><td>Moderate &mdash; plausible under adversarial scenario</td></tr>
+</tbody>
+</table>
+
+<div class="alert">
+<strong>Key finding:</strong> The direction of the result (separation reduces GDP) holds at any positive trade-barrier level. The magnitude varies from significant ($8&ndash;12B) to severe ($39B+). Even the most favourable scenario produces a GDP reduction that exceeds Alberta's net fiscal contribution to Confederation (~$14.5B), meaning the fiscal grievance is not resolved by separation under any trade-barrier assumption.
+</div>
+
+<h3>3.2 Layer 4 Negotiation Scenarios</h3>
+
+<table>
+<thead><tr><th>Scenario</th><th>Trade Barriers</th><th>Negotiation Climate</th><th>GDP Impact (Year 1)</th><th>Key Features</th></tr></thead>
+<tbody>
+<tr><td><strong>A: Cooperative</strong></td><td>3&ndash;5%</td><td>Good-faith bilateral negotiation; EU-style transition</td><td>$15&ndash;25B</td><td>Orderly debt allocation; shared institutions initially; gradual separation</td></tr>
+<tr><td><strong>B: Adversarial</strong></td><td>8&ndash;15%</td><td>Hostile relations; punitive tariffs; pipeline access weaponized</td><td>$35&ndash;55B</td><td>Capital flight accelerates; credit downgrade; population exodus; pipeline transit disrupted</td></tr>
+<tr><td><strong>C: Contested/Failed</strong></td><td>5&ndash;12%</td><td>Protracted litigation; no clear resolution; uncertainty premium</td><td>$25&ndash;40B</td><td>Prolonged uncertainty; most analogous to Quebec 1976&ndash;1995 experience</td></tr>
+</tbody>
+</table>
+
+<h3>3.3 Capital Flight Timing</h3>
+<p>Cross-case Finding #3 establishes that capital flight begins before any vote, not after. The mechanism is uncertainty itself.</p>
+
+<table>
+<thead><tr><th>Case</th><th>Timing</th><th>Scale</th></tr></thead>
+<tbody>
+<tr><td>Quebec (1976&ndash;1985)</td><td>Began with PQ election (1976); intensified with each referendum</td><td>700+ company relocations; Montreal &rarr; Toronto shift</td></tr>
+<tr><td>Catalonia (2017)</td><td>Weeks before Oct 1 referendum</td><td>3,000+ company relocations (College of Registrars)</td></tr>
+<tr><td>Scotland (2014)</td><td>Pre-referendum contingency announcements (RBS, Lloyds)</td><td>Limited &mdash; No vote prevented escalation</td></tr>
+<tr><td>Brexit (2016&ndash;2020)</td><td>Between referendum and formal exit</td><td>~7,000 finance jobs relocated to EU</td></tr>
+</tbody>
+</table>
+
+<h3>3.4 Separatist Benefits Assessment</h3>
+<p>Following red team correction (RT-S2), the analysis presents the separatist-claimed benefits before critiquing them:</p>
+
+<table>
+<thead><tr><th>Claimed Benefit</th><th>Separatist Framing</th><th>Evidence Assessment</th></tr></thead>
+<tbody>
+<tr><td>Fiscal sovereignty</td><td>Keep $14.5B net contribution</td><td>Offset by $20&ndash;39B GDP reduction; net position worsens <span class="evidence moderate">MODERATE</span></td></tr>
+<tr><td>Resource sovereignty</td><td>Full pipeline/climate policy control</td><td>Landlocked geography limits export options; transit agreements required <span class="evidence moderate">MODERATE</span></td></tr>
+<tr><td>Immigration control</td><td>Tailor immigration to labour needs</td><td>Plausible benefit; magnitude unquantified <span class="evidence inferred">INFERRED</span></td></tr>
+<tr><td>Regulatory escape</td><td>No federal carbon tax or emissions caps</td><td>Trading-partner climate requirements would constrain policy space; CBAM exposure <span class="evidence moderate">MODERATE</span></td></tr>
+<tr><td>Democratic self-determination</td><td>Albertans govern Alberta</td><td>Already have substantial self-governance; separation adds sovereignty costs without clear governance gains <span class="evidence inferred">INFERRED</span></td></tr>
+</tbody>
+</table>
+
+
+<!-- ============================================================ -->
+<h2 id="legal-framework">4. Legal Framework Summary</h2>
+
+<h3>4.1 Four Independent Constitutional Blocks</h3>
+<p>The legal architecture presents four independent obstacles to Alberta separation, each grounded in different authority:</p>
+
+<table>
+<thead><tr><th>Block</th><th>Legal Basis</th><th>Key Authority</th><th>Strength</th></tr></thead>
+<tbody>
+<tr>
+  <td><strong>1. Treaty Rights (s.35)</strong></td>
+  <td>Treaties 6, 7, 8 are constitutionally protected. Separation would alter borders, change the treaty partner, and weaken protections.</td>
+  <td><em>Sylvestre</em> (2025 ABKB 712); <em>ACFN</em> (2026 ABKB 375)</td>
+  <td><span class="evidence strong">STRONG</span> at trial level; under appeal</td>
+</tr>
+<tr>
+  <td><strong>2. Secession Reference Framework</strong></td>
+  <td>Four constitutional principles: federalism, democracy, constitutionalism &amp; rule of law, minority rights. No unilateral right to secede.</td>
+  <td><em>Reference re Secession of Quebec</em>, [1998] 2 SCR 217</td>
+  <td><span class="evidence strong">STRONG</span> &mdash; SCC authority; binding</td>
+</tr>
+<tr>
+  <td><strong>3. Clarity Act Requirements</strong></td>
+  <td>Clear question, clear majority, Aboriginal rights addressed, constitutional amendment required (7/50 formula).</td>
+  <td><em>Clarity Act</em>, S.C. 2000, c. 26</td>
+  <td><span class="evidence strong">STRONG</span> &mdash; federal statute</td>
+</tr>
+<tr>
+  <td><strong>4. Geographic Impossibility (Treaty 8)</strong></td>
+  <td>Treaty 8 spans Alberta, BC, Saskatchewan, and NWT. An international border through treaty territory is a factual problem, not a legal holding.</td>
+  <td>Treaty 8 text and geographic scope</td>
+  <td><span class="evidence strong">STRONG</span> &mdash; geographic fact; independent of court rulings</td>
+</tr>
+</tbody>
+</table>
+
+<div class="alert">
+<strong>Independence of layers:</strong> These four blocks operate independently. Even if the SCC were to overrule <em>Sylvestre</em>, the Secession Reference framework, the Clarity Act, and the Treaty 8 geographic impossibility would remain. No single adverse legal development collapses all four.
+</div>
+
+<h3>4.2 Key Case Law</h3>
+
+<table>
+<thead><tr><th>Case</th><th>Citation</th><th>Holding / Relevance</th></tr></thead>
+<tbody>
+<tr><td><em>CEO of Alberta v Sylvestre</em></td><td>2025 ABKB 712</td><td>Separation contravenes Treaty rights under s.35. APP referendum petition struck down. <span class="evidence strong">STRONG</span> (trial court; under appeal)</td></tr>
+<tr><td><em>ACFN v Alberta</em></td><td>2026 ABKB 375</td><td>Crown's duty to consult triggered before any separation process advances. Six Treaty nations granted standing. <span class="evidence strong">STRONG</span> (trial court; under appeal)</td></tr>
+<tr><td><em>Reference re Secession of Quebec</em></td><td>[1998] 2 SCR 217</td><td>No unilateral right to secede. Clear vote triggers obligation to negotiate, but negotiation must respect four constitutional principles including minority rights. <span class="evidence strong">STRONG</span> (SCC; binding)</td></tr>
+<tr><td><em>Haida Nation v BC</em></td><td>2004 SCC 73</td><td>Established the duty-to-consult framework. Consultation is a spectrum; depth depends on strength of claim and severity of potential impact. <span class="evidence strong">STRONG</span></td></tr>
+<tr><td><em>Tsilhqot'in Nation v BC</em></td><td>2014 SCC 44</td><td>First SCC declaration of Aboriginal title over specific territory. Crown can override only with compelling objective and consultation. <span class="evidence strong">STRONG</span></td></tr>
+<tr><td><em>R v Sparrow</em></td><td>[1990] 1 SCR 1075</td><td>Justification framework for infringement of s.35 rights. Analysis argues secession-level infringement is unprecedented and would be extremely difficult to justify. <span class="evidence moderate">MODERATE</span> &mdash; no court has applied Sparrow to secession</td></tr>
+</tbody>
+</table>
+
+<h3>4.3 The Bill 14 Question</h3>
+<p>Alberta's Sovereignty Act (Bill 1, 2022) and proposed constitutional amendments (Bill 14) attempt to assert provincial supremacy over federal authority. The <em>Sylvestre</em> decision effectively held that provincial legislation cannot override constitutionally protected treaty rights. Bill 14 does not address the treaty-rights obstacle because treaty rights are constitutionally entrenched at the same level as provincial and federal jurisdiction &mdash; they cannot be modified by any single level of government.</p>
+
+<h3>4.4 Appeal Prospects</h3>
+<p>Stream C Section 10 provides a detailed assessment of SCC appeal prospects. The most likely outcome is that the SCC reframes rather than cleanly affirms or reverses. Three factors favour affirmation: the holding aligns with established SCC interpretive principles for s.35, it is consistent with the Secession Reference's minority-rights principle, and it builds on <em>Haida Nation</em> and <em>Tsilhqot'in</em>. Two factors favour modification: the SCC may prefer a process-requirement framing over a structural-prohibition framing, and the Sparrow justification framework has not been applied to secession.</p>
+
+
+<!-- ============================================================ -->
+<h2 id="comparator-findings">5. Comparator Matrix &mdash; 10 Cross-Case Findings</h2>
+
+<p>The following 10 cross-case findings are validated against 120+ cases across six analytical categories. Each has been stress-tested against the comparator evidence, with dissenting cases and caveats noted.</p>
+
+<table>
+<thead><tr><th>#</th><th>Finding</th><th>Strength</th><th>Key Evidence</th></tr></thead>
+<tbody>
+<tr>
+  <td>1</td>
+  <td><strong>Economic grievance is never enough on its own.</strong> Identity plus a triggering event is always required for sustained sovereignty movements.</td>
+  <td><span class="evidence strong">STRONG</span></td>
+  <td>Scotland (oil + identity + Brexit); Catalonia (fiscal + identity + Constitutional Court); Alberta has economic grievance but weak identity distinctiveness. Ipsos polling: support drops from 28% to 15&ndash;16% when costs surfaced &mdash; a cost-sensitive response inconsistent with identity-driven movements.</td>
+</tr>
+<tr>
+  <td>2</td>
+  <td><strong>No established democracy has fractured through unilateral secession.</strong> The base rate is zero.</td>
+  <td><span class="evidence strong">STRONG</span></td>
+  <td>Full edge-case analysis: Czechoslovakia (consensual dissolution, 3 years of democracy), Montenegro (3-year state with exit clause), Singapore (expelled), Norway (personal union, consensual). None qualifies as a democratic fracture through unilateral secession.</td>
+</tr>
+<tr>
+  <td>3</td>
+  <td><strong>Capital flight starts before the vote, not after.</strong> Uncertainty is the mechanism.</td>
+  <td><span class="evidence strong">STRONG</span></td>
+  <td>Quebec (700+ companies from PQ election 1976); Catalonia (3,000+ companies before Oct 2017); Scotland (RBS/Lloyds contingency); Brexit (7,000+ finance jobs).</td>
+</tr>
+<tr>
+  <td>4</td>
+  <td><strong>Every case that skipped prior-authority consent produced a permanent crisis.</strong> No exceptions in the historical record.</td>
+  <td><span class="evidence strong">STRONG</span></td>
+  <td>US 1776 (Indigenous genocide, 250+ yrs); Ireland 1921 (The Troubles, 3,500+ deaths, 80+ yrs); Soviet dissolution (Chechnya, Crimea, 35+ yrs); Yugoslavia (ethnic cleansing, genocide); South Sudan (civil war within 2 years, 400,000 deaths). <em>This is the strongest cross-case finding in the entire analysis.</em></td>
+</tr>
+<tr>
+  <td>5</td>
+  <td><strong>Constitutional evolution resolves more grievances than independence.</strong></td>
+  <td><span class="evidence strong">STRONG</span></td>
+  <td>Basque Concierto Economico (resolved fiscal grievance without independence); Nunavut (self-governance without separation); South Tyrol (bilingual autonomy, GDP per capita EUR 62,100 as of 2023); Greenland (progressive self-governance within Danish realm).</td>
+</tr>
+<tr>
+  <td>6</td>
+  <td><strong>Derivative entities always forget they are derivative.</strong> The 4-stage arc (Creation, Identity, Grievance, Sovereignty claim) recurs across cases.</td>
+  <td><span class="evidence strong">STRONG</span></td>
+  <td>Alberta (1905, oil wealth narrative); Western Australia (1901, mining wealth); Catalonia (autonomy statute); Soviet republics (&ldquo;ancient nations&rdquo; narrative).</td>
+</tr>
+<tr>
+  <td>7</td>
+  <td><strong>The weakest legal position produces the loudest sovereignty claim.</strong></td>
+  <td><span class="evidence moderate">MODERATE</span></td>
+  <td>Alberta (derivative, treaty-blocked &rarr; referendum despite two court losses) vs. Scotland (founding entity &rarr; accepted No vote) vs. Basque Country (fiscal autonomy achieved &rarr; movement transitioned). Causal mechanism is inferred, not directly demonstrated.</td>
+</tr>
+<tr>
+  <td>8</td>
+  <td><strong>Treaty obligations are a precondition, not a cost line.</strong> They cannot be priced because they are not a financial question.</td>
+  <td><span class="evidence strong">STRONG</span></td>
+  <td>New Caledonia (restricted electoral roll = structural condition); Northern Ireland (GFA consent principle = foundation); Bougainville (parliamentary ratification = constitutional condition). In each case, prior-authority mechanisms function as preconditions for political legitimacy.</td>
+</tr>
+<tr>
+  <td>9</td>
+  <td><strong>Alberta and BC are the same crisis from opposite directions.</strong> Alberta has treaties that block separation; BC lacks treaties and faces unresolved title.</td>
+  <td><span class="evidence moderate">MODERATE</span></td>
+  <td>Alberta: <em>Sylvestre</em> / <em>ACFN</em> (treaty rights block secession). BC: <em>Tsilhqot'in</em>, Cowichan (2025 BCSC 1490), Gitxaala, Nuchatlaht (Aboriginal title / DRIPA). Both arrive at the same structural conclusion: provincial authority over Indigenous land is legally derivative.</td>
+</tr>
+<tr>
+  <td>10</td>
+  <td><strong>The only path that works runs through prior-authority consent, never around it.</strong></td>
+  <td><span class="evidence strong">STRONG</span> direction; <span class="evidence moderate">MODERATE</span> universality</td>
+  <td>Every Category 5 case incorporating prior-authority consent produced durable outcomes. Every case that bypassed it produced lasting harm. No counter-example exists, but the Category 6 evidence base is thin (5&ndash;7 cases).</td>
+</tr>
+</tbody>
+</table>
+
+
+<!-- ============================================================ -->
+<h2 id="dual-track">6. Dual-Track Analysis: Sylvestre Affirmed vs. SCC Reframe</h2>
+
+<p>The stress test (Scenario 2) identified that the analysis's findings must be presented under two framings, because the SCC's treatment of <em>Sylvestre</em> and <em>ACFN</em> will determine whether treaty rights function as a structural prohibition or a process requirement.</p>
+
+<div class="dual-track">
+<div class="track track-a">
+  <h4>Track A: Sylvestre / ACFN Affirmed</h4>
+  <p><strong>Treaty rights as structural prohibition.</strong></p>
+  <ul>
+    <li>Separation contravenes s.35-protected treaty rights &mdash; the process cannot advance without Treaty nation consent.</li>
+    <li>The geographic impossibility (Treaty 8 spanning four jurisdictions) is reinforced by a legal holding, not merely a factual observation.</li>
+    <li>Alberta's separation bid is constitutionally blocked at the earliest stage &mdash; before a referendum question can validly be put.</li>
+    <li>The chain-of-title argument gains judicial endorsement: Alberta's authority is derivative, and the prior-authority parties whose consent created the conditions for the province's existence have not consented to its departure.</li>
+    <li>Category 6 precedent: Alberta becomes the global reference case for treaty rights blocking secession within a democratic federation.</li>
+  </ul>
+  <p><strong>Implications:</strong> October 19 referendum Q10 is legally advisory at best. Any Yes vote triggers constitutional crisis without constitutional authority. The Catalonia parallel (2017) becomes the relevant comparator: attempted secession in defiance of court rulings.</p>
+</div>
+<div class="track track-b">
+  <h4>Track B: SCC Reframes to Process Requirement</h4>
+  <p><strong>Treaty rights as negotiation topic, not precondition.</strong></p>
+  <ul>
+    <li>Separation is not constitutionally blocked, but treaty rights must be &ldquo;substantively addressed&rdquo; during negotiations &mdash; the Secession Reference's minority-rights principle operationalized.</li>
+    <li>The geographic impossibility remains a factual problem but is reframed as a negotiation challenge rather than a legal block.</li>
+    <li>Treaty nations retain political leverage through negotiation, court challenges, and the Clarity Act's requirement that Aboriginal rights be addressed &mdash; but they do not hold a constitutional veto.</li>
+    <li>The economic analysis, comparator evidence, and base-rate finding are unaffected.</li>
+    <li>The Secession Reference framework still applies: clear question, clear majority, good-faith negotiation, constitutional amendment (7/50).</li>
+  </ul>
+  <p><strong>Implications:</strong> Separation becomes constitutionally possible but extraordinarily difficult. Treaty nations have stated they will enforce their rights through every available mechanism. The process would be protracted, litigated, and politically fraught &mdash; consistent with the Contested/Failed negotiation scenario.</p>
+</div>
+</div>
+
+<div class="alert">
+<strong>What holds under both tracks:</strong> (1) The economic cost range ($20&ndash;39B/yr). (2) The Secession Reference framework. (3) The Clarity Act requirements. (4) The Treaty 8 geographic complication. (5) The base rate for democratic fracture (zero). (6) The comparator evidence. (7) Capital flight mechanics. The legal architecture shifts, but the economic and comparative architecture does not.
+</div>
+
+<h3>6.1 Treaty Nation Plurality</h3>
+<p>Stress test Scenario 3 identified that the analysis assumes Treaty nation unity without modelling alternatives. Three configurations deserve consideration:</p>
+
+<table>
+<thead><tr><th>Configuration</th><th>Description</th><th>Constitutional Impact</th><th>Political Impact</th></tr></thead>
+<tbody>
+<tr>
+  <td><strong>(a) Unified opposition</strong></td>
+  <td>Current documented position. Grand Chiefs and Chiefs in court filings uniformly oppose separation.</td>
+  <td>No change &mdash; s.35 protections remain.</td>
+  <td>Strongest &ldquo;treaty block&rdquo; narrative. Politically and legally coherent.</td>
+</tr>
+<tr>
+  <td><strong>(b) Split by treaty area</strong></td>
+  <td>Treaty 8 nations (resource interests) conditionally open to negotiation; Treaty 7 (sovereignty narrative) pursue independent track; Treaty 6 (cross-border) oppose.</td>
+  <td>s.35 protections remain for all nations regardless of political alignment. Individual nations cannot waive other nations' treaty rights.</td>
+  <td>Political framing changes dramatically. &ldquo;Treaty block&rdquo; narrative undermined even though constitutional analysis is unchanged.</td>
+</tr>
+<tr>
+  <td><strong>(c) Conditional support</strong></td>
+  <td>Some nations signal conditional support in exchange for treaty modernization, enhanced self-governance, and resource co-management.</td>
+  <td>Constitutional protections under s.35 remain. But political context would reframe the separation debate from &ldquo;blocked&rdquo; to &ldquo;negotiated.&rdquo;</td>
+  <td>The most transformative configuration. Could lead to the partnership pathway (Stream F) rather than the adversarial pathway.</td>
+</tr>
+</tbody>
+</table>
+
+
+<!-- ============================================================ -->
+<h2 id="stress-test">7. Stress Test &mdash; 9 Scenario Results</h2>
+
+<p>Nine scenarios tested. The analysis survives all nine. No scenario breaks the core findings. Two required blocking corrections (applied). Five recommended improvements identified.</p>
+
+<div class="scenario-grid">
+<div class="scenario-card">
+  <h4>S1: APP Credible Counter-Analysis</h4>
+  <p style="font-size:12px;">Can the APP produce numbers that overturn the $20&ndash;40B cost range?</p>
+  <p class="verdict verdict-qual">HOLDS WITH QUALIFICATION</p>
+  <p style="font-size:11px;color:var(--text-secondary)">Direction holds; magnitude is assumption-dependent. Sensitivity table needed for trade barriers at 2%, 5%, 8%, 12%.</p>
+</div>
+<div class="scenario-card">
+  <h4>S2: SCC Overrules Sylvestre</h4>
+  <p style="font-size:12px;">What if treaty rights become a negotiation topic, not a precondition?</p>
+  <p class="verdict verdict-qual">HOLDS WITH QUALIFICATION</p>
+  <p style="font-size:11px;color:var(--text-secondary)">Multiple independent layers survive. Dual-track presentation required (applied as ST-1).</p>
+</div>
+<div class="scenario-card">
+  <h4>S3: Treaty Nations Split</h4>
+  <p style="font-size:12px;">What if Treaty 6/7/8 nations disagree on separation?</p>
+  <p class="verdict verdict-qual">HOLDS WITH QUALIFICATION</p>
+  <p style="font-size:11px;color:var(--text-secondary)">Constitutional protections survive. Political framing is vulnerable. Treaty nation plurality modelled (applied as ST-2).</p>
+</div>
+<div class="scenario-card">
+  <h4>S4: Federal Political Crisis</h4>
+  <p style="font-size:12px;">What if Ottawa is too dysfunctional to negotiate constitutional evolution?</p>
+  <p class="verdict verdict-qual">HOLDS WITH QUALIFICATION</p>
+  <p style="font-size:11px;color:var(--text-secondary)">Analytical findings survive. Stream F prescriptive value diminishes. Basque Country comparator: decades of institutional preparation.</p>
+</div>
+<div class="scenario-card">
+  <h4>S5: Energy Transition Accelerates</h4>
+  <p style="font-size:12px;">Does declining oil revenue change the calculus?</p>
+  <p class="verdict verdict-holds">HOLDS</p>
+  <p style="font-size:11px;color:var(--text-secondary)">Weakens fiscal grievance AND the separatist fiscal plan. Regulatory-sovereignty argument intensifies. Net effect ambiguous.</p>
+</div>
+<div class="scenario-card">
+  <h4>S6: International Recognition Shifts</h4>
+  <p style="font-size:12px;">Post-Ukraine norms more permissive of territorial change?</p>
+  <p class="verdict verdict-holds">HOLDS</p>
+  <p style="font-size:11px;color:var(--text-secondary)">Core findings rest on domestic constitutional law. Kosovo advisory opinion should be addressed for completeness.</p>
+</div>
+<div class="scenario-card">
+  <h4>S7: Referendum Passes (Yes Vote)</h4>
+  <p style="font-size:12px;">What constitutional mechanisms respond to a Yes vote?</p>
+  <p class="verdict verdict-qual">HOLDS WITH QUALIFICATION</p>
+  <p style="font-size:11px;color:var(--text-secondary)">Secession Reference framework holds. Most likely outcome: protracted litigation + negotiation addressing fiscal grievance. Defiance scenario underexplored.</p>
+</div>
+<div class="scenario-card">
+  <h4>S8: Chain-of-Title Proves Too Much</h4>
+  <p style="font-size:12px;">Does the argument delegitimize all provincial authority?</p>
+  <p class="verdict verdict-qual">HOLDS WITH QUALIFICATION</p>
+  <p style="font-size:11px;color:var(--text-secondary)">Three response layers (operating-within vs. transcending; SCC reframing prediction; Indigenous perspective acknowledgment). All are analysis's construction, not established law.</p>
+</div>
+<div class="scenario-card">
+  <h4>S9: Indigenous Nations Advance Own Claims</h4>
+  <p style="font-size:12px;">What if Treaty nations use this precedent for their own sovereignty?</p>
+  <p class="verdict verdict-holds">HOLDS</p>
+  <p style="font-size:11px;color:var(--text-secondary)">Analysis is strengthened, not weakened. Prior-authority claims validated. This is the analysis's most consequential implication.</p>
+</div>
+</div>
+
+<h3>7.1 Stress Test Summary</h3>
+
+<table>
+<thead><tr><th>#</th><th>Scenario</th><th>Verdict</th><th>Primary Vulnerability</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>APP credible counter-analysis</td><td><span class="evidence moderate">HOLDS W/Q</span></td><td>Magnitude is assumption-dependent</td></tr>
+<tr><td>2</td><td>SCC overrules Sylvestre</td><td><span class="evidence moderate">HOLDS W/Q</span></td><td>Categorical language needs dual-track (applied)</td></tr>
+<tr><td>3</td><td>Treaty nations split</td><td><span class="evidence moderate">HOLDS W/Q</span></td><td>Political framing vulnerable; constitutional analysis unchanged</td></tr>
+<tr><td>4</td><td>Federal political crisis</td><td><span class="evidence moderate">HOLDS W/Q</span></td><td>Prescriptive value of evolution pathways diminishes</td></tr>
+<tr><td>5</td><td>Energy transition accelerates</td><td><span class="evidence strong">HOLDS</span></td><td>Net effect ambiguous; both directions reinforced</td></tr>
+<tr><td>6</td><td>International recognition shifts</td><td><span class="evidence strong">HOLDS</span></td><td>Core findings rest on domestic law</td></tr>
+<tr><td>7</td><td>Referendum passes</td><td><span class="evidence moderate">HOLDS W/Q</span></td><td>Defiance scenario underexplored</td></tr>
+<tr><td>8</td><td>Chain of title applied consistently</td><td><span class="evidence moderate">HOLDS W/Q</span></td><td>All response layers are analysis's construction</td></tr>
+<tr><td>9</td><td>Indigenous nations advance own claims</td><td><span class="evidence strong">HOLDS</span></td><td>Framing should present this as a finding, not a limitation</td></tr>
+</tbody>
+</table>
+
+<p><strong>Overall verdict: CONDITIONAL &rarr; PASS</strong> (after ST-1 and ST-2 corrections applied). 3 scenarios hold outright; 6 hold with qualification; 0 break. The multi-layered architecture ensures that no single adverse development collapses the analysis.</p>
+
+<h3>7.2 Quality Gate Status</h3>
+
+<table>
+<thead><tr><th>Gate</th><th>Status</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td>Prior-authority framing</td><td><span class="evidence strong">MET</span></td><td>Treaty nations treated as parties throughout. Corrections RT-I1 through RT-I5 strengthened this.</td></tr>
+<tr><td>Citation verification</td><td><span class="evidence strong">MET</span></td><td>190 citations verified across two passes. 1 fabricated citation caught and corrected (Blueberry River BCCA).</td></tr>
+<tr><td>Cross-stream reconciliation</td><td><span class="evidence strong">MET</span></td><td>42 facts reconciled across 7 dimensions. 4 contradictions found, all resolved.</td></tr>
+<tr><td>Red team triple-attack</td><td><span class="evidence strong">MET</span></td><td>26 attacks across 3 perspectives. 0 DOES NOT SURVIVE from constitutional or Indigenous perspectives.</td></tr>
+<tr><td>Convergence validation</td><td><span class="evidence strong">MET</span></td><td>Convergence treated honestly: &ldquo;two related analyses and one independent extrapolation.&rdquo;</td></tr>
+<tr><td>Stress test</td><td><span class="evidence strong">PASS</span></td><td>9 scenarios survived. 2 blocking corrections applied.</td></tr>
+<tr><td>Live source recheck</td><td><span class="evidence moderate">PENDING</span></td><td>Phase 8b &mdash; not yet performed.</td></tr>
+</tbody>
+</table>
+
+
+<!-- ============================================================ -->
+<h2 id="gaps">8. Evidence Gaps &amp; Limitations</h2>
+
+<h3>8.1 Structural Limitations</h3>
+<ol>
+  <li><strong>Category 6 sample size.</strong> Five to seven cases is insufficient for statistical generalization. The directional consistency of the evidence is strong, but a future counter-example cannot be ruled out. <span class="evidence moderate">MODERATE</span></li>
+  <li><strong>Sylvestre/ACFN are trial-court decisions.</strong> The analysis's legal architecture rests partly on ABKB rulings that are under appeal. The dual-track framework (Section 6) addresses this, but the SCC outcome will determine which track applies. <span class="evidence moderate">MODERATE</span></li>
+  <li><strong>Chain-of-title &ldquo;proves too much&rdquo; response is judicially untested.</strong> The distinction between exercising delegated authority and claiming to transcend it is the analysis's own construction, not established law. <span class="evidence moderate">MODERATE</span></li>
+  <li><strong>Sparrow justification framework has never been applied to secession.</strong> The argument that secession-level infringement is unprecedented is reasonable but untested. <span class="evidence inferred">INFERRED</span></li>
+  <li><strong>Treaty nation unity is assumed.</strong> The analysis models alternatives (Section 6.1) but cannot predict which configuration will obtain. <span class="evidence moderate">MODERATE</span></li>
+</ol>
+
+<h3>8.2 Data Gaps</h3>
+<ol>
+  <li><strong>Alberta-specific capital flight data.</strong> Capital flight predictions are inferred from Quebec and Catalonia comparators. No Alberta-specific capital flight has occurred because no credible secession process has been initiated. <span class="evidence inferred">INFERRED</span></li>
+  <li><strong>APP economic analysis.</strong> The APP's fiscal plan has been described as &ldquo;fiscal fantasy&rdquo; (Tombe), but no professionally audited version exists. If one were produced, it would need assessment on its merits. <span class="evidence moderate">MODERATE</span></li>
+  <li><strong>Trade-barrier level.</strong> The 5&ndash;12% range is a literature proxy, not an empirically observed Alberta-Canada trade barrier. The actual level would depend on negotiation outcomes that cannot be predicted. <span class="evidence moderate">MODERATE</span></li>
+  <li><strong>Energy transition timeline.</strong> IEA projections show global oil demand peaking before 2030 in all scenarios, but Alberta-specific production trajectories are uncertain. <span class="evidence moderate">MODERATE</span></li>
+</ol>
+
+<h3>8.3 Framing Limitations</h3>
+<ol>
+  <li><strong>Settler-state analytical framework.</strong> The chain-of-title analysis uses Western legal frameworks. Indigenous nations' own sovereignty narratives &mdash; which ground sovereignty in relationships rather than territorial control &mdash; may not be adequately captured. <span class="evidence moderate">MODERATE</span></li>
+  <li><strong>Analysis centres the Alberta question.</strong> The Indigenous sovereignty scholar red team correctly identified that the analysis treats Indigenous sovereignty as instrumental to the Alberta debate. Treaty nations may use the same legal architecture to advance their own sovereignty claims &mdash; this is a finding, not a limitation. <span class="evidence strong">STRONG</span></li>
+  <li><strong>Missing perspectives.</strong> The analysis centres formal political leadership (Chiefs, Grand Chiefs) within the Indian Act governance system. Indigenous women, Two-Spirit people, and urban Indigenous perspectives are not separately represented. <span class="evidence moderate">MODERATE</span></li>
+  <li><strong>The ICJ Kosovo advisory opinion (2010)</strong> has not been integrated. While it does not change the domestic constitutional analysis, it should be addressed for completeness. <span class="evidence inferred">INFERRED</span></li>
+</ol>
+
+
+<!-- ============================================================ -->
+<h2 id="references">9. References</h2>
+
+<p style="font-size:13px;line-height:1.8;">
+Abadie, A., &amp; Gardeazabal, J. (2003). The economic costs of conflict: A case study of the Basque Country. <em>American Economic Review, 93</em>(1), 113&ndash;132.<br>
+<em>Athabasca Chipewyan First Nation v. Alberta (Chief Electoral Officer)</em>, 2026 ABKB 375 (CanLII).<br>
+Bloom, N., Chen, S., &amp; Mizen, P. (2025). The economic impact of Brexit. <em>NBER Working Paper No. 34459</em>.<br>
+Born, B., et al. (2019). The costs of economic nationalism: Evidence from the Brexit experiment. <em>Economic Journal, 129</em>(623), 2722&ndash;2744.<br>
+<em>Chief Electoral Officer of Alberta v. Sylvestre</em>, 2025 ABKB 712 (CanLII).<br>
+<em>Clarity Act</em>, S.C. 2000, c. 26.<br>
+<em>Haida Nation v. British Columbia (Minister of Forests)</em>, 2004 SCC 73 (CanLII).<br>
+Ipsos. (2026). <em>Alberta separation polling</em> [Survey data].<br>
+Angus Reid Institute. (2024). <em>Western alienation and Alberta separation</em>.<br>
+<em>R v. Sparrow</em>, [1990] 1 SCR 1075 (CanLII).<br>
+<em>Reference re Secession of Quebec</em>, [1998] 2 SCR 217 (CanLII).<br>
+Smith, D. (Premier of Alberta). (2026). Costing directive for Alberta separation (August 2026 target).<br>
+Tombe, T. (2025). Economic analysis of Alberta separation. University of Calgary.<br>
+<em>Tsilhqot'in Nation v. British Columbia</em>, 2014 SCC 44 (CanLII).<br>
+</p>
+
+</main>
+
+<footer>
+<div class="wrap">
+  <p> &mdash;  Research &nbsp;|&nbsp; KT-023 Sovereignty Comparator Analysis &nbsp;|&nbsp; Tier 1: Working Document &nbsp;|&nbsp; June 2026</p>
+  <p style="margin-top:4px;">This document is analytical, not advocacy. All findings are evidence-based with strength labels. Treaty Nations are prior-authority parties.</p>
+</div>
+</footer>
+
+</body>
+</html>

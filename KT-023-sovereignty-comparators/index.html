@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sovereignty Comparator Analysis | KT-023</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230B2E4A'/%3E%3Cpath d='M18 42V22h8v8h12v-8h8v20h-8v-8H26v8z' fill='%2300A6A6'/%3E%3C/svg%3E">
+<style>
+:root {
+  --deep-navy: #103656;
+  --midnight: #103656;
+  --slate-blue: #0c4f8a;
+  --ocean: #1a7ebe;
+  --deep-teal: #006468;
+  --teal: #28bcb8;
+  --aqua: #4bc2c3;
+  --light-aqua: #4bc2c3;
+  --pale-aqua: #E0F0EE;
+  --mist: #EDF5F4;
+  --near-black: #0A0A0A;
+  --text-secondary: #4A5568;
+  --border-light: #E5E7EB;
+  --bg-subtle: #F9FAFB;
+  --shadow-sm: 0 1px 3px rgba(11,31,51,0.06);
+  --shadow-md: 0 2px 12px rgba(11,31,51,0.08);
+  --shadow-lg: 0 4px 24px rgba(11,31,51,0.12);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Lato', sans-serif;
+  color: var(--near-black);
+  background: #fff;
+  line-height: 1.65;
+  font-size: 15px;
+}
+.top-bar {
+  background: linear-gradient(135deg, var(--deep-navy), var(--slate-blue));
+  padding: 18px 28px;
+  text-align: center;
+}
+.top-bar h1 { font-size: 15px; font-weight: 700; color: #fff; letter-spacing: 0.03em; }
+.top-bar .subtitle { font-size: 11px; font-weight: 300; color: var(--light-aqua); letter-spacing: 0.04em; margin-top: 2px; }
+.landing {
+  text-align: center;
+  padding: 64px 24px 40px;
+  max-width: 880px;
+  margin: 0 auto;
+}
+.landing .treaty {
+  font-size: 12px;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  max-width: 720px;
+  margin: 0 auto 28px;
+}
+.landing .title {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--deep-navy);
+  margin-bottom: 10px;
+  line-height: 1.2;
+}
+.landing .sub {
+  font-size: 17px;
+  font-weight: 300;
+  color: var(--text-secondary);
+  max-width: 640px;
+  margin: 0 auto 12px;
+  line-height: 1.5;
+}
+.stat-row {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  flex-wrap: wrap;
+  margin: 36px auto 48px;
+  max-width: 780px;
+}
+.stat-box {
+  background: var(--mist);
+  border-radius: 10px;
+  padding: 18px 22px;
+  min-width: 140px;
+  text-align: center;
+}
+.stat-box .num { font-size: 28px; font-weight: 700; color: var(--deep-teal); }
+.stat-box .label { font-size: 11px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.06em; margin-top: 4px; }
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 24px 60px;
+}
+.card {
+  background: #fff;
+  border: 1px solid var(--border-light);
+  border-radius: 10px;
+  padding: 28px 24px;
+  text-decoration: none;
+  color: inherit;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+.card:hover { box-shadow: var(--shadow-md); border-color: var(--aqua); }
+.card .tier-label {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: var(--pale-aqua);
+  color: var(--deep-teal);
+  margin-bottom: 12px;
+}
+.card h2 { font-size: 17px; font-weight: 700; color: var(--deep-navy); margin-bottom: 8px; line-height: 1.3; }
+.card p { font-size: 13px; color: var(--text-secondary); line-height: 1.55; }
+.card .audience { font-size: 11px; color: var(--deep-teal); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-top: 14px; }
+.footer {
+  text-align: center;
+  padding: 24px;
+  font-size: 11px;
+  color: var(--text-secondary);
+  border-top: 1px solid var(--border-light);
+}
+.footer a { color: var(--deep-teal); text-decoration: none; }
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="top-bar">
+  <h1></h1>
+  <div class="subtitle"> Research &mdash; KT-023</div>
+</div>
+
+<div class="landing">
+  <p class="treaty">This research concerns Treaties 6 (1876), 7 (1877), and 8 (1899) &mdash; agreements between the Crown and sovereign First Nations that predate the Province of Alberta (1905). Treaty Nations are prior-authority parties with sovereign claims, not stakeholders in a constitutional debate.</p>
+  <h1 class="title">Sovereignty Comparator Analysis</h1>
+  <p class="sub">Alberta, Prior Authority &amp; Constitutional Evolution</p>
+</div>
+
+<div class="stat-row">
+  <div class="stat-box"><div class="num">120+</div><div class="label">Cases in Comparator Universe</div></div>
+  <div class="stat-box"><div class="num">6</div><div class="label">Research Streams</div></div>
+  <div class="stat-box"><div class="num">3</div><div class="label">Red Team Perspectives</div></div>
+  <div class="stat-box"><div class="num">$20&ndash;30B</div><div class="label">Annual GDP Impact Range</div></div>
+</div>
+
+<div class="cards">
+  <a href="technical.html" class="card">
+    <span class="tier-label">Tier 0 &mdash; Technical</span>
+    <h2>Full Research Record</h2>
+    <p>Complete methodology, all 6 research streams, 120+ comparator cases, court decision analysis, economic modeling, red team findings, stress test. 40+ citations. Source of truth.</p>
+    <div class="audience">Policy Researchers &amp; Analysts</div>
+  </a>
+  <a href="working.html" class="card">
+    <span class="tier-label">Tier 1 &mdash; Working</span>
+    <h2>Policy Analyst Working Document</h2>
+    <p>Methodology, data sources, assumption registers, sensitivity analysis, comparator matrix, dual-track framework.</p>
+    <div class="audience">Policy Analysts &amp; Advisors</div>
+  </a>
+  <a href="briefing.html" class="card">
+    <span class="tier-label">Tier 2 &mdash; Briefing</span>
+    <h2>Executive Briefing</h2>
+    <p>Key findings, economic impact summary, legal barriers, 10 cross-case patterns, referendum scenarios, constitutional evolution pathways.</p>
+    <div class="audience">Executive / Board</div>
+  </a>
+  <a href="council.html" class="card">
+    <span class="tier-label">Tier 3 &mdash; Council</span>
+    <h2>Decision-Maker Summary</h2>
+    <p>One page: what does this mean, what are the options, what does the evidence say.</p>
+    <div class="audience">Decision-Makers</div>
+  </a>
+</div>
+
+<div class="footer">
+  <p>KT-023 &mdash; Sovereignty Comparator Analysis &mdash;  &mdash; June 2026</p>
+</div>
+</body>
+</html>

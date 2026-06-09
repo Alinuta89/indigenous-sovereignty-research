@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Urban Indigenous Services &amp; Federal Formula Audit | KT-029</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { font-size: 16px; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #F8F6F0;
+    color: #333333;
+    line-height: 1.7;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  .treaty-bar {
+    background: #1B2A4A;
+    color: #F8F6F0;
+    text-align: center;
+    font-size: 0.82rem;
+    padding: 10px 20px;
+    line-height: 1.5;
+  }
+  header {
+    background: #1B2A4A;
+    color: #fff;
+    padding: 60px 40px 52px;
+    text-align: center;
+  }
+  header .logo {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #E8833A;
+    margin-bottom: 20px;
+  }
+  header h1 {
+    font-size: 2.4rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 12px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  header .subtitle {
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.65);
+    max-width: 600px;
+    margin: 0 auto 20px;
+  }
+  header .meta {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.4);
+  }
+
+  .main {
+    flex: 1;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 48px 40px 80px;
+    width: 100%;
+  }
+
+  .intro {
+    text-align: center;
+    margin-bottom: 40px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .intro p {
+    font-size: 0.95rem;
+    color: #555;
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+  .card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 32px 28px 28px;
+    border: 1px solid #e0ddd6;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    transition: box-shadow 0.2s, transform 0.2s;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+  }
+  .card:hover {
+    box-shadow: 0 6px 24px rgba(27,42,74,0.12);
+    transform: translateY(-2px);
+  }
+  .card .tier-num {
+    display: inline-block;
+    background: #1B2A4A;
+    color: #fff;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 3px 12px;
+    border-radius: 3px;
+    margin-bottom: 16px;
+    align-self: flex-start;
+  }
+  .card.tier-0 .tier-num { background: #2D5F2D; }
+  .card.tier-1 .tier-num { background: #1B2A4A; }
+  .card.tier-2 .tier-num { background: #E8833A; }
+  .card.tier-3 .tier-num { background: #8B2500; }
+  .card h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1B2A4A;
+    margin-bottom: 8px;
+    border: none;
+    padding: 0;
+  }
+  .card .audience {
+    font-size: 0.88rem;
+    color: #E8833A;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  .card .desc {
+    font-size: 0.88rem;
+    color: #555;
+    flex: 1;
+    margin-bottom: 16px;
+    line-height: 1.6;
+  }
+  .card .meta-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #eee;
+    padding-top: 14px;
+    margin-top: auto;
+  }
+  .card .read-time {
+    font-size: 0.78rem;
+    color: #999;
+    font-weight: 500;
+  }
+  .card .link-arrow {
+    font-size: 0.82rem;
+    color: #E8833A;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+
+  footer {
+    background: #1B2A4A;
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+    padding: 30px 20px;
+    font-size: 0.78rem;
+    margin-top: auto;
+  }
+  footer strong { color: #E8833A; }
+  footer .ticket { color: rgba(255,255,255,0.3); margin-top: 6px; }
+
+  @media print {
+    body { background: #fff; }
+    .card { border: 1px solid #ccc; box-shadow: none; }
+    .treaty-bar, header, .card .tier-num { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+  @media (max-width: 700px) {
+    header { padding: 40px 20px 36px; }
+    header h1 { font-size: 1.7rem; }
+    .main { padding: 30px 20px 60px; }
+    .cards { grid-template-columns: 1fr; }
+  }
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="treaty-bar">
+  This work concerns Treaty 6, Treaty 7, and Treaty 8 territories and the Metis homeland.
+</div>
+
+<header>
+  <div class="logo"></div>
+  <h1>Urban Indigenous Services &amp; Federal Formula Audit</h1>
+  <p class="subtitle">ISC Allocation Reconstruction &amp; Co-Funding Model</p>
+  <p class="meta">KT-029 &bull; June 2026</p>
+</header>
+
+<div class="main">
+
+  <div class="intro">
+    <p>This research reconstructs the ISC allocation formula architecture, documents Alberta's urban Indigenous funding gap, and proposes a co-funding model. Select the document that matches your role and the depth of detail you need.</p>
+  </div>
+
+  <div class="cards">
+
+    <a href="technical.html" class="card tier-0">
+      <span class="tier-num">Tier 0</span>
+      <h2>Technical Paper</h2>
+      <div class="audience">For Researchers &amp; Subject Experts</div>
+      <div class="desc">Full research record. Six research streams, three red team reviews, citation verification, stress test, and corrections log. Complete methodology, evidence tags, data tables, and APA 7 references. The source of truth &mdash; all other tiers are derived from this document.</div>
+      <div class="meta-row">
+        <span class="read-time">~90 min read</span>
+        <span class="link-arrow">Read &rarr;</span>
+      </div>
+    </a>
+
+    <a href="working.html" class="card tier-1">
+      <span class="tier-num">Tier 1</span>
+      <h2>Working Document</h2>
+      <div class="audience">For Policy Analysts</div>
+      <div class="desc">Formula reconstruction methodology and findings. Denominator analysis with three-scenario model. Co-funding model budget arithmetic (corrected). Cross-provincial comparison data tables. Data limitations and methodology notes. Key references.</div>
+      <div class="meta-row">
+        <span class="read-time">~25 min read</span>
+        <span class="link-arrow">Read &rarr;</span>
+      </div>
+    </a>
+
+    <a href="briefing.html" class="card tier-2">
+      <span class="tier-num">Tier 2</span>
+      <h2>Executive Briefing</h2>
+      <div class="audience">For Leadership</div>
+      <div class="desc">Key findings, mechanistic drivers of Alberta's position, urban gap dimensions, co-funding proposal headline numbers, advocacy implications, and recommended next steps. Evidence confidence summary table. No methodology detail.</div>
+      <div class="meta-row">
+        <span class="read-time">~12 min read</span>
+        <span class="link-arrow">Read &rarr;</span>
+      </div>
+    </a>
+
+    <a href="council.html" class="card tier-3">
+      <span class="tier-num">Tier 3</span>
+      <h2>Premier's Kit</h2>
+      <div class="audience">For Decision-Makers</div>
+      <div class="desc">The problem in one paragraph. Three numbers that matter. Three asks: formula rebase, denominator correction, urban stream. What Alberta commits. Counter-argument pre-emption. Decision required: endorse advocacy strategy Y/N.</div>
+      <div class="meta-row">
+        <span class="read-time">~8 min read</span>
+        <span class="link-arrow">Read &rarr;</span>
+      </div>
+    </a>
+
+  </div>
+
+</div>
+
+<footer>
+  <strong></strong><br>
+  Urban Indigenous Services &amp; Federal Formula Audit &bull; June 2026<br>
+  Analysis uses publicly available data. Co-funding model is a discussion draft requiring community deliberation.<br>
+  <div class="ticket">KT-029</div>
+</footer>
+
+</body>
+</html>

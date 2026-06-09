@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Technical Paper &mdash; Indigenous Funding Network Resilience | KT-030</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230B2E4A'/%3E%3Cpath d='M18 42V22h8v8h12v-8h8v20h-8v-8H26v8z' fill='%2300A6A6'/%3E%3C/svg%3E">
+<style>
+:root{--deep-navy:#103656;--midnight:#103656;--slate-blue:#0c4f8a;--deep-teal:#006468;--teal:#28bcb8;--aqua:#4bc2c3;--light-aqua:#4bc2c3;--pale-aqua:#E0F0EE;--mist:#EDF5F4;--near-black:#0A0A0A;--text-secondary:#4A5568;--border-light:#E5E7EB;--bg-subtle:#F9FAFB;--shadow-md:0 2px 12px rgba(11,31,51,0.08)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Lato',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:var(--near-black);background:#fff;line-height:1.7;font-size:15px}
+.top-bar{position:sticky;top:0;z-index:100;background:linear-gradient(135deg,var(--deep-navy),var(--slate-blue));box-shadow:0 4px 24px rgba(11,31,51,0.12)}
+.top-bar-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:12px 28px;flex-wrap:wrap;gap:12px}
+.brand h1{font-size:15px;font-weight:700;color:#fff}
+.brand .subtitle{font-size:11px;font-weight:300;color:var(--light-aqua)}
+.view-tabs{display:flex;flex-wrap:wrap;gap:4px;padding:4px;background:rgba(255,255,255,0.08);border-radius:8px}
+.view-tab{display:inline-flex;align-items:center;min-height:36px;padding:0 13px;border-radius:6px;color:rgba(255,255,255,0.68);text-decoration:none;text-transform:uppercase;letter-spacing:0.08em;font-size:11px;font-weight:700;transition:all 0.18s}
+.view-tab:hover{color:#fff;background:rgba(255,255,255,0.12)}
+.view-tab.active{color:var(--deep-navy);background:#fff}
+.wrap{max-width:960px;margin:0 auto;padding:40px 28px 60px}
+h2{font-size:22px;font-weight:700;color:var(--deep-navy);margin:48px 0 16px;padding-bottom:8px;border-bottom:2px solid var(--pale-aqua)}
+h3{font-size:17px;font-weight:700;color:var(--slate-blue);margin:28px 0 10px}
+h4{font-size:14px;font-weight:700;color:var(--deep-teal);margin:18px 0 6px}
+p{margin-bottom:14px}
+.treaty{font-size:12px;font-style:italic;color:var(--text-secondary);margin-bottom:28px;line-height:1.7;max-width:780px}
+.hero{text-align:center;margin-bottom:28px;padding-top:8px}
+.hero .title{font-size:28px;font-weight:700;color:var(--deep-navy);margin-bottom:6px;line-height:1.2}
+.hero .sub{font-size:15px;color:var(--text-secondary);font-weight:300}
+.hero .meta{font-size:12px;color:var(--text-secondary);margin-top:8px}
+.alert{background:var(--mist);border-left:4px solid var(--deep-teal);padding:16px 20px;border-radius:0 8px 8px 0;margin:20px 0}
+.alert strong{color:var(--deep-teal)}
+table{width:100%;border-collapse:collapse;margin:16px 0;font-size:13px}
+th{background:var(--deep-navy);color:#fff;padding:10px 12px;text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:0.05em}
+td{padding:10px 12px;border-bottom:1px solid var(--border-light)}
+tr:nth-child(even){background:var(--bg-subtle)}
+ul,ol{margin:8px 0 16px 20px}li{margin-bottom:6px;font-size:14px}
+.evidence{display:inline-block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;padding:2px 6px;border-radius:3px;margin-left:4px}
+.evidence.strong{background:#d4edda;color:#155724}
+.evidence.moderate{background:#fff3cd;color:#856404}
+.evidence.inferred{background:#f8d7da;color:#721c24}
+.footnote{font-size:12px;color:var(--text-secondary);border-top:1px solid var(--border-light);margin-top:8px;padding-top:8px}
+.toc{background:var(--bg-subtle);border:1px solid var(--border-light);border-radius:10px;padding:24px 28px;margin:24px 0}
+.toc h3{margin-top:0;font-size:14px;color:var(--deep-navy)}
+.toc ol{margin:10px 0 0;font-size:13px;columns:2;column-gap:32px}
+.toc li{margin-bottom:5px}
+.toc a{color:var(--deep-teal);text-decoration:none}
+.toc a:hover{text-decoration:underline}
+blockquote{border-left:3px solid var(--aqua);padding:12px 20px;margin:16px 0;background:var(--bg-subtle);font-size:14px;color:var(--text-secondary)}
+.footer{text-align:center;padding:24px;font-size:11px;color:var(--text-secondary);border-top:1px solid var(--border-light)}
+.footer a{color:var(--deep-teal);text-decoration:none}
+@media print{.top-bar{position:static}.view-tabs{display:none}body{font-size:11pt}}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="top-bar"><div class="top-bar-inner">
+  <div class="brand"><div><h1></h1><div class="subtitle"> Research &mdash; KT-030</div></div></div>
+  <nav class="view-tabs">
+    <a href="technical.html" class="view-tab active">Technical</a>
+    <a href="working.html" class="view-tab">Working</a>
+    <a href="briefing.html" class="view-tab">Briefing</a>
+    <a href="decision.html" class="view-tab">Decision</a>
+  </nav>
+</div></div>
+
+<div class="wrap">
+<div class="hero">
+  <div class="title">Indigenous Funding Network Resilience</div>
+  <div class="sub">Fragility, Cliffs, and Diversification Pathways in Alberta&rsquo;s Indigenous Service Sector</div>
+  <div class="meta">KT-030 &mdash; Full Research Record (Tier 0) &mdash;  &mdash; June 2026</div>
+</div>
+
+<p class="treaty">This research concerns Treaties 6 (1876), 7 (1877), and 8 (1899) &mdash; agreements between the Crown and Blackfoot Confederacy (Siksika, Piikani, Kainai), Tsuut&rsquo;ina Nation, Stoney Nakoda (Bearspaw, Chiniki, Goodstoney), Cree Nations (including Ermineskin, Samson, Louis Bull, Montana), Dene, and Chipewyan Nations. These treaties predate the Province of Alberta (1905). The funding networks analyzed here flow through treaty territory. Treaty Nations are prior-authority parties with sovereign claims, not stakeholders in a funding ecosystem.</p>
+
+<div class="toc">
+<h3>Table of Contents</h3>
+<ol>
+  <li><a href="#abstract">Abstract</a></li>
+  <li><a href="#methodology">Methodology &amp; Data Sources</a></li>
+  <li><a href="#fragility">Single-Funder Fragility</a></li>
+  <li><a href="#cascade">Cascade Modeling</a></li>
+  <li><a href="#cliff">Funding Cliff Prediction</a></li>
+  <li><a href="#gaming">Gaming Revenue Gap</a></li>
+  <li><a href="#diversification">Diversification Pathways</a></li>
+  <li><a href="#sector">Charity Sector Trends</a></li>
+  <li><a href="#treaty">Treaty-Area Resilience</a></li>
+  <li><a href="#index">Sustainability Index</a></li>
+  <li><a href="#structural">Structural Critique</a></li>
+  <li><a href="#limitations">Limitations</a></li>
+  <li><a href="#references">References</a></li>
+</ol>
+</div>
+
+<!-- ABSTRACT -->
+<h2 id="abstract">1. Abstract</h2>
+<p>This paper analyzes the structural fragility of Alberta&rsquo;s Indigenous funding network&mdash;42,095 government grant edges connecting 22 departments to 922 organizations. The central finding: <strong>84% of organizations (746 of 887 with visible funding) depend on a single government funder for the majority of their grant revenue</strong> (Herfindahl-Hirschman Index &gt; 0.6). This concentration risk means that a single budget decision, program sunset, or ministry restructuring can collapse services for entire communities. <span class="evidence strong">STRONG</span></p>
+
+<p>The analysis reveals three structural features: (1) a GOA-breadth / ISC-depth split where provincial ministries fund many organizations with small amounts while Indigenous Services Canada funds fewer with massive amounts; (2) funder-driven clustering where organizations group by which government department funds them, not by geography or governance; and (3) ISC and CIRNAC as systemic risk nodes whose disruption would cascade through every treaty area simultaneously.</p>
+
+<p>Critically, the network captures only government grants. An estimated $363 million or more in annual AGLC gaming revenue flows to First Nations through channels entirely outside this data. The First Nations Development Fund has allocated over $2 billion since 2006&mdash;a figure thirteen times larger than previously reported. Even with gaming revenue included, an estimated 80-82% of organizations remain single-funder dependent.</p>
+
+<p>Treaty-area analysis reveals that Treaty 6 (central Alberta, including Edmonton) has the highest single-funder dependency (91.1%) despite proximity to the most diverse funder landscape. Treaty 8 (northern Alberta) has the lowest (65.9%)&mdash;possibly reflecting oil sands revenue that provides fiscal capacity outside the government grant network. Treaty 8 has zero Host First Nation casinos, structurally excluding northern communities from the largest gaming revenue streams.</p>
+
+<p>The analysis produces three frameworks: a sustainability index measuring funding resilience across 8 dimensions, a funding cliff prediction model identifying organizations at highest near-term risk, and a diversification pathway assessment. The central tension underlying all diversification analysis is the clawback problem: if own-source revenue triggers federal transfer reductions, diversification may be fiscally neutral or negative.</p>
+
+<!-- METHODOLOGY -->
+<h2 id="methodology">2. Methodology and Data Sources</h2>
+
+<h3>2.1 Network Data</h3>
+<p>The funding network was constructed in the Indigenous-Funding-Research repository (T6, agent: dr-morin, 2026-04-24). Edge sources:</p>
+<ul>
+  <li><strong>Provincial grants:</strong> GOA ministry grant data, entity-resolved against dim_indigenous_org (81.4% match rate, Jaro-Winkler threshold 0.75). 17,445 edges from 31 GOA ministries/programs.</li>
+  <li><strong>Federal transfers:</strong> ISC, CIRNAC, ESDC, and other federal department proactive disclosure data. 24,650 edges.</li>
+  <li><strong>T3010 charity-to-charity flows:</strong> 2 identified flows totalling $29,255 (trivial; not included in edge set).</li>
+</ul>
+<p>Total: 42,095 edges connecting 22 government funder nodes to 922 organization nodes (2,116 unique funder-org relationships). <span class="evidence strong">STRONG</span></p>
+
+<h3>2.2 Organization Identification</h3>
+<p>Organizations identified through T1 (CRA T3010 charity identification: 365 confirmed nationally, 52 in Alberta) and federal/provincial grant recipient matching. The 922 includes band councils, charities, Metis settlements, friendship centres, education authorities, and economic development corporations. Entity resolution used Jaro-Winkler similarity with auto-match threshold 0.92 and review threshold 0.75. Medium-confidence matches (0.75-0.92) have not been human-verified. <span class="evidence strong">STRONG</span></p>
+
+<h3>2.3 HHI Calculation</h3>
+<p>HHI = &sum;(s<sub>i</sub>)<sup>2</sup> where s<sub>i</sub> is the share of total visible government grant revenue from funder i. Computed for each organization from fact_funding_edge amounts. Organizations with HHI &gt; 0.6 or a single funder providing &gt; 80% of visible funding are classified as single-funder risk (SFR). <span class="evidence strong">STRONG</span></p>
+
+<h3>2.4 Community Detection</h3>
+<p>Louvain clustering (python-louvain, random_state=42, weighted by grant amounts). Result: 41 communities, of which 6 contain multiple organizations and 35 are single-org isolates. The mega-cluster (Community 1, 685 orgs) is driven by shared provincial funders. The ISC cluster (Community 11, 93 orgs) and CIRNAC cluster (Community 12, 29 orgs) reflect federal funder alignment. <span class="evidence strong">STRONG</span> (with AP-13 caveat: different seeds produce different isolate counts; the 6 major clusters are robust)</p>
+
+<h3>2.5 Data Aperture</h3>
+<p>The network captures government grants only. It does not capture AGLC gaming revenue ($350-450M/yr), band council own-source revenue (T11: $2.13B across 35 bands), philanthropic grants ($15-30M/yr estimated), municipal grants, fee-for-service revenue, or impact benefit agreement revenue. Every finding in this paper carries this data aperture caveat. <span class="evidence strong">STRONG</span></p>
+
+<h3>2.6 Supplementary Data Sources</h3>
+<table>
+<tr><th>Source</th><th>Data</th><th>Applicability</th></tr>
+<tr><td>AGLC 2024-25 Annual Report</td><td>Gaming revenue, FNDF allocation, HFN casino data</td><td>Stream D primary source</td></tr>
+<tr><td>FNFTA via Canada Spends</td><td>Band council financials (35/48 Alberta FNs)</td><td>Stream C, F: own-source revenue</td></tr>
+<tr><td>FNDF Lookup Tool (alberta.ca)</td><td>Per-Nation FNDF allocations (2011-2025)</td><td>Stream D: gaming distribution</td></tr>
+<tr><td>Alberta Auditor General</td><td>FNDF audit findings (2013, 2017)</td><td>Stream D: accountability</td></tr>
+<tr><td>KT-026</td><td>Crown-to-Nation fiscal architecture</td><td>Context: $2.5-3B flows, ISC data systems</td></tr>
+</table>
+
+<!-- FRAGILITY -->
+<h2 id="fragility">3. Single-Funder Fragility Analysis</h2>
+
+<h3>3.1 The 84% Finding</h3>
+<p>746 of 887 organizations with visible funding (84.1%) have HHI &gt; 0.6, indicating that a single government funder provides the dominant share of their grant revenue. <span class="evidence strong">STRONG</span></p>
+
+<h3>3.2 Hub Funders</h3>
+<table>
+<tr><th>Rank</th><th>Funder</th><th>Level</th><th>Recipients</th><th>Total Grants</th><th>Avg/Org</th></tr>
+<tr><td>1</td><td>Alberta Advanced Education</td><td>Provincial</td><td>386</td><td>$11.5M</td><td>$29.8K</td></tr>
+<tr><td>2</td><td>Other Federal Departments</td><td>Federal</td><td>343</td><td>$1,325.3M</td><td>$3.9M</td></tr>
+<tr><td>3</td><td>Indigenous Services Canada</td><td>Federal</td><td>193</td><td>$17,081.3M</td><td>$88.5M</td></tr>
+<tr><td>4</td><td>Alberta Indigenous Relations</td><td>Provincial</td><td>161</td><td>$796.3M</td><td>$4.9M</td></tr>
+<tr><td>5</td><td>AB Trade, Immigration &amp; Multiculturalism</td><td>Provincial</td><td>154</td><td>$13.8M</td><td>$89.7K</td></tr>
+</table>
+<p class="footnote"><span class="evidence strong">STRONG</span> &mdash; T6 hub_funders.csv</p>
+
+<h3>3.3 The GOA-Breadth / ISC-Depth Split</h3>
+<p>Provincial funders reach more organizations with smaller amounts (GOA: 17,445 edges, $30K average). Federal funders reach fewer organizations with massive amounts (ISC: $88.5M average). This creates a structural split: provincial breadth funding produces low-value relationships that barely register in HHI calculations, while federal depth funding drives the concentration that makes organizations fragile. An organization may appear to have 10 funders while receiving 95% of its budget from ISC. <span class="evidence strong">STRONG</span></p>
+
+<h3>3.4 Treaty-Area HHI Distribution</h3>
+<table>
+<tr><th>Treaty Area</th><th>Orgs</th><th>Avg HHI</th><th>SFR Orgs</th><th>SFR %</th></tr>
+<tr><td>Treaty 6 (1876)</td><td>438</td><td>0.938</td><td>399</td><td>91.1%</td></tr>
+<tr><td>Treaty 7 (1877)</td><td>137</td><td>0.878</td><td>104</td><td>75.9%</td></tr>
+<tr><td>Treaty 8 (1899)</td><td>88</td><td>0.796</td><td>58</td><td>65.9%</td></tr>
+<tr><td>Non-treaty</td><td>207</td><td>0.811</td><td>151</td><td>72.9%</td></tr>
+</table>
+<p class="footnote"><span class="evidence strong">STRONG</span> &mdash; T6 network_summary.md</p>
+
+<h3>3.5 Non-Indigenous Comparison</h3>
+<p>The Canadian charity sector overall has approximately 49% government revenue dependency (Imagine Canada Sector Monitor). Estimated 40-60% of small charities (&lt;$500K) have HHI &gt; 0.5. The Indigenous sector&rsquo;s 84% is substantially higher, driven by treaty-based funding concentration on ISC/CIRNAC and geographic isolation limiting funder alternatives. <span class="evidence moderate">MODERATE</span></p>
+
+<!-- CASCADE -->
+<h2 id="cascade">4. Cascade Modeling</h2>
+
+<div class="alert"><strong>Note:</strong> No cascade simulation code exists in the T6 codebase. All cascade results in this section are <span class="evidence inferred">INFERRED</span> from network structure. Formal cascade simulation is recommended as a follow-up.</div>
+
+<h3>4.1 Scenario: ISC 10% Cut</h3>
+<p>193 organizations lose 10% of ISC funding. For the estimated 100-130 organizations where ISC is &gt;90% of revenue, this is a significant operational hit. Service domains most affected: child and family services, education, health. Geographic concentration: Treaty 6.</p>
+
+<h3>4.2 Scenario: Provincial Ministry Restructured</h3>
+<p>Alberta Indigenous Relations (161 recipients, $796.3M). Estimated 20-40 organizations face &gt;30% revenue loss. Provincial restructurings typically result in program transfer (not elimination); impact is administrative disruption (6-12 months) rather than permanent funding loss.</p>
+
+<h3>4.3 Scenario: Federal Election Transition</h3>
+<p>6-12 month pause in new contribution agreement signing. 30-50 organizations with expiring agreements face funding gaps. Organizations with reserves survive; those operating month-to-month cannot. Estimated 3-5 potential closures if reserves are inadequate.</p>
+
+<!-- CLIFF -->
+<h2 id="cliff">5. Funding Cliff Prediction</h2>
+
+<h3>5.1 Risk-Scoring Model</h3>
+<p>Composite risk score combining HHI (25%), funder political risk (20%), agreement duration signal (15%), revenue trajectory (15%), service criticality (10%), reserves (10%), geographic isolation (5%). Score 0-100 where 80-100 is CRITICAL risk. <span class="evidence moderate">MODERATE</span></p>
+
+<h3>5.2 High-Risk Profile</h3>
+<p>CRITICAL-scoring organizations share: HHI &gt; 0.9, ISC or single provincial ministry as primary funder, declining revenue 2021&rarr;2023, essential service domain, rural/remote, low reserves. Treaty 6 organizations are overrepresented. <span class="evidence inferred">INFERRED</span></p>
+
+<h3>5.3 High-Risk Windows</h3>
+<p>2026-2028 is the highest-risk period: post-COVID program sunsets completing, 2021-2023 contribution agreement cohort expiring (estimated 45-80 organizations), and provincial budget cycle sensitivity to oil prices. <span class="evidence moderate">MODERATE</span></p>
+
+<h3>5.4 Early Warning Indicators</h3>
+<p>T3010-based: late filing (6-12 month lead), revenue decline &gt;15% year-over-year (12-18 month lead), accumulated deficit (12-24 month lead), reduced program activity (6-12 month lead). <span class="evidence moderate">MODERATE</span></p>
+
+<p><strong>Note on framing:</strong> When a funding cliff affects treaty-guaranteed services (education, health), it represents a potential treaty obligation failure, not merely a financial management problem. The language of &ldquo;cliff risk&rdquo; should not neutralize what may legally be a Crown breach of treaty commitments. <span class="evidence strong">STRONG</span></p>
+
+<!-- GAMING -->
+<h2 id="gaming">6. Gaming Revenue Gap</h2>
+
+<h3>6.1 Revenue Disaggregation (2024-25)</h3>
+<table>
+<tr><th>Stream</th><th>Amount</th><th>Recipients</th><th>Accountability</th></tr>
+<tr><td>HFN casino slot net sales</td><td>$398.1M</td><td>6 Host First Nations</td><td>AGLC-regulated</td></tr>
+<tr><td>&rarr; Host Nation 30%</td><td>~$119M</td><td>6 Host First Nations</td><td>Host Nation autonomy</td></tr>
+<tr><td>&rarr; FNDF 40%</td><td>$159.2M</td><td>47 First Nations</td><td>AGLC-administered; AG audited</td></tr>
+<tr><td>&rarr; Alberta Lottery Fund 30%</td><td>~$119M</td><td>Province</td><td>Provincial general revenue</td></tr>
+<tr><td>HFN charitable gaming</td><td>$85.3M</td><td>Charities at HFN casinos</td><td>Charitable gaming regulation</td></tr>
+<tr><td><strong>Total to First Nations</strong></td><td><strong>$363M+</strong></td><td colspan="2">Excluding table games and iGaming</td></tr>
+</table>
+<p class="footnote"><span class="evidence strong">STRONG</span> &mdash; AGLC 2024-25 Annual Report. 30/40/30 formula confirmed in multiple public sources.</p>
+
+<h3>6.2 FNDF</h3>
+<p>Over $2 billion allocated since 2006 across more than 5,000 projects to 47 participating First Nations. $980M+ by 2016 (Alberta Auditor General). $159.2M in 2024-25 alone. Per-Nation annual allocations publicly available via alberta.ca lookup tool (2011-2025). <span class="evidence strong">STRONG</span></p>
+
+<p>The prior research figure of &ldquo;$147M allocated 2006-2019&rdquo; was incorrect by more than 10 times. This error has been corrected (see Corrections Log, C-1).</p>
+
+<p><strong>Power dynamics:</strong> The 30/40/30 formula was set by the provincial government. First Nations did not design the revenue sharing arrangement. The 30% flowing to the Alberta Lottery Fund generates no direct benefit for First Nations. First Nations leaders have contested the equity of this formula. <span class="evidence moderate">MODERATE</span></p>
+
+<h3>6.3 Two-Tier Gaming Economy</h3>
+<p>6 Host Nations (12.5% of Alberta First Nations) receive the 30% direct share (~$20M+ average per Nation). 42 non-Host Nations (87.5%) access FNDF only (application-based, ~$3.4M average). Disparity ratio: approximately 6:1 between average Host and non-Host allocations. <span class="evidence moderate">MODERATE</span></p>
+
+<h3>6.4 Impact on the 84% Finding</h3>
+<p>If gaming revenue were included in HHI calculations: Host Nations would shift from SFR to non-SFR (6 orgs). FNDF-recipient Nations would see modest HHI reductions. Most organizations (charities, friendship centres, Metis) receive no gaming revenue. Revised SFR estimate: 80-82% &mdash; still catastrophically high. <span class="evidence inferred">INFERRED</span></p>
+
+<h3>6.5 iGaming</h3>
+<p>iGaming Alberta Act (2025) launched the legal online gambling market July 13, 2026. 2% of gross iGaming revenue allocated to First Nations groups (separate from FNDF). First Nations leaders have raised revenue cannibalization concerns&mdash;iGaming may reduce physical casino traffic. The 2% allocation may not compensate. However, iGaming may also expand the total market rather than purely cannibalizing it. <span class="evidence inferred">INFERRED</span></p>
+
+<!-- DIVERSIFICATION -->
+<h2 id="diversification">7. Diversification Pathways</h2>
+
+<h3>7.1 The Central Tension: Clawback</h3>
+<div class="alert"><strong>The clawback problem is the single most important policy variable in diversification analysis.</strong> If own-source revenue triggers federal transfer reductions, diversification is fiscally neutral or negative. Communities that succeed at diversification may be penalized; those that remain dependent maintain full entitlement. The interaction between own-source revenue and federal transfers is poorly documented, varies by agreement type, and is subject to political negotiation. <span class="evidence strong">STRONG</span></div>
+
+<h3>7.2 Successfully Diversified Organizations</h3>
+<p>Metis settlements show the lowest HHI: Gift Lake (0.151, 15 funders), Buffalo Lake (0.176, 15 funders), Elizabeth (0.197, 14 funders). Their diversification reflects the Metis Settlements Act and Metis Settlement Accord&mdash;institutional design that creates multi-funder access by structure. Replicability for First Nations under the Indian Act is limited. <span class="evidence strong">STRONG</span></p>
+
+<h3>7.3 Pathway Viability</h3>
+<table>
+<tr><th>Pathway</th><th>Urban</th><th>Rural</th><th>Remote</th><th>Time to Revenue</th><th>Key Barrier</th></tr>
+<tr><td>Gaming (FNDF)</td><td>N/A</td><td>FN only</td><td>FN only</td><td>Flowing</td><td>Application-based; Host/non-Host gap</td></tr>
+<tr><td>Social enterprise</td><td>Moderate</td><td>Limited</td><td>Very limited</td><td>2-7 yr</td><td>Capital, capacity, market; no-exit risk</td></tr>
+<tr><td>Philanthropy</td><td>Good</td><td>Limited</td><td>Near-zero</td><td>1-3 yr</td><td>Supplemental not substitutional; project bias</td></tr>
+<tr><td>Fee-for-service</td><td>Moderate</td><td>Limited</td><td>Near-zero</td><td>1-2 yr</td><td>Mission tension in low-income communities</td></tr>
+<tr><td>Own-source (resource)</td><td>N/A</td><td>Proximate</td><td>Proximate</td><td>Variable</td><td>Requires resource base; commodity risk</td></tr>
+</table>
+<p class="footnote"><span class="evidence moderate">MODERATE</span> &mdash; Intra-category variation is substantial. Matrix is orientation, not conclusion.</p>
+
+<p>Diversification is a 5-10 year structural strategy. It cannot prevent near-term funding cliffs (12-24 months). Near-term risk requires different interventions: emergency reserve building, agreement extensions, and funder relationship redundancy. <span class="evidence strong">STRONG</span></p>
+
+<h3>7.4 Comparators</h3>
+<p><strong>Saskatchewan (SIGA):</strong> Indigenous-governed gaming authority. Revenue sharing: 50/25/25 (province/First Nations Trust/CDCs). More Indigenous control than Alberta&rsquo;s AGLC-regulated model. <span class="evidence moderate">MODERATE</span></p>
+<p><strong>British Columbia:</strong> New Relationship Trust ($100M endowment) for First Nations capacity building. More equitable gaming revenue sharing. BC Treaty Process provides some modern treaties with explicit fiscal arrangements. <span class="evidence moderate">MODERATE</span></p>
+<p><strong>New Zealand (Maori authorities):</strong> Treaty settlements ($170M NZD) seeded self-sustaining $2B+ commercial portfolios (Waikato-Tainui, Ngai Tahu). Limited transferability due to different legal frameworks, but the principle&mdash;settlements seeding commercial independence&mdash;is relevant. <span class="evidence moderate">MODERATE</span></p>
+
+<!-- SECTOR TRENDS -->
+<h2 id="sector">8. Charity Sector Trends</h2>
+
+<h3>8.1 Baseline (2023 T3010 Snapshot)</h3>
+<p>365 confirmed Indigenous-serving/led charities nationally. 52 in Alberta. Total revenue: $1,626.2M. Government dependency ratio (direct grants): 17.2% (floor estimate&mdash;intermediary government funding appears as donations). <span class="evidence strong">STRONG</span></p>
+
+<h3>8.2 The 52 vs 922 Gap</h3>
+<p>T3010 trend analysis covers only the registered charity subset (52 of 922 Alberta organizations, or 5.6%). Band councils, Metis settlements, tribal councils, and non-charity entities are excluded. Sector trends from T3010 data apply to charities only. <span class="evidence strong">STRONG</span></p>
+
+<h3>8.3 COVID Impact</h3>
+<p>COVID-era emergency programs (2020-2021) created the largest single-year funding injection in Indigenous organizational history ($1.8B nationally via ICSF). Post-COVID contraction (2022-2025) is creating funding cliffs for organizations that expanded on temporary funding. In real terms (CPI-adjusted, ~18-20% cumulative inflation 2018-2023), organizations whose nominal revenue returned to 2019 levels experienced a ~15-18% real decline. <span class="evidence moderate">MODERATE</span></p>
+
+<h3>8.4 Multi-Year Analysis Status</h3>
+<p>Multi-year T3010 analysis (2018-2023) has not been run. T1 used a single-year snapshot. Running the analysis is a priority follow-up. <span class="evidence strong">STRONG</span> (methodological gap)</p>
+
+<!-- TREATY AREA -->
+<h2 id="treaty">9. Treaty-Area Network Resilience</h2>
+
+<h3>9.1 The Treaty 6 Paradox</h3>
+<p>The largest sub-network (438 orgs) has the highest single-funder dependency (91.1%). Hypotheses: ISC scale dominance (massive multi-year agreements dwarf other sources), institutional path dependency (long-established ISC relationships), and population scale (larger populations = larger ISC per-capita transfers = higher HHI). <span class="evidence moderate">MODERATE</span></p>
+
+<h3>9.2 The Treaty 8 Surprise</h3>
+<p>The most remote sub-network has the lowest HHI (0.796). Likely explanation: oil sands IBA revenue provides non-government fiscal capacity that reduces reliance on government grants. Treaty 8 also accesses resource-related government programs (Alberta Energy) that diversify the government funder mix. However, Treaty 8 has zero Host First Nation casinos, the fewest service organizations, and the most significant service coverage gaps. Lower HHI does not equal better service delivery. <span class="evidence moderate">MODERATE</span></p>
+
+<h3>9.3 Funder-Driven Clustering</h3>
+<p>Louvain communities cross treaty boundaries. Community 1 (685 orgs) spans all treaty areas. Organizations cluster by funder, not by geography or governance. The network structure reflects colonial fiscal architecture&mdash;how government organizes its funding departments&mdash;not Indigenous governance structure. <span class="evidence strong">STRONG</span></p>
+
+<h3>9.4 No Geographic Hedge</h3>
+<p>ISC and CIRNAC are critical across all treaty areas. A federal policy change at ISC affects Treaty 6, 7, and 8 simultaneously. The funding network has no geographic diversification. <span class="evidence strong">STRONG</span></p>
+
+<h3>9.5 Sovereignty-Resilience Correlation</h3>
+<p>Suggestive but insufficient evidence. Metis settlements (with their own fiscal legislation) show the most diversified funding. Treaty 8 (with resource revenue providing more fiscal autonomy) shows lower government-grant concentration. But very few self-governing First Nations exist in Alberta, preventing a direct test. The correlation is a plausible hypothesis, not a confirmed finding. <span class="evidence inferred">INFERRED</span></p>
+
+<!-- SUSTAINABILITY INDEX -->
+<h2 id="index">10. Sustainability Index</h2>
+<p>The sustainability index measures organizational funding resilience across 8 dimensions: revenue concentration (HHI), funder count, agreement duration, funder replaceability, own-source capacity, reserve adequacy, service domain criticality, and geographic isolation. <span class="evidence moderate">MODERATE</span></p>
+
+<h4>Dependency Type Distinction</h4>
+<p>The index distinguishes treaty-based dependency (ISC/CIRNAC funding = Crown fiscal obligations under treaty) from discretionary dependency (provincial grants = policy choices). A First Nation with HHI = 1.0 from ISC is differently positioned than a charity with HHI = 1.0 from a provincial arts grant. The policy response differs: the first is a treaty-implementation question; the second is a diversification question.</p>
+
+<h4>Weighting Sensitivity</h4>
+<p>The index must be presented with sensitivity analysis. If changing weights from one reasonable scheme to another substantially changes the top-20 risk list, the index is not stable enough for individual organization assessment. It is a screening tool for identifying organizations warranting closer examination, not a definitive risk rating. <span class="evidence strong">STRONG</span></p>
+
+<!-- STRUCTURAL CRITIQUE -->
+<h2 id="structural">11. Structural Critique: Why &ldquo;Resilience&rdquo; Within Colonial Fiscal Architecture Is Contested</h2>
+
+<p>This analysis provides reformist tools&mdash;sustainability index, cliff prediction, diversification pathways&mdash;for navigating the existing funding system. Indigenous governance experts note that this framing assumes the colonial funding architecture is worth preserving. The counter-argument:</p>
+
+<blockquote>
+The contribution agreement model forces Nations to compete for resources that are owed by treaty right. &ldquo;Diversification&rdquo; within this system means finding more colonial funding sources. HHI measures dependency within the system; it does not measure whether the system should exist. The real resilience pathway is fiscal sovereignty&mdash;own-source revenue, treaty-based fiscal transfers, and the end of the grant-dependency model.
+</blockquote>
+
+<p>This critique is valid on its own terms. The analysis does not resolve the tension between reformist and structural approaches. It presents both: the tools for navigating the current system (sustainability index, cliff prediction) and the evidence that the current system is structurally flawed (84% concentration, funder-driven clustering that reflects colonial departmental structure, not Indigenous governance). <span class="evidence strong">STRONG</span></p>
+
+<p>The structural solution is fiscal sovereignty: treaty-based block fiscal transfers, self-government fiscal arrangements, Nation-controlled revenue streams, and the First Nations Fiscal Management Act as an enabling framework. The tools this analysis provides are interim instruments. They are useful within the system. They are not the system Indigenous communities would design.</p>
+
+<!-- LIMITATIONS -->
+<h2 id="limitations">12. Limitations</h2>
+<ol>
+  <li><strong>Data aperture.</strong> The network captures government grants only. Gaming ($350-450M/yr), own-source, philanthropic, and earned revenue are invisible. The 84% finding applies to government-grant dependency, not total fiscal dependency.</li>
+  <li><strong>Entity resolution uncertainty.</strong> 81.4% match rate; medium-confidence matches (0.75-0.92) not human-verified. Classification of &ldquo;Indigenous-serving&rdquo; relies on name/mandate matching. The 84% finding could be 76-92% depending on classification accuracy.</li>
+  <li><strong>No cascade simulation code.</strong> The &ldquo;60%+ disconnect&rdquo; claim is INFERRED. Formal cascade simulation is recommended.</li>
+  <li><strong>Community structure instability.</strong> 41 Louvain communities reflects the specific random seed (42). Only 6 contain multiple organizations. The 35 single-org isolates are an artifact of the algorithm, not a meaningful finding.</li>
+  <li><strong>Multi-year analysis not run.</strong> Time-series trends (2018-2023) are INFERRED from sector benchmarks, not computed from T3010 data.</li>
+  <li><strong>Treaty 7 data incomplete.</strong> Only 4 of ~7 Treaty 7 First Nations report FNFTA data. Tsuut&rsquo;ina (major gaming community) is missing.</li>
+  <li><strong>Clawback mechanics undocumented.</strong> The interaction between own-source revenue and federal transfers is the most important policy variable and the least well-documented.</li>
+  <li><strong>OCAP compliance.</strong> This analysis uses publicly available data. No Nation-level data restricted by OCAP principles is used without verification of public availability. FOIP recommendations prioritize aggregate and administrative data over per-Nation fiscal detail.</li>
+  <li><strong>This analysis does not predict closures.</strong> It identifies structural vulnerability. Organizations scored as &ldquo;high risk&rdquo; may find replacement funders, merge, or receive emergency support. The model identifies organizations that should receive attention, not organizations that will fail.</li>
+</ol>
+
+<!-- REFERENCES -->
+<h2 id="references">13. References</h2>
+<ol style="font-size:13px">
+  <li>Indigenous-Funding-Research repo, T1: CRA T3010 Indigenous Charity Universe. Agent: dr-baptiste, 2026-04-24.</li>
+  <li>Indigenous-Funding-Research repo, T6: Alberta Funding Network Graph. Agent: dr-morin, 2026-04-24.</li>
+  <li>Indigenous-Funding-Research repo, T11: Band Council Fiscal Data. 2026-04-25.</li>
+  <li>Alberta Gaming, Liquor and Cannabis (AGLC). (2025). <em>Annual Report 2024-25</em>. Retrieved from open.alberta.ca.</li>
+  <li>Alberta Auditor General. (2013). <em>Systems to Assess First Nations Development Funds Grants</em>. oag.ab.ca.</li>
+  <li>Alberta Auditor General. (2017). <em>Systems to Assess First Nations Development Funds Grants &mdash; Follow-up</em>. oag.ab.ca.</li>
+  <li>Government of Alberta. (n.d.). First Nations Development Fund Grant Program. alberta.ca/first-nations-development-fund-grant-program.</li>
+  <li>Government of Alberta. (n.d.). FNDF Grant Recipients Lookup. alberta.ca/lookup/first-nations-development-fund.aspx.</li>
+  <li>Government of Alberta. (2018). <em>FNDF Program Guide, Second Edition</em>. open.alberta.ca.</li>
+  <li>Canada Revenue Agency. (2024). List of Charities (T3010). open.canada.ca.</li>
+  <li>KT-026: Indigenous Fiscal Sovereignty &amp; Partnership Models. , 2026.</li>
+  <li>Yellowhead Institute. (2019). <em>Current State of Indian Gaming in Alberta</em>. yellowheadinstitute.org.</li>
+  <li>Government of Alberta. (2025). <em>Alberta&rsquo;s iGaming Strategy</em>. alberta.ca/albertas-igaming-strategy.</li>
+  <li>Imagine Canada. (n.d.). <em>Sector Monitor</em>. imaginecanada.ca/en/sector-monitor.</li>
+  <li>Statistics Canada. CPI data (Table 18-10-0005-01).</li>
+  <li>Canada Spends. (n.d.). FNFTA band financial data. canadaspends.com.</li>
+  <li>First Nations Financial Management Board. (n.d.). fnfmb.com.</li>
+  <li>First Nations Finance Authority. (n.d.). fnfa.ca.</li>
+  <li>National Aboriginal Capital Corporations Association (NACCA). (n.d.). nacca.ca.</li>
+  <li>Saskatchewan Indian Gaming Authority (SIGA). (n.d.). siga.ca.</li>
+</ol>
+
+<div class="footer">
+  <p>KT-030 &mdash; Indigenous Funding Network Resilience &mdash;  &mdash; June 2026</p>
+  <p><a href="index.html">All views</a> &mdash; Full research record (this document) is the source of truth. All other tiers are derived from it.</p>
+</div>
+</div>
+</body>
+</html>

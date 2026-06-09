@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Institutional Autonomy Alternatives — Executive Briefing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --hs-deep-navy: #103656;
+    --hs-midnight: #103656;
+    --hs-teal: #28bcb8;
+    --hs-aqua: #4bc2c3;
+    --hs-slate: #0c4f8a;
+    --hs-white: #FFFFFF;
+    --hs-near-black: #0A0A0A;
+    --hs-bg: #FFFFFF;
+    --hs-light-bg: #F7FAFC;
+    --hs-border: #D4D4D4;
+    --hs-muted: #6B7280;
+    --hs-success: #16803C;
+    --hs-teal-light: rgba(15, 185, 177, 0.08);
+    --hs-navy-light: rgba(11, 31, 51, 0.06);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { font-size: 16px; scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Lato', sans-serif;
+    color: var(--hs-near-black);
+    background: var(--hs-bg);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* ---------- HEADER ---------- */
+  .site-header {
+    background: linear-gradient(135deg, var(--hs-deep-navy) 0%, var(--hs-teal) 100%);
+    color: #fff;
+    padding: 3.5rem 2rem 3rem;
+  }
+  .site-header .container {
+    max-width: 960px;
+    margin: 0 auto;
+  }
+  .site-header .tier-label {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    background: var(--hs-teal);
+    color: #fff;
+    padding: 0.25rem 0.75rem;
+    border-radius: 3px;
+    margin-bottom: 1rem;
+  }
+  .site-header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.01em;
+  }
+  .site-header .subtitle {
+    font-size: 1.15rem;
+    font-weight: 300;
+    opacity: 0.9;
+    margin-bottom: 1.25rem;
+  }
+  .site-header .meta {
+    font-size: 0.8rem;
+    font-weight: 300;
+    opacity: 0.6;
+    letter-spacing: 0.03em;
+  }
+
+  /* ---------- LAYOUT ---------- */
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+  main { padding: 2.5rem 0 4rem; }
+
+  section {
+    margin-bottom: 3rem;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid var(--hs-border);
+  }
+  section:last-of-type { border-bottom: none; }
+
+  h2 {
+    font-size: 1.45rem;
+    font-weight: 700;
+    color: var(--hs-deep-navy);
+    margin-bottom: 1rem;
+    letter-spacing: -0.01em;
+  }
+  h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--hs-deep-navy);
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  p { margin-bottom: 1rem; }
+  p:last-child { margin-bottom: 0; }
+
+  strong { font-weight: 700; }
+
+  /* ---------- KEY NUMBER CALLOUT ---------- */
+  .callout {
+    background: var(--hs-teal-light);
+    border-left: 4px solid var(--hs-teal);
+    padding: 1.25rem 1.5rem;
+    margin: 1.5rem 0;
+    border-radius: 0 6px 6px 0;
+  }
+  .callout p { margin-bottom: 0.5rem; }
+  .callout p:last-child { margin-bottom: 0; }
+  .callout .num {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--hs-teal);
+    line-height: 1.2;
+  }
+
+  /* ---------- SUMMARY TABLE ---------- */
+  .table-wrap {
+    overflow-x: auto;
+    margin: 1.5rem 0;
+    border: 1px solid var(--hs-border);
+    border-radius: 8px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+    line-height: 1.5;
+  }
+  thead {
+    background: var(--hs-deep-navy);
+    color: #fff;
+  }
+  thead th {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    font-weight: 700;
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  tbody tr { border-bottom: 1px solid var(--hs-border); }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:nth-child(even) { background: var(--hs-light-bg); }
+  tbody td {
+    padding: 0.7rem 1rem;
+    vertical-align: top;
+  }
+  tbody td:first-child { font-weight: 700; color: var(--hs-deep-navy); }
+
+  /* ---------- FEASIBILITY BADGES ---------- */
+  .badge {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 0.15rem 0.55rem;
+    border-radius: 3px;
+    white-space: nowrap;
+  }
+  .badge--now       { background: rgba(15, 185, 177, 0.15); color: #0A7E78; }
+  .badge--agreement { background: rgba(30, 58, 95, 0.12); color: var(--hs-slate); }
+  .badge--amendment  { background: rgba(79, 209, 197, 0.15); color: #0B7B75; }
+
+  /* ---------- TIMELINE ROADMAP ---------- */
+  .roadmap {
+    position: relative;
+    margin: 2rem 0 1.5rem;
+    padding-left: 2.5rem;
+  }
+  .roadmap::before {
+    content: '';
+    position: absolute;
+    left: 0.85rem;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(180deg, var(--hs-teal) 0%, var(--hs-deep-navy) 100%);
+    border-radius: 2px;
+  }
+  .roadmap-tier {
+    position: relative;
+    margin-bottom: 2rem;
+  }
+  .roadmap-tier:last-child { margin-bottom: 0; }
+  .roadmap-tier::before {
+    content: '';
+    position: absolute;
+    left: -1.82rem;
+    top: 0.35rem;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 3px solid var(--hs-teal);
+    background: var(--hs-bg);
+  }
+  .roadmap-tier.tier-mid::before { border-color: var(--hs-slate); }
+  .roadmap-tier.tier-long::before { border-color: var(--hs-deep-navy); }
+
+  .roadmap-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--hs-teal);
+    margin-bottom: 0.25rem;
+  }
+  .tier-mid .roadmap-label { color: var(--hs-slate); }
+  .tier-long .roadmap-label { color: var(--hs-deep-navy); }
+
+  .roadmap-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--hs-deep-navy);
+    margin-bottom: 0.3rem;
+  }
+  .roadmap-items {
+    list-style: none;
+    padding: 0;
+    font-size: 0.9rem;
+  }
+  .roadmap-items li {
+    position: relative;
+    padding-left: 1rem;
+    margin-bottom: 0.25rem;
+  }
+  .roadmap-items li::before {
+    content: '\2022';
+    position: absolute;
+    left: 0;
+    color: var(--hs-muted);
+  }
+
+  /* ---------- VERDICT BOX ---------- */
+  .verdict-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+  .verdict-card {
+    background: var(--hs-light-bg);
+    border-radius: 8px;
+    padding: 1.25rem 1.5rem;
+    border: 1px solid var(--hs-border);
+  }
+  .verdict-card h4 {
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--hs-deep-navy);
+    margin-bottom: 0.5rem;
+  }
+  .verdict-card p {
+    font-size: 0.9rem;
+    line-height: 1.55;
+  }
+  .verdict-card .verdict-tag {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    margin-bottom: 0.5rem;
+    padding: 0.15rem 0.5rem;
+    border-radius: 3px;
+  }
+  .verdict-tag.conditional { background: rgba(30, 58, 95, 0.12); color: var(--hs-slate); }
+  .verdict-tag.pass { background: rgba(15, 185, 177, 0.15); color: #0A7E78; }
+
+  /* ---------- BOTTOM LINE ---------- */
+  .bottom-line {
+    background: linear-gradient(135deg, var(--hs-deep-navy) 0%, var(--hs-midnight) 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 2rem 2.5rem;
+    margin: 2rem 0;
+  }
+  .bottom-line h2 { color: #fff; margin-bottom: 0.75rem; }
+  .bottom-line p { opacity: 0.92; }
+  .bottom-line .bl-stat {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--hs-teal);
+    opacity: 1;
+  }
+
+  /* ---------- FOOTER ---------- */
+  .site-footer {
+    border-top: 1px solid var(--hs-border);
+    padding: 1.5rem 2rem;
+    text-align: center;
+    font-size: 0.75rem;
+    color: var(--hs-muted);
+    letter-spacing: 0.03em;
+    font-weight: 300;
+  }
+
+  /* ---------- PRINT ---------- */
+  @media print {
+    body { font-size: 10pt; }
+    .site-header { padding: 1.5rem 0; break-after: avoid; background: var(--hs-deep-navy); }
+    section { break-inside: avoid; }
+    .table-wrap { border: 1px solid #999; }
+    .bottom-line { background: var(--hs-light-bg); color: var(--hs-near-black); border: 2px solid var(--hs-deep-navy); }
+    .bottom-line h2 { color: var(--hs-deep-navy); }
+    .bottom-line .bl-stat { color: var(--hs-teal); }
+    .site-footer { border-top: 1px solid #999; }
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 640px) {
+    .site-header h1 { font-size: 1.5rem; }
+    .site-header .subtitle { font-size: 1rem; }
+    .container { padding: 0 1.25rem; }
+    table { font-size: 0.8rem; }
+    thead th, tbody td { padding: 0.5rem 0.6rem; }
+    .verdict-grid { grid-template-columns: 1fr; }
+    .bottom-line { padding: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ==================== HEADER ==================== -->
+<header class="site-header">
+  <div class="container">
+    <span class="tier-label">Tier 2 &mdash; Executive Briefing</span>
+    <h1>Institutional Autonomy Alternatives</h1>
+    <p class="subtitle">The Instead Ticket: What Alberta Should Actually Do</p>
+    <p class="meta">KT-027 &nbsp;|&nbsp;  &nbsp;|&nbsp; June 2026</p>
+  </div>
+</header>
+
+<!-- ==================== MAIN ==================== -->
+<main>
+<div class="container">
+
+<!-- ===== 1. THE FRAME ===== -->
+<section>
+  <h2>The False Binary</h2>
+  <p>The separatist framing collapses a spectrum into a binary: accept what you have, or build an international border. Between those poles sits a set of institutional mechanisms that deliver more fiscal autonomy than separation would &mdash; without the $30&ndash;39B/year GDP shock that peer-reviewed economic modelling consistently projects (Tombe, $30B steady-state; Kaplan, $39.1B first-year).</p>
+  <p>The Basque Country is the proof. Three provincial treasuries collect virtually all taxes, remit roughly &euro;1.5B/year to Madrid, and retain the rest. The result: fiscal capacity 29.8% higher than Spain&rsquo;s common-regime communities. Nobody in Alberta is talking about it.</p>
+  <p>This briefing presents six costed, sequenced alternatives ranked by constitutional pathway, implementation timeline, and fiscal impact. They address the same grievance that separation claims to solve &mdash; through mechanisms that are less destructive, more achievable, and in several cases already operating in other federations.</p>
+
+  <div class="callout">
+    <p class="num">$30&ndash;39B per year</p>
+    <p>The projected GDP cost of separation. The entire autonomy roadmap described in this briefing &mdash; all six alternatives, fully implemented &mdash; costs less than two months of that figure.</p>
+  </div>
+</section>
+
+<!-- ===== 2. SUMMARY TABLE ===== -->
+<section>
+  <h2>Six Alternatives at a Glance</h2>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Alternative</th>
+          <th>Cost</th>
+          <th>Timeline</th>
+          <th>Pathway</th>
+          <th>Fiscal Impact</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>A. Basque Concierto Econ&oacute;mico</td>
+          <td>$1&ndash;2B setup; $500&ndash;750M/yr ops</td>
+          <td>25&ndash;50 years</td>
+          <td><span class="badge badge--amendment">Amendment</span></td>
+          <td>92% tax retention; foral advantage ~30%</td>
+        </tr>
+        <tr>
+          <td>B. Alberta Revenue Agency</td>
+          <td>$750M&ndash;$1.5B setup; $500&ndash;750M/yr ops</td>
+          <td>5&ndash;7 years</td>
+          <td><span class="badge badge--agreement">Agreement</span></td>
+          <td>Data control; policy design flexibility; prerequisite for A</td>
+        </tr>
+        <tr>
+          <td>C. Heritage Fund Reform</td>
+          <td>$3&ndash;8B/yr deposits</td>
+          <td>25 years to $250B</td>
+          <td><span class="badge badge--now">Existing Authority</span></td>
+          <td>$7.5B/yr at $250B (3% draw) &mdash; half the fiscal grievance</td>
+        </tr>
+        <tr>
+          <td>D. Immigration Accord</td>
+          <td>Administrative; $867M/yr federal grant (Quebec benchmark)</td>
+          <td>2&ndash;5 years</td>
+          <td><span class="badge badge--agreement">Agreement</span></td>
+          <td>Population-driven tax base growth; labour market alignment</td>
+        </tr>
+        <tr>
+          <td>E. Energy Transition</td>
+          <td>$3B per 100K b/d upgrader; variable by pathway</td>
+          <td>5&ndash;25 years</td>
+          <td><span class="badge badge--now">Existing Authority</span></td>
+          <td>$10&ndash;15/barrel value-added; diversified revenue base</td>
+        </tr>
+        <tr>
+          <td>F. Institutional Leverage</td>
+          <td>Low (diplomatic, legislative)</td>
+          <td>Immediate&ndash;ongoing</td>
+          <td><span class="badge badge--now">Existing Authority</span></td>
+          <td>Bargaining concessions; international presence</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ===== 3. SIX ALTERNATIVES DETAIL ===== -->
+<section>
+  <h2>The Six Alternatives</h2>
+
+  <!-- A -->
+  <h3>A. Basque Concierto Econ&oacute;mico &mdash; The Destination</h3>
+  <p>The Basque Country&rsquo;s Concierto Econ&oacute;mico is the most ambitious fiscal autonomy arrangement operating within any democratic federation. Three provincial treasuries (Diputaciones Forales) collect virtually all taxes &mdash; personal income, corporate, wealth, inheritance, VAT, and excise &mdash; and remit a negotiated annual contribution (the <em>cupo</em>, approximately &euro;1.5B/year) to Madrid for non-devolved services such as defence and foreign affairs. The rest stays in the Basque Country. In 2023, the three treasuries collectively raised &euro;18.2B.</p>
+  <p>The result is measurable: Zabalza and L&oacute;pez-Laborda (2017) calculate a 29.8% fiscal advantage over Spain&rsquo;s common-regime communities. The system is constitutionally grounded in the First Additional Provision of the 1978 Spanish Constitution, which protects historic foral rights &mdash; a continuity stretching to 1878 and, in &Aacute;lava, far earlier. As of April 2025, the Concierto continues to evolve: Ley 3/2025 incorporated OECD Pillar Two global minimum tax administration into the foral framework.</p>
+  <p>Adaptation for Alberta faces a fundamental constitutional obstacle. Canada&rsquo;s constitution has no equivalent of the foral rights provision. A full Concierto-style arrangement would likely require amendment of Section 36 (the equalization commitment) under the 7/50 formula &mdash; a mechanism through which no substantive amendment has passed since 1982. This places the full Basque model on a 25&ndash;50-year horizon, dependent on constitutional negotiations that may never succeed. But the directional aspiration matters: an Alberta Revenue Agency plus expanded tax point transfer captures an estimated 40&ndash;50% of the Concierto&rsquo;s benefits without constitutional change. The Basque model is the destination; the revenue agency is the first step on the road.</p>
+
+  <!-- B -->
+  <h3>B. Alberta Revenue Agency &mdash; The Prerequisite</h3>
+  <p>Quebec is the only Canadian province that collects its own income tax. Revenu Qu&eacute;bec employs 12,664 people and operates on a budget of $1.6B/year. It exists because of a 16.5% federal income tax abatement negotiated in 1954 under Duplessis and formalized through decades of constitutional politics. The arrangement gives Quebec data sovereignty over its tax base, the ability to design targeted provincial tax credits, and institutional capacity that no other province possesses.</p>
+  <p>An Alberta Revenue Agency would cost an estimated $500&ndash;750M/year in operations plus $750M&ndash;$1.5B in setup costs, based on the Alberta Next Panel (2025) assessment. The Fair Deal Panel (2020) considered and rejected the idea, recommending &ldquo;no changes at this time.&rdquo; The Alberta Next Panel revisited the question and recommended further study. Political will remains the binding constraint &mdash; the fiscal case does not close on narrow cost-benefit grounds. The case rests on institutional capacity: you cannot negotiate fiscal autonomy without the administrative apparatus to execute it. The revenue agency is not the autonomy &mdash; it is the prerequisite for autonomy.</p>
+  <p>A revenue agency would take 5&ndash;7 years to reach operational maturity. Revenu Qu&eacute;bec itself required a decade of institution-building before it functioned at full capacity. The Quebec autonomy scholar red team correctly identifies the institutional culture gap: Quebec built its revenue apparatus during the Quiet Revolution, a period of national self-reinvention with no Alberta parallel. This is a real constraint, not a dismissible objection.</p>
+
+  <!-- C -->
+  <h3>C. Heritage Fund Reform &mdash; The Generational Instrument</h3>
+  <p>Alberta&rsquo;s Heritage Savings Trust Fund holds $31.9B (December 2025). Norway&rsquo;s Government Pension Fund Global holds over US$2T. Both jurisdictions began saving petroleum revenue in the mid-1970s. The gap is not geological. It is institutional: inconsistent deposits, political withdrawals, and earnings diversion reduced the Heritage Fund to a fraction of its potential.</p>
+  <p>The 2025 reforms established the Heritage Fund Opportunities Corporation (HFOC), set a $250B target by 2050, and appointed a board that includes Chana Martineau (AIOC CEO) &mdash; signalling Indigenous governance representation. But Budget 2026, projecting a $9.4B deficit at $60.50 WTI, has already suspended deposits. The pattern is repeating.</p>
+  <p>The most durable protection available is constitutional entrenchment through Section 45 (unilateral provincial constitutional amendment), combined with a referendum lock on withdrawals and a citizen dividend that creates a political constituency for fund preservation. The Alaska Permanent Fund ($89.3B) has survived 50 years under similar protections. At $250B with a 3% real draw, the Heritage Fund would generate approximately $7.5B/year &mdash; enough to match roughly half the $14.5B annual fiscal grievance. At $50&ndash;80B (the Heritage Fund failure scenario), it generates $1.5&ndash;2.4B/year: meaningful as a fiscal buffer, but not transformative. The current high-price window ($93&ndash;94 WTI) is the last opportunity for aggressive saving before decarbonization risk materializes. Every year of delayed deposits is permanently lost capital.</p>
+
+  <!-- D -->
+  <h3>D. Immigration Accord &mdash; Building Your Own Country</h3>
+  <p>The Canada-Quebec Accord (1991) gives Quebec control over economic immigrant selection, its own integration services, and a federal grant of $867.3M/year (ratchet-only: the amount can increase but never decrease). Quebec selects over 45,000 immigrants annually under its own criteria, including francization requirements and economic alignment priorities.</p>
+  <p>Alberta&rsquo;s Alberta Advantage Immigration Program (AAIP) nominated 6,403 individuals in 2026 &mdash; a figure corrected downward from earlier estimates of 11,000&ndash;12,500 during discovery verification. The gap with Quebec is structural, not just numerical: Quebec controls selection criteria, operates its own integration infrastructure, and receives federal compensation. Alberta nominates candidates within a federal framework.</p>
+  <p>An expanded accord would give Alberta authority over economic immigrant selection aligned with provincial labour market needs, credential reciprocity aligned with provincial regulatory frameworks, and &mdash; critically &mdash; the symbolic dimension of &ldquo;choosing who comes to build this province.&rdquo; The concept-brief identifies immigration control as the alternative most likely to address the identity dimension of the grievance: selecting who joins your community is a nation-building act, not merely a labour market mechanism. Alberta&rsquo;s October 2026 referendum includes five immigration-related questions, confirming the political salience. Timeline: 2&ndash;5 years to negotiate and implement.</p>
+
+  <!-- E -->
+  <h3>E. Energy Transition &mdash; Value Beyond Combustion</h3>
+  <p>Alberta produces 4.1 million barrels per day (2025 average). The province&rsquo;s autonomy agenda depends on what it does with that production before the energy transition reduces its value. Four pathways are available.</p>
+  <p><strong>Value-added processing:</strong> A partial upgrader (~100,000 b/d capacity) costs approximately $3B and adds $10&ndash;15/barrel in domestic value. Alberta currently exports the majority of its bitumen as raw or semi-processed diluted bitumen. <strong>CCUS infrastructure:</strong> The Quest facility and Alberta Carbon Trunk Line (ACTL, 14.6 Mt/year capacity) have captured over 17Mt cumulatively, making Alberta the largest carbon capture jurisdiction in Canada. <strong>Hydrogen:</strong> Alberta is Canada&rsquo;s largest hydrogen producer. Clean hydrogen production leverages existing natural gas infrastructure and workforce. <strong>Bitumen Beyond Combustion:</strong> Carbon fibre, asphalt binders, vanadium extraction, and battery-grade carbon materials decouple bitumen value from combustion markets &mdash; the most important hedge against stranded asset risk.</p>
+  <p>That risk is real. Under the IEA Net Zero Emissions scenario, 100&ndash;130 billion barrels of Alberta&rsquo;s 165 billion barrels of proven reserves face stranding. Heritage Fund trajectory modelling at $50 WTI (accelerated transition) shows the fund reaching only $90&ndash;110B by 2050 instead of $250B. The energy transition strategy operates in parallel with all other alternatives and is the portfolio&rsquo;s insurance policy against the scenario where petroleum revenue declines faster than institutional reforms mature.</p>
+
+  <!-- F -->
+  <h3>F. Institutional Leverage &mdash; The Negotiating Position</h3>
+  <p>Alberta possesses leverage instruments that it has either underutilized or deployed without coordination. The New West Partnership ($818B combined GDP, four provinces including Manitoba since 2016) is a bargaining bloc that has never been used for coordinated fiscal demands. Alberta maintains 18 international offices; Quebec operates 32 (8 general delegations, 11 delegations, 9 bureaux, 4 trade offices). The gap in international presence reflects the gap in institutional ambition.</p>
+  <p>The Sovereignty Act has produced three resolutions, with the Onion Lake Cree Nation challenge testing whether its application must comply with Treaty obligations. CUSMA&rsquo;s July 1, 2026, six-year review trigger creates a narrow window for sub-national positioning on energy, critical minerals, and regulatory alignment. And the October 2026 referendum &mdash; regardless of outcome &mdash; forces a federal response.</p>
+  <p>The negotiating instrument thesis holds that a credible threat of exit extracts more concessions than actual exit. The evidence supports this: Quebec&rsquo;s 1995 near-miss produced the deepest federal concessions in Canadian history. Premier Smith&rsquo;s stated intent to campaign against the separation question on Question 10 confirms the leverage strategy: the threat is the tool, not the destination. The strategic paradox identified in this research is that pursuing institutional alternatives defuses the threat that makes those alternatives negotiable. Alberta must sequence carefully: demonstrate the alternatives <em>before</em> the threat dissipates.</p>
+  <p>A recent data point reinforces the thesis. On May 15, 2026, the Prime Minister and Premier announced a Canada-Alberta implementation agreement on carbon pricing to $130/tonne by 2040 &mdash; a federal concession extracted through precisely this kind of credible institutional pressure. The Alberta Prosperity Party&rsquo;s financial base has declined from $1M (2022) to $55K (2024), and separation support has fallen to 18% (Ipsos, May 28&ndash;June 1, 2026). The leverage is working. The institutional alternatives are the substance that the leverage demands.</p>
+</section>
+
+<!-- ===== 4. SEQUENCING ROADMAP ===== -->
+<section>
+  <h2>Sequencing Roadmap</h2>
+  <p>The alternatives are not equal. They differ on constitutional pathway, implementation timeline, and prerequisite dependencies. The sequencing framework distinguishes three tiers that must not be conflated.</p>
+
+  <div class="roadmap">
+    <!-- NOW -->
+    <div class="roadmap-tier">
+      <div class="roadmap-label">Now &mdash; Existing Provincial Authority</div>
+      <div class="roadmap-title">Achievable this legislative session</div>
+      <ul class="roadmap-items">
+        <li>Heritage Fund constitutional entrenchment via Section 45</li>
+        <li>Sovereignty Act resolutions on specific federal programs</li>
+        <li>Invest Alberta office expansion (18 &rarr; 25+)</li>
+        <li>NWP coordinated fiscal bargaining position</li>
+        <li>Council of the Federation autonomy agenda</li>
+        <li>Bitumen Beyond Combustion R&amp;D acceleration</li>
+      </ul>
+    </div>
+
+    <!-- 2-5 YEARS -->
+    <div class="roadmap-tier tier-mid">
+      <div class="roadmap-label">2&ndash;7 Years &mdash; Requires Federal Agreement</div>
+      <div class="roadmap-title">Bilateral negotiation with Ottawa</div>
+      <ul class="roadmap-items">
+        <li>Alberta Revenue Agency standup (5&ndash;7 years to operational maturity)</li>
+        <li>Tax point transfer / expanded federal abatement</li>
+        <li>Immigration accord expansion (AAIP &rarr; Quebec-equivalent selection authority)</li>
+        <li>CUSMA positioning on energy and critical minerals</li>
+        <li>Value-added upgrader construction ($3B, 4&ndash;6 years)</li>
+        <li>HFOC governance maturation</li>
+      </ul>
+    </div>
+
+    <!-- 25-50 YEARS -->
+    <div class="roadmap-tier tier-long">
+      <div class="roadmap-label">25&ndash;50 Years &mdash; Constitutional Amendment</div>
+      <div class="roadmap-title">Requires 7/50 formula or equivalent</div>
+      <ul class="roadmap-items">
+        <li>Basque-style Concierto Econ&oacute;mico (full tax collection and cupo negotiation)</li>
+        <li>Section 36 (equalization) reform</li>
+        <li>Heritage Fund at $250B generating $7.5B/year</li>
+        <li>Senate reform (constitutionally blocked; symbolically important)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout">
+    <p><strong>Prerequisite chain:</strong> The Revenue Agency (Tier 2) is a prerequisite for the Basque Concierto (Tier 3). You cannot negotiate fiscal autonomy without the apparatus to execute it. Heritage Fund reform (Tier 1) is a prerequisite for fiscal independence from transfers. The immigration accord is independent &mdash; it does not require the revenue agency or Heritage Fund. Energy transition operates in parallel with all institutional reforms.</p>
+  </div>
+</section>
+
+<!-- ===== 5. RED TEAM FINDINGS ===== -->
+<section>
+  <h2>What Survived Red Team</h2>
+  <p>Three adversarial reviewers attacked the portfolio from distinct perspectives. Their critiques were incorporated, not dismissed.</p>
+
+  <div class="verdict-grid">
+    <div class="verdict-card">
+      <span class="verdict-tag conditional">Conditional</span>
+      <h4>Alberta Fiscal Conservative</h4>
+      <p><strong>Core attack:</strong> &ldquo;Excellent research, politically irrelevant.&rdquo; The timeline mismatch is fatal &mdash; a 25-year Heritage Fund roadmap does not speak to someone angry about the carbon tax today. A revenue agency during a $9.4B deficit is &ldquo;politically suicidal.&rdquo;</p>
+      <p><strong>Response:</strong> The timeline critique is acknowledged. These alternatives are for the 15&ndash;20% of Albertans who support separation on fiscal grounds and can be persuaded by fiscal solutions. They are not for the 8% who support separation as identity. The fiscal conservative&rsquo;s recommended fast-action items (Sovereignty Act orders, equalization referendum enforcement, NWP coordination) are incorporated in Tier 1 of the sequencing roadmap.</p>
+    </div>
+
+    <div class="verdict-card">
+      <span class="verdict-tag conditional">Conditional</span>
+      <h4>Quebec Autonomy Scholar</h4>
+      <p><strong>Core attack:</strong> Alberta lacks the institutional culture. Quebec built its autonomy apparatus over 60 years during the Quiet Revolution &mdash; a social transformation with no Alberta parallel. You cannot copy institutional forms without the social infrastructure that sustains them.</p>
+      <p><strong>Response:</strong> The category difference between Alberta&rsquo;s Fair Deal Panel and Quebec&rsquo;s Quiet Revolution is real and total. Engineering timelines (how long to build the IT systems) understate sociological timelines (how long to build the institutional culture). The 5&ndash;7-year revenue agency timeline is acknowledged as an engineering estimate. The sociological timeline is longer. This constraint is incorporated, not resolved.</p>
+    </div>
+
+    <div class="verdict-card">
+      <span class="verdict-tag conditional">Conditional</span>
+      <h4>Federal Transfer Defender</h4>
+      <p><strong>Core attack:</strong> The domino effect is not hypothetical. If Alberta secures a Concierto-style arrangement (15&ndash;17% of GDP), Ontario ($900B+, 39% of GDP) and every other province will demand parity. The federation becomes ungovernable.</p>
+      <p><strong>Response:</strong> The domino argument is strongest against the Basque model and weakest against Heritage Fund reform and energy transition &mdash; which are purely provincial, require no federal cooperation, and create no precedent. The portfolio is sequenced so that the domino-proof alternatives come first. The Concierto aspiration operates on a timeline long enough for constitutional norms to evolve.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 6. STRESS TEST ===== -->
+<section>
+  <h2>Stress Test Results</h2>
+  <p>Nine scenarios were tested against all six alternatives (54 individual assessments). The portfolio produced zero FAILs.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Scenario</th>
+          <th>Verdict</th>
+          <th>Key Finding</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>S-1: Ottawa offers fiscal reform</td>
+          <td><span class="badge badge--now">Pass</span></td>
+          <td>Alternatives retain value as institutional capacity regardless of grievance resolution</td>
+        </tr>
+        <tr>
+          <td>S-2: Energy transition accelerates</td>
+          <td><span class="badge badge--agreement">Conditional</span></td>
+          <td>Heritage Fund deposits must begin immediately; strategy reweights to non-combustion pathways</td>
+        </tr>
+        <tr>
+          <td>S-3: Heritage Fund reforms fail</td>
+          <td><span class="badge badge--agreement">Conditional</span></td>
+          <td>Portfolio redirects to revenue autonomy (Basque/agency); exit conditions required</td>
+        </tr>
+        <tr>
+          <td>S-4: Basque model blocked</td>
+          <td><span class="badge badge--agreement">Conditional</span></td>
+          <td>Revenue agency + tax point transfer delivers ~40&ndash;50% of Concierto benefit independently</td>
+        </tr>
+        <tr>
+          <td>S-5: Treaty Nations oppose</td>
+          <td><span class="badge badge--agreement">Conditional</span></td>
+          <td>Every alternative requires Treaty Nation partnership protocol, not merely consultation</td>
+        </tr>
+        <tr>
+          <td>S-6: APP referendum succeeds</td>
+          <td><span class="badge badge--agreement">Conditional</span></td>
+          <td>Alternatives become the exit ramp; must be pre-positioned as negotiating platform</td>
+        </tr>
+        <tr>
+          <td>S-7: Quebec opposes</td>
+          <td><span class="badge badge--agreement">Conditional</span></td>
+          <td>Heritage Fund and energy transition are Quebec-proof; immigration accord must complement, not replicate</td>
+        </tr>
+        <tr>
+          <td>S-8: CUSMA constrains</td>
+          <td><span class="badge badge--agreement">Conditional</span></td>
+          <td>Azores doctrine (ECJ three-part test) provides defensive framework for sub-national tax autonomy</td>
+        </tr>
+        <tr>
+          <td>S-9: Identity irreducible</td>
+          <td><span class="badge badge--now">Pass</span></td>
+          <td>92% of the grievance is addressable through institutional reform; 8% residue honestly acknowledged</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout">
+    <p><strong>Portfolio resilience:</strong> The portfolio is robust because no single scenario collapses all six alternatives. Each alternative has a different vulnerability profile. If the Heritage Fund fails, the revenue agency pathway strengthens. If the Basque model is blocked, intermediate tax point transfers deliver independent value. If energy transition accelerates, the energy stream becomes central while the Heritage Fund shifts to fiscal buffer. The diversity is the design.</p>
+  </div>
+</section>
+
+<!-- ===== 7. TREATY 6/7/8 ===== -->
+<section>
+  <h2>Treaty 6/7/8: Design Partners, Not Afterthoughts</h2>
+  <p>Every alternative in this portfolio interacts with Treaty obligations. Treaty 6 (1876), Treaty 7 (1877), and Treaty 8 (1899) all predate Alberta&rsquo;s creation in 1905. Treaty Nations are prior-authority parties with constitutionally protected rights under Section 35 of the Constitution Act, 1982.</p>
+  <p>The May 13, 2026, Alberta Court of King&rsquo;s Bench ruling (Justice Leonard) quashed a separation petition on duty-to-consult grounds, confirming that any process affecting Treaty rights requires meaningful consultation with Treaty Nations. The Onion Lake Cree Nation&rsquo;s challenge to the Sovereignty Act is actively testing whether the Act&rsquo;s application must comply with Treaty obligations.</p>
+  <p>This is not a future risk. It is a present legal constraint that shapes every alternative:</p>
+  <ul style="margin:0.75rem 0 0.75rem 1.5rem; font-size:0.95rem;">
+    <li><strong>Heritage Fund:</strong> Resource revenue is generated from Treaty lands. Revenue sharing must be negotiated as a structural component of fund reform, not an afterthought. The HFOC appointment of Chana Martineau (AIOC CEO) signals awareness but does not constitute design partnership.</li>
+    <li><strong>Revenue Agency:</strong> Section 87 (Indian Act) tax exemptions for on-reserve income require partnership on data governance and exemption administration.</li>
+    <li><strong>Immigration Accord:</strong> Population growth affects Treaty territories. Jay Treaty cross-border mobility rights add an additional dimension.</li>
+    <li><strong>Energy Transition:</strong> Clean energy development on Treaty territories (geothermal, critical minerals, wind, solar) requires partnership agreements under established Section 35 jurisprudence.</li>
+  </ul>
+  <p>The stress test identified Treaty partnership as the portfolio&rsquo;s most significant operational gap. Every stream acknowledges Treaty Nations as design partners. None has yet operationalized that acknowledgment into specific institutional mechanisms. The acknowledgment is genuine. The mechanisms are absent. Closing that gap is the single most important next step for implementation.</p>
+</section>
+
+<!-- ===== 8. IDENTITY ===== -->
+<section>
+  <h2>The Identity Question</h2>
+  <p>Ipsos polling shows separation support at 28% topline, dropping to 15&ndash;16% when economic costs are surfaced, and further to 8% among those who support separation &ldquo;regardless of consequences.&rdquo; The most recent polling (May 28&ndash;June 1, 2026) shows topline support at 18% and falling. The Alberta Prosperity Party&rsquo;s financial base has declined from $1M (2022) to $55K (2024).</p>
+  <p>The 8% hardcore cohort is identity-driven, not fiscally motivated. No revenue agency, Heritage Fund trajectory, or immigration accord addresses the sense that Central Canadian elites hold Alberta&rsquo;s economic model in contempt. The National Energy Program is 45 years in the past but remains the origin story of Western alienation.</p>
+  <p>These alternatives address 92% of the grievance &mdash; the fiscal and institutional dimensions that drive the moveable 10&ndash;20%. They do not address the 8% identity residue, and this briefing does not pretend otherwise. Some alternatives partially engage identity: immigration control (&ldquo;building our own country&rdquo;), international presence (projecting provincial distinctiveness), the Sovereignty Act (symbolic assertion of authority), and a $250B Heritage Fund (collective pride in &ldquo;the province that saved&rdquo;). But these are indirect. The identity residue is irreducible through policy. Saying so is an analytical finding, not a concession.</p>
+</section>
+
+<!-- ===== 9. THE BOTTOM LINE ===== -->
+<section style="border-bottom:none; margin-bottom:0; padding-bottom:0;">
+  <div class="bottom-line">
+    <h2>The Bottom Line</h2>
+    <p class="bl-stat" style="margin-bottom:1rem;">The entire autonomy roadmap costs less than two months of separation.</p>
+    <p>The Basque Concierto Econ&oacute;mico delivers more fiscal autonomy than independence &mdash; within a federation, without a GDP shock, without losing CUSMA market access, without collapsing the investment environment that attracted 110,000 net interprovincial migrants in recent years.</p>
+    <p>The Heritage Fund, if constitutionally protected and consistently funded, eliminates the fiscal grievance within a generation. At $250B, it generates $7.5B/year &mdash; a permanent revenue stream independent of Ottawa, independent of oil prices, independent of federal transfer politics.</p>
+    <p>But these are slow paths, and people are angry now. The fiscal conservative red team is right about the timeline mismatch. A 25-year institutional roadmap does not speak to someone who is angry about equalization today. The sequencing framework matters: the immediate-action items (Sovereignty Act, NWP coordination, Heritage Fund entrenchment) address the timeline problem. The medium-term items (revenue agency, immigration accord) build institutional capacity. The long-term aspiration (Basque-style fiscal autonomy) provides the direction.</p>
+    <p>The separatist movement is organizationally weakening and financially declining. Support has dropped to 18%. The institutional alternatives are the substance that replaces the threat. The question is not whether Alberta should pursue autonomy &mdash; it is whether Alberta has the political discipline to build institutions that take a generation to mature, in a political culture that has never sustained such discipline before.</p>
+    <p style="margin-top:1.25rem; opacity:0.7; font-size:0.88rem;">This briefing draws on six research streams, three red team reviews, a nine-scenario stress test, and two citation verification passes. Full methodology, evidence labels (STRONG / MODERATE / INFERRED), and complete source documentation are available in the Tier 0 technical paper.</p>
+  </div>
+</section>
+
+</div><!-- /.container -->
+</main>
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="site-footer">
+  KT-027 &nbsp;|&nbsp;  &nbsp;|&nbsp; June 2026
+</footer>
+
+</body>
+</html>

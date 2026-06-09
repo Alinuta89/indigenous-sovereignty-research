@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Decision-Maker Summary — Alberta Sovereignty Referendum | KT-025</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --hs-primary: #1B3A5C;
+  --hs-secondary: #E87722;
+  --hs-bg: #FAFAFA;
+  --hs-surface: #FFFFFF;
+  --hs-text: #1A1A2E;
+  --hs-text-secondary: #555770;
+  --hs-border: #E0E0E0;
+  --hs-accent: #2D8CFF;
+  --hs-success: #28A745;
+  --hs-warning: #FFC107;
+  --hs-danger: #DC3545;
+  --hs-font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --hs-font-heading: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --hs-font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  --hs-radius: 8px;
+  --hs-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  --hs-max-width: 900px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: var(--hs-font-body);
+  background: var(--hs-bg);
+  color: var(--hs-text);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+.header-bar {
+  background: var(--hs-primary);
+  color: #fff;
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.header-bar h1 {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+.header-bar .meta {
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+.tier-badge {
+  display: inline-block;
+  background: var(--hs-success);
+  color: #fff;
+  font-family: var(--hs-font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.25rem 0.75rem;
+  border-radius: 3px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.container {
+  max-width: var(--hs-max-width);
+  margin: 0 auto;
+  padding: 2rem 1.5rem 3rem;
+}
+.back-link {
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  font-size: 0.85rem;
+  color: var(--hs-accent);
+  text-decoration: none;
+}
+.back-link:hover { text-decoration: underline; }
+h2 {
+  font-family: var(--hs-font-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--hs-primary);
+  margin: 2rem 0 0.75rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 2px solid var(--hs-secondary);
+}
+h2:first-of-type { margin-top: 0; }
+p { margin-bottom: 1rem; font-size: 0.95rem; }
+.callout {
+  background: #f0f4f8;
+  border-left: 4px solid var(--hs-primary);
+  padding: 1.25rem 1.5rem;
+  margin: 1.5rem 0;
+  border-radius: 0 var(--hs-radius) var(--hs-radius) 0;
+}
+.callout p { margin-bottom: 0.5rem; }
+.callout p:last-child { margin-bottom: 0; }
+.question-box {
+  background: var(--hs-surface);
+  border: 2px solid var(--hs-primary);
+  border-radius: var(--hs-radius);
+  padding: 1.25rem 1.5rem;
+  margin: 1.5rem 0;
+  font-style: italic;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+.question-box .label {
+  font-style: normal;
+  font-family: var(--hs-font-mono);
+  font-size: 0.75rem;
+  color: var(--hs-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+.scenario-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin: 1rem 0 1.5rem;
+}
+.scenario {
+  background: var(--hs-surface);
+  border: 1px solid var(--hs-border);
+  border-radius: var(--hs-radius);
+  padding: 1.25rem;
+  border-left: 4px solid var(--hs-border);
+}
+.scenario.strong-no { border-left-color: var(--hs-success); }
+.scenario.narrow-no { border-left-color: var(--hs-warning); }
+.scenario.surprise-yes { border-left-color: var(--hs-danger); }
+.scenario .label {
+  font-family: var(--hs-font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.4rem;
+}
+.scenario.strong-no .label { color: var(--hs-success); }
+.scenario.narrow-no .label { color: #c29200; }
+.scenario.surprise-yes .label { color: var(--hs-danger); }
+.scenario h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+}
+.scenario p { font-size: 0.88rem; margin-bottom: 0; }
+.watch-list {
+  list-style: none;
+  padding: 0;
+  counter-reset: watch;
+}
+.watch-list li {
+  counter-increment: watch;
+  padding: 0.8rem 0 0.8rem 2.5rem;
+  border-bottom: 1px solid #f0f0f0;
+  position: relative;
+  font-size: 0.93rem;
+}
+.watch-list li:last-child { border-bottom: none; }
+.watch-list li::before {
+  content: counter(watch);
+  position: absolute;
+  left: 0;
+  top: 0.8rem;
+  width: 1.6rem;
+  height: 1.6rem;
+  background: var(--hs-primary);
+  color: #fff;
+  border-radius: 50%;
+  font-size: 0.75rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.watch-list li strong { color: var(--hs-primary); }
+.footer {
+  text-align: center;
+  padding: 2rem;
+  font-size: 0.8rem;
+  color: var(--hs-text-secondary);
+  border-top: 1px solid var(--hs-border);
+}
+@media (max-width: 640px) {
+  .header-bar { flex-direction: column; text-align: center; }
+  .container { padding: 1.5rem 1rem; }
+}
+@media print {
+  body { background: #fff; }
+  .header-bar { background: none; color: var(--hs-text); border-bottom: 2px solid var(--hs-primary); }
+  .back-link { display: none; }
+}
+</style>
+</head>
+<body>
+
+<div class="header-bar">
+  <div>
+    <span class="tier-badge">Tier 3 &mdash; Decision Sheet</span>
+    <h1>Alberta Sovereignty Referendum: Decision-Maker Summary</h1>
+  </div>
+  <div class="meta">KT-025 | June 8, 2026</div>
+</div>
+
+<div class="container">
+
+<a href="index.html" class="back-link">&larr; Back to all tiers</a>
+
+<h2>What Is Smith's Strategy?</h2>
+
+<p>Premier Danielle Smith is running a compound strategy: using the separation threat to extract federal concessions (credible-threat federalism) while managing her party's right flank against the Alberta Prosperity Project and Take Back Alberta (right-flank management). The evidence for this interpretation is strong. The November 2025 MOU with Ottawa produced a new pipeline designated as a project of national interest, scrapped the federal Oil and Gas Emissions Cap, and suspended Clean Electricity Regulations in Alberta. These are the largest federal energy concessions in a generation.</p>
+
+<p>Smith campaigns for Remain. She released a $400B cost estimate for separation on June 2, 2026. She has instructed Finance Minister Jason Nixon to produce a full costing document by August. She is running a summer Remain campaign tour. The strategy is designed to produce a No vote that validates her leadership, discredits the separatist movement, and positions her for re-election in 2027.</p>
+
+<h2>What Does the Referendum Actually Ask?</h2>
+
+<div class="question-box">
+  <span class="label">Question 10 &mdash; The 37-Word Ballot Question</span>
+  &ldquo;Should Alberta remain a province of Canada or should the Government of Alberta commence the legal process required under the Canadian Constitution to hold a binding provincial referendum on whether or not Alberta should separate from Canada?&rdquo;
+</div>
+
+<p>This is a <strong>referendum on a referendum</strong>. It does not ask whether Alberta should leave Canada. It asks whether the government should begin the legal process toward a future binding vote on that question. Both Smith and Prime Minister Carney acknowledge that the Clarity Act does not apply. A &ldquo;Commence&rdquo; majority would not mean separation; it would mean years of constitutional negotiation, treaty litigation, and federal-provincial bargaining before any binding vote.</p>
+
+<p>Q10 is one of ten questions on the October 19 ballot, alongside questions on immigration policy, court appointments, Senate abolition, and provincial paramountcy.</p>
+
+<h2>Where Does Public Support Stand?</h2>
+
+<div class="callout">
+  <p><strong>18%</strong> support separation on direct question (Ipsos, June 2026, n=600, +/-4.9pp) &mdash; down from 28% in January</p>
+  <p><strong>35%</strong> would vote &ldquo;Commence&rdquo; on the actual ballot question (Angus Reid, May 2026, n=800, +/-3.5pp)</p>
+  <p><strong>8%</strong> would &ldquo;definitely&rdquo; vote to leave regardless &mdash; the irreducible identity-driven core (Angus Reid, Feb 2026)</p>
+  <p><strong>69%</strong> believe separatists will not accept a No result (Angus Reid, May 2026)</p>
+</div>
+
+<p>The 17-point gap between 18% and 35% reflects the question design effect: the conditional &ldquo;referendum on a referendum&rdquo; framing pulls soft-Yes voters who would not support unconditional independence. The operationally relevant figure is the 35%, because that is the question voters will face.</p>
+
+<p>A critical correction: the 55+ age cohort is the <em>most</em> pro-separation demographic at 43% Leave, while 18-34 year-olds are the <em>least</em> at 27%. The assumed &ldquo;senior wall&rdquo; against separation does not exist in the data.</p>
+
+<h2>Three Scenarios</h2>
+
+<div class="scenario-grid">
+  <div class="scenario strong-no">
+    <div class="label">Most probable</div>
+    <h3>Strong No (65%+ Remain)</h3>
+    <p>Smith claims credit for responsible governance. The separation threat remains useful for future negotiation but loses immediate urgency. WIP marginalized, APP discredited. Smith enters 2027 as the prohibitive favourite for re-election, having both extracted a pipeline deal and defeated the separatist movement on her terms.</p>
+  </div>
+  <div class="scenario narrow-no">
+    <div class="label">Plausible if protest vote activates</div>
+    <h3>Narrow No (55&ndash;60% Remain)</h3>
+    <p>Close enough for separatists to claim moral victory. The neverendum dynamic activates. APP demands a second referendum. Smith faces pressure from both sides. The 2027 election becomes volatile, with potential for a WIP splinter that threatens the UCP coalition.</p>
+  </div>
+  <div class="scenario surprise-yes">
+    <div class="label">Low probability, highest consequence</div>
+    <h3>Surprise Yes (50%+ Commence)</h3>
+    <p>Constitutional crisis. The Commence majority mandates only a process, not separation, but the political and market reaction would be immediate. The treaty wall (Sylvestre, Athabasca) blocks the legal path. Ottawa has no engaged institutional mechanism. No major actor &mdash; Smith, Ottawa, APP, or Treaty nations &mdash; has a detailed plan for this outcome.</p>
+  </div>
+</div>
+
+<h2>Five Things to Watch</h2>
+
+<ol class="watch-list">
+  <li><strong>The August costing document.</strong> Finance Minister Jason Nixon's full separation costing will be the most significant information event before October 19. If the numbers are credible and widely disseminated, they suppress soft-Leave support. If they are dismissed as government propaganda, the cost-exposure effect weakens.</li>
+  <li><strong>The protest-vote indicator.</strong> Pollara found 21% of Remain voters would consider voting Commence &ldquo;to send a message.&rdquo; On the ballot-question baseline (60/35), even half conversion pushes Commence to 41%. If polling consistently shows a comfortable Remain lead, voters may feel &ldquo;safe to protest&rdquo; &mdash; the exact dynamic that produced the Brexit shock.</li>
+  <li><strong>Rural Alberta polling.</strong> Rest of Alberta is tied at 48/48 on the ballot question. If the Leave campaign concentrates resources there, a 5-10 point rural swing combined with any Calgary erosion moves the province-wide number into the danger zone. Rural polling between now and October is the canary in the mine.</li>
+  <li><strong>The Court of Appeal decision on Athabasca.</strong> Smith appealed the May 2026 ruling that quashed the separation petition. If the appeal succeeds on procedural grounds without reaching the treaty-rights merits, the treaty wall narrows. If it fails, the legal barriers to separation are reinforced before voters reach the ballot.</li>
+  <li><strong>External shocks.</strong> Oil price collapse, US tariff escalation, or a federal reversal on the pipeline deal could reactivate the grievance narrative and push separation support back toward 28%. The strategy has no hedge against events that are by definition unpredictable.</li>
+</ol>
+
+<div class="callout">
+  <p><strong>Stress test verdict: CONDITIONAL.</strong> The central case (No wins comfortably) is well-modeled by the research. The tail risk (Commence wins or comes close enough to generate political momentum) is undermodeled. The protest-vote dynamic, turnout asymmetry, and 10-question ballot priming effect are identified but not fully integrated.</p>
+</div>
+
+</div>
+
+<div class="footer">
+  KT-025 |   Research | June 8, 2026
+</div>
+
+</body>
+</html>

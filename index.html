@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Indigenous Sovereignty &amp; Funding Research</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary-teal: #28bcb8;
+  --primary-navy: #103656;
+  --deep-blue: #0c4f8a;
+  --dark-teal: #006468;
+  --medium-blue: #1a7ebe;
+  --light-teal: #4bc2c3;
+  --near-white: #f7fafa;
+  --text-primary: #0e1a26;
+  --text-secondary: #4a5d6e;
+  --text-muted: #7a8d9c;
+  --border: #d8e3ea;
+  --shadow-sm: 0 1px 4px rgba(16,54,86,0.06);
+  --shadow-md: 0 4px 20px rgba(16,54,86,0.10);
+  --shadow-lg: 0 8px 40px rgba(16,54,86,0.14);
+  --gradient-hero: linear-gradient(135deg, #103656 0%, #0c4f8a 40%, #006468 75%, #28bcb8 100%);
+  --radius: 12px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Lato', sans-serif;
+  color: var(--text-primary);
+  background: var(--near-white);
+  line-height: 1.65;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+.hero {
+  background: var(--gradient-hero);
+  color: #fff;
+  padding: 72px 32px 64px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -15%;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(40,188,184,0.12) 0%, transparent 70%);
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -30%;
+  left: -10%;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(75,194,195,0.08) 0%, transparent 70%);
+}
+.hero h1 {
+  font-size: 2.6rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+  position: relative;
+}
+.hero .subtitle {
+  font-size: 1.15rem;
+  font-weight: 300;
+  color: rgba(255,255,255,0.75);
+  max-width: 640px;
+  margin: 0 auto;
+  position: relative;
+}
+.container { max-width: 960px; margin: 0 auto; padding: 48px 28px 64px; }
+.treaty-notice {
+  background: #fff;
+  border-left: 4px solid var(--primary-teal);
+  padding: 20px 24px;
+  margin-bottom: 40px;
+  border-radius: 0 var(--radius) var(--radius) 0;
+  box-shadow: var(--shadow-sm);
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.75;
+}
+.section-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--primary-teal);
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+.tickets {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin-bottom: 48px;
+}
+.ticket {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px 32px;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.25s, transform 0.25s, border-color 0.25s;
+  text-decoration: none;
+  color: inherit;
+  display: grid;
+  grid-template-columns: 80px 1fr auto;
+  align-items: center;
+  gap: 24px;
+  position: relative;
+  overflow: hidden;
+}
+.ticket::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--gradient-hero);
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+.ticket:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+  border-color: var(--primary-teal);
+}
+.ticket:hover::before { opacity: 1; }
+.ticket .kt-num {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--primary-teal);
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+.ticket .kt-title {
+  font-size: 1.08rem;
+  font-weight: 700;
+  color: var(--primary-navy);
+  margin-bottom: 4px;
+}
+.ticket .kt-desc {
+  font-size: 0.84rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+.ticket .arrow {
+  font-size: 1.2rem;
+  color: var(--primary-teal);
+  font-weight: 300;
+}
+.footer {
+  text-align: center;
+  padding: 32px 28px;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  border-top: 1px solid var(--border);
+  background: #fff;
+}
+@media (max-width: 640px) {
+  .hero h1 { font-size: 1.8rem; }
+  .ticket { grid-template-columns: 1fr; gap: 8px; }
+  .ticket .arrow { display: none; }
+}
+</style>
+</head>
+<body>
+<div class="hero">
+  <h1>Indigenous Sovereignty &amp; Funding Research</h1>
+  <div class="subtitle">Evidence base for Treaty Nations, fiscal architecture, and service capacity across Alberta</div>
+</div>
+
+<div class="container">
+  <div class="treaty-notice">
+    This research concerns Treaties 6 (1876), 7 (1877), and 8 (1899). Treaty Nations are prior-authority parties with sovereign claims that predate Alberta (1905). All analysis, intervention designs, and policy proposals are produced for Nation consideration, not as prescriptions.
+  </div>
+
+  <div class="section-label">Research Portfolio &mdash; 7 Tickets</div>
+
+  <div class="tickets">
+    <a href="KT-023-sovereignty-comparators/index.html" class="ticket">
+      <div class="kt-num">KT-023</div>
+      <div>
+        <div class="kt-title">Sovereignty Comparator Analysis</div>
+        <div class="kt-desc">Global comparators for Alberta sovereignty claims. Prior-authority cases, democratic secession base rates, treaty-state interactions. 120+ cases since Westphalia.</div>
+      </div>
+      <div class="arrow">&rarr;</div>
+    </a>
+
+    <a href="KT-025-political-strategy/index.html" class="ticket">
+      <div class="kt-num">KT-025</div>
+      <div>
+        <div class="kt-title">Political Strategy &amp; Referendum Mechanics</div>
+        <div class="kt-desc">Alberta sovereignty referendum analysis. Polling, campaign mechanics, legal pathways, democratic precedents, and treaty implications.</div>
+      </div>
+      <div class="arrow">&rarr;</div>
+    </a>
+
+    <a href="KT-026-indigenous-fiscal/index.html" class="ticket">
+      <div class="kt-num">KT-026</div>
+      <div>
+        <div class="kt-title">Indigenous Fiscal Sovereignty</div>
+        <div class="kt-desc">Crown-to-Nation fiscal architecture. $2.5&ndash;3B in annual flows through Alberta. ISC fragmentation, AIOC, treaty positioning, partnership models.</div>
+      </div>
+      <div class="arrow">&rarr;</div>
+    </a>
+
+    <a href="KT-027-autonomy-alternatives/index.html" class="ticket">
+      <div class="kt-num">KT-027</div>
+      <div>
+        <div class="kt-title">Institutional Autonomy Alternatives</div>
+        <div class="kt-desc">Alternatives to secession: enhanced autonomy, asymmetric federalism, fiscal federalism reform, Basque-style foral arrangements.</div>
+      </div>
+      <div class="arrow">&rarr;</div>
+    </a>
+
+    <a href="KT-028-service-desert-interventions/index.html" class="ticket">
+      <div class="kt-num">KT-028</div>
+      <div>
+        <div class="kt-title">Service Desert Interventions</div>
+        <div class="kt-desc">Capacity-building blueprints for Indigenous Alberta. 1 mental health org, 4 food security, 5 emergency. 84% single-funder dependent. $1.02B gap. Six intervention streams.</div>
+      </div>
+      <div class="arrow">&rarr;</div>
+    </a>
+
+    <a href="KT-029-urban-indigenous-formula/index.html" class="ticket">
+      <div class="kt-num">KT-029</div>
+      <div>
+        <div class="kt-title">Urban Indigenous Services &amp; Federal Formula Audit</div>
+        <div class="kt-desc">60% of Indigenous Albertans live off-reserve. Federal funding formulae weight on-reserve populations. Audit of the urban undercount and its service delivery consequences.</div>
+      </div>
+      <div class="arrow">&rarr;</div>
+    </a>
+
+    <a href="KT-030-funding-network-resilience/index.html" class="ticket">
+      <div class="kt-num">KT-030</div>
+      <div>
+        <div class="kt-title">Funding Network Resilience</div>
+        <div class="kt-desc">Structural analysis of Indigenous funding network fragility. Single-funder dependency, funding diversification models, and resilience architecture.</div>
+      </div>
+      <div class="arrow">&rarr;</div>
+    </a>
+  </div>
+</div>
+
+<div class="footer">
+  Indigenous Sovereignty &amp; Funding Research &bull; June 2026<br>
+  All proposals are for Nation consideration. Treaty Nations are prior-authority parties.
+</div>
+</body>
+</html>

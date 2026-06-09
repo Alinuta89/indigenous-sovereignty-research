@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Technical Paper &mdash; Service Desert Interventions | KT-028</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700&display=swap" rel="stylesheet">
+<style>
+:root{--primary-teal:#28bcb8;--primary-navy:#103656;--deep-blue:#0c4f8a;--dark-teal:#006468;--medium-blue:#1a7ebe;--light-teal:#4bc2c3;--near-white:#f7fafa;--text-primary:#0e1a26;--text-secondary:#4a5d6e;--text-muted:#7a8d9c;--border:#d8e3ea;--shadow-sm:0 1px 4px rgba(16,54,86,0.06);--shadow-md:0 4px 20px rgba(16,54,86,0.10);--gradient-hero:linear-gradient(135deg,#103656 0%,#0c4f8a 40%,#006468 75%,#28bcb8 100%);--gradient-accent:linear-gradient(135deg,#103656,#1a7ebe);--radius:12px}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Lato',sans-serif;color:var(--text-primary);background:var(--near-white);line-height:1.72;font-size:16px;-webkit-font-smoothing:antialiased}
+.top-bar{background:var(--gradient-hero);padding:16px 28px;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(16,54,86,0.15)}
+.top-bar-inner{max-width:960px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
+.top-bar a{color:var(--light-teal);text-decoration:none;font-size:0.85rem}
+.top-bar .title{color:#fff;font-weight:700;font-size:1rem}
+.top-bar .badge{font-size:0.72rem;color:rgba(255,255,255,0.5);font-weight:300}
+.container{max-width:960px;margin:0 auto;padding:48px 28px 80px}
+h1{font-size:2rem;color:var(--primary-navy);margin-bottom:6px;font-weight:700;letter-spacing:-0.02em}
+h2{font-size:1.2rem;color:var(--primary-navy);margin:44px 0 14px;font-weight:700;padding-bottom:8px;border-bottom:2px solid var(--primary-teal)}
+h3{font-size:1rem;color:var(--deep-blue);margin:28px 0 8px;font-weight:700}
+h4{font-size:0.9rem;color:var(--dark-teal);margin:18px 0 6px;font-weight:700}
+.subtitle{color:var(--text-muted);font-size:0.95rem;margin-bottom:4px;font-weight:300}
+.meta{color:var(--text-muted);font-size:0.82rem;margin-bottom:36px}
+.treaty{background:#fff;border-left:4px solid var(--primary-teal);padding:22px 28px;font-size:0.88rem;color:var(--text-secondary);margin-bottom:36px;border-radius:0 var(--radius) var(--radius) 0;box-shadow:var(--shadow-sm);line-height:1.7}
+.treaty strong{color:var(--primary-navy)}
+p,li{font-size:0.9rem;line-height:1.75;margin-bottom:11px;color:var(--text-secondary)}
+ul,ol{padding-left:22px;margin-bottom:14px}
+table{width:100%;border-collapse:collapse;margin:14px 0 22px;font-size:0.84rem}
+th{background:var(--primary-navy);color:#fff;padding:10px 13px;text-align:left;font-weight:700;font-size:0.74rem;text-transform:uppercase;letter-spacing:0.05em}
+td{padding:10px 13px;border-bottom:1px solid var(--border)}
+tr:nth-child(even){background:rgba(40,188,184,0.04)}
+.callout{background:#fff;border:1px solid var(--primary-teal);border-radius:var(--radius);padding:22px 26px;margin:18px 0}
+.callout strong{color:var(--primary-navy)}
+.callout-accent{background:var(--gradient-accent);color:#fff;border:none;border-radius:var(--radius);padding:22px 26px;margin:18px 0}
+.callout-accent strong{color:var(--light-teal)}
+.callout-accent p{color:rgba(255,255,255,0.85)}
+.toc{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:24px 28px;margin-bottom:36px;box-shadow:var(--shadow-sm)}
+.toc h3{margin:0 0 12px;color:var(--primary-navy);border:none;padding:0}
+.toc ol{font-size:0.88rem;line-height:2.1;color:var(--text-secondary)}
+.toc a{color:var(--deep-blue);text-decoration:none;font-weight:400}
+.toc a:hover{color:var(--primary-teal);text-decoration:underline}
+.fn{vertical-align:super;font-size:0.7rem;color:var(--primary-teal);text-decoration:none;margin-left:1px}
+.footnote{font-size:0.8rem;color:var(--text-muted);border-top:1px solid var(--border);padding-top:6px;margin-top:6px;line-height:1.6}
+.footnote sup{color:var(--primary-teal);font-weight:700}
+.footer{text-align:center;padding:36px;font-size:0.78rem;color:var(--text-muted);border-top:1px solid var(--border);background:#fff}
+</style>
+</head>
+<body>
+<div class="top-bar"><div class="top-bar-inner"><div><span class="title">KT-028</span> <span class="badge">Technical Paper</span></div><a href="index.html">&larr; All views</a></div></div>
+<div class="container">
+<h1>Service Desert Intervention Design</h1>
+<div class="subtitle">Capacity-Building Blueprints for Indigenous Alberta</div>
+<div class="meta">Tier 0: Full Research Record &bull;  &bull; June 2026</div>
+
+<div class="treaty">
+<strong>Treaty acknowledgment.</strong> This research concerns Treaties 6 (1876), 7 (1877), and 8 (1899) &mdash; agreements between the Crown and Blackfoot Confederacy (Siksika, Piikani, Kainai), Tsuut&rsquo;ina Nation, Stoney Nakoda, Cree Nations, Dene, and Chipewyan Nations. These treaties predate Alberta (1905). The service deserts documented here exist on treaty territory. Treaty Nations are prior-authority parties. All intervention designs are proposals for Nation consideration, not prescriptions.
+</div>
+
+<div class="toc">
+<h3>Contents</h3>
+<ol>
+<li><a href="#s1">Methodology and Limitations</a></li>
+<li><a href="#s2">The T7 Evidence Base</a></li>
+<li><a href="#s3">Stream A: Mental Health</a></li>
+<li><a href="#s4">Stream B: Food Security &amp; Emergency</a></li>
+<li><a href="#s5">Stream C: Housing &amp; Homelessness</a></li>
+<li><a href="#s6">Stream D: Addictions &amp; Harm Reduction</a></li>
+<li><a href="#s7">Stream E: Cross-Domain Coordination</a></li>
+<li><a href="#s8">Stream F: Workforce</a></li>
+<li><a href="#s9">Reconciliation &amp; Cost Summary</a></li>
+<li><a href="#s10">Red Team Findings</a></li>
+<li><a href="#s11">Stress Test Results</a></li>
+<li><a href="#s12">Limitations</a></li>
+<li><a href="#s13">References</a></li>
+</ol>
+</div>
+
+<h2 id="s1">1. Methodology and Limitations</h2>
+<p>This analysis synthesizes the Indigenous-Funding-Research T7 gap analysis, KT-026 fiscal architecture findings, published health data from FNIHB, AHS, CIHI, and Statistics Canada, and program documentation from Indigenous organizations. Six parallel research streams, three adversarial red team perspectives, nine stress test scenarios, and two citation verification passes.</p>
+
+<div class="callout-accent">
+<strong>The single most important limitation:</strong>
+<p>This analysis was produced without community engagement. No First Nation, Tribal Council, or Metis governance body was consulted. Every model proposed is conditional on Nation-level engagement and authorization. This document produces raw material for community decision-making, not implementation plans.</p>
+</div>
+
+<p>Evidence tagged by tradition (Western clinical, Indigenous knowledge, mixed) and strength (STRONG, MODERATE, INFERRED). All cost estimates are assumption-grade.<a class="fn" href="#fn1">1</a></p>
+
+<h2 id="s2">2. The T7 Evidence Base</h2>
+<p>922 Indigenous-serving organizations mapped across Alberta. Critical service deserts:<a class="fn" href="#fn2">2</a></p>
+<table>
+<tr><th>Domain</th><th>Organizations</th><th>Implication</th></tr>
+<tr><td>Mental health</td><td>1</td><td>One organization for ~284,470 Indigenous Albertans across 600,000+ km&sup2;</td></tr>
+<tr><td>Food security</td><td>4</td><td>Four organizations from US border to NWT boundary</td></tr>
+<tr><td>Emergency services</td><td>5</td><td>Five organizations for communities ranging urban to fly-in</td></tr>
+</table>
+<p>84% of organizations depend on a single funder.<a class="fn" href="#fn3">3</a> Annual gap: $1.02B (government-definition floor; community-defined need may be 2&ndash;3x).<a class="fn" href="#fn4">4</a></p>
+
+<h4>The 922-organization map captures formal infrastructure only</h4>
+<p>It does not capture kinship care, ceremony-based healing, mutual aid, Elder support, or land-based wellness. The absence of formal organizations does not equal absence of care.<a class="fn" href="#fn5">5</a></p>
+
+<h4>Population</h4>
+<p>284,470 Indigenous Albertans (6.8%, Census 2021). First Nations: 145,640 (51.2%). Metis: 127,475 (44.8%). ~60% off-reserve.<a class="fn" href="#fn6">6</a> Metis structurally excluded from ISC/FNIHB.<a class="fn" href="#fn7">7</a></p>
+
+<h2 id="s3">3. Stream A: Mental Health</h2>
+<p>One mental health organization. Gap ratio: entire infrastructure must be built.<a class="fn" href="#fn8">8</a></p>
+<h3>Culturally grounded evidence</h3>
+<p><strong>Two-Eyed Seeing (Etuaptmumk).</strong> Elder Albert D. Marshall, 2004. Improved engagement, reduced dropout.<a class="fn" href="#fn9">9</a> <strong>Land-based healing.</strong> Robust in Indigenous knowledge; Western evidence emerging.<a class="fn" href="#fn10">10</a> <strong>Cultural continuity.</strong> Higher continuity = lower suicide (Chandler &amp; Lalonde, 2008).<a class="fn" href="#fn11">11</a></p>
+<h3>Proposed network</h3>
+<p>Portfolio: 4 urban hubs + treaty-based coordination + telehealth + CHWs. $50&ndash;90M/yr. 60&ndash;105 workers. Cultural safety governed by Nation.<a class="fn" href="#fn12">12</a></p>
+<h3>Funding</h3>
+<p>Federal (35&ndash;40%) + Provincial (20&ndash;25%) + Nation (15&ndash;20%) + other (10&ndash;20%). No source above 40%.<a class="fn" href="#fn13">13</a></p>
+
+<h2 id="s4">4. Stream B: Food Security &amp; Emergency</h2>
+<p>4 food security + 5 emergency orgs. Food sovereignty (Nation-defined, treaty-protected) is the framework.<a class="fn" href="#fn14">14</a> Emergency response to fly-in: 2&ndash;6 hours. Fire protection budget: $20.9M/3yr nationally (equipment, not capacity).<a class="fn" href="#fn15">15</a> Climate: wildfire season +30 days since 1970s.<a class="fn" href="#fn16">16</a></p>
+<p>Combined: $50&ndash;120M capital + $30&ndash;60M/yr.</p>
+
+<h2 id="s5">5. Stream C: Housing &amp; Homelessness</h2>
+<p>Reserve backlog: 3,000&ndash;6,000 units. 30&ndash;40% mold-affected. Edmonton: 50.3% Indigenous (2024 PiT); Calgary: 25%.<a class="fn" href="#fn17">17</a> 74% of youth in care are Indigenous &mdash; child welfare is the pipeline.<a class="fn" href="#fn18">18</a> Jurisdictional gap: federal on-reserve, provincial off-reserve. Jordan&rsquo;s Principle does not cover housing.<a class="fn" href="#fn19">19</a> Housing First with Indigenous adaptations.<a class="fn" href="#fn20">20</a></p>
+<p>Combined: $460M&ndash;1.5B capital (5yr) + $30&ndash;75M/yr.</p>
+
+<h2 id="s6">6. Stream D: Addictions &amp; Harm Reduction</h2>
+<p>8.4x opioid death rate (First Nations, 2022, AFNIGC).<a class="fn" href="#fn21">21</a> 24% of deaths despite 3.4% of population. Metis data not tracked.<a class="fn" href="#fn22">22</a> Poundmaker&rsquo;s Lodge: 100 beds, 68% single-funder, Iskwew turned women away 2018.<a class="fn" href="#fn23">23</a> Intergenerational trauma is causal architecture.<a class="fn" href="#fn24">24</a> Thunderbird IWF: Hope, Belonging, Meaning, Purpose.<a class="fn" href="#fn25">25</a></p>
+<p>Combined: $45&ndash;90M capital + $40&ndash;80M/yr.</p>
+
+<h2 id="s7">7. Stream E: Cross-Domain Coordination</h2>
+<p>ISC data systems not interconnected. 84% single-funder fragments coordination. Recovery Alberta (Sept 2024) added jurisdictional seam.<a class="fn" href="#fn26">26</a></p>
+<h3>Surveillance risk</h3>
+<p>Cross-domain data sharing creates infrastructure tracking vulnerable people. OCAP requires Nation-controlled data governance as prerequisite.<a class="fn" href="#fn27">27</a></p>
+<h3>Pooled funding</h3>
+<p>Blended funding creates admin overload for small orgs. Proposed: pooled mechanism with one admin interface, multiple funders behind it.<a class="fn" href="#fn28">28</a></p>
+<h3>Comparators</h3>
+<p>FNHA (BC): $8.2B/10yr, three-body governance.<a class="fn" href="#fn29">29</a> Wh&#257;nau Ora (NZ): outcomes commissioning, NZ$180M/4yr.<a class="fn" href="#fn30">30</a> NACCHO (Australia): 148 ACCHOs, 3.6M episodes/yr.<a class="fn" href="#fn31">31</a> SANKS (Norway): Indigenous MH within universal system.<a class="fn" href="#fn32">32</a></p>
+
+<h2 id="s8">8. Stream F: Workforce</h2>
+<p>Combined need: 340&ndash;665 workers. Pipeline: 50&ndash;150 grads/yr, 50&ndash;70% retention. Timeline: best 7&ndash;10yr, likely 10&ndash;15yr.<a class="fn" href="#fn33">33</a> CHWs as front line (short-term). Credentialing for knowledge holders: parallel, team-based, or Nation-level regulation.<a class="fn" href="#fn34">34</a> Community members are the primary workforce; clinicians are specialized support.<a class="fn" href="#fn35">35</a> Remote total compensation: $100&ndash;250K (not salary alone).<a class="fn" href="#fn36">36</a></p>
+
+<h2 id="s9">9. Reconciliation &amp; Cost Summary</h2>
+<table>
+<tr><th>Category</th><th>Low</th><th>High</th></tr>
+<tr><td>Capital (5-year)</td><td>$565M</td><td>$1.82B</td></tr>
+<tr><td>Annual operations (full capacity)</td><td>$219M</td><td>$433M</td></tr>
+<tr><td>Workers needed</td><td>340</td><td>665</td></tr>
+<tr><td>Timeline to capacity</td><td>7&ndash;10yr (best)</td><td>15&ndash;25yr (worst)</td></tr>
+</table>
+<p>All shared facts verified consistent across 6 streams. All 18 anti-patterns checked.<a class="fn" href="#fn37">37</a></p>
+
+<h2 id="s10">10. Red Team Findings</h2>
+<p>Three perspectives, 19 findings total.<a class="fn" href="#fn38">38</a></p>
+<h4>Indigenous Health Policy Analyst (7 findings)</h4>
+<p>$1.02B undercount insufficiently stressed. Community engagement needs stronger weighting. Western evidence bias persists in structural detail. "1 org" risks instrumentalization. Metis shallow. Recovery Alberta unassessed. Jordan&rsquo;s Principle cost-shifting underanalyzed.</p>
+<h4>Provincial Fiscal Analyst (6 findings)</h4>
+<p>All costs are assumptions. Revenue volatility unaddressed. Remote premium not disaggregated. Workforce costs understated. Timeline optimistic. Urban-remote balance unclear.</p>
+<h4>Community Organizer (6 findings)</h4>
+<p>922-org map is outsider&rsquo;s view. Capacity building reads as import. Blended funding creates admin overload. Designs institutional, not relational. Mutual aid invisible. Written for funders, not communities.</p>
+<p>11 applied, 8 acknowledged, 3 deferred. All HIGH-severity addressed.</p>
+
+<h2 id="s11">11. Stress Test Results</h2>
+<p><strong>CONDITIONAL PASS</strong> &mdash; 2 PASS, 7 CONDITIONAL, 0 FAIL.</p>
+<table>
+<tr><th>#</th><th>Scenario</th><th>Verdict</th></tr>
+<tr><td>1</td><td>Org count wrong</td><td>PASS</td></tr>
+<tr><td>2</td><td>Unmeasurable outcomes</td><td>CONDITIONAL</td></tr>
+<tr><td>3</td><td>Remote infrastructure cost-prohibitive</td><td>CONDITIONAL</td></tr>
+<tr><td>4</td><td>Single-funder is designed</td><td>CONDITIONAL</td></tr>
+<tr><td>5</td><td>Sovereignty vs equity</td><td>CONDITIONAL</td></tr>
+<tr><td>6</td><td>No workforce for 5+ years</td><td>CONDITIONAL</td></tr>
+<tr><td>7</td><td>Gap is $2B+</td><td>CONDITIONAL</td></tr>
+<tr><td>8</td><td>Climate accelerates</td><td>CONDITIONAL</td></tr>
+<tr><td>9</td><td>Coordination = surveillance</td><td>PASS</td></tr>
+</table>
+
+<h2 id="s12">12. Limitations</h2>
+<ol>
+<li><strong>Community engagement absence.</strong> The single most important limitation.</li>
+<li><strong>Cost estimates are assumptions.</strong> No costed interventions.</li>
+<li><strong>T7 repo not directly verified.</strong> Service desert counts accepted from documentation.</li>
+<li><strong>Western evidence bias.</strong> Structural detail favors Western models.</li>
+<li><strong>Metis analysis shallow.</strong> Requires separate MNA/MSGC engagement.</li>
+<li><strong>Workforce data absent.</strong> No public count of Indigenous health workers.</li>
+<li><strong>Remote costs uncertain.</strong> 3&ndash;5x premium is literature-based.</li>
+<li><strong>Recovery Alberta unknown.</strong> Indigenous mandate undefined.</li>
+<li><strong>OCAP restrictions.</strong> Nation-level data restricted.</li>
+<li><strong>Relational dimension missing.</strong> Designs are institutional.</li>
+<li><strong>Mutual aid invisible.</strong> Community safety nets not mapped.</li>
+<li><strong>Measurement gap.</strong> Limited Western evaluation of Indigenous programs = measurement gap, not effectiveness gap.</li>
+</ol>
+
+<h2 id="s13">13. References</h2>
+<div class="footnote" id="fn1"><sup>1</sup> Red team RT-F-1: all cost estimates assumption-grade.</div>
+<div class="footnote" id="fn2"><sup>2</sup> Indigenous-Funding-Research T7 gap analysis.</div>
+<div class="footnote" id="fn3"><sup>3</sup> T7: 84% single-funder dependency across 922 organizations.</div>
+<div class="footnote" id="fn4"><sup>4</sup> RT-HP-1: community-defined adequacy may require 2&ndash;3x.</div>
+<div class="footnote" id="fn5"><sup>5</sup> AP-8; RT-C-1: 922-org map is outsider&rsquo;s view.</div>
+<div class="footnote" id="fn6"><sup>6</sup> Statistics Canada. (2022). 2021 Census. Cat. 98-510-X.</div>
+<div class="footnote" id="fn7"><sup>7</sup> ISC covers First Nations/Inuit, not Metis. Jordan&rsquo;s Principle: FN children only.</div>
+<div class="footnote" id="fn8"><sup>8</sup> WHO: ~1 MH professional per 1,000&ndash;1,500 population.</div>
+<div class="footnote" id="fn9"><sup>9</sup> Marsh et al. (2015). <em>Harm Reduction Journal, 12</em>(1), 14.</div>
+<div class="footnote" id="fn10"><sup>10</sup> Redvers et al. (2019). Indigenous perspective on nature for health.</div>
+<div class="footnote" id="fn11"><sup>11</sup> Chandler &amp; Lalonde (2008); Hallett et al. (2007). <em>Cognitive Development, 22</em>(3).</div>
+<div class="footnote" id="fn12"><sup>12</sup> Stream A portfolio: 4 hubs + treaty coordination + telehealth + CHWs.</div>
+<div class="footnote" id="fn13"><sup>13</sup> No single-source elimination kills the model.</div>
+<div class="footnote" id="fn14"><sup>14</sup> Food sovereignty: treaty rights to hunt, fish, trap, gather.</div>
+<div class="footnote" id="fn15"><sup>15</sup> ISC (2024). Fire protection. Budget 2024: $20.9M/3yr nationally.</div>
+<div class="footnote" id="fn16"><sup>16</sup> Alberta wildfire season lengthening documented in fire management records.</div>
+<div class="footnote" id="fn17"><sup>17</sup> Homeward Trust (2025); Calgary Homeless Foundation (2025). 2024 PiT counts.</div>
+<div class="footnote" id="fn18"><sup>18</sup> CBC/Statistics Canada: 74% (2022-2023). Correction C-001.</div>
+<div class="footnote" id="fn19"><sup>19</sup> Indian Act s. 89: reserve land cannot serve as mortgage collateral.</div>
+<div class="footnote" id="fn20"><sup>20</sup> MHCC (2014). At Home/Chez Soi. Housing First including Indigenous participants.</div>
+<div class="footnote" id="fn21"><sup>21</sup> AFNIGC (2024). Alberta opioid report: First Nations peoples.</div>
+<div class="footnote" id="fn22"><sup>22</sup> Metis opioid data not disaggregated. Correction C-002.</div>
+<div class="footnote" id="fn23"><sup>23</sup> Poundmaker&rsquo;s Lodge. poundmakerslodge.ca. CBC (2018).</div>
+<div class="footnote" id="fn24"><sup>24</sup> TRC (2015). Final report. Cultural genocide documented.</div>
+<div class="footnote" id="fn25"><sup>25</sup> Thunderbird (2020). Indigenous Wellness Framework. thunderbirdpf.org.</div>
+<div class="footnote" id="fn26"><sup>26</sup> KT-026: ISC fragmentation, $2.5&ndash;3B flows, $2.7B two-net gap.</div>
+<div class="footnote" id="fn27"><sup>27</sup> FNIGC. OCAP principles. Established 1998. fnigc.ca.</div>
+<div class="footnote" id="fn28"><sup>28</sup> RT-C-3: blended funding admin overload. Pooled mechanism proposed.</div>
+<div class="footnote" id="fn29"><sup>29</sup> FNHA. Tripartite 2011. Transfer 2013. $8.2B/10yr renewed 2023.</div>
+<div class="footnote" id="fn30"><sup>30</sup> Wh&#257;nau Ora 2.0. July 2025. NZ$180M/4yr. whanauora.nz.</div>
+<div class="footnote" id="fn31"><sup>31</sup> NACCHO. 148 ACCHOs, 550+ sites, 3.6M episodes/yr. naccho.org.au.</div>
+<div class="footnote" id="fn32"><sup>32</sup> SANKS. Karasjok, Finnmark. Sami MH within universal system.</div>
+<div class="footnote" id="fn33"><sup>33</sup> RT-F-5: revised to best 7&ndash;10yr, likely 10&ndash;15yr, worst 15&ndash;25yr.</div>
+<div class="footnote" id="fn34"><sup>34</sup> No Canadian precedent at scale for Indigenous practitioner credentialing.</div>
+<div class="footnote" id="fn35"><sup>35</sup> RT-C-2: foreground community members, not external professionals.</div>
+<div class="footnote" id="fn36"><sup>36</sup> RT-F-4: remote total compensation 2&ndash;3x salary.</div>
+<div class="footnote" id="fn37"><sup>37</sup> Phase 3 reconciliation. AP-17 partial (treaty-level specified, Nation-level deferred).</div>
+<div class="footnote" id="fn38"><sup>38</sup> Phase 4. 3 perspectives, 19 findings. 11 applied, 8 acknowledged, 3 deferred.</div>
+</div>
+<div class="footer">KT-028 &bull; Tier 0: Full Research Record &bull; June 2026<br>All intervention designs are proposals for Nation consideration.</div>
+</body>
+</html>

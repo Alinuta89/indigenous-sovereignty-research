@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KT-027 | Institutional Autonomy Alternatives: The Instead Thesis | Tier 0: Technical Paper</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --hs-deep-navy: #103656;
+  --hs-midnight: #103656;
+  --hs-teal: #28bcb8;
+  --hs-aqua: #4bc2c3;
+  --hs-slate: #0c4f8a;
+  --hs-white: #FFFFFF;
+  --hs-near-black: #0A0A0A;
+  --hs-light-bg: #F7FAFC;
+  --hs-border: #D4D4D4;
+  --hs-muted: #6B7280;
+  --hs-strong: #166534;
+  --hs-moderate: #92400E;
+  --hs-inferred: #6B21A8;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { font-size: 17px; scroll-behavior: smooth; }
+
+body {
+  font-family: 'Lato', sans-serif;
+  color: var(--hs-near-black);
+  background: var(--hs-white);
+  line-height: 1.72;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Layout */
+.page-wrapper { max-width: 54rem; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+
+/* Header */
+header {
+  background: linear-gradient(to bottom, var(--hs-midnight), var(--hs-deep-navy));
+  border-radius: 6px;
+  padding: 2rem 2rem 1.75rem;
+  margin-bottom: 2.5rem;
+  color: var(--hs-white);
+}
+header .tier-label {
+  display: inline-block;
+  background: var(--hs-teal);
+  color: var(--hs-deep-navy);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.65rem;
+  border-radius: 3px;
+  margin-bottom: 0.75rem;
+}
+header h1 {
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: var(--hs-white);
+  line-height: 1.2;
+  margin-bottom: 0.35rem;
+}
+header .subtitle {
+  font-size: 1.1rem;
+  color: var(--hs-aqua);
+  font-weight: 300;
+}
+header .meta {
+  margin-top: 0.75rem;
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 300;
+}
+
+/* Table of Contents */
+nav.toc {
+  background: var(--hs-light-bg);
+  border: 1px solid var(--hs-border);
+  border-radius: 6px;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 2.5rem;
+}
+nav.toc h2 {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--hs-deep-navy);
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+nav.toc ol {
+  list-style: none;
+  counter-reset: toc-counter;
+  padding: 0;
+}
+nav.toc > ol > li {
+  counter-increment: toc-counter;
+  margin-bottom: 0.3rem;
+}
+nav.toc > ol > li::before {
+  content: counter(toc-counter) ". ";
+  font-weight: 700;
+  color: var(--hs-teal);
+}
+nav.toc a {
+  color: var(--hs-deep-navy);
+  text-decoration: none;
+  font-size: 0.88rem;
+}
+nav.toc a:hover { text-decoration: underline; color: var(--hs-teal); }
+
+/* Sections */
+section { margin-bottom: 2.75rem; }
+h2.section-heading {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--hs-deep-navy);
+  border-bottom: 2px solid var(--hs-teal);
+  padding-bottom: 0.4rem;
+  margin-bottom: 1rem;
+}
+h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--hs-deep-navy);
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+h4 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--hs-near-black);
+  margin-top: 1.2rem;
+  margin-bottom: 0.4rem;
+}
+
+p { margin-bottom: 0.85rem; }
+
+/* Evidence labels */
+.ev-strong {
+  display: inline;
+  color: var(--hs-strong);
+  font-weight: 700;
+  font-size: 0.78rem;
+}
+.ev-moderate {
+  display: inline;
+  color: var(--hs-moderate);
+  font-weight: 700;
+  font-size: 0.78rem;
+}
+.ev-inferred {
+  display: inline;
+  color: var(--hs-inferred);
+  font-weight: 700;
+  font-size: 0.78rem;
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0 1.25rem;
+  font-size: 0.86rem;
+}
+thead th {
+  background: var(--hs-deep-navy);
+  color: var(--hs-white);
+  font-weight: 700;
+  text-align: left;
+  padding: 0.55rem 0.65rem;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+tbody td {
+  padding: 0.5rem 0.65rem;
+  border-bottom: 1px solid var(--hs-border);
+  vertical-align: top;
+}
+tbody tr:nth-child(odd) { background: var(--hs-white); }
+tbody tr:nth-child(even) { background: var(--hs-light-bg); }
+
+/* Blockquotes for key findings */
+blockquote {
+  border-left: 4px solid var(--hs-teal);
+  background: var(--hs-light-bg);
+  padding: 0.75rem 1rem;
+  margin: 1rem 0;
+  font-size: 0.92rem;
+}
+blockquote p:last-child { margin-bottom: 0; }
+
+/* Lists */
+ul, ol { margin: 0.5rem 0 1rem 1.5rem; }
+li { margin-bottom: 0.3rem; }
+
+/* Footnotes / References */
+.footnotes {
+  margin-top: 3rem;
+  border-top: 1px solid var(--hs-border);
+  padding-top: 1.5rem;
+  font-size: 0.82rem;
+  line-height: 1.55;
+  font-weight: 300;
+}
+.footnotes h2 { font-size: 1.1rem; margin-bottom: 1rem; }
+.footnotes h2.section-heading { font-weight: 700; }
+.footnotes p { margin-bottom: 0.55rem; }
+
+/* Footer */
+footer {
+  margin-top: 3rem;
+  border-top: 2px solid var(--hs-deep-navy);
+  padding-top: 1rem;
+  font-size: 0.78rem;
+  color: var(--hs-muted);
+  text-align: center;
+  font-weight: 300;
+}
+
+/* Print */
+@media print {
+  html { font-size: 11pt; }
+  .page-wrapper { max-width: 100%; padding: 0; }
+  header { page-break-after: avoid; background: var(--hs-deep-navy) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  section { page-break-inside: avoid; }
+  nav.toc { page-break-after: always; }
+  table { page-break-inside: avoid; }
+  thead th { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  html { font-size: 15px; }
+  .page-wrapper { padding: 1rem; }
+  header { padding: 1.25rem; }
+  header h1 { font-size: 1.45rem; }
+  table { font-size: 0.78rem; }
+}
+</style>
+</head>
+<body>
+<div class="page-wrapper">
+
+<header>
+  <span class="tier-label">Tier 0: Technical Paper</span>
+  <h1>Institutional Autonomy Alternatives to Alberta Separation</h1>
+  <p class="subtitle">The Instead Thesis &mdash; Costed, Sequenced, Constitutionally Grounded Alternatives to the False Binary</p>
+  <p class="meta">KT-027 |  | June 2026 | Lead: <br>
+  Scrutiny level: Academic publication | Evidence conventions: STRONG / MODERATE / INFERRED<br>
+  Builds on: KT-023 (sovereignty comparators), KT-024 (sovereignty economics), KT-026 (Indigenous fiscal autonomy)</p>
+</header>
+
+<!-- TABLE OF CONTENTS -->
+<nav class="toc">
+  <h2>Table of Contents</h2>
+  <ol>
+    <li><a href="#abstract">Abstract</a></li>
+    <li><a href="#introduction">Introduction: The False Binary</a></li>
+    <li><a href="#methodology">Methodology</a></li>
+    <li><a href="#stream-a">The Basque Concierto Econ&oacute;mico</a></li>
+    <li><a href="#stream-b">Alberta Revenue Agency and Tax Autonomy</a></li>
+    <li><a href="#stream-c">Heritage Fund Structural Reform</a></li>
+    <li><a href="#stream-d">Immigration Accord and Population Strategy</a></li>
+    <li><a href="#stream-e">Energy Transition and Diversification</a></li>
+    <li><a href="#stream-f">Institutional Leverage</a></li>
+    <li><a href="#landscape">Political Economy Landscape</a></li>
+    <li><a href="#red-team">Red Team Synthesis</a></li>
+    <li><a href="#stress-test">Stress Test Results</a></li>
+    <li><a href="#feasibility">Feasibility Gate and Sequencing</a></li>
+    <li><a href="#treaty">Treaty 6/7/8 Integration</a></li>
+    <li><a href="#identity">The Identity Question</a></li>
+    <li><a href="#conclusion">Conclusion: The Instead Thesis</a></li>
+    <li><a href="#references">References</a></li>
+  </ol>
+</nav>
+
+<!-- 1. ABSTRACT -->
+<section id="abstract">
+  <h2 class="section-heading">1. Abstract</h2>
+  <p>Alberta's autonomy debate operates within a false binary: separation or status quo. This paper maps the full spectrum of institutional alternatives between those poles, drawing on six parallel research streams, a landscape scan of 16 political actors, triple red-team review (fiscal conservative, Quebec autonomy scholar, federal transfer defender), and a nine-scenario stress test. The paper identifies six costed alternatives&mdash;ranging from a Basque-style Concierto Econ&oacute;mico delivering 29.8% higher fiscal capacity than common-regime regions, through a provincial revenue agency ($500&ndash;750M/year), Heritage Fund reform toward a $250B target by 2050, an expanded immigration accord, energy transition investment, and institutional leverage mechanisms&mdash;each assessed for constitutional pathway, cost, timeline, and Treaty 6/7/8 interaction. The most ambitious option (Basque model) delivers more fiscal autonomy than separation, without the $30&ndash;39B/year GDP shock. The most actionable (Heritage Fund constitutional entrenchment under Section 45) is achievable under existing provincial authority. All alternatives are sequenced across three tiers: achievable now, requires federal-provincial agreement, and requires constitutional amendment. The portfolio survives all nine stress test scenarios with zero FAIL verdicts. The 8% of Albertans who support separation &ldquo;regardless of consequences&rdquo; are identity-driven and not addressable through fiscal reform. The paper addresses this honestly as a limitation rather than a failure. These are slow paths. They are also better paths.</p>
+</section>
+
+<!-- 2. INTRODUCTION -->
+<section id="introduction">
+  <h2 class="section-heading">2. Introduction: The False Binary</h2>
+  <p>The separatist framing collapses a spectrum into a binary: Alberta separates, or Alberta accepts the status quo. This is the central rhetorical move of every sub-national sovereignty movement in the comparator set&mdash;the 120+ cases documented in KT-023&mdash;and it is empirically false.</p>
+  <p>Between &ldquo;nothing changes&rdquo; and &ldquo;international border&rdquo; sit dozens of institutional mechanisms that other jurisdictions have built, tested, and refined over decades. The Basque Country collects its own taxes and remits a negotiated contribution to Madrid. Quebec runs its own revenue agency and controls its own immigration selection. Norway turned petroleum revenues into more than US$2 trillion of intergenerational wealth. Alaska constitutionally protected its Permanent Fund from political raiding. None required secession. Several deliver more fiscal autonomy than secession would.</p>
+  <p>This paper is the prescriptive complement to three prior tickets: KT-023 documented the constitutional impossibility and global base rate (zero successful democratic secessions from stable federations); KT-024 quantified the GDP cost ($30&ndash;39B/year); KT-026 mapped Indigenous fiscal autonomy and Treaty Nation partnership requirements. KT-027 answers the question those tickets raised: <em>if not separation, then what?</em></p>
+  <p>The Instead Thesis is not that these alternatives are consolation prizes. It is that the most ambitious autonomy option&mdash;a Basque-style Concierto Econ&oacute;mico&mdash;delivers more fiscal control than separation would, because it preserves access to the $2.8 trillion Canadian economic space while capturing most of the fiscal upside. The false binary does not merely oversimplify; it conceals the superior option.</p>
+  <p>The political moment is acute. Premier Danielle Smith has scheduled a ten-question referendum for October 19, 2026, including a question on commencing the legal process for a binding separation vote. Separation support has fallen from 28% in January 2026 to 18% in June 2026 (Ipsos, May 28&ndash;June 1, 2026). Budget 2026 projects a $9.4 billion deficit. The May 13, 2026 Court of King&rsquo;s Bench ruling quashed the separation petition on duty-to-consult grounds. The alternatives assessed here are not theoretical&mdash;they are the constructive agenda for the post-referendum period, regardless of outcome.</p>
+</section>
+
+<!-- 3. METHODOLOGY -->
+<section id="methodology">
+  <h2 class="section-heading">3. Methodology</h2>
+  <p>This research employed six parallel research streams, each investigating a distinct autonomy mechanism:</p>
+  <ul>
+    <li><strong>Stream A:</strong> Basque Concierto Econ&oacute;mico&mdash;full institutional design, cupo mechanism, constitutional basis, adaptation pathways</li>
+    <li><strong>Stream B:</strong> Alberta Revenue Agency&mdash;Quebec/Revenu Qu&eacute;bec precedent, costs, strategic rationale</li>
+    <li><strong>Stream C:</strong> Heritage Fund structural reform&mdash;comparator governance (Norway, Alaska), oil price scenarios, entrenchment</li>
+    <li><strong>Stream D:</strong> Immigration accord&mdash;Canada-Quebec Accord, AAIP expansion, population strategy</li>
+    <li><strong>Stream E:</strong> Energy transition&mdash;value-added processing, clean energy, stranded assets, &ldquo;Bitumen Beyond Combustion&rdquo;</li>
+    <li><strong>Stream F:</strong> Institutional leverage&mdash;Council of the Federation, New West Partnership, CUSMA, Sovereignty Act, negotiating instrument thesis</li>
+  </ul>
+  <p>A concurrent landscape scan mapped 16 political actors and their positions. Cross-stream reconciliation (Phase 3) verified shared facts across all streams, identifying one correction (revenue agency cost range harmonized to $500&ndash;750M/year per Alberta Next Panel data).</p>
+  <p>Three red-team reviewers attacked the portfolio from distinct perspectives: an Alberta fiscal conservative (timeline mismatch, identity gap), a Quebec autonomy scholar (institutional culture deficit, 60 years versus scratch), and a federal transfer system defender (domino effect, equalization commitment, Sovereignty Act as brinkmanship). All three converged on Heritage Fund entrenchment as the consensus strongest alternative.</p>
+  <p>A nine-scenario stress test assessed the portfolio under conditions ranging from Ottawa offering meaningful reform to accelerated energy transition to an APP referendum win. The portfolio returned two PASS and seven CONDITIONAL verdicts with zero FAILs, producing five binding conditions addressed in the feasibility gate.</p>
+  <h3>Evidence Strength Convention</h3>
+  <p>Every claim is labeled: <span class="ev-strong">[STRONG]</span>&mdash;official data, legislation, peer-reviewed sources; <span class="ev-moderate">[MODERATE]</span>&mdash;published analyses, government reports, established academic literature; <span class="ev-inferred">[INFERRED]</span>&mdash;author calculation, adaptation estimate, extrapolation from comparators. Ranges are preferred over point estimates. Assumptions are labeled explicitly.</p>
+</section>
+
+<!-- 4. STREAM A: BASQUE CONCIERTO -->
+<section id="stream-a">
+  <h2 class="section-heading">4. The Basque Concierto Econ&oacute;mico</h2>
+  <h3>4.1 Institutional Architecture</h3>
+  <p>The Basque Country operates the most ambitious fiscal autonomy arrangement within any democratic state. Tax authority is vested in three sub-regional provincial governments&mdash;the Diputaciones Forales of &Aacute;lava, Bizkaia, and Gipuzkoa&mdash;each governed by an elected General Assembly that passes tax legislation for its territory. The three Haciendas Forales collectively collected &euro;18,212.5 million in concerted taxes in 2023, an increase of 6.3% over the prior year. <span class="ev-strong">[STRONG&mdash;Basque Finance Council settlement data, 2024]</span></p>
+  <p>The Diputaciones exercise full normative and collection autonomy over personal income tax, corporate income tax, wealth tax, inheritance and gift tax, and capital transfer tax. They collect VAT and excise duties under harmonization rules aligned with EU directives. Only customs duties and social security contributions remain with Madrid. The most recent legislative update&mdash;Ley 3/2025 (29 April 2025)&mdash;incorporated the OECD Pillar Two global minimum tax into the Concierto, confirming its status as a living institution, not a historical relic. <span class="ev-strong">[STRONG&mdash;BOE-A-2025-8596]</span></p>
+
+  <h3>4.2 The Cupo: Negotiated Contribution</h3>
+  <p>The cupo is the annual payment the Basque Country remits to Madrid covering its proportional share of non-devolved state expenditures&mdash;principally defence, foreign affairs, the monarchy, and state debt service. The formula applies an imputation index of <strong>6.24%</strong>, set in 1981 and unchanged through every subsequent quinquennial renegotiation. The current quinquennium (2022&ndash;2026) is governed by Ley 10/2023, establishing a base-year cupo of &euro;1,472M for 2022, with provisional values of &euro;1,488.9M (2025) and &euro;1,532.9M (2026). <span class="ev-strong">[STRONG&mdash;Ley 10/2023; Basque Government budget documentation]</span></p>
+  <p>The result: approximately 92% of tax revenue stays in the Basque Country, and roughly 8% goes to the central state. No other sub-national government in the democratic world retains a comparable share of collected revenue.</p>
+
+  <h3>4.3 The Foral Advantage: 29.8%</h3>
+  <p>Zabalza and L&oacute;pez-Laborda (2017) calculate that the Basque Country&rsquo;s per-capita fiscal capacity is <strong>29.8% higher</strong> than common-regime autonomous communities&mdash;characterized as a lower bound. This advantage derives from three structural features: the frozen 6.24% coefficient (population share has declined to ~4.7% while the contribution share has not), the asymmetric formula (cupo is based on state expenditures, not Basque revenue capacity), and tax policy flexibility enabling investment attraction. <span class="ev-strong">[STRONG&mdash;peer-reviewed, SSCI-indexed journal; multiple replications]</span></p>
+  <p>The GDP per capita distinction matters: the Basque Country&rsquo;s GDP per capita of &euro;41,010 (2024) is approximately 25.7% above the Spanish average, but this measures economic output, not institutional design. The 29.8% fiscal capacity advantage measures how much more revenue the Basque public sector commands per capita relative to comparable regions&mdash;a product of the Concierto&rsquo;s institutional architecture, not the Basque economy&rsquo;s inherent wealth.</p>
+
+  <h3>4.4 Constitutional Basis and ECJ Validation</h3>
+  <p>The Concierto rests on the First Additional Provision of Spain&rsquo;s 1978 Constitution, which &ldquo;protects and respects the historic rights of the foral territories.&rdquo; This provision recognizes pre-existing rights; it does not create them. The foral fiscal system predates the Spanish Constitution, the Spanish state, and the concept of modern Spain. <span class="ev-strong">[STRONG]</span></p>
+  <p>The European Court of Justice validated the Concierto&rsquo;s compatibility with EU law in Joined Cases C-428/06 to C-434/06 (2008), applying the three-part &ldquo;Azores doctrine&rdquo; test: institutional autonomy, procedural autonomy, and financial autonomy. The reference framework for assessing Basque tax measures is the Basque fiscal system itself, not the Spanish national system. <span class="ev-strong">[STRONG&mdash;ECJ binding judgment]</span></p>
+
+  <h3>4.5 Adaptation Pathways for Alberta</h3>
+  <p>Three pathways exist for Alberta:</p>
+  <table>
+    <thead><tr><th>Pathway</th><th>Mechanism</th><th>Feasibility</th><th>Timeline</th></tr></thead>
+    <tbody>
+      <tr><td>Provincial Revenue Agency (Quebec model)</td><td>Withdraw from Tax Collection Agreement; negotiate federal abatement</td><td>HIGH</td><td>5&ndash;7 years</td></tr>
+      <tr><td>Negotiated fiscal autonomy agreement</td><td>Novel federal-provincial bilateral; Alberta collects, remits negotiated cupo</td><td>LOW-MODERATE</td><td>5&ndash;15 years</td></tr>
+      <tr><td>Constitutional entrenchment (full Concierto)</td><td>7/50 amending formula or bilateral under S.43</td><td>LOW</td><td>25&ndash;50 years</td></tr>
+    </tbody>
+  </table>
+  <p>An illustrative Alberta cupo, calculated at the province&rsquo;s ~15% GDP share of non-devolvable federal expenditures (~$25B midpoint), yields an annual contribution of approximately <strong>$3.5&ndash;4.0B</strong>&mdash;compared to the current $14.5B net fiscal contribution. The difference of $10&ndash;11B/year would remain in Alberta&rsquo;s treasury. <span class="ev-inferred">[INFERRED&mdash;illustrative calculation; significant caveats apply]</span></p>
+
+  <h3>4.6 Why Nobody in Alberta Is Talking About This</h3>
+  <p>The Fair Deal Panel report (2020) does not mention the Basque Country. Neither do the Alberta Prosperity Project&rsquo;s published materials. Three hypotheses explain this absence: analytical insularity (the debate references Quebec and Scotland exclusively), perceived constitutional impossibility (overstated but not unfounded), and strategic interest in the binary (proposing a workable alternative undermines the case for exit). <span class="ev-inferred">[INFERRED&mdash;based on review of policy documents and media coverage]</span></p>
+</section>
+
+<!-- 5. STREAM B: REVENUE AGENCY -->
+<section id="stream-b">
+  <h2 class="section-heading">5. Alberta Revenue Agency and Tax Autonomy</h2>
+  <h3>5.1 The Quebec Precedent</h3>
+  <p>Revenu Qu&eacute;bec employs <strong>12,664</strong> full-time equivalent employees, operates on an annual budget of approximately <strong>$1.6 billion</strong>, and collects approximately $90&ndash;100 billion in combined provincial and federal taxes. The administrative cost-to-revenue ratio is roughly 1.6&ndash;1.8%, comparable to the CRA&rsquo;s. <span class="ev-strong">[STRONG&mdash;Revenu Qu&eacute;bec, <em>Rapport annuel de gestion 2023-2024</em>; <em>Plan strat&eacute;gique 2024-2028</em>]</span></p>
+  <p>The 16.5% federal abatement (13.5 percentage points for income tax collection plus 3.0 for assumed social programs) makes Quebec&rsquo;s independent collection revenue-neutral at the federal level. This abatement is statutory, not constitutional, and could be extended to Alberta through federal legislative amendment&mdash;no constitutional change required. <span class="ev-strong">[STRONG&mdash;<em>Federal-Provincial Fiscal Arrangements Act</em>, R.S.C. 1985, c. F-8, s. 27]</span></p>
+
+  <h3>5.2 Policy Design Capabilities</h3>
+  <p>Independent tax collection enables policy instruments unavailable to other provinces: Quebec&rsquo;s Solidarity Tax Credit, QPIP (parental insurance opt-out from federal EI), calibrated R&amp;D credits for aerospace and AI, and cultural industry incentives. Alberta could design resource dividend integration calibrated to individual income, targeted labour market credits, and carbon policy instruments&mdash;all administered through provincial tax infrastructure. <span class="ev-moderate">[MODERATE&mdash;Quebec comparator documented; Alberta applications inferred]</span></p>
+
+  <h3>5.3 Cost-Benefit Assessment</h3>
+  <table>
+    <thead><tr><th>Category</th><th>Estimate</th><th>Confidence</th><th>Source</th></tr></thead>
+    <tbody>
+      <tr><td>Setup costs</td><td>$750M&ndash;$1.5B</td><td>MODERATE</td><td>Alberta Next Panel (2025)</td></tr>
+      <tr><td>Annual operating</td><td>$500M&ndash;$750M/yr</td><td>MODERATE</td><td>Tombe (2019); Alberta Next Panel (2025)</td></tr>
+      <tr><td>New employees</td><td>~5,000 FTEs</td><td>MODERATE</td><td>Alberta Next Panel (2025)</td></tr>
+      <tr><td>Timeline to full capacity</td><td>5&ndash;7 years</td><td>MODERATE</td><td>Scaled from Revenu Qu&eacute;bec</td></tr>
+      <tr><td>First-decade cost (undiscounted)</td><td>$6.75B&ndash;$9.0B</td><td>MODERATE</td><td>Arithmetic from ranges above</td></tr>
+    </tbody>
+  </table>
+  <p>The honest assessment: a revenue agency does not pay for itself on a narrow cost-benefit basis. The CRA collects Alberta income tax at no direct charge. The case is strategic, not administrative: it is the institutional prerequisite for any future fiscal autonomy negotiation. At $500&ndash;750M/year, that is 1.3&ndash;2.5% of the $30&ndash;39B annual cost of separation.</p>
+
+  <h3>5.4 Fair Deal Panel and Alberta Next Panel</h3>
+  <p>The Fair Deal Panel (2020, 25 recommendations) concluded in <strong>Recommendation 23</strong> that Alberta should &ldquo;make no changes to tax collection at this time.&rdquo; The Alberta Next Panel (December 2025) took a more forward-leaning position, recommending a &ldquo;detailed cost-benefit analysis.&rdquo; The shift reflects five years of escalating federal-provincial tension. <span class="ev-strong">[STRONG&mdash;published panel reports]</span></p>
+
+  <h3>5.5 The Sequencing Argument</h3>
+  <p>The revenue agency is not an independent alternative&mdash;it is the <strong>necessary first step</strong> in the Basque pathway. No jurisdiction in the comparator set has negotiated fiscal autonomy without first possessing the capacity to collect taxes. The sequencing is non-negotiable: revenue agency first, then tax point negotiation, then contribution negotiation, then (if a constitutional moment opens) constitutional entrenchment.</p>
+</section>
+
+<!-- 6. STREAM C: HERITAGE FUND -->
+<section id="stream-c">
+  <h2 class="section-heading">6. Heritage Fund Structural Reform</h2>
+  <h3>6.1 The $31.9B Fund That Should Be $2T</h3>
+  <p>Alberta&rsquo;s Heritage Savings Trust Fund holds <strong>$31.9 billion</strong> (December 31, 2025). Norway&rsquo;s Government Pension Fund Global holds more than <strong>US$2 trillion</strong>. Both began saving petroleum revenues in the 1970s. The gap&mdash;roughly 60:1&mdash;is explained by five reinforcing institutional design failures: weakened then abandoned deposit rules, systematic earnings diversion to general revenue (1982&ndash;2022), direct capital withdrawals, absent constitutional protection, and a fiscal structure that treats resource revenue as operating income. <span class="ev-strong">[STRONG&mdash;statutory records; government publications]</span></p>
+  <p>The cumulative cost of political access to the Heritage Fund is estimated at <strong>$100&ndash;250 billion</strong> in 2025 dollars, depending on counterfactual deposit rates and assumed returns. <span class="ev-moderate">[MODERATE&mdash;range reflects genuine uncertainty]</span></p>
+
+  <h3>6.2 The 2025 Reforms</h3>
+  <p>The Heritage Fund Opportunities Corporation (HFOC), chaired by Joe Lougheed KC, was established to manage a portion of the fund&rsquo;s assets with an Alberta-specific investment mandate. The 2022&ndash;23 amendment restored statutory retention of investment income. A $2.8 billion deposit&mdash;the largest in the fund&rsquo;s history&mdash;was made in FY 2025&ndash;26. The $250B target by 2050 was announced. <span class="ev-strong">[STRONG&mdash;legislated and budgeted]</span></p>
+  <p>However, deposit rules remain discretionary. Budget 2026 halted deposits during the $9.4B deficit. The historical pattern is repeating in real time.</p>
+
+  <h3>6.3 Comparator Governance</h3>
+  <p><strong>Alaska Permanent Fund ($89.3B, April 2026):</strong> Constitutional entrenchment (1976, Article IX, Section 15) requiring two-thirds legislative supermajority plus public referendum to amend. The Permanent Fund Dividend ($1,200 in 2026) creates a direct citizen constituency for fund preservation. The principal has never been raided in 50 years. <span class="ev-strong">[STRONG]</span></p>
+  <p><strong>Norway GPFG (>US$2T):</strong> Independent management by NBIM; fiscal rule limiting government spending to 3% expected real return; all petroleum revenue flows through the fund. <span class="ev-strong">[STRONG]</span></p>
+
+  <h3>6.4 Oil Price Scenario Trajectories</h3>
+  <table>
+    <thead><tr><th>Scenario</th><th>WTI</th><th>Fund by 2050</th><th>3% Draw</th><th>$250B Target</th></tr></thead>
+    <tbody>
+      <tr><td>Sustained low</td><td>$50</td><td>$90&ndash;110B</td><td>$2.7&ndash;3.3B/yr</td><td>Not achievable</td></tr>
+      <tr><td>Moderate</td><td>$68</td><td>$150&ndash;180B</td><td>$4.5&ndash;5.4B/yr</td><td>Unlikely without &gt;25% deposit rate</td></tr>
+      <tr><td>Moderate-high</td><td>$85</td><td>$220&ndash;280B</td><td>$6.6&ndash;8.4B/yr</td><td>Achievable with discipline</td></tr>
+      <tr><td>High</td><td>$120</td><td>$400&ndash;500B</td><td>$12&ndash;15B/yr</td><td>Exceeded</td></tr>
+    </tbody>
+  </table>
+  <p>At current WTI of ~$93&ndash;94, Alberta generates approximately $22B in non-renewable resource revenue annually&mdash;far above the $60.50 budget assumption. <strong>The window for aggressive saving is now.</strong> Every year of delayed deposits narrows the window as decarbonization approaches. <span class="ev-moderate">[MODERATE&mdash;model assumptions stated; projections, not forecasts]</span></p>
+
+  <h3>6.5 Constitutional Entrenchment</h3>
+  <p>Section 45 of the Constitution Act, 1982 allows provinces to amend their own constitutions unilaterally on matters of provincial governance. An Alberta constitutional amendment entrenching the Heritage Fund&mdash;requiring a two-thirds legislative supermajority plus referendum to alter deposit rules or permit withdrawals&mdash;is legally feasible without federal participation. This is the single most important structural reform available to Alberta within existing constitutional authority. <span class="ev-strong">[STRONG&mdash;Hogg, <em>Constitutional Law of Canada</em>]</span></p>
+  <blockquote><p>Heritage Fund constitutional entrenchment is the <strong>consensus strongest alternative</strong> across all three red team perspectives. The fiscal conservative, Quebec scholar, and federal defender all agree it is achievable, desirable, and minimally disruptive to federalism.</p></blockquote>
+</section>
+
+<!-- 7. STREAM D: IMMIGRATION -->
+<section id="stream-d">
+  <h2 class="section-heading">7. Immigration Accord and Population Strategy</h2>
+  <h3>7.1 The Structural Asymmetry</h3>
+  <p>Alberta&rsquo;s AAIP nominated <strong>6,403</strong> individuals in 2026&mdash;a figure corrected from the previously circulated 11,000&ndash;12,500. Quebec selects approximately 45,000&ndash;50,000 economic immigrants annually under the Canada-Quebec Accord (1991), with exclusive settlement service jurisdiction and an indexed federal compensation grant of <strong>$867.3 million/year</strong> (2024&ndash;25) that operates on a ratchet-only formula. <span class="ev-strong">[STRONG&mdash;IRCC allocation data; Canada-Quebec Accord, 1991]</span></p>
+
+  <table>
+    <thead><tr><th>Dimension</th><th>Alberta (AAIP)</th><th>Quebec (Accord)</th></tr></thead>
+    <tbody>
+      <tr><td>Legal basis</td><td>PNP delegation (federal discretion)</td><td>Intergovernmental accord (bilateral)</td></tr>
+      <tr><td>Selection authority</td><td>Nominate within federal criteria</td><td>Set own criteria and volumes</td></tr>
+      <tr><td>Settlement services</td><td>Federal programs operate</td><td>Exclusive provincial jurisdiction</td></tr>
+      <tr><td>Federal compensation</td><td>None</td><td>$867.3M/year, ratchet-only</td></tr>
+      <tr><td>Volume (2026)</td><td>6,403 nominees</td><td>~45,000 selections</td></tr>
+      <tr><td>Per-capita rate</td><td>~1.3 per 1,000</td><td>~5.1 per 1,000</td></tr>
+    </tbody>
+  </table>
+
+  <h3>7.2 Corrected Migration Data</h3>
+  <p>Alberta&rsquo;s interprovincial migration over 2019&ndash;2024 totalled approximately <strong>110,000 net</strong>&mdash;corrected from the previously circulated 420,000 figure. The year-by-year data reveals extreme volatility: -9,458 in 2020 (low oil prices), +48,394 in 2023 (high oil prices). <span class="ev-strong">[STRONG&mdash;Statistics Canada, Table 17-10-0045-01]</span></p>
+
+  <h3>7.3 Pathways</h3>
+  <p><strong>Incremental (within PNP):</strong> Expand AAIP from 6,403 toward 15,000&ndash;25,000 nominees. Achievable in 1&ndash;2 years through federal agreement. <strong>Comprehensive (Quebec model):</strong> Full accord transferring selection authority, settlement services, and financial compensation. Achievable without constitutional amendment (Section 95, concurrent jurisdiction) but requiring federal political will. Timeline: 3&ndash;7 years. <span class="ev-moderate">[MODERATE]</span></p>
+
+  <h3>7.4 The October 2026 Referendum</h3>
+  <p>Five of the ten referendum questions address immigration control. The referendum is non-binding but creates political leverage: a strong &ldquo;yes&rdquo; vote gives the Premier a mandate to demand negotiations. The strategic logic mirrors the dynamic that produced the Canada-Quebec Accord&mdash;federal concessions extracted under political pressure. <span class="ev-strong">[STRONG&mdash;referendum question framework]</span></p>
+</section>
+
+<!-- 8. STREAM E: ENERGY TRANSITION -->
+<section id="stream-e">
+  <h2 class="section-heading">8. Energy Transition and Diversification</h2>
+  <h3>8.1 Current Position</h3>
+  <p>Alberta produces <strong>4.1 million barrels per day</strong> (2025), a record, generating approximately $22 billion in non-renewable resource revenue at ~$93&ndash;94 WTI. The province exports roughly 3.4M b/d of raw or semi-processed bitumen, forgoing refining and petrochemical margins. <span class="ev-strong">[STRONG&mdash;AER production data]</span></p>
+
+  <h3>8.2 Value-Added Processing</h3>
+  <p>A partial upgrader at approximately $3.8&ndash;4.0 billion (2026 construction costs, inflation-adjusted from the 2017 University of Calgary estimate of $3B) for 100,000 b/d capacity would add $10&ndash;15 per barrel. The Sturgeon Refinery ($9.3B final cost for ~79,000 b/d) provides the cautionary comparator: cost discipline is essential. APIP has approved four projects totalling $621M in grants. <span class="ev-moderate">[MODERATE]</span></p>
+
+  <h3>8.3 Clean Energy Portfolio</h3>
+  <p><strong>Hydrogen (3.0&ndash;3.1 Mt/year):</strong> Alberta is Canada&rsquo;s largest producer. Blue hydrogen with CCUS (Air Products facility, 2025) is the near-term pathway; green hydrogen is 2&ndash;3x the cost. Export potential: 2&ndash;4 Mt/year by 2040, representing $5&ndash;15B in annual revenue. <span class="ev-moderate">[MODERATE]</span></p>
+  <p><strong>CCUS:</strong> Quest CCS has captured over 10 million tonnes cumulatively. The Alberta Carbon Trunk Line (14.6 Mt/year capacity) operates at approximately 10% throughput&mdash;meaning Alberta has transport and storage infrastructure to scale rapidly. Combined Quest + ACTL: over 17 million tonnes stored since 2015. <span class="ev-strong">[STRONG&mdash;operator data]</span></p>
+  <p><strong>Geothermal, SMRs, Critical Minerals:</strong> Eavor Technologies (closed-loop geothermal), the interprovincial SMR MOU (2022), and E3 Lithium&rsquo;s DLE pilot represent earlier-stage pathways. All operate within existing provincial authority (Section 92A).</p>
+
+  <h3>8.4 &ldquo;Bitumen Beyond Combustion&rdquo;</h3>
+  <p>Bitumen-derived carbon fibre ($5&ndash;10/kg versus $15&ndash;30/kg from PAN), battery anode carbons, and specialty asphalt binders represent a non-combustion value pathway. Combined potential: $1&ndash;3B/year by 2035&mdash;meaningful diversification but not a royalty replacement. <span class="ev-inferred">[INFERRED&mdash;pilot-scale, not commercial]</span></p>
+
+  <h3>8.5 Stranded Asset Risk</h3>
+  <p>Under IEA NZE scenarios, estimated stranded reserves are <strong>100&ndash;130 billion barrels</strong> (60&ndash;80% of proven reserves). At a notional in-ground value of $3&ndash;5/barrel, this represents $300&ndash;650B in stranded value. The counterargument&mdash;that NZE is normative, not predictive&mdash;has force, but planning for a single optimistic scenario is precisely the error that left the Heritage Fund at $31.9B. <span class="ev-inferred">[INFERRED&mdash;Carbon Tracker Initiative methodology]</span></p>
+
+  <h3>8.6 The Heritage Fund and Energy Transition Race</h3>
+  <p>If transition is slow ($85+ WTI for 15&ndash;20 years), Alberta has time to build the fund to $250B. If transition is fast ($50 WTI by 2035), royalty revenues decline before the fund reaches critical mass. The window for institutional construction is open now, at $93 WTI, and it will not remain open indefinitely.</p>
+</section>
+
+<!-- 9. STREAM F: INSTITUTIONAL LEVERAGE -->
+<section id="stream-f">
+  <h2 class="section-heading">9. Institutional Leverage</h2>
+
+  <h3>9.1 Council of the Federation ($420B Seat)</h3>
+  <p>Alberta&rsquo;s GDP of approximately $420B represents 15&ndash;16% of Canada&rsquo;s $2.8T economy. COF&rsquo;s record as an Alberta vehicle is mixed: the February 2025 joint Washington mission was historically unprecedented, but Smith subsequently broke ranks on tariff retaliation, illustrating that Alberta&rsquo;s distinctive energy interests diverge from manufacturing provinces. Effectiveness as autonomy lever: LOW to MODERATE. <span class="ev-strong">[STRONG]</span></p>
+
+  <h3>9.2 New West Partnership ($818B, 4 Provinces)</h3>
+  <p>The NWP now encompasses Alberta, BC, Saskatchewan, and Manitoba, with combined GDP of approximately $818B and population exceeding 11 million. As a coordinated bargaining bloc representing ~29% of Canada&rsquo;s GDP, it could be too large for Ottawa to ignore on fiscal and regulatory policy&mdash;but the four provinces&rsquo; divergent economic interests (BC service-oriented; Manitoba receives equalization) limit cohesion. <span class="ev-strong">[STRONG&mdash;NWPTA text and membership]</span></p>
+
+  <h3>9.3 CUSMA July 2026 Review</h3>
+  <p>Canada formally requested CUSMA renewal on June 2, 2026. Alberta&rsquo;s energy exports to the US totalled approximately $130B in 2023. US refinery dependence on Canadian heavy crude (particularly PADD 2, where no readily substitutable alternative exists) gives Alberta significant informal leverage. Critical minerals add a second dimension. <span class="ev-strong">[STRONG&mdash;StatCan trade data; EIA]</span></p>
+
+  <h3>9.4 International Presence: Alberta vs. Quebec</h3>
+  <p>Quebec maintains <strong>32 offices</strong> abroad (8 D&eacute;l&eacute;gations g&eacute;n&eacute;rales, 11 D&eacute;l&eacute;gations, 9 Bureaux, 4 Trade Offices) with a MRIF budget of $163.3M/year. Alberta maintains <strong>18 GoA offices</strong> plus the Invest Alberta network. The gap is narrower quantitatively than assumed but qualitatively significant: Quebec projects political identity; Alberta projects investment opportunity. Expansion to 25&ndash;28 offices: $14&ndash;60M/year. <span class="ev-strong">[STRONG&mdash;Quebec public accounts; GoA directory]</span></p>
+
+  <h3>9.5 The Sovereignty Act</h3>
+  <p>Three resolutions have been passed: Clean Electricity Regulations (February 2024), Emissions Cap (November 2024), Firearms Buyback (December 2025). The <em>Onion Lake Cree Nation v. Alberta</em> challenge alleges the Act infringes Treaty rights. The Act is most useful as a calibrated threat: deployed selectively on issues where Alberta has strong constitutional arguments, it forces negotiation. Used promiscuously, it risks court losses. <span class="ev-strong">[STRONG&mdash;Alberta legislative record]</span></p>
+
+  <h3>9.6 The Negotiating Instrument Thesis</h3>
+  <p>The most valuable version of separation is the one that never happens. A credible threat of exit is the most powerful bargaining instrument a province can wield. Quebec demonstrated this: the 1995 near-miss (49.4% Yes) extracted asymmetric arrangements no other province has obtained. The Canada-Alberta MOU (November 2025) and Implementation Agreement (May 2026) suggest the thesis is already producing results. <span class="ev-moderate">[MODERATE&mdash;temporal correlation established; causal attribution is interpretive]</span></p>
+  <p>The calibration problem: the threat must be credible to work, but acting on it is catastrophic ($30&ndash;39B GDP shock). The optimal calibration is a threat clearly conditional on specific demands&mdash;precisely the structure of the October 2026 referendum. <span class="ev-inferred">[INFERRED&mdash;strategic analysis]</span></p>
+</section>
+
+<!-- 10. LANDSCAPE -->
+<section id="landscape">
+  <h2 class="section-heading">10. Political Economy Landscape</h2>
+  <h3>10.1 Key Actors</h3>
+  <p><strong>Smith/UCP:</strong> Architect of the referendum strategy, Sovereignty Act sponsor, HFOC creator. Will campaign pro-Canada on Question 10. Strategy is leverage, not exit. Selectively receptive to Heritage Fund reform and immigration expansion; not advancing revenue agency or Basque model. <span class="ev-strong">[STRONG]</span></p>
+  <p><strong>NDP (Nenshi):</strong> Unambiguously anti-separation. Supportive of Heritage Fund growth but questions HFOC. No position on revenue agency. Pro-Canada campaign anchor. <span class="ev-strong">[STRONG]</span></p>
+  <p><strong>APP (Sylvestre):</strong> Full independence or nothing. Financial base declining ($1M in 2022 to $55K in 2024). Under election commissioner investigation. May 13 court ruling quashed petition. <span class="ev-strong">[STRONG]</span></p>
+  <p><strong>Treaty Nations:</strong> Unambiguously oppose separation. Onion Lake Cree Nation challenging Sovereignty Act. May 13, 2026 ruling demonstrated effective judicial veto over separation processes. Conditionally receptive to autonomy alternatives if designed as partnership. <span class="ev-strong">[STRONG&mdash;court ruling, published statements]</span></p>
+  <p><strong>Ottawa (Carney):</strong> Accommodation strategy via bilateral MOU. Selectively conceding on energy and carbon pricing. Revenue agency within negotiation capacity; Basque-style fiscal autonomy not currently supported. <span class="ev-strong">[STRONG]</span></p>
+
+  <h3>10.2 Separation Support Trajectory</h3>
+  <p>Ipsos (June 2026): separation support at <strong>18%</strong>, down from 28% in January 2026. Angus Reid: 60% would vote No on Question 10. Among under-55s, opposition is decisive (64% oppose among 18&ndash;34). The motivation shift: 61% now cite &ldquo;Alberta&rsquo;s future would be better&rdquo; (future-oriented) versus 39% citing grievance&mdash;a reversal from January, suggesting the economically contingent supporters are leaving as KT-024&rsquo;s cost data penetrates public awareness. <span class="ev-strong">[STRONG&mdash;Ipsos, May 28&ndash;June 1, 2026; Angus Reid Institute, May 22&ndash;24, 2026]</span></p>
+
+  <h3>10.3 The Fiscal Context</h3>
+  <p>Budget 2026 projects a <strong>$9.4 billion deficit</strong> at $60.50 WTI, with Heritage Fund deposits halted and a cumulative shortfall of nearly $24B over three years. At current market prices ($93&ndash;94 WTI), the province is generating substantial surplus revenue&mdash;but the budget assumption reveals the structural vulnerability that makes institutional construction both urgent and politically difficult. <span class="ev-strong">[STRONG&mdash;Alberta Budget 2026]</span></p>
+
+  <h3>10.4 Actor Alignment</h3>
+  <table>
+    <thead><tr><th>Alternative</th><th>Smith/UCP</th><th>NDP</th><th>Treaty Nations</th><th>Ottawa</th><th>Industry</th></tr></thead>
+    <tbody>
+      <tr><td>Heritage Fund reform</td><td>Committed</td><td>Supportive</td><td>Conditional</td><td>N/A (provincial)</td><td>Supportive</td></tr>
+      <tr><td>Revenue agency</td><td>Not advancing</td><td>No position</td><td>Requires consultation</td><td>Reluctant</td><td>Cautious</td></tr>
+      <tr><td>Immigration accord</td><td>Pursuing</td><td>Cautious</td><td>Requires consultation</td><td>Incrementally cooperative</td><td>Supportive</td></tr>
+      <tr><td>Basque fiscal autonomy</td><td>Not proposed</td><td>Not proposed</td><td>Requires co-design</td><td>Not engaged</td><td>Not engaged</td></tr>
+      <tr><td>Invest Alberta expansion</td><td>Aligned</td><td>No objection</td><td>Neutral</td><td>N/A</td><td>Strongly supportive</td></tr>
+      <tr><td>Sovereignty Act</td><td>Active user</td><td>Opposed</td><td>Legally challenging</td><td>Hostile</td><td>Cautious</td></tr>
+      <tr><td>Energy transition</td><td>MOU signed</td><td>Supportive</td><td>Interested</td><td>Aligned</td><td>Selectively supportive</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- 11. RED TEAM SYNTHESIS -->
+<section id="red-team">
+  <h2 class="section-heading">11. Red Team Synthesis</h2>
+
+  <h3>11.1 Fiscal Conservative Perspective</h3>
+  <p><strong>Core attack:</strong> These alternatives are technically competent answers to the wrong question. Albertans are not asking for a more efficient federation&mdash;they are asking why they should remain in one that structurally disadvantages them. A 25-year Heritage Fund roadmap does not speak to that frustration.</p>
+  <p><strong>Key critiques:</strong> (1) The revenue agency is a $500&ndash;750M/year solution to a problem that does not exist during a $9.4B deficit. (2) The Heritage Fund timeline is fantasy&mdash;no Alberta government has maintained deposit discipline for more than 11 consecutive years. (3) The Basque model is constitutionally impossible: &ldquo;requires constitutional amendment that has no precedent, no plausible coalition, and no identified pathway.&rdquo; (4) The timeline mismatch is fatal&mdash;the referendum is four months away; a revenue agency takes 5&ndash;7 years. (5) The identity gap: zero of six streams directly address the identity grievance.</p>
+  <p><strong>Verdict: CONDITIONAL.</strong> Methodologically sound but politically irrelevant. The strongest alternative is strategic use of the Sovereignty Act&mdash;the only tool that operates on the timeline of political anger. <span class="ev-moderate">[MODERATE]</span></p>
+
+  <h3>11.2 Quebec Autonomy Scholar Perspective</h3>
+  <p><strong>Core attack:</strong> Alberta is proposing to build in 5&ndash;15 years what Quebec built over 60 and the Basque Country over 500. The research treats the institutional gap as an engineering problem rather than a sociological one.</p>
+  <p><strong>Key critiques:</strong> (1) The Quiet Revolution was a social revolution producing a nation-state-within-a-federation; the Fair Deal Panel produced reports. The category difference is total. (2) Stream B&rsquo;s 5&ndash;7 year timeline is an engineering estimate; the sociological timeline (institutional maturity) is 15&ndash;25 years. (3) The Basque Concierto survived because it was embedded in Basque identity for 500 years&mdash;a fiscal grievance is not a fiscal identity. (4) Alberta&rsquo;s autonomy project is UCP-branded; without cross-party consensus, every reform is as durable as the current government&rsquo;s term.</p>
+  <p><strong>Verdict: CONDITIONAL PASS.</strong> Heritage Fund constitutional entrenchment is strongest because it requires the least social infrastructure. <span class="ev-moderate">[MODERATE]</span></p>
+
+  <h3>11.3 Federal Transfer Defender Perspective</h3>
+  <p><strong>Core attack:</strong> Every asymmetric arrangement for Alberta creates a precedent that, at national scale, is fiscally catastrophic. If the three wealthiest provinces secured cupo-style arrangements, the federal government&rsquo;s capacity to fulfill Section 36 would collapse.</p>
+  <p><strong>Key critiques:</strong> (1) The domino effect is structurally inevitable, not a manageable risk. (2) Equalization is not theft&mdash;individuals pay federal taxes, not provinces. (3) The Heritage Fund is Alberta&rsquo;s failure, not Canada&rsquo;s problem. (4) The Sovereignty Act normalizes constitutional non-compliance with no limiting principle. (5) The Basque comparison is a category error: foral rights rooted in medieval charters have no Canadian equivalent.</p>
+  <p><strong>Summary verdicts:</strong></p>
+  <table>
+    <thead><tr><th>Alternative</th><th>Federal Defender Verdict</th></tr></thead>
+    <tbody>
+      <tr><td>Basque-style Concierto</td><td>FAIL&mdash;no constitutional basis; domino effect destroys transfer system</td></tr>
+      <tr><td>Revenue Agency</td><td>CONDITIONAL&mdash;achievable under S.92(2), but cupo requires amendment</td></tr>
+      <tr><td>Heritage Fund Reform</td><td>PASS (internal matter)&mdash;not a federal issue; good policy</td></tr>
+      <tr><td>Immigration Accord</td><td>CONDITIONAL&mdash;risks coordination failures; preserve federal paramountcy</td></tr>
+      <tr><td>Energy Transition</td><td>PASS (internal matter)&mdash;provincial jurisdiction</td></tr>
+      <tr><td>Sovereignty Act</td><td>FAIL&mdash;normalizes non-compliance; Treaty rights risk</td></tr>
+    </tbody>
+  </table>
+
+  <h3>11.4 Red Team Convergence</h3>
+  <blockquote><p>All three red team perspectives converge on one finding: <strong>Heritage Fund constitutional entrenchment is the consensus strongest alternative.</strong> It is achievable under existing provincial authority (Section 45), does not threaten federal cohesion, requires the least social infrastructure change, and is supported across the political spectrum.</p></blockquote>
+</section>
+
+<!-- 12. STRESS TEST RESULTS -->
+<section id="stress-test">
+  <h2 class="section-heading">12. Stress Test Results</h2>
+  <p>Nine scenarios were tested against all six alternatives (54 individual assessments).</p>
+  <table>
+    <thead><tr><th>Scenario</th><th>Verdict</th><th>Key Condition</th></tr></thead>
+    <tbody>
+      <tr><td>S-1: Ottawa offers meaningful fiscal reform</td><td><strong>PASS</strong></td><td>Alternatives retain institutional value beyond fiscal grievance</td></tr>
+      <tr><td>S-2: Energy transition accelerates (peak by 2030)</td><td>CONDITIONAL</td><td>Heritage Fund deposits must begin immediately; reweight to non-combustion</td></tr>
+      <tr><td>S-3: Heritage Fund reforms fail politically</td><td>CONDITIONAL</td><td>Portfolio must redirect to revenue autonomy (Basque/ARA)</td></tr>
+      <tr><td>S-4: Basque model constitutionally blocked</td><td>CONDITIONAL</td><td>Intermediate steps (ARA, tax point) deliver independent value</td></tr>
+      <tr><td>S-5: Treaty Nations oppose agenda</td><td>CONDITIONAL</td><td>Partnership protocol required for each alternative</td></tr>
+      <tr><td>S-6: APP referendum succeeds on Q10</td><td>CONDITIONAL</td><td>Alternatives must be pre-positioned as exit ramp</td></tr>
+      <tr><td>S-7: Quebec opposes asymmetric bid</td><td>CONDITIONAL</td><td>Bilateral pathways needed; immigration accord must complement Quebec&rsquo;s</td></tr>
+      <tr><td>S-8: CUSMA constrains sub-national autonomy</td><td>CONDITIONAL</td><td>Apply Azores doctrine framework defensively</td></tr>
+      <tr><td>S-9: Identity grievance is irreducible</td><td><strong>PASS</strong></td><td>92% of grievance addressable; 8% identity residue honestly acknowledged</td></tr>
+    </tbody>
+  </table>
+  <p><strong>Portfolio verdict: CONDITIONAL.</strong> Two PASS, seven CONDITIONAL, zero FAIL. The alternatives portfolio is robust: no single scenario collapses all six alternatives. The portfolio&rsquo;s strength is its diversity&mdash;six alternatives spanning fiscal autonomy, institutional capacity, population strategy, economic diversification, and political leverage, with different constitutional pathways, timelines, and vulnerability profiles.</p>
+
+  <h3>Five Binding Conditions</h3>
+  <ol>
+    <li><strong>Treaty partnership must be operationalized, not merely acknowledged.</strong> Every stream identifies Treaty Nation partnership as a design requirement; none operationalizes it. The Onion Lake challenge and May 13, 2026 court ruling demonstrate legal consequences.</li>
+    <li><strong>Heritage Fund deposits must be framed as time-critical.</strong> Current $93&ndash;94 WTI is the last opportunity before decarbonization risk materializes. Delay is permanent loss.</li>
+    <li><strong>The Basque Concierto must be sequenced as 25&ndash;50 year aspiration</strong> behind the revenue agency (5&ndash;10 years). Intermediate steps must deliver independent value.</li>
+    <li><strong>Exit conditions must be stated for each alternative.</strong> What if Heritage Fund reform fails? What if the accord is refused? Each path needs a &ldquo;what if this closes&rdquo; assessment.</li>
+    <li><strong>Energy transition strategy must assess stranded asset risk</strong> for hydrocarbon processing investments under accelerated decarbonization.</li>
+  </ol>
+</section>
+
+<!-- 13. FEASIBILITY GATE -->
+<section id="feasibility">
+  <h2 class="section-heading">13. Feasibility Gate and Sequencing</h2>
+  <h3>13.1 Three-Tier Sequencing</h3>
+  <h4>Tier 1: Achievable Now (Existing Provincial Authority)</h4>
+  <table>
+    <thead><tr><th>Alternative</th><th>Timeline</th><th>Annual Cost</th><th>Constitutional Basis</th></tr></thead>
+    <tbody>
+      <tr><td>Heritage Fund constitutional entrenchment</td><td>1&ndash;3 years</td><td>$0</td><td>Section 45 (unilateral)</td></tr>
+      <tr><td>Heritage Fund deposit acceleration</td><td>Immediate</td><td>Foregone spending (~$5&ndash;8B/yr)</td><td>Existing statutory authority</td></tr>
+      <tr><td>HFOC governance reform</td><td>Underway</td><td>Existing budget</td><td>Existing statutory authority</td></tr>
+      <tr><td>Invest Alberta expansion (18&rarr;25&ndash;28 offices)</td><td>2&ndash;3 years</td><td>$14&ndash;60M/yr</td><td>Existing authority</td></tr>
+      <tr><td>NWP deepening</td><td>1&ndash;2 years</td><td>$5&ndash;10M/yr</td><td>Interprovincial agreement</td></tr>
+      <tr><td>Sovereignty Act (calibrated)</td><td>Immediate</td><td>Negligible</td><td>SA 2022</td></tr>
+      <tr><td>Energy transition (APIP, CCUS, H<sub>2</sub>)</td><td>2&ndash;7 years</td><td>$100M&ndash;$1B+</td><td>Section 92A</td></tr>
+    </tbody>
+  </table>
+
+  <h4>Tier 2: Requires Federal-Provincial Agreement</h4>
+  <table>
+    <thead><tr><th>Alternative</th><th>Timeline</th><th>Annual Cost</th><th>Constitutional Basis</th></tr></thead>
+    <tbody>
+      <tr><td>AAIP expansion (6,403&rarr;15,000&ndash;25,000)</td><td>1&ndash;2 years</td><td>$15&ndash;25M add&rsquo;l</td><td>PNP framework</td></tr>
+      <tr><td>Alberta Revenue Agency</td><td>5&ndash;7 years</td><td>$500&ndash;750M/yr</td><td>S.92(2) + TCA withdrawal + abatement</td></tr>
+      <tr><td>Comprehensive immigration accord</td><td>3&ndash;7 years</td><td>$150&ndash;300M</td><td>S.95 (concurrent) + bilateral agreement</td></tr>
+      <tr><td>Expanded tax point transfer</td><td>2&ndash;5 years</td><td>Revenue-neutral</td><td>FPFAA amendment</td></tr>
+    </tbody>
+  </table>
+
+  <h4>Tier 3: Requires Constitutional Amendment (25&ndash;50 Year Aspiration)</h4>
+  <table>
+    <thead><tr><th>Alternative</th><th>Timeline</th><th>Net Fiscal Impact</th><th>Constitutional Basis</th></tr></thead>
+    <tbody>
+      <tr><td>Basque-style Concierto Econ&oacute;mico</td><td>25&ndash;50 years</td><td>~$10&ndash;11B/yr retention</td><td>7/50 formula or S.43 bilateral</td></tr>
+      <tr><td>Senate reform</td><td>Blocked indefinitely</td><td>N/A</td><td>7/50 or unanimity (SCC 2014)</td></tr>
+    </tbody>
+  </table>
+
+  <h3>13.2 Prerequisite Chain</h3>
+  <p>The Heritage Fund and immigration accord are <strong>independent</strong> of the revenue agency chain. Alberta can pursue Heritage Fund constitutional entrenchment, immigration accord expansion, and energy transition simultaneously with&mdash;but not dependent on&mdash;the revenue agency pathway. The Basque Concierto is the only alternative that requires the revenue agency as a prerequisite.</p>
+
+  <h3>13.3 Exit Conditions</h3>
+  <table>
+    <thead><tr><th>Alternative</th><th>If This Fails...</th><th>Pivot To</th></tr></thead>
+    <tbody>
+      <tr><td>Heritage Fund reform</td><td>Deposits suspended; fund stalls below $80B by 2035</td><td>Revenue autonomy (ARA + Concierto)&mdash;if you cannot save, you must collect</td></tr>
+      <tr><td>Revenue Agency</td><td>Federal government refuses abatement after 3 years</td><td>Maximized PNP + Sovereignty Act leverage</td></tr>
+      <tr><td>Immigration Accord</td><td>Federal negotiations fail after 3 years post-referendum</td><td>Unilateral settlement service assertion under S.92; SA non-cooperation</td></tr>
+      <tr><td>Basque model</td><td>Constitutionally blocked</td><td>Revenue agency + tax point transfer captures ~40&ndash;50% of advantage</td></tr>
+      <tr><td>Energy transition</td><td>Accelerated decarbonization by 2035</td><td>Reweight to Bitumen Beyond Combustion + critical minerals</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- 14. TREATY INTEGRATION -->
+<section id="treaty">
+  <h2 class="section-heading">14. Treaty 6/7/8 Integration</h2>
+  <h3>14.1 Prior-Authority Status</h3>
+  <p>Treaty 6 (1876), Treaty 7 (1877), and Treaty 8 (1899) are agreements between the Crown and First Nations&mdash;all predate Alberta&rsquo;s creation in 1905. The Crown&rsquo;s treaty obligations flow directly from the Crown to Treaty Nations, not through the province. Treaty Nations are prior-authority parties with independent constitutional standing (Section 35, Constitution Act, 1982), not stakeholders in Alberta&rsquo;s governance decisions. <span class="ev-strong">[STRONG&mdash;constitutional law; KT-023/026 findings]</span></p>
+
+  <h3>14.2 The May 13, 2026 Court Ruling</h3>
+  <p>Justice Leonard (Alberta Court of King&rsquo;s Bench) quashed Elections Alberta&rsquo;s approval of the separation petition on the grounds that the Crown failed in its duty to consult First Nations and that secession would violate Treaties 7 and 8. Sturgeon Lake Cree Nation, Athabasca Chipewyan First Nation, and the Blackfoot Confederacy brought the successful challenge. This ruling demonstrates that Treaty Nations hold effective judicial veto power over separation processes&mdash;and, by extension, over any provincial initiative that affects Treaty rights. <span class="ev-strong">[STRONG&mdash;court ruling]</span></p>
+
+  <h3>14.3 Design Partnership Requirements</h3>
+  <table>
+    <thead><tr><th>Alternative</th><th>Treaty Interaction</th><th>Partnership Mechanism</th></tr></thead>
+    <tbody>
+      <tr><td>Heritage Fund</td><td>Revenue derives from Treaty territory resources</td><td>Revenue-sharing framework; Treaty representation on HFOC</td></tr>
+      <tr><td>Revenue Agency</td><td>Section 87 exemptions; data governance (OCAP principles)</td><td>Government-to-government tax coordination agreements</td></tr>
+      <tr><td>Immigration Accord</td><td>Settlement on Treaty territory; labour market impacts</td><td>Treaty Nations Immigration Advisory Council</td></tr>
+      <tr><td>Energy Transition</td><td>Projects on Treaty lands (CCUS, hydrogen, minerals)</td><td>AIOC co-investment; consent-based development</td></tr>
+      <tr><td>Sovereignty Act</td><td>Onion Lake challenge active; Treaty rights at risk</td><td>Voluntary exclusion of resolutions affecting Treaty rights</td></tr>
+      <tr><td>Basque Concierto</td><td>Must be three-party (Alberta-Ottawa-Treaty Nations)</td><td>No precedent exists; must be invented</td></tr>
+    </tbody>
+  </table>
+
+  <h3>14.4 The Basque Model&rsquo;s Missing Third Party</h3>
+  <p>The Basque Concierto is a bilateral arrangement (Basque Country&ndash;Spain). Alberta&rsquo;s equivalent must be at minimum trilateral (Alberta&ndash;Ottawa&ndash;Treaty Nations). The Basque Country does not have an Indigenous rights dimension. Spain&rsquo;s constitutional framework includes nothing analogous to Section 35, the Numbered Treaties, or the Crown-Indigenous relationship. This is the single most important point of non-comparability. A three-party fiscal autonomy design has no international precedent. It would need to be invented. <span class="ev-inferred">[INFERRED&mdash;no precedent exists]</span></p>
+</section>
+
+<!-- 15. THE IDENTITY QUESTION -->
+<section id="identity">
+  <h2 class="section-heading">15. The Identity Question</h2>
+  <h3>15.1 The Irreducible 8%</h3>
+  <p>Ipsos data (cross-referenced from KT-023): 28% topline separation support falls to 15&ndash;16% when the $30&ndash;39B GDP cost is surfaced. But 8% support separation &ldquo;regardless of consequences.&rdquo; This hardcore cohort is not making a fiscal calculation. A $500 billion Heritage Fund does not make someone feel less alienated from federal policy on energy, firearms, language, or cultural values. <span class="ev-strong">[STRONG&mdash;Ipsos polling data]</span></p>
+
+  <h3>15.2 Which Alternatives Address Identity</h3>
+  <p>Of the six alternatives, most address the fiscal dimension of the grievance. The identity dimension is addressed unevenly:</p>
+  <ul>
+    <li><strong>Immigration accord:</strong> Partially addresses. Selecting who comes to Alberta is an identity act, not merely a labour market act. &ldquo;Building our own province&rdquo; resonates with the identity constituency.</li>
+    <li><strong>International presence:</strong> Partially addresses. Alberta trade offices project provincial visibility globally. But offices are not the same as identity&mdash;Quebec&rsquo;s D&eacute;l&eacute;gations g&eacute;n&eacute;rales project a national identity; Alberta&rsquo;s offices project investment opportunity.</li>
+    <li><strong>Sovereignty Act:</strong> Partially addresses. Symbolic assertion of provincial authority speaks to the &ldquo;we are not listened to&rdquo; narrative.</li>
+    <li><strong>Heritage Fund at scale:</strong> Potentially addresses at $250B+. &ldquo;We are the province that saved&rdquo; is an identity narrative. Alaska&rsquo;s Permanent Fund Dividend has become part of Alaskan identity.</li>
+    <li><strong>Revenue agency:</strong> Does not address. Nobody identifies with their tax collector.</li>
+    <li><strong>Basque Concierto:</strong> Potentially transformative long-term: institutional autonomy can build institutional identity over a generation. But this is a 25&ndash;50 year project.</li>
+  </ul>
+
+  <h3>15.3 Honest Limitation</h3>
+  <p>These alternatives address the fiscal and institutional dimensions of the separatist grievance. They do not, and cannot, fully address the identity dimension. The fiscal conservative red team is correct: &ldquo;a more efficient ATM is not responsive to someone asking why they should be an ATM.&rdquo; The Quebec scholar is correct: &ldquo;a fiscal grievance is not a fiscal identity; grievance motivates a referendum question, identity sustains an institution for 500 years.&rdquo;</p>
+  <p>The relevant question is not whether the alternatives address 100% of the grievance but whether they address enough to reduce separation support below the threshold of political viability. The polling trajectory&mdash;28% to 18% and falling&mdash;suggests the economically contingent supporters are already departing. The alternatives address the persuadable majority. The 8% identity residue is irreducible through policy. Saying so is a strength of the analysis, not a weakness.</p>
+</section>
+
+<!-- 16. CONCLUSION -->
+<section id="conclusion">
+  <h2 class="section-heading">16. Conclusion: The Instead Thesis</h2>
+  <p>The separatist framing collapses a spectrum into a binary. This paper maps that spectrum. Six institutional alternatives&mdash;spanning fiscal autonomy, resource management, population strategy, economic diversification, and political leverage&mdash;are costed, sequenced, constitutionally assessed, stress-tested, and evaluated against Treaty 6/7/8 obligations. The findings:</p>
+
+  <p><strong>The most ambitious autonomy option delivers more than separation.</strong> A Basque-style Concierto Econ&oacute;mico would give Alberta 29.8% higher fiscal capacity than comparable regions, retaining approximately 92% of collected tax revenue while preserving full access to the $2.8 trillion Canadian economic space. Separation delivers the $30&ndash;39B/year GDP shock without delivering more fiscal autonomy than the Concierto provides.</p>
+
+  <p><strong>The most actionable alternative is available now.</strong> Heritage Fund constitutional entrenchment under Section 45 is achievable under existing provincial authority, requires no federal agreement, survives all nine stress test scenarios, and is the consensus strongest alternative across all three red team perspectives. The window for aggressive deposit discipline is this commodity cycle&mdash;at $93&ndash;94 WTI, with $22B in annual resource revenue&mdash;and it will not remain open indefinitely.</p>
+
+  <p><strong>The Basque model changes the frame.</strong> Its absence from Alberta&rsquo;s policy debate is itself a finding. The province that most needs to study the Concierto has never heard of it. The institutional description in this paper&mdash;the three Diputaciones Forales, the cupo mechanism, the frozen 6.24% coefficient, the ECJ validation, the 500-year institutional continuity&mdash;belongs in Alberta&rsquo;s policy conversation even if the full model requires constitutional change that may never arrive. The revenue agency is the prerequisite step, and it is achievable under existing authority.</p>
+
+  <p><strong>These are slow paths.</strong> A revenue agency takes 5&ndash;7 years. Heritage Fund reform takes 25 years. The Basque model requires a constitutional moment. If the anger is about today&rsquo;s carbon tax, today&rsquo;s equalization transfer, today&rsquo;s regulatory burden, a 25-year institutional roadmap is frustrating. The fiscal conservative red team is right that these alternatives do not operate on the timeline of political anger. They operate on the timeline of institutional construction. The question is whether Alberta wants to be angry or wants to be autonomous. These are different projects with different timescales.</p>
+
+  <p><strong>The 8% remains.</strong> The hardcore identity-driven separatist constituency is not addressable through fiscal reform, institutional construction, or policy design. A revenue agency does not make someone feel less alienated. A Heritage Fund does not repair the symbolic damage of the National Energy Program. Some alternatives&mdash;international presence, immigration control, the Sovereignty Act as symbolic assertion&mdash;partially address the identity dimension. None fully resolve it. This is an honest limitation, not a failure.</p>
+
+  <p><strong>Treaty Nations are design partners, not afterthoughts.</strong> Every alternative must be designed in partnership with Treaty 6/7/8 Nations, whose constitutional standing (Section 35) and prior-authority status (treaties predating Alberta by decades) make them co-equal parties in any restructuring of Alberta&rsquo;s fiscal relationship with Canada. The May 13, 2026 court ruling makes this a legal requirement, not merely an ethical aspiration. The Basque model&rsquo;s bilateralism must become Alberta&rsquo;s trilateralism. No international precedent exists for this design. It must be invented.</p>
+
+  <p><strong>The window is now.</strong> At $93&ndash;94 WTI, Alberta has the revenue to fund institutional construction. At $31.9B, the Heritage Fund is at a crossroads: the next decade of deposit discipline will determine whether the fund reaches $250B or stalls at $80B. The CUSMA review is underway. The referendum has focused national attention on Alberta&rsquo;s position within Confederation. The Canada-Alberta MOU demonstrates that the negotiating instrument thesis produces results. Every year of $85+ oil that passes without Heritage Fund reform, institutional construction, and Treaty Nation partnership is a year the Norway counterfactual&mdash;$2 trillion versus $31.9 billion&mdash;grows more damning.</p>
+
+  <p>The Instead Thesis is not that these alternatives are easier than separation. They are not. They require sustained political will, cross-party consensus, multi-generational institutional construction, and honest engagement with Treaty Nations. They require Alberta to be disciplined in ways it has historically not been. But they deliver more fiscal autonomy, more institutional capacity, and more long-term security than separation&mdash;without the $30&ndash;39B GDP shock, without the treaty crisis, without the international border, and without the zero base rate of democratic secession from stable federations.</p>
+
+  <p>The choice is not between separation and the status quo. The choice is between separation and something better. Alberta has the tools. The question is whether it will use them.</p>
+</section>
+
+<!-- 17. REFERENCES -->
+<section id="references" class="footnotes">
+  <h2 class="section-heading">17. References</h2>
+
+  <p>Alberta Energy Regulator. (2025). <em>Alberta energy outlook: Production statistics</em>. https://www.aer.ca/</p>
+
+  <p>Alberta Government. (2020). <em>Fair Deal Panel: Report to the Government of Alberta</em>. https://open.alberta.ca/publications/fair-deal-panel-report-to-government</p>
+
+  <p>Alberta Government. (2025). <em>Alberta Next Panel: Final report</em>. Government of Alberta.</p>
+
+  <p>Alberta Government. (2026). <em>Budget 2026: Fiscal plan</em>. Alberta Treasury Board and Finance.</p>
+
+  <p>Alberta Heritage Savings Trust Fund Act, R.S.A. 2000, c. A-23 (as amended 2022-23).</p>
+
+  <p>Alberta Sovereignty Within a United Canada Act, S.A. 2022, c. A-33.8.</p>
+
+  <p>Alaska Permanent Fund Corporation. (2026). <em>Fund performance: April 2026</em>. https://apfc.org/</p>
+
+  <p>Angus Reid Institute. (2026, May 22-24). <em>Alberta separation referendum polling</em>. https://angusreid.org/</p>
+
+  <p>Bernier, L., Brownsey, K., &amp; Howlett, M. (Eds.). (2006). <em>Executive styles in Canada: Cabinet structures and leadership practices in Canadian government</em>. University of Toronto Press.</p>
+
+  <p>Canada-Quebec Accord Relating to Immigration and Temporary Admission of Aliens. (1991, February 5). Government of Canada and Government of Quebec.</p>
+
+  <p>Canadian Federation of Independent Business. (Various years). <em>Compliance cost estimates for Quebec businesses</em>.</p>
+
+  <p>Clavero, B. (1992). <em>Fueros vascos: Historia en tiempos de constituci&oacute;n</em>. Ariel.</p>
+
+  <p>Constitution Act, 1867 (U.K.), 30 &amp; 31 Vict., c. 3 (as amended).</p>
+
+  <p>Constitution Act, 1982, Schedule B to the Canada Act 1982 (U.K.), 1982, c. 11.</p>
+
+  <p>de la Fuente, A. (2012). <em>El sistema de financiaci&oacute;n regional: Problemas y propuestas de reforma</em>. FEDEA.</p>
+
+  <p>Dickinson, J. A., &amp; Young, B. (2008). <em>A short history of Quebec</em> (4th ed.). McGill-Queen's University Press.</p>
+
+  <p>European Court of Justice. (2008). Joined Cases C-428/06 to C-434/06, <em>UGT-Rioja and others v. Juntas Generales del Territorio Hist&oacute;rico de Vizcaya</em>.</p>
+
+  <p>Fair Registration Practices Act, S.A. 2019, c. F-1.5.</p>
+
+  <p><em>Federal-Provincial Fiscal Arrangements Act</em>, R.S.C. 1985, c. F-8.</p>
+
+  <p>Fraser Institute. (2025). <em>Heritage Fund governance and constitutional protection analysis</em>. https://www.fraserinstitute.org/</p>
+
+  <p>Gow, J. I. (2004). <em>A Canadian model of public administration?</em> Canadian Public Administration Press.</p>
+
+  <p>Hogg, P. W. (2017). <em>Constitutional law of Canada</em> (5th ed. supplemented). Thomson Reuters.</p>
+
+  <p>International Energy Agency. (2024). <em>World energy outlook 2024: Net zero by 2050 scenario</em>. OECD/IEA.</p>
+
+  <p>Invest Alberta Corporation. (2024). <em>Annual report 2024</em>. Government of Alberta.</p>
+
+  <p>Ipsos. (2026, May 28-June 1). <em>Alberta separation support polling</em>. Ipsos Public Affairs.</p>
+
+  <p>Kaplan, H. (2024). <em>First-year GDP impact of Alberta separation</em>. [As cited in KT-024.]</p>
+
+  <p>Ley 3/2025, de 29 de abril, por la que se modifica la Ley 12/2002, de 23 de mayo, por la que se aprueba el Concierto Econ&oacute;mico con la Comunidad Aut&oacute;noma del Pa&iacute;s Vasco. BOE-A-2025-8596.</p>
+
+  <p>Ley 10/2023, de 3 de abril, por la que se aprueba la metodolog&iacute;a de se&ntilde;alamiento del cupo del Pa&iacute;s Vasco para el quinquenio 2022-2026. BOE-A-2023-8456.</p>
+
+  <p>Ley 12/2002, de 23 de mayo, por la que se aprueba el Concierto Econ&oacute;mico con la Comunidad Aut&oacute;noma del Pa&iacute;s Vasco.</p>
+
+  <p>McRoberts, K. (1988). <em>Quebec: Social change and political crisis</em> (3rd ed.). McClelland &amp; Stewart.</p>
+
+  <p>Monreal Zia, G. (2005). <em>The old law of Bizkaia (1452): Introductory study and critical edition</em>. Center for Basque Studies, University of Nevada, Reno.</p>
+
+  <p>Norges Bank Investment Management. (2024). <em>Government Pension Fund Global: Annual report 2024</em>. https://www.nbim.no/</p>
+
+  <p>Norwegian Ministry of Finance. (Various years). <em>Fiscal Budget Guidelines (handlingsregelen)</em>.</p>
+
+  <p>Paquin, S. (2004). <em>Paradiplomacy and international relations: Theory of international action of sub-national governments</em>. Peter Lang.</p>
+
+  <p>Revenu Qu&eacute;bec. (2024). <em>Rapport annuel de gestion 2023-2024</em>.</p>
+
+  <p>Revenu Qu&eacute;bec. (2024). <em>Plan strat&eacute;gique 2024-2028</em>.</p>
+
+  <p>Spanish Constitution. (1978). First Additional Provision (Disposici&oacute;n Adicional Primera).</p>
+
+  <p>Statistics Canada. (Various years). Table 17-10-0045-01, <em>Estimates of components of interprovincial migration</em>.</p>
+
+  <p>Statute of Autonomy of the Basque Country (Ley Org&aacute;nica 3/1979, Statute of Gernika).</p>
+
+  <p>Supreme Court of Canada. (2014). <em>Reference re Senate Reform</em>, 2014 SCC 32.</p>
+
+  <p>Tombe, T. (2023). <em>Alberta&rsquo;s fiscal future</em>. University of Calgary School of Public Policy.</p>
+
+  <p>Tombe, T. (2024). <em>Steady-state GDP cost of Alberta separation</em>. [As cited in KT-024.]</p>
+
+  <p>Warrack, A., &amp; Keddie, R. (2002). <em>Alberta Heritage Fund vs. Alaska Permanent Fund: A comparative analysis</em>. University of Alberta School of Business.</p>
+
+  <p>Zabalza, A., &amp; L&oacute;pez-Laborda, J. (2017). The uneasy coexistence of the Spanish foral and common regional finance systems. <em>Investigaciones Regionales &mdash; Journal of Regional Research</em>, 39, 119&ndash;144.</p>
+
+  <p>Zubiri, I. (2000). <em>El sistema de Concierto Econ&oacute;mico en el contexto de la Uni&oacute;n Europea</em>. C&iacute;rculo de Empresarios Vascos.</p>
+
+  <p>Zubiri, I. (2010). The Economic Agreement between the Basque Country and Spain. <em>Ad Concordiam</em>.</p>
+
+</section>
+
+<footer>
+  KT-027 |  | June 2026 | Tier 0: Technical Paper
+</footer>
+
+</div>
+</body>
+</html>
